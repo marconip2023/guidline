@@ -53,9 +53,13 @@
 <!-- Visualization & Content Choices: Process Progress -> Inform & Motivate -> Donut Chart (Chart.js) -> Updates dynamically as user navigates steps -> Provides immediate visual feedback on completion percentage without overwhelming the text content -> Chart.js is used to satisfy library requirements and provides smooth animation; HTML/CSS list is used for the stepper to organize the complex sequential data without relying on SVG or Mermaid. -->
 <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
-    <header class="bg-white border-b border-stone-200 shadow-sm sticky top-0 z-10">
+<header class="bg-white border-b border-stone-200 shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <h1 class="text-3xl font-bold text-slate-800 tracking-tight">QMAS - CPSC eFiling Interactive Guide</h1>
+            <div class="flex items-center mb-1">
+                <!-- 公司 Logo：請將你的 Logo 檔案改名為 logo.png 並上傳，或者修改下方 src="你的檔案名.png/jpg" -->
+                <img src="logo.png" alt="Company Logo" class="h-9 w-auto mr-4" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'32\' viewBox=\'0 0 80 32\'%3E%3Crect width=\'80\' height=\'32\' rx=\'6\' fill=\'%23e2e8f0\'/%3E%3Ctext x=\'40\' y=\'21\' font-family=\'sans-serif\' font-size=\'14\' font-weight=\'bold\' fill=\'%2364748b\' text-anchor=\'middle\'%3ELOGO%3C/text%3E%3C/svg%3E'">
+                <h1 class="text-3xl font-bold text-slate-800 tracking-tight">QMAS - CPSC eFiling Interactive Guide</h1>
+            </div>
             <p class="mt-2 text-slate-600 max-w-3xl text-sm leading-relaxed">
                 Welcome to the interactive guide for eFiling product data from the QMAS system to the CPSC (U.S. Consumer Product Safety Commission). 
                 Use the step-by-step navigator below to explore the complete process. This interactive format helps you track your progress and highlights critical prerequisites and rules to ensure a smooth submission.
