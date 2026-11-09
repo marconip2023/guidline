@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Review · QMAS User Guide (draft)</title>
+<style>
+:root {
+  --bg: #f7faff;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --link: #0041b8;
+  --primary: #005eff;
+  --chip: #0041b8;
+  --line: #e5e7eb;
+  --tip: #eef4ff;
+  --pending: #f3f4f6;
+  --banner: #fff7ed;
+  --banner-text: #7c2d12;
+  --banner-line: #c2410c;
+  --focus: #0038b3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 "Liberation Sans", "Noto Sans", sans-serif;
+  hyphens: manual;
+}
+
+a { color: var(--link); }
+a:focus-visible,
+.table-wrap:focus-visible,
+.skip-link:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: #fff;
+  color: var(--focus);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.site-header, .site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 0;
+}
+.site-header p, .site-footer p { margin: 0; }
+.site-mark { font-weight: 700; }
+.site-mark a { color: var(--text); text-decoration: none; }
+.site-mark a:hover { text-decoration: underline; }
+.version-line { color: var(--muted); font-size: 14px; }
+
+main { max-width: 880px; margin: 0 auto; padding: 16px 16px 64px; }
+main.wide { max-width: 960px; }
+
+h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 22px; line-height: 1.3; margin: 36px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
+.lede { color: var(--muted); margin: 0 0 16px; }
+
+.draft-banner, .status-line {
+  background: var(--banner);
+  color: var(--banner-text);
+  border-left: 4px solid var(--banner-line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+}
+.status-line { background: var(--card); color: var(--text); border-left-color: var(--primary); }
+
+.meta, .module-group, .overview, .tip, figure, table {
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 8px;
+}
+.meta dt { color: var(--muted); font-weight: 600; }
+.meta dd { margin: 0; }
+
+.overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
+.module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.module-group h2 a { font-size: 14px; font-weight: 400; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+
+.ui-label {
+  display: inline-block;
+  background: var(--chip);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.ui-label.ghost { background: #fff; color: var(--chip); border: 1px solid var(--chip); }
+
+figure.shot { margin: 12px 0 20px; border: 0; }
+figure.shot img, .pending {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+figure.shot img { height: auto; background: var(--card); }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.caption-note { display: block; margin-top: 4px; }
+
+.pending {
+  background: var(--pending);
+  color: var(--text);
+  border-style: dashed;
+  padding: 14px 16px;
+}
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+.pending.not-captured { background: #fff7ed; border-color: var(--banner-line); }
+
+.tip {
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--tip);
+}
+.tip p { margin: 0; }
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f4f6; }
+caption.visually-hidden { /* name comes from the region label */ }
+
+.faq dt { font-weight: 700; margin-top: 14px; }
+.faq dd { margin: 4px 0 0; }
+.site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
+
+@media (forced-colors: active) {
+  .pending, .tip, .ui-label, .draft-banner { border: 1px solid CanvasText; }
+}
+
+@media print {
+  body { background: #fff; }
+  .skip-link, .site-header nav, .crumb { display: none; }
+  main { max-width: none; padding: 0; }
+  a { color: #000; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid; }
+  figure, .tip, .pending, .meta, .draft-banner, tr { break-inside: avoid; }
+  article.module + article.module { break-before: page; }
+  figure.shot img {
+    max-width: 100%;
+    max-height: 210mm;
+    object-fit: contain;
+    object-position: left top;
+  }
+  .table-wrap { overflow: visible; }
+  .pending, .tip, .draft-banner, .ui-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 14mm; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <p class="site-mark"><a href="../">QMAS User Guide</a></p>
+  <p class="version-line">Working copy draft</p>
+</header>
+<main id="content" tabindex="-1">
+<p class="crumb"><a href="../">All guides</a></p>
+<p class="draft-banner">Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
+<h1>Document Review — Create a Review Job</h1>
+<p class="lede">Get compliance documents (CPC, GCC, DoC, test reports, TCF) reviewed by a lab or by yourself, whether you upload them or your supplier does.</p>
+<p class="status-line">Screenshot slots: 7 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Document Review</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/document-review">https://qmas.icw.io/document-review</a> → <strong>Create Job</strong> or <strong>Create Job for supplier</strong></dd>
+<dt>Direct links</dt><dd>You upload: <a href="https://qmas.icw.io/document-review/upload-document/create">https://qmas.icw.io/document-review/upload-document/create</a> · Supplier uploads: <a href="https://qmas.icw.io/document-review/upload-document/request">https://qmas.icw.io/document-review/upload-document/request</a></dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Choose the flow that fits (table below).</li>
+<li>Fill in <strong>Job Type</strong>, <strong>Product Information</strong> and the documents to review.</li>
+<li>For a supplier job, choose the <strong>connected supplier</strong> who will upload.</li>
+<li>Choose a <strong>partner</strong> (optional) and the <strong>Service Provider</strong>: a connected lab, or <strong>Job Owner Review</strong> to review yourself.</li>
+<li>Click <strong>Confirm</strong>. Follow the status on the Document Review list until the review is concluded.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Choose your flow</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Flow, Button, Who uploads, Who reviews"><table><thead><tr><th scope="col">Flow</th><th scope="col">Button</th><th scope="col">Who uploads</th><th scope="col">Who reviews</th></tr></thead><tbody><tr><td>A. Upload for lab review</td><td>Create Job</td><td>You</td><td>Connected lab</td></tr><tr><td>B. Supplier uploads for lab review</td><td>Create Job for supplier</td><td>Your connected supplier</td><td>Connected lab (Connected Provider)</td></tr><tr><td>C. Supplier uploads for your own review</td><td>Create Job for supplier</td><td>Your connected supplier</td><td>You (Job Owner Review)</td></tr></tbody></table></div>
+<p>In the left menu, open <strong>Document Review</strong>. The dashboard shows service providers, jobs over 12 months, status and reject reasons. The tabs <strong>All Job</strong>, <strong>My Job</strong> and <strong>View Only</strong> list the jobs.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Document Review with Create Job and Create Job for supplier.</figcaption></figure>
+<h3>2. Job Type</h3>
+<p>Choose the <strong>Job Type</strong> (for example Document Review) and tick <strong>CPC/GCC/DOC Review</strong> and/or <strong>Compliance Review</strong>. Optionally fill in <strong>Buyer Name</strong>, <strong>Service Required</strong> (Regular by default) and <strong>Submission Remark</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-create-job-top.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create Job — 1. Job Type and 2. Product Information.</figcaption></figure>
+<h3>3. Product Information</h3>
+<p>Keep <strong>Select Product For Review = Yes</strong>. Click <strong>Existing Product</strong> to pick products, or <strong>New Product</strong> to create one. For each product, check the <strong>Basic Information</strong>, then fill in <strong>Additional Information</strong>: Test Age Grade, Label Age Grade, Export Market and Country Of Origin are required.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-product-info.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Basic Information and Additional Information for the selected product.</figcaption></figure>
+<p>Below that you can add <strong>PO Information</strong>, upload <strong>Product Pictures &amp; Reference Documents</strong>, set the <strong>TCF Requests</strong> (choose document types or import a TCF template) and add <strong>Quality Requirements</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-tcf-requirements.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>TCF Requests and Requirements.</figcaption></figure>
+<h3>4. Documents for Review, partner and provider (Flow A)</h3>
+<p>Under <strong>Documents for Review</strong>, click <strong>Upload files</strong> (at least one file is required). The reviewer gives a conclusion only on documents in this section.</p>
+<p><strong>Select Partner</strong> (optional): choose Yes to let one partner view the job.</p>
+<p><strong>Service Provider</strong>: choose the connected lab under <strong>Connected Provider</strong>. Click <strong>Confirm</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>05-docs-partner-provider.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Documents for Review, Select Partner and Service Provider.</figcaption></figure>
+<h3>5. Create Job for supplier (Flows B and C)</h3>
+<p>Click <strong>Create Job for supplier</strong>. Fill in Job Type and Product Information as above. Then:</p>
+<ul><li><strong>Select Connected Supplier</strong>: choose the supplier who will upload. Only suppliers connected with you on QMAS are listed. See Supplier Management → Invite Supplier.</li><li><strong>Select Partner</strong> (optional).</li><li><strong>Service Provider</strong>: choose <strong>Connected Provider</strong> and a lab for Flow B, or <strong>Job Owner Review</strong> for Flow C.</li><li>Click <strong>Confirm</strong>. The supplier gets a notification to upload the documents.</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>06-supplier-job-top.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create Job for Supplier.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>07-supplier-job-provider.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Select Connected Supplier, Select Partner and Service Provider (Connected Provider or Job Owner Review).</figcaption></figure>
+<h3>6. Follow the review</h3>
+<ul><li>Flow A and B: the job shows <strong>Being Processed</strong> while the lab reviews. The lab concludes each document as <strong>Approve</strong>, <strong>Reject</strong> or <strong>Waiting for Additional Information</strong>.</li><li>Flow C: when the supplier has uploaded, open the job, click <strong>View detail</strong>, and conclude each document yourself with <strong>Approve</strong>, <strong>Reject</strong>, <strong>N/A</strong> or <strong>Waiting for additional information</strong>. Click <strong>Confirm</strong>.</li><li>If a document is rejected or more information is needed, read the comment and upload a corrected file.</li><li>When all documents are approved, complete the job.</li></ul>
+<h2>Tips</h2>
+<aside class="tip"><p>Flows B and C need a connected supplier. Invite the supplier first from Supplier / Factory Management → Invite Supplier.</p></aside>
+<aside class="tip"><p>Save a TCF document-type list as a template so you can reuse it in the next job.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I send documents to a lab for review?</dt><dd>Go to Document Review (<a href="https://qmas.icw.io/document-review">https://qmas.icw.io/document-review</a>), click Create Job, fill in Job Type and Product Information, upload files under Documents for Review, choose the lab under Service Provider, and click Confirm.</dd>
+<dt>How do I ask my supplier to upload documents for review?</dt><dd>Click Create Job for supplier on Document Review, choose the connected supplier, then choose Connected Provider (lab review) or Job Owner Review (you review) and click Confirm.</dd>
+<dt>What does Job Owner Review mean?</dt><dd>You review the supplier&#x27;s documents yourself instead of a lab.</dd>
+<dt>Why can&#x27;t I find my supplier in Select Connected Supplier?</dt><dd>Only suppliers connected with you on QMAS are listed. Invite them from Supplier / Factory Management → Invite Supplier.</dd>
+</dl>
+
+</main>
+<footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>
+</body>
+</html>

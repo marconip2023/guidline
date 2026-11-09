@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QMAS User Guide (working copy draft)</title>
+<style>
+:root {
+  --bg: #f7faff;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --link: #0041b8;
+  --primary: #005eff;
+  --chip: #0041b8;
+  --line: #e5e7eb;
+  --tip: #eef4ff;
+  --pending: #f3f4f6;
+  --banner: #fff7ed;
+  --banner-text: #7c2d12;
+  --banner-line: #c2410c;
+  --focus: #0038b3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 "Liberation Sans", "Noto Sans", sans-serif;
+  hyphens: manual;
+}
+
+a { color: var(--link); }
+a:focus-visible,
+.table-wrap:focus-visible,
+.skip-link:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: #fff;
+  color: var(--focus);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.site-header, .site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 0;
+}
+.site-header p, .site-footer p { margin: 0; }
+.site-mark { font-weight: 700; }
+.site-mark a { color: var(--text); text-decoration: none; }
+.site-mark a:hover { text-decoration: underline; }
+.version-line { color: var(--muted); font-size: 14px; }
+
+main { max-width: 880px; margin: 0 auto; padding: 16px 16px 64px; }
+main.wide { max-width: 960px; }
+
+h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 22px; line-height: 1.3; margin: 36px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
+.lede { color: var(--muted); margin: 0 0 16px; }
+
+.draft-banner, .status-line {
+  background: var(--banner);
+  color: var(--banner-text);
+  border-left: 4px solid var(--banner-line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+}
+.status-line { background: var(--card); color: var(--text); border-left-color: var(--primary); }
+
+.meta, .module-group, .overview, .tip, figure, table {
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 8px;
+}
+.meta dt { color: var(--muted); font-weight: 600; }
+.meta dd { margin: 0; }
+
+.overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
+.module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.module-group h2 a { font-size: 14px; font-weight: 400; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+
+.ui-label {
+  display: inline-block;
+  background: var(--chip);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.ui-label.ghost { background: #fff; color: var(--chip); border: 1px solid var(--chip); }
+
+figure.shot { margin: 12px 0 20px; border: 0; }
+figure.shot img, .pending {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+figure.shot img { height: auto; background: var(--card); }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.caption-note { display: block; margin-top: 4px; }
+
+.pending {
+  background: var(--pending);
+  color: var(--text);
+  border-style: dashed;
+  padding: 14px 16px;
+}
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+.pending.not-captured { background: #fff7ed; border-color: var(--banner-line); }
+
+.tip {
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--tip);
+}
+.tip p { margin: 0; }
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f4f6; }
+caption.visually-hidden { /* name comes from the region label */ }
+
+.faq dt { font-weight: 700; margin-top: 14px; }
+.faq dd { margin: 4px 0 0; }
+.site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
+
+@media (forced-colors: active) {
+  .pending, .tip, .ui-label, .draft-banner { border: 1px solid CanvasText; }
+}
+
+@media print {
+  body { background: #fff; }
+  .skip-link, .site-header nav, .crumb { display: none; }
+  main { max-width: none; padding: 0; }
+  a { color: #000; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid; }
+  figure, .tip, .pending, .meta, .draft-banner, tr { break-inside: avoid; }
+  article.module + article.module { break-before: page; }
+  figure.shot img {
+    max-width: 100%;
+    max-height: 210mm;
+    object-fit: contain;
+    object-position: left top;
+  }
+  .table-wrap { overflow: visible; }
+  .pending, .tip, .draft-banner, .ui-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 14mm; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <p class="site-mark"><a href="./">QMAS User Guide</a></p>
+  <p class="version-line">Working copy draft</p>
+</header>
+<main id="content" class="wide" tabindex="-1">
+
+<p class="draft-banner">Working copy draft 2026-11-09-draft. This copy keeps the published English guide text for 12 pages. Reviewed screenshots are in for Product Testing, Getting started, most of Product Management, and the first Product Profile batch. Every other screenshot slot is an explicit placeholder, including shots that were not captured. Nothing here is deployed.</p>
+<p class="lede">Step-by-step QMAS guides. Dev-verified corrections from 9 Nov 2026 are included. Unpublished modules from internal planning notes are not added.</p>
+<p>English text for these 12 modules is also in the <a href="https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b">Notion working hub</a>.</p>
+<p><a href="combined/">Read all guides in one page</a></p>
+<section class="module-group"><h2>Product Testing <a href="https://qmas.icw.io/product-testing">Open module</a></h2><ul><li><a href="product-testing/">Request a quotation (Create Job)</a> <span class="tag reviewed">Reviewed screenshots</span></li></ul></section>
+<section class="module-group"><h2>Getting started </h2><ul><li><a href="getting-started/">Home, settings and company profile</a> <span class="tag reviewed">Reviewed screenshots</span></li></ul></section>
+<section class="module-group"><h2>Product Management <a href="https://qmas.icw.io/product/list">Open module</a></h2><ul><li><a href="product-management/">Create and edit a product</a> <span class="tag">10 reviewed, 1 not captured</span></li><li><a href="product-profile/">Every tab of the product profile (Document, Compliance Data, Quality Requirement, Packaging…)</a> <span class="tag">11 reviewed, 3 not captured</span></li><li><a href="efiling/">Submit eFiling to CPSC</a> <span class="tag">Screenshots pending</span></li></ul></section>
+<section class="module-group"><h2>Supplier &amp; Factory Management <a href="https://qmas.icw.io/supplier-manager/suppliers">Open module</a></h2><ul><li><a href="supplier-management/">Create a supplier</a> <span class="tag">Screenshots pending</span></li><li><a href="factory-management/">Create a factory</a> <span class="tag">Screenshots pending</span></li></ul></section>
+<section class="module-group"><h2>Document Management <a href="https://qmas.icw.io/document-management">Open module</a></h2><ul><li><a href="document-management/">Upload a document</a> <span class="tag">Screenshots pending</span></li></ul></section>
+<section class="module-group"><h2>QC Inspection <a href="https://qmas.icw.io/inspection">Open module</a></h2><ul><li><a href="qc-inspection/">Get a QC inspection quote via ICW</a> <span class="tag">Screenshots pending</span></li></ul></section>
+<section class="module-group"><h2>Internal QC Inspection <a href="https://qmas.icw.io/inspection/internal/list">Open module</a></h2><ul><li><a href="internal-qc-inspection/">Start an internal inspection</a> <span class="tag">Screenshots pending</span></li></ul></section>
+<section class="module-group"><h2>Document Review <a href="https://qmas.icw.io/document-review">Open module</a></h2><ul><li><a href="document-review/">Upload documents for lab review</a> <span class="tag">Screenshots pending</span></li><li><a href="document-review/">Ask a supplier to upload for lab review</a> <span class="tag">Screenshots pending</span></li><li><a href="document-review/">Ask a supplier to upload for your own review</a> <span class="tag">Screenshots pending</span></li></ul></section>
+<section class="module-group"><h2>AI Insight </h2><ul><li><a href="ai-insight/">Run an AI Risk Screening</a> <span class="tag">Screenshots pending</span></li></ul></section>
+
+
+</main>
+<footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>
+</body>
+</html>

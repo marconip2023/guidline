@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Testing — Request a Quotation</title>
+<style>
+:root {
+  --bg: #f7faff;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --link: #0041b8;
+  --primary: #005eff;
+  --chip: #0041b8;
+  --line: #e5e7eb;
+  --tip: #eef4ff;
+  --pending: #f3f4f6;
+  --banner: #fff7ed;
+  --banner-text: #7c2d12;
+  --banner-line: #c2410c;
+  --focus: #0038b3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 "Liberation Sans", "Noto Sans", sans-serif;
+  hyphens: manual;
+}
+
+a { color: var(--link); }
+a:focus-visible,
+.table-wrap:focus-visible,
+.skip-link:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: #fff;
+  color: var(--focus);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.site-header, .site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 0;
+}
+.site-header p, .site-footer p { margin: 0; }
+.site-mark { font-weight: 700; }
+.site-mark a { color: var(--text); text-decoration: none; }
+.site-mark a:hover { text-decoration: underline; }
+.version-line { color: var(--muted); font-size: 14px; }
+
+main { max-width: 880px; margin: 0 auto; padding: 16px 16px 64px; }
+main.wide { max-width: 960px; }
+
+h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 22px; line-height: 1.3; margin: 36px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
+.lede { color: var(--muted); margin: 0 0 16px; }
+
+.draft-banner, .status-line {
+  background: var(--banner);
+  color: var(--banner-text);
+  border-left: 4px solid var(--banner-line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+}
+.status-line { background: var(--card); color: var(--text); border-left-color: var(--primary); }
+
+.meta, .module-group, .overview, .tip, figure, table {
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 8px;
+}
+.meta dt { color: var(--muted); font-weight: 600; }
+.meta dd { margin: 0; }
+
+.overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
+.module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.module-group h2 a { font-size: 14px; font-weight: 400; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+
+.ui-label {
+  display: inline-block;
+  background: var(--chip);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.ui-label.ghost { background: #fff; color: var(--chip); border: 1px solid var(--chip); }
+
+figure.shot { margin: 12px 0 20px; border: 0; }
+figure.shot img, .pending {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+figure.shot img { height: auto; background: var(--card); }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.caption-note { display: block; margin-top: 4px; }
+
+.pending {
+  background: var(--pending);
+  color: var(--text);
+  border-style: dashed;
+  padding: 14px 16px;
+}
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+.pending.not-captured { background: #fff7ed; border-color: var(--banner-line); }
+
+.tip {
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--tip);
+}
+.tip p { margin: 0; }
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f4f6; }
+caption.visually-hidden { /* name comes from the region label */ }
+
+.faq dt { font-weight: 700; margin-top: 14px; }
+.faq dd { margin: 4px 0 0; }
+.site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
+
+@media (forced-colors: active) {
+  .pending, .tip, .ui-label, .draft-banner { border: 1px solid CanvasText; }
+}
+
+@media print {
+  body { background: #fff; }
+  .skip-link, .site-header nav, .crumb { display: none; }
+  main { max-width: none; padding: 0; }
+  a { color: #000; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid; }
+  figure, .tip, .pending, .meta, .draft-banner, tr { break-inside: avoid; }
+  article.module + article.module { break-before: page; }
+  figure.shot img {
+    max-width: 100%;
+    max-height: 210mm;
+    object-fit: contain;
+    object-position: left top;
+  }
+  .table-wrap { overflow: visible; }
+  .pending, .tip, .draft-banner, .ui-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 14mm; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <p class="site-mark"><a href="../../">QMAS User Guide</a></p>
+  <p class="version-line">Working copy draft</p>
+</header>
+<main id="content" tabindex="-1">
+<p class="draft-banner">Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
+<h1>Product Testing — Request a Quotation</h1>
+<p class="lede">Create a product testing job and get a quotation from a laboratory.</p>
+<p class="status-line">Screenshot slots: 9 reviewed replacement images.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Product Testing</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/product-testing">qmas.icw.io/product-testing</a> → <span class="ui-label">Create Job</span></dd>
+<dt>Direct link</dt><dd><a href="https://qmas.icw.io/product-testing/create-job">qmas.icw.io/product-testing/create-job</a></dd>
+<dt>Steps</dt><dd>1 Product Info → 2 Requirements → 3 Provider Selection → 4 Done</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li><strong>Open Product Testing</strong> and click <span class="ui-label">Create Job</span>.</li>
+<li><strong>Product Info</strong> — add an existing product or create a new one.</li>
+<li><strong>Requirements</strong> — set the export market, test items, quality requirements and service details.</li>
+<li><strong>Provider Selection</strong> — choose Connected Provider, ICW or TicMart, then <span class="ui-label">Submit</span>.</li>
+<li><strong>Done</strong> — the Order details page opens. Track the job there or in the Product Testing list.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open Product Testing</h3>
+<p>In the left menu, open <strong>Product Testing</strong>. The page shows charts of job status, service provider and test results, and the list of all jobs. Click <span class="ui-label">Create Job</span> above the list.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/01-list.jpg" alt="Product Testing list page with the Create Job button" width="1821" height="553" fetchpriority="high" decoding="async"><figcaption>Product Testing list — Create Job is at the top right of the job list.</figcaption></figure>
+<h3>2. Product Info — select products</h3>
+<p>The <strong>Request Quotations</strong> wizard opens. Add the products for this testing order:</p>
+<ul><li><span class="ui-label ghost">+ Existing Products</span> picks from your Product Management list.</li><li><span class="ui-label ghost">+ Add Products</span> creates a new product here.</li></ul>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/02-step1-product-info.jpg" alt="Step 1 Product Info, empty" width="950" height="625" loading="lazy" decoding="async"><figcaption>Step 1 starts empty. Next stays disabled until a product is added.</figcaption></figure>
+<p>In the <strong>Select Product(s)</strong> pop-up, search by product name or ID, click <span class="ui-label ghost">Select</span> on each product you need, then click <span class="ui-label">Confirm</span>. You can select more than one product.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/04-product-selected.jpg" alt="Select Product(s) pop-up with one product selected" width="802" height="235" loading="lazy" decoding="async"><figcaption>A selected product shows a blue “✓ Selected” button.</figcaption></figure>
+<p>Check the product details. You can change <strong>Item name on report</strong> and <strong>Item no. on report</strong>, which are printed on the test report. Click <strong>Add PO Information</strong> to link a purchase order (optional). Then click <span class="ui-label">Next</span>.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/05-step1-filled.jpg" alt="Step 1 with one product added" width="950" height="895" loading="lazy" decoding="async"><figcaption>Use Remove to drop a product, or Edit product profile to update it.</figcaption></figure>
+<h3>3. Requirements</h3>
+<p><strong>1. Test Requirements</strong></p>
+<ul><li><strong>Export Market</strong> — where the product will be sold (required).</li><li><strong>Test Item</strong> (optional) — choose a country, then search for test items or citations.</li><li><strong>Quality Requirement</strong> — Create New Requirements, Add Existing Requirements, or Import Requirement Template.</li><li><strong>Remarks</strong> and <strong>Attachment</strong> (optional) — special instructions and reference files.</li></ul>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/07-step2-export-market.jpg" alt="Step 2 Test Requirements with Export Market filled" width="950" height="910" loading="lazy" decoding="async"><figcaption>Export Market filled in.</figcaption></figure>
+<p><strong>2. Additional Information</strong></p>
+<ul><li><strong>Service Level</strong> — Regular, Express or Shuttle / Emergency.</li><li><strong>Country of Origin</strong> — where the product is made (you can pick more than one).</li><li><strong>Intended Usage</strong> — General product, Adult product, Children product or Toys.</li><li><strong>Buyer Name</strong> (optional).</li></ul>
+<p>When all required fields are filled, <span class="ui-label">Next</span> turns blue. Click it.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/09-step2-filled.jpg" alt="Step 2 Additional Information filled" width="950" height="573" loading="lazy" decoding="async"><figcaption>Additional Information filled — Next is now enabled.</figcaption></figure>
+<h3>4. Provider Selection</h3>
+<p>Choose who should quote this job. You can tick more than one:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Option, Use it when"><table><thead><tr><th scope="col">Option</th><th scope="col">Use it when</th></tr></thead><tbody><tr><td>Connected Provider</td><td>You already work with a lab that is connected to your QMAS account.</td></tr><tr><td>ICW</td><td>You want ICW to find a lab. Pick a preferred lab, or leave “No Preference”.</td></tr><tr><td>TicMart (Marketplace)</td><td>You want quotations from labs in the TicMart marketplace.</td></tr></tbody></table></div>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/11-step3-icw-selected.jpg" alt="Step 3 Provider Selection with ICW ticked" width="950" height="550" loading="lazy" decoding="async"><figcaption>ICW ticked with “No Preference”. Click Submit to send the request.</figcaption></figure>
+<h3>5. Done — track your order</h3>
+<p>After you click <span class="ui-label">Submit</span>, QMAS shows “Product testing created successfully” and opens the <strong>Order details</strong> page. Your job has a new order number (for example 260008342) and starts as <strong>Under Review</strong>.</p>
+<ul><li><strong>Product Testing Requirements</strong>, <strong>Products</strong>, <strong>Supplier</strong>, <strong>PO</strong> and <strong>Test Plan</strong> tabs show what you submitted.</li><li><strong>Quotations</strong> on the right shows lab quotes when they arrive.</li><li>The tabs below (Quotes, Failure Records, Reports, Attachments, Invoices, Tag, Activity Log, Message Board) follow the job until the report is ready.</li></ul>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/13-order-details.jpg" alt="Order details page after submitting" width="1856" height="900" loading="lazy" decoding="async"><figcaption>The new order opens with status Under Review. You can find it again in the Product Testing list.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>Items marked <strong>(optional)</strong> can be skipped. Next stays grey until every required field on the step is filled. A field you leave empty turns red with a message, for example “Country of origin is required”.</p></aside>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/12-required-error.jpg" alt="Country of Origin field showing required error" width="950" height="573" loading="lazy" decoding="async"><figcaption>Required field left empty.</figcaption></figure>
+<aside class="tip"><p>Item name and item no. on report are what the lab prints on the test report. Check them before you continue.</p></aside>
+<aside class="tip"><p>To leave the wizard, click <strong>✕</strong> at the top right.</p></aside>
+
+</main>
+<footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>
+</body>
+</html>

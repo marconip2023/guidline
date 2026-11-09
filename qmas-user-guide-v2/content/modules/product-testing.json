@@ -1,0 +1,169 @@
+{
+  "slug": "product-testing",
+  "source_path": "product-testing/",
+  "origin": "handwritten-html",
+  "tab_title": "Product Testing Guide",
+  "title": "Product Testing — Request a Quotation",
+  "purpose": "Create a product testing job and get a quotation from a laboratory.",
+  "meta": [
+    [
+      "Module",
+      "Product Testing"
+    ],
+    [
+      "Start here",
+      "[qmas.icw.io/product-testing](https://qmas.icw.io/product-testing) → [[btn:Create Job]]"
+    ],
+    [
+      "Direct link",
+      "[qmas.icw.io/product-testing/create-job](https://qmas.icw.io/product-testing/create-job)"
+    ],
+    [
+      "Steps",
+      "1 Product Info → 2 Requirements → 3 Provider Selection → 4 Done"
+    ]
+  ],
+  "overview": [
+    "**Open Product Testing** and click [[btn:Create Job]].",
+    "**Product Info** — add an existing product or create a new one.",
+    "**Requirements** — set the export market, test items, quality requirements and service details.",
+    "**Provider Selection** — choose Connected Provider, ICW or TicMart, then [[btn:Submit]].",
+    "**Done** — the Order details page opens. Track the job there or in the Product Testing list."
+  ],
+  "steps": [
+    {
+      "h": "1. Open Product Testing",
+      "body": [
+        "In the left menu, open **Product Testing**. The page shows charts of job status, service provider and test results, and the list of all jobs. Click [[btn:Create Job]] above the list.",
+        {
+          "img": "01-list.jpg",
+          "alt": "Product Testing list page with the Create Job button",
+          "caption": "Product Testing list — Create Job is at the top right of the job list."
+        }
+      ]
+    },
+    {
+      "h": "2. Product Info — select products",
+      "body": [
+        "The **Request Quotations** wizard opens. Add the products for this testing order:",
+        {
+          "list": [
+            "[[ghost:+ Existing Products]] picks from your Product Management list.",
+            "[[ghost:+ Add Products]] creates a new product here."
+          ]
+        },
+        {
+          "img": "02-step1-product-info.jpg",
+          "alt": "Step 1 Product Info, empty",
+          "caption": "Step 1 starts empty. Next stays disabled until a product is added."
+        },
+        "In the **Select Product(s)** pop-up, search by product name or ID, click [[ghost:Select]] on each product you need, then click [[btn:Confirm]]. You can select more than one product.",
+        {
+          "img": "04-product-selected.jpg",
+          "alt": "Select Product(s) pop-up with one product selected",
+          "caption": "A selected product shows a blue “✓ Selected” button."
+        },
+        "Check the product details. You can change **Item name on report** and **Item no. on report**, which are printed on the test report. Click **Add PO Information** to link a purchase order (optional). Then click [[btn:Next]].",
+        {
+          "img": "05-step1-filled.jpg",
+          "alt": "Step 1 with one product added",
+          "caption": "Use Remove to drop a product, or Edit product profile to update it."
+        }
+      ]
+    },
+    {
+      "h": "3. Requirements",
+      "body": [
+        "**1. Test Requirements**",
+        {
+          "list": [
+            "**Export Market** — where the product will be sold (required).",
+            "**Test Item** (optional) — choose a country, then search for test items or citations.",
+            "**Quality Requirement** — Create New Requirements, Add Existing Requirements, or Import Requirement Template.",
+            "**Remarks** and **Attachment** (optional) — special instructions and reference files."
+          ]
+        },
+        {
+          "img": "07-step2-export-market.jpg",
+          "alt": "Step 2 Test Requirements with Export Market filled",
+          "caption": "Export Market filled in."
+        },
+        "**2. Additional Information**",
+        {
+          "list": [
+            "**Service Level** — Regular, Express or Shuttle / Emergency.",
+            "**Country of Origin** — where the product is made (you can pick more than one).",
+            "**Intended Usage** — General product, Adult product, Children product or Toys.",
+            "**Buyer Name** (optional)."
+          ]
+        },
+        "When all required fields are filled, [[btn:Next]] turns blue. Click it.",
+        {
+          "img": "09-step2-filled.jpg",
+          "alt": "Step 2 Additional Information filled",
+          "caption": "Additional Information filled — Next is now enabled."
+        }
+      ]
+    },
+    {
+      "h": "4. Provider Selection",
+      "body": [
+        "Choose who should quote this job. You can tick more than one:",
+        {
+          "table": [
+            [
+              "Option",
+              "Use it when"
+            ],
+            [
+              "Connected Provider",
+              "You already work with a lab that is connected to your QMAS account."
+            ],
+            [
+              "ICW",
+              "You want ICW to find a lab. Pick a preferred lab, or leave “No Preference”."
+            ],
+            [
+              "TicMart (Marketplace)",
+              "You want quotations from labs in the TicMart marketplace."
+            ]
+          ]
+        },
+        {
+          "img": "11-step3-icw-selected.jpg",
+          "alt": "Step 3 Provider Selection with ICW ticked",
+          "caption": "ICW ticked with “No Preference”. Click Submit to send the request."
+        }
+      ]
+    },
+    {
+      "h": "5. Done — track your order",
+      "body": [
+        "After you click [[btn:Submit]], QMAS shows “Product testing created successfully” and opens the **Order details** page. Your job has a new order number (for example 260008342) and starts as **Under Review**.",
+        {
+          "list": [
+            "**Product Testing Requirements**, **Products**, **Supplier**, **PO** and **Test Plan** tabs show what you submitted.",
+            "**Quotations** on the right shows lab quotes when they arrive.",
+            "The tabs below (Quotes, Failure Records, Reports, Attachments, Invoices, Tag, Activity Log, Message Board) follow the job until the report is ready."
+          ]
+        },
+        {
+          "img": "13-order-details.jpg",
+          "alt": "Order details page after submitting",
+          "caption": "The new order opens with status Under Review. You can find it again in the Product Testing list."
+        }
+      ]
+    }
+  ],
+  "tips": [
+    "Items marked **(optional)** can be skipped. Next stays grey until every required field on the step is filled. A field you leave empty turns red with a message, for example “Country of origin is required”.",
+    {
+      "img": "12-required-error.jpg",
+      "alt": "Country of Origin field showing required error",
+      "caption": "Required field left empty."
+    },
+    "Item name and item no. on report are what the lab prints on the test report. Check them before you continue.",
+    "To leave the wizard, click **✕** at the top right."
+  ],
+  "faq": []
+}

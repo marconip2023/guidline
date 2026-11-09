@@ -1,0 +1,142 @@
+---
+title: "Factory Management — Create a Factory"
+slug: factory-management
+document_status: working-copy-draft
+version: 2026-11-09-draft
+language: en
+notion_working_hub: https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b
+image_policy: Reviewed replacement screenshots use a relative path. Other screenshots are explicit placeholders and are not linked.
+---
+
+# Factory Management — Create a Factory
+
+> Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+
+Add a factory profile with its location, scale, equipment and certificates, so you can link it to suppliers, products and inspections.
+
+- **Module:** Supplier / Factory Management
+- **Start here:** https://qmas.icw.io/supplier-manager/suppliers → **Factory** tab → **Create Factory**
+- **Direct link:** https://qmas.icw.io/supplier-manager/factory/create
+- **Steps:** 1 Factory Profile → 2 Classification → 3 Certification → Done
+- **Checked against:** QMAS dev, 4 Nov 2026
+
+## Overview
+
+1. Open **Supplier / Factory Management**, click the **Factory** tab, then **Create Factory**.
+2. **Factory Profile**: overview, scale, equipment and contact.
+3. **Classification** (optional): product category and tags.
+4. **Certification** (optional): add audit reports or certificates, then click **Done**.
+5. The factory profile opens.
+
+## Step-by-step
+
+### 1. Open the Factory tab
+
+In the left menu, open **Supplier / Factory Management** and click the **Factory** tab. It lists your factories with location, status and audit certificates.
+
+Click **Create Factory**, or **Import Factory** to add many factories from a file.
+
+> **Image pending privacy review:** `01-list.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Factory tab with Import Factory and Create Factory.*
+
+
+### 2. Factory Profile — overview
+
+- **Upload Logo** and **Factory ID** (optional).
+- **Factory Name**: English name (required) and local-language name (optional).
+- **Location**: country or region, then province and city.
+- **Address**: English address (required) and local-language address (optional).
+- **Website** (optional).
+
+> **Image pending privacy review:** `02-step1-overview.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Create factory profile — step 1, Factory Overview.*
+
+
+### 3. Factory Profile — scale and equipment (optional)
+
+**Factory Scale**: outsource production, total employees, number of workers, factory size (square meters) and annual volume.
+
+The equipment section lists machines and **Automation Production Line** entries: machine name, brand and model no., quantity and monthly production volume. Click **Add** for more rows.
+
+> **Image pending privacy review:** `03-step1-scale.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*2. Factory Scale (optional).*
+
+
+### 4. Factory Profile — contact
+
+Under **4. Contact**, fill in the **Contact person** and an **Email address** with its type (Company, QA, Sales or Other). **Contact no.** is optional. Click **Next**.
+
+> **Image pending privacy review:** `04-step1-contact.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Contact section and Next.*
+
+
+### 5. Classification (optional)
+
+Click **Select category** for the product categories this factory makes, and **Select tag** for your own tags. Click **Next**.
+
+> **Image pending privacy review:** `05-step2-classification.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Step 2 Classification.*
+
+
+### 6. Certification (optional)
+
+Click **Add** to attach an audit report or certificate. In **Add Certification**, choose the certification type, upload the file (JPG, JPEG, PNG, PDF, DOC or XLS), and fill in the score or overall rating, issue party, issue date and expiry date. Click **Add**.
+
+> **Image pending privacy review:** `07-add-certification.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Add Certification pop-up.*
+
+Click **Done** to create the factory.
+
+> **Image pending privacy review:** `06-step3-certification.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Step 3 Certification.*
+
+
+### 7. Done — factory profile
+
+QMAS shows “Create factory successfully!” and opens the factory profile. Use the tabs **Overview**, **Supplier**, **Certificate**, **Document** and **Compliance Data** to manage what is linked to this factory.
+
+> **Image pending privacy review:** `08-factory-profile.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Factory profile — Overview tab.*
+
+
+## Tips
+
+- Set the expiry date on audit certificates so you can see when they need renewing.
+
+## FAQ
+
+**Q: How do I create a new factory?**
+
+A: Go to Supplier / Factory Management, click the Factory tab, then Create Factory. Fill in Factory Profile, then Next, Next and Done. Direct link: https://qmas.icw.io/supplier-manager/factory/create
+
+**Q: Can I add many factories at once?**
+
+A: Yes. Click Import Factory on the Factory tab.
+
+**Q: Where do I upload a factory audit certificate?**
+
+A: In step 3 Certification of Create Factory, or later from the Certificate tab of the factory profile.

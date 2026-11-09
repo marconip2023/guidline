@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factory Management — Create a Factory</title>
+<style>
+:root {
+  --bg: #f7faff;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --link: #0041b8;
+  --primary: #005eff;
+  --chip: #0041b8;
+  --line: #e5e7eb;
+  --tip: #eef4ff;
+  --pending: #f3f4f6;
+  --banner: #fff7ed;
+  --banner-text: #7c2d12;
+  --banner-line: #c2410c;
+  --focus: #0038b3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 "Liberation Sans", "Noto Sans", sans-serif;
+  hyphens: manual;
+}
+
+a { color: var(--link); }
+a:focus-visible,
+.table-wrap:focus-visible,
+.skip-link:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: #fff;
+  color: var(--focus);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.site-header, .site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 0;
+}
+.site-header p, .site-footer p { margin: 0; }
+.site-mark { font-weight: 700; }
+.site-mark a { color: var(--text); text-decoration: none; }
+.site-mark a:hover { text-decoration: underline; }
+.version-line { color: var(--muted); font-size: 14px; }
+
+main { max-width: 880px; margin: 0 auto; padding: 16px 16px 64px; }
+main.wide { max-width: 960px; }
+
+h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 22px; line-height: 1.3; margin: 36px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
+.lede { color: var(--muted); margin: 0 0 16px; }
+
+.draft-banner, .status-line {
+  background: var(--banner);
+  color: var(--banner-text);
+  border-left: 4px solid var(--banner-line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+}
+.status-line { background: var(--card); color: var(--text); border-left-color: var(--primary); }
+
+.meta, .module-group, .overview, .tip, figure, table {
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 8px;
+}
+.meta dt { color: var(--muted); font-weight: 600; }
+.meta dd { margin: 0; }
+
+.overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
+.module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.module-group h2 a { font-size: 14px; font-weight: 400; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+
+.ui-label {
+  display: inline-block;
+  background: var(--chip);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.ui-label.ghost { background: #fff; color: var(--chip); border: 1px solid var(--chip); }
+
+figure.shot { margin: 12px 0 20px; border: 0; }
+figure.shot img, .pending {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+figure.shot img { height: auto; background: var(--card); }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.caption-note { display: block; margin-top: 4px; }
+
+.pending {
+  background: var(--pending);
+  color: var(--text);
+  border-style: dashed;
+  padding: 14px 16px;
+}
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+.pending.not-captured { background: #fff7ed; border-color: var(--banner-line); }
+
+.tip {
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--tip);
+}
+.tip p { margin: 0; }
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f4f6; }
+caption.visually-hidden { /* name comes from the region label */ }
+
+.faq dt { font-weight: 700; margin-top: 14px; }
+.faq dd { margin: 4px 0 0; }
+.site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
+
+@media (forced-colors: active) {
+  .pending, .tip, .ui-label, .draft-banner { border: 1px solid CanvasText; }
+}
+
+@media print {
+  body { background: #fff; }
+  .skip-link, .site-header nav, .crumb { display: none; }
+  main { max-width: none; padding: 0; }
+  a { color: #000; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid; }
+  figure, .tip, .pending, .meta, .draft-banner, tr { break-inside: avoid; }
+  article.module + article.module { break-before: page; }
+  figure.shot img {
+    max-width: 100%;
+    max-height: 210mm;
+    object-fit: contain;
+    object-position: left top;
+  }
+  .table-wrap { overflow: visible; }
+  .pending, .tip, .draft-banner, .ui-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 14mm; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <p class="site-mark"><a href="../../">QMAS User Guide</a></p>
+  <p class="version-line">Working copy draft</p>
+</header>
+<main id="content" tabindex="-1">
+<p class="draft-banner">Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
+<h1>Factory Management — Create a Factory</h1>
+<p class="lede">Add a factory profile with its location, scale, equipment and certificates, so you can link it to suppliers, products and inspections.</p>
+<p class="status-line">Screenshot slots: 8 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Supplier / Factory Management</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/supplier-manager/suppliers">https://qmas.icw.io/supplier-manager/suppliers</a> → <strong>Factory</strong> tab → <strong>Create Factory</strong></dd>
+<dt>Direct link</dt><dd><a href="https://qmas.icw.io/supplier-manager/factory/create">https://qmas.icw.io/supplier-manager/factory/create</a></dd>
+<dt>Steps</dt><dd>1 Factory Profile → 2 Classification → 3 Certification → Done</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Open <strong>Supplier / Factory Management</strong>, click the <strong>Factory</strong> tab, then <strong>Create Factory</strong>.</li>
+<li><strong>Factory Profile</strong>: overview, scale, equipment and contact.</li>
+<li><strong>Classification</strong> (optional): product category and tags.</li>
+<li><strong>Certification</strong> (optional): add audit reports or certificates, then click <strong>Done</strong>.</li>
+<li>The factory profile opens.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open the Factory tab</h3>
+<p>In the left menu, open <strong>Supplier / Factory Management</strong> and click the <strong>Factory</strong> tab. It lists your factories with location, status and audit certificates.</p>
+<p>Click <strong>Create Factory</strong>, or <strong>Import Factory</strong> to add many factories from a file.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Factory tab with Import Factory and Create Factory.</figcaption></figure>
+<h3>2. Factory Profile — overview</h3>
+<ul><li><strong>Upload Logo</strong> and <strong>Factory ID</strong> (optional).</li><li><strong>Factory Name</strong>: English name (required) and local-language name (optional).</li><li><strong>Location</strong>: country or region, then province and city.</li><li><strong>Address</strong>: English address (required) and local-language address (optional).</li><li><strong>Website</strong> (optional).</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-step1-overview.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create factory profile — step 1, Factory Overview.</figcaption></figure>
+<h3>3. Factory Profile — scale and equipment (optional)</h3>
+<p><strong>Factory Scale</strong>: outsource production, total employees, number of workers, factory size (square meters) and annual volume.</p>
+<p>The equipment section lists machines and <strong>Automation Production Line</strong> entries: machine name, brand and model no., quantity and monthly production volume. Click <strong>Add</strong> for more rows.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-step1-scale.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>2. Factory Scale (optional).</figcaption></figure>
+<h3>4. Factory Profile — contact</h3>
+<p>Under <strong>4. Contact</strong>, fill in the <strong>Contact person</strong> and an <strong>Email address</strong> with its type (Company, QA, Sales or Other). <strong>Contact no.</strong> is optional. Click <strong>Next</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-step1-contact.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Contact section and Next.</figcaption></figure>
+<h3>5. Classification (optional)</h3>
+<p>Click <strong>Select category</strong> for the product categories this factory makes, and <strong>Select tag</strong> for your own tags. Click <strong>Next</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>05-step2-classification.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 2 Classification.</figcaption></figure>
+<h3>6. Certification (optional)</h3>
+<p>Click <strong>Add</strong> to attach an audit report or certificate. In <strong>Add Certification</strong>, choose the certification type, upload the file (JPG, JPEG, PNG, PDF, DOC or XLS), and fill in the score or overall rating, issue party, issue date and expiry date. Click <strong>Add</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>07-add-certification.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Add Certification pop-up.</figcaption></figure>
+<p>Click <strong>Done</strong> to create the factory.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>06-step3-certification.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 3 Certification.</figcaption></figure>
+<h3>7. Done — factory profile</h3>
+<p>QMAS shows “Create factory successfully!” and opens the factory profile. Use the tabs <strong>Overview</strong>, <strong>Supplier</strong>, <strong>Certificate</strong>, <strong>Document</strong> and <strong>Compliance Data</strong> to manage what is linked to this factory.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>08-factory-profile.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Factory profile — Overview tab.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>Set the expiry date on audit certificates so you can see when they need renewing.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I create a new factory?</dt><dd>Go to Supplier / Factory Management, click the Factory tab, then Create Factory. Fill in Factory Profile, then Next, Next and Done. Direct link: <a href="https://qmas.icw.io/supplier-manager/factory/create">https://qmas.icw.io/supplier-manager/factory/create</a></dd>
+<dt>Can I add many factories at once?</dt><dd>Yes. Click Import Factory on the Factory tab.</dd>
+<dt>Where do I upload a factory audit certificate?</dt><dd>In step 3 Certification of Create Factory, or later from the Certificate tab of the factory profile.</dd>
+</dl>
+
+</main>
+<footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>
+</body>
+</html>

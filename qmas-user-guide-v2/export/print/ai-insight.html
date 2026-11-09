@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Insight — Run an AI Risk Screening</title>
+<style>
+:root {
+  --bg: #f7faff;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --link: #0041b8;
+  --primary: #005eff;
+  --chip: #0041b8;
+  --line: #e5e7eb;
+  --tip: #eef4ff;
+  --pending: #f3f4f6;
+  --banner: #fff7ed;
+  --banner-text: #7c2d12;
+  --banner-line: #c2410c;
+  --focus: #0038b3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 "Liberation Sans", "Noto Sans", sans-serif;
+  hyphens: manual;
+}
+
+a { color: var(--link); }
+a:focus-visible,
+.table-wrap:focus-visible,
+.skip-link:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: #fff;
+  color: var(--focus);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.site-header, .site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 0;
+}
+.site-header p, .site-footer p { margin: 0; }
+.site-mark { font-weight: 700; }
+.site-mark a { color: var(--text); text-decoration: none; }
+.site-mark a:hover { text-decoration: underline; }
+.version-line { color: var(--muted); font-size: 14px; }
+
+main { max-width: 880px; margin: 0 auto; padding: 16px 16px 64px; }
+main.wide { max-width: 960px; }
+
+h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 22px; line-height: 1.3; margin: 36px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
+.lede { color: var(--muted); margin: 0 0 16px; }
+
+.draft-banner, .status-line {
+  background: var(--banner);
+  color: var(--banner-text);
+  border-left: 4px solid var(--banner-line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+}
+.status-line { background: var(--card); color: var(--text); border-left-color: var(--primary); }
+
+.meta, .module-group, .overview, .tip, figure, table {
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 8px;
+}
+.meta dt { color: var(--muted); font-weight: 600; }
+.meta dd { margin: 0; }
+
+.overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
+.module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.module-group h2 a { font-size: 14px; font-weight: 400; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+
+.ui-label {
+  display: inline-block;
+  background: var(--chip);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.ui-label.ghost { background: #fff; color: var(--chip); border: 1px solid var(--chip); }
+
+figure.shot { margin: 12px 0 20px; border: 0; }
+figure.shot img, .pending {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+figure.shot img { height: auto; background: var(--card); }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.caption-note { display: block; margin-top: 4px; }
+
+.pending {
+  background: var(--pending);
+  color: var(--text);
+  border-style: dashed;
+  padding: 14px 16px;
+}
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+.pending.not-captured { background: #fff7ed; border-color: var(--banner-line); }
+
+.tip {
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--tip);
+}
+.tip p { margin: 0; }
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f4f6; }
+caption.visually-hidden { /* name comes from the region label */ }
+
+.faq dt { font-weight: 700; margin-top: 14px; }
+.faq dd { margin: 4px 0 0; }
+.site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
+
+@media (forced-colors: active) {
+  .pending, .tip, .ui-label, .draft-banner { border: 1px solid CanvasText; }
+}
+
+@media print {
+  body { background: #fff; }
+  .skip-link, .site-header nav, .crumb { display: none; }
+  main { max-width: none; padding: 0; }
+  a { color: #000; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid; }
+  figure, .tip, .pending, .meta, .draft-banner, tr { break-inside: avoid; }
+  article.module + article.module { break-before: page; }
+  figure.shot img {
+    max-width: 100%;
+    max-height: 210mm;
+    object-fit: contain;
+    object-position: left top;
+  }
+  .table-wrap { overflow: visible; }
+  .pending, .tip, .draft-banner, .ui-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 14mm; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <p class="site-mark"><a href="../../">QMAS User Guide</a></p>
+  <p class="version-line">Working copy draft</p>
+</header>
+<main id="content" tabindex="-1">
+<p class="draft-banner">Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
+<h1>AI Insight — Run an AI Risk Screening</h1>
+<p class="lede">Upload product photos and let AI identify compliance risks and requirements for your import region. You get a compliance guideline report (PDF).</p>
+<p class="status-line">Screenshot slots: 4 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>AI Insight (shown as “AI Risk Screening” in the QMAS menu)</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/ai-risk-screening">https://qmas.icw.io/ai-risk-screening</a> → <strong>Add</strong>, or a product profile → <strong>AI Risk Screening</strong> → <strong>Add</strong></dd>
+<dt>Uses</dt><dd>Tokens. Your balance shows as <strong>Available Token</strong> in the pop-up.</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Open <strong>AI Risk Screening</strong> from the left menu (or from a product profile) and click <strong>Add</strong>.</li>
+<li>Upload up to 6 product photos and choose the <strong>Import Region</strong> and <strong>Output Mode</strong>.</li>
+<li>Click <strong>Verify Information</strong> (recommended) or <strong>Skip Verify &amp; Generate Report</strong>.</li>
+<li>When the status is <strong>Completed</strong>, open the report from the list.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open AI Risk Screening</h3>
+<p>In the left menu, open <strong>AI Risk Screening</strong>. The list shows every screening with its import region, output mode (Full or Lite), status and upload date. Click <strong>Add</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>AI Risk Screening list.</figcaption></figure>
+<p>You can also start from a product: open the product profile, choose <strong>AI Risk Screening</strong> in its left menu, then click <strong>Add</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-product-profile-entry.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>AI Risk Screening inside a product profile.</figcaption></figure>
+<h3>2. Fill in the screening</h3>
+<ul><li><strong>Product Page URL</strong> (optional): a link to the product page.</li><li><strong>Product Images</strong> (required): up to 6 photos from different views. PNG, JPEG, JPG, WEBP, GIF, AVIF or HEIC.</li><li><strong>Import Region</strong> (required): where the product will be sold.</li><li><strong>Output Mode</strong> (required): <strong>Full</strong> or <strong>Lite</strong> report.</li><li><strong>Screening Age Grade</strong> (optional): the age grade to screen against, for example 3+ or 8+.</li></ul>
+<p><strong>Available Token</strong> shows your balance.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-new-screening.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>New AI Risk Screening pop-up.</figcaption></figure>
+<h3>3. Verify and generate</h3>
+<p>Click <strong>Verify Information</strong> (recommended: verification improves accuracy and gives a more reliable report), or <strong>Skip Verify &amp; Generate Report</strong> to go straight to the report.</p>
+<p>The new screening appears in the list. When its status is <strong>Completed</strong>, the report is ready. Click the <strong>ⓘ</strong> icon to see the screening details.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-screening-details.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Screening details: product name, import region, age grade, categories, materials, battery/AC/food-contact flags and output mode.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>Use clear photos from several angles (front, back, label, packaging) for a better result.</p></aside>
+<aside class="tip"><p>Check your Available Token balance before you generate.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I run an AI risk screening / AI Insight?</dt><dd>Go to AI Risk Screening (<a href="https://qmas.icw.io/ai-risk-screening">https://qmas.icw.io/ai-risk-screening</a>), click Add, upload product photos, choose Import Region and Output Mode, then click Verify Information or Skip Verify &amp; Generate Report.</dd>
+<dt>Where do I see my token balance?</dt><dd>In the AI Risk Screening pop-up, under Available Token.</dd>
+<dt>What is the difference between Full and Lite?</dt><dd>They are the two report output modes. Choose one in Output Mode when you add a screening.</dd>
+</dl>
+
+</main>
+<footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>
+</body>
+</html>

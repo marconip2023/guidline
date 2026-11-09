@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started · QMAS User Guide (draft)</title>
+<style>
+:root {
+  --bg: #f7faff;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --link: #0041b8;
+  --primary: #005eff;
+  --chip: #0041b8;
+  --line: #e5e7eb;
+  --tip: #eef4ff;
+  --pending: #f3f4f6;
+  --banner: #fff7ed;
+  --banner-text: #7c2d12;
+  --banner-line: #c2410c;
+  --focus: #0038b3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 "Liberation Sans", "Noto Sans", sans-serif;
+  hyphens: manual;
+}
+
+a { color: var(--link); }
+a:focus-visible,
+.table-wrap:focus-visible,
+.skip-link:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: #fff;
+  color: var(--focus);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.site-header, .site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 0;
+}
+.site-header p, .site-footer p { margin: 0; }
+.site-mark { font-weight: 700; }
+.site-mark a { color: var(--text); text-decoration: none; }
+.site-mark a:hover { text-decoration: underline; }
+.version-line { color: var(--muted); font-size: 14px; }
+
+main { max-width: 880px; margin: 0 auto; padding: 16px 16px 64px; }
+main.wide { max-width: 960px; }
+
+h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 22px; line-height: 1.3; margin: 36px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
+.lede { color: var(--muted); margin: 0 0 16px; }
+
+.draft-banner, .status-line {
+  background: var(--banner);
+  color: var(--banner-text);
+  border-left: 4px solid var(--banner-line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+}
+.status-line { background: var(--card); color: var(--text); border-left-color: var(--primary); }
+
+.meta, .module-group, .overview, .tip, figure, table {
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 8px;
+}
+.meta dt { color: var(--muted); font-weight: 600; }
+.meta dd { margin: 0; }
+
+.overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
+.module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.module-group h2 a { font-size: 14px; font-weight: 400; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+
+.ui-label {
+  display: inline-block;
+  background: var(--chip);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.ui-label.ghost { background: #fff; color: var(--chip); border: 1px solid var(--chip); }
+
+figure.shot { margin: 12px 0 20px; border: 0; }
+figure.shot img, .pending {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+figure.shot img { height: auto; background: var(--card); }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.caption-note { display: block; margin-top: 4px; }
+
+.pending {
+  background: var(--pending);
+  color: var(--text);
+  border-style: dashed;
+  padding: 14px 16px;
+}
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+.pending.not-captured { background: #fff7ed; border-color: var(--banner-line); }
+
+.tip {
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--tip);
+}
+.tip p { margin: 0; }
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f4f6; }
+caption.visually-hidden { /* name comes from the region label */ }
+
+.faq dt { font-weight: 700; margin-top: 14px; }
+.faq dd { margin: 4px 0 0; }
+.site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
+
+@media (forced-colors: active) {
+  .pending, .tip, .ui-label, .draft-banner { border: 1px solid CanvasText; }
+}
+
+@media print {
+  body { background: #fff; }
+  .skip-link, .site-header nav, .crumb { display: none; }
+  main { max-width: none; padding: 0; }
+  a { color: #000; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid; }
+  figure, .tip, .pending, .meta, .draft-banner, tr { break-inside: avoid; }
+  article.module + article.module { break-before: page; }
+  figure.shot img {
+    max-width: 100%;
+    max-height: 210mm;
+    object-fit: contain;
+    object-position: left top;
+  }
+  .table-wrap { overflow: visible; }
+  .pending, .tip, .draft-banner, .ui-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 14mm; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <p class="site-mark"><a href="../">QMAS User Guide</a></p>
+  <p class="version-line">Working copy draft</p>
+</header>
+<main id="content" tabindex="-1">
+<p class="crumb"><a href="../">All guides</a></p>
+<p class="draft-banner">Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
+<h1>Getting Started — Home, Settings and Company Profile</h1>
+<p class="lede">Find your way around QMAS: the Home page, the top bar and your company settings.</p>
+<p class="status-line">Screenshot slots: 3 reviewed replacement images.</p>
+<dl class="meta">
+<dt>Home</dt><dd><a href="https://qmas.icw.io/home">https://qmas.icw.io/home</a></dd>
+<dt>Company Profile</dt><dd><a href="https://qmas.icw.io/company-profile">https://qmas.icw.io/company-profile</a></dd>
+<dt>Checked against</dt><dd>QMAS dev, 9 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li><strong>Home</strong> shows quick workflows, items that need your attention, and an overview of your business.</li>
+<li>The <strong>left menu</strong> opens each module.</li>
+<li>The <strong>top bar</strong> has analytics, messages, notifications, the account avatar, help and credits.</li>
+<li><strong>Settings</strong> opens from the <strong>avatar</strong> (account control) in the top bar. The menu includes Company Profile, Password, Languages, Account Management, Assign TicMart Job and Logout.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Home</h3>
+<p><strong>TicMate</strong> says “I’m TicMate. What would you like to do today?” and lists these workflow shortcuts:</p>
+<ul><li><strong>Generate product risk assessment report</strong> (AI Assessment workflow).</li><li><strong>Generate export market requirements</strong> (AI Insight workflow).</li><li><strong>CPSC eFiling</strong>. If it shows “API Setup Required”, set up your Certifier ID in Company Profile first.</li><li><strong>Request product testing with your lab partner</strong> (Product Testing).</li><li><strong>Request technical files from your supplier/factory</strong> (Document Review).</li></ul>
+<p><strong>Attention</strong> counts the items that need action in each module, such as Product Testing, Document Review, QC Inspection, IQC Inspection, Factory Audit, Pending Review Doc and Expired Doc. Click a card to see them.</p>
+<p><strong>Business Overview</strong> shows your active products, suppliers, factories and partners. Click <strong>›</strong> to open the list.</p>
+<p><strong>Ask TicMate</strong> on the right edge opens the TicMate assistant.</p>
+<figure class="shot"><img src="../assets/reviewed/getting-started/01-home.jpg" alt="Home page." width="1855" height="500" fetchpriority="high" decoding="async"><figcaption>Home page.<span class="caption-note">This reviewed screenshot shows the TicMate workflow shortcuts. Attention and Business Overview are described in the steps and are not in this crop.</span></figcaption></figure>
+<h3>2. Settings menu</h3>
+<p>Click your <strong>avatar</strong> (account control) in the top bar:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Option, What it does"><table><thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Company Profile</td><td>Company details, certificates, documents, product categories and CPSC eFiling Certifier ID.</td></tr><tr><td>Password</td><td>Change your password.</td></tr><tr><td>Languages</td><td>Change the system language.</td></tr><tr><td>Account Management</td><td>Manage your company&#x27;s user accounts.</td></tr><tr><td>Assign TicMart Job</td><td>Assign jobs from the TicMart marketplace.</td></tr><tr><td>Logout</td><td>Signs you out of QMAS.</td></tr></tbody></table></div>
+<figure class="shot"><img src="../assets/reviewed/getting-started/02-settings-menu.jpg" alt="Settings menu." width="241" height="277" loading="lazy" decoding="async"><figcaption>Settings menu.<span class="caption-note">Menu opened from the account avatar: Company Profile, Password, Languages, Account Management, Assign TicMart Job and Logout.</span></figcaption></figure>
+<h3>3. Company Profile</h3>
+<p>Click the pencil icon next to the company name to edit it. The <strong>Overview</strong>, <strong>Certificate</strong> and <strong>Document</strong> tabs hold your company information. <strong>CPSC eFiling - Certifier ID</strong> is where you add and manage the API key for eFiling. <strong>Product Category</strong> lists the categories your company works with.</p>
+<figure class="shot"><img src="../assets/reviewed/getting-started/03-company-profile.jpg" alt="Company Profile." width="1050" height="820" loading="lazy" decoding="async"><figcaption>Company Profile.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>The question-mark icon opens the QMAS Help Center.</p></aside>
+<aside class="tip"><p>The coin icon shows your credits and tokens for paid features such as AI Insight.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I change the language?</dt><dd>Click your avatar (account control) in the top bar, then Languages.</dd>
+<dt>How do I change my password?</dt><dd>Click your avatar (account control) in the top bar, then Password.</dd>
+<dt>Where do I edit my company information?</dt><dd>Click your avatar (account control), then Company Profile (<a href="https://qmas.icw.io/company-profile">https://qmas.icw.io/company-profile</a>).</dd>
+</dl>
+
+</main>
+<footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create a Supplier · QMAS User Guide (draft)</title>
+<style>
+:root {
+  --bg: #f7faff;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --link: #0041b8;
+  --primary: #005eff;
+  --chip: #0041b8;
+  --line: #e5e7eb;
+  --tip: #eef4ff;
+  --pending: #f3f4f6;
+  --banner: #fff7ed;
+  --banner-text: #7c2d12;
+  --banner-line: #c2410c;
+  --focus: #0038b3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 "Liberation Sans", "Noto Sans", sans-serif;
+  hyphens: manual;
+}
+
+a { color: var(--link); }
+a:focus-visible,
+.table-wrap:focus-visible,
+.skip-link:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: #fff;
+  color: var(--focus);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.site-header, .site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 0;
+}
+.site-header p, .site-footer p { margin: 0; }
+.site-mark { font-weight: 700; }
+.site-mark a { color: var(--text); text-decoration: none; }
+.site-mark a:hover { text-decoration: underline; }
+.version-line { color: var(--muted); font-size: 14px; }
+
+main { max-width: 880px; margin: 0 auto; padding: 16px 16px 64px; }
+main.wide { max-width: 960px; }
+
+h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 22px; line-height: 1.3; margin: 36px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
+.lede { color: var(--muted); margin: 0 0 16px; }
+
+.draft-banner, .status-line {
+  background: var(--banner);
+  color: var(--banner-text);
+  border-left: 4px solid var(--banner-line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+}
+.status-line { background: var(--card); color: var(--text); border-left-color: var(--primary); }
+
+.meta, .module-group, .overview, .tip, figure, table {
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 8px;
+}
+.meta dt { color: var(--muted); font-weight: 600; }
+.meta dd { margin: 0; }
+
+.overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
+.module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.module-group h2 a { font-size: 14px; font-weight: 400; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+
+.ui-label {
+  display: inline-block;
+  background: var(--chip);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.ui-label.ghost { background: #fff; color: var(--chip); border: 1px solid var(--chip); }
+
+figure.shot { margin: 12px 0 20px; border: 0; }
+figure.shot img, .pending {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+figure.shot img { height: auto; background: var(--card); }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.caption-note { display: block; margin-top: 4px; }
+
+.pending {
+  background: var(--pending);
+  color: var(--text);
+  border-style: dashed;
+  padding: 14px 16px;
+}
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+.pending.not-captured { background: #fff7ed; border-color: var(--banner-line); }
+
+.tip {
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--tip);
+}
+.tip p { margin: 0; }
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f4f6; }
+caption.visually-hidden { /* name comes from the region label */ }
+
+.faq dt { font-weight: 700; margin-top: 14px; }
+.faq dd { margin: 4px 0 0; }
+.site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
+
+@media (forced-colors: active) {
+  .pending, .tip, .ui-label, .draft-banner { border: 1px solid CanvasText; }
+}
+
+@media print {
+  body { background: #fff; }
+  .skip-link, .site-header nav, .crumb { display: none; }
+  main { max-width: none; padding: 0; }
+  a { color: #000; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid; }
+  figure, .tip, .pending, .meta, .draft-banner, tr { break-inside: avoid; }
+  article.module + article.module { break-before: page; }
+  figure.shot img {
+    max-width: 100%;
+    max-height: 210mm;
+    object-fit: contain;
+    object-position: left top;
+  }
+  .table-wrap { overflow: visible; }
+  .pending, .tip, .draft-banner, .ui-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 14mm; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <p class="site-mark"><a href="../">QMAS User Guide</a></p>
+  <p class="version-line">Working copy draft</p>
+</header>
+<main id="content" tabindex="-1">
+<p class="crumb"><a href="../">All guides</a></p>
+<p class="draft-banner">Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
+<h1>Supplier Management — Create a Supplier</h1>
+<p class="lede">Add a supplier profile so you can link it to products, factories, documents and service jobs.</p>
+<p class="status-line">Screenshot slots: 7 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Supplier / Factory Management</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/supplier-manager/suppliers">https://qmas.icw.io/supplier-manager/suppliers</a> → <strong>Create Supplier</strong></dd>
+<dt>Direct link</dt><dd><a href="https://qmas.icw.io/supplier-manager/create">https://qmas.icw.io/supplier-manager/create</a></dd>
+<dt>Steps</dt><dd>1 Supplier Profile → 2 Classification → 3 Certification → Done</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Open <strong>Supplier / Factory Management</strong>, stay on the <strong>Supplier</strong> tab and click <strong>Create Supplier</strong>.</li>
+<li><strong>Supplier Profile</strong>: company overview and contact.</li>
+<li><strong>Classification</strong> (optional): product category and tags.</li>
+<li><strong>Certification</strong> (optional): add certificates, then click <strong>Done</strong>.</li>
+<li>The supplier profile opens.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open Supplier / Factory Management</h3>
+<p>In the left menu, open <strong>Supplier / Factory Management</strong>. The <strong>Supplier</strong> tab lists your suppliers with their location, category, status, connect status and rating.</p>
+<p>Click <strong>Create Supplier</strong>. You can also use <strong>Import Supplier</strong> to add many suppliers from a file, or <strong>Invite Supplier</strong> to invite a supplier to connect with you on QMAS.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Supplier tab with Import Supplier, Create Supplier and Invite Supplier.</figcaption></figure>
+<h3>2. Supplier Profile — company overview</h3>
+<ul><li><strong>Upload Logo</strong> (optional).</li><li><strong>Supplier ID</strong> (optional): your own reference number.</li><li><strong>Supplier Name</strong>: English name (required) and local-language name (optional).</li><li><strong>Location</strong>: country or region, then province and city.</li><li><strong>Address</strong> and <strong>Website</strong> (optional).</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-step1-overview.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create supplier profile — step 1, Company overview.</figcaption></figure>
+<h3>3. Supplier Profile — contact</h3>
+<p>Under <strong>2. Contact</strong>, fill in the <strong>Contact person</strong>, <strong>Contact Email</strong> and at least one <strong>Email address</strong>. For each email address, choose a type: Company, QA, Sales or Other. Click <strong>Add email</strong> for more. <strong>Contact no.</strong> is optional.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-step1-contact.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Contact section.</figcaption></figure>
+<p>If a required field is empty when you click <strong>Next</strong>, it turns red, for example “Type is required” or “Email is required”.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-email-required.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>The email type and email address are required.</figcaption></figure>
+<h3>4. Classification (optional)</h3>
+<p>Click <strong>Select category</strong> to choose the product categories this supplier offers. Click <strong>Select tag</strong> to add your own tags. Click <strong>Next</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>05-step2-classification.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 2 Classification.</figcaption></figure>
+<h3>5. Certification (optional)</h3>
+<p>Click <strong>Add</strong> to upload a certificate. Choose the certification type, upload the file, and fill in the rating, issue party and dates. Click <strong>Done</strong> to create the supplier.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>06-step3-certification.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 3 Certification.</figcaption></figure>
+<h3>6. Done — supplier profile</h3>
+<p>The supplier profile opens. Use the tabs <strong>Overview</strong>, <strong>Product</strong>, <strong>Factory</strong>, <strong>Certificate</strong>, <strong>Document</strong> and <strong>Compliance Data</strong> to manage everything linked to this supplier. Click the pencil icon next to the name, or next to <strong>Contact</strong>, to edit.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>07-supplier-profile.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Supplier profile — Overview tab.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>Search the Supplier list before you create a supplier so you don’t add a duplicate.</p></aside>
+<aside class="tip"><p>Consistent tags make filtering the list easier later.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I create a new supplier?</dt><dd>Go to Supplier / Factory Management (<a href="https://qmas.icw.io/supplier-manager/suppliers">https://qmas.icw.io/supplier-manager/suppliers</a>), click Create Supplier, fill in Supplier Profile, then Next, Next and Done. Direct link: <a href="https://qmas.icw.io/supplier-manager/create">https://qmas.icw.io/supplier-manager/create</a></dd>
+<dt>Can I add many suppliers at once?</dt><dd>Yes. Click Import Supplier on the Supplier tab.</dd>
+<dt>How do I invite a supplier to QMAS?</dt><dd>Click Invite Supplier on the Supplier tab.</dd>
+<dt>How do I edit a supplier?</dt><dd>Open the supplier from the list and click the pencil icon next to its name or next to Contact.</dd>
+</dl>
+
+</main>
+<footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>
+</body>
+</html>

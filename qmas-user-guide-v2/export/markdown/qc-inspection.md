@@ -1,0 +1,157 @@
+---
+title: "QC Inspection — Get a QC Inspection Quote via ICW"
+slug: qc-inspection
+document_status: working-copy-draft
+version: 2026-11-09-draft
+language: en
+notion_working_hub: https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b
+image_policy: Reviewed replacement screenshots use a relative path. Other screenshots are explicit placeholders and are not linked.
+---
+
+# QC Inspection — Get a QC Inspection Quote via ICW
+
+> Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+
+Ask ICW to quote and arrange a third-party QC inspection for your products.
+
+- **Module:** QC Inspection
+- **Start here:** https://qmas.icw.io/inspection → **Create Job** → **Get QC inspection quote via ICW**
+- **Direct link:** https://qmas.icw.io/inspection/jobs/new
+- **Steps:** 1 Inspection Requirement → 2 Report Details → 3 Supplier & Factory → 4 Additional Information → 5 Review & Submit
+- **Checked against:** QMAS dev, 4 Nov 2026
+
+## Overview
+
+1. Open **QC Inspection**, click **Create Job**, choose **Get QC inspection quote via ICW** and click **Continue**.
+2. **Inspection Requirement**: date, type, level, AQL, budget and provider preference.
+3. **Report Details**: products and POs to inspect.
+4. **Supplier & Factory**: who makes the goods and where the inspection takes place.
+5. **Additional Information**: files and remarks.
+6. **Review & Submit**: check everything and click **Submit**.
+
+## Step-by-step
+
+### 1. Open QC Inspection
+
+In the left menu, open **QC Inspection**. The charts show inspection results, service providers and job types. Tabs list **All Job**, **3rd Party Job**, **Inhouse Record** and **Draft**. Click **Create Job**.
+
+> **Image pending privacy review:** `01-list.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*QC Inspection list with Create Job.*
+
+
+### 2. Choose what you are looking for
+
+| Option | Use it when |
+|---|---|
+| Get QC inspection quote via ICW | You want ICW to arrange a third-party inspector. This guide. |
+| Start internal inspection | Your own QC team will inspect. See the Internal QC Inspection guide. |
+| Add inspection record | The inspection is already done and you want to record the result. |
+
+Choose **Get QC inspection quote via ICW** and click **Continue**.
+
+> **Image pending privacy review:** `02-looking-to.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Create New Job — Looking to…*
+
+
+### 3. Inspection Requirement
+
+- **Inspection Date**.
+- **Inspection type**: Final Random, Loading, During Production, Re-Inspection, Initial Production, Fabric, 100% or Vendor Own Inspection.
+- **Inspection Level**: General Inspection Level I–III or Special Level S-1 to S-4.
+- **Inspection AQL**: Critical, Major and Minor levels. They apply to all products in this job by default.
+- **Target Budget** (currency and amount) and **Service Provider Preference**. Leave “No preference, ICW will match you with the best inspector” selected if you have no preferred provider.
+
+> **Image pending privacy review:** `04-step1-filled.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Step 1 filled in. Click Save to keep a draft, or Next.*
+
+
+### 4. Report Details
+
+Click **Add Product**, search for the product, click **Select**, then **Confirm**.
+
+> **Image pending privacy review:** `05-select-product.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Select related product(s) — search by name, item no., supplier or factory.*
+
+For each product, fill in the **PO** details: customer name, customer PO #, PO #, order quantity and number of cartons. Use **Add New PO** for more POs, **Add Product** for more products, and **Add Report** or **Duplicate Report** if you need separate reports. Tick **Signed Sample Available** if there is one. Click **Next**.
+
+> **Image pending privacy review:** `06-step2-report.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Report 1 with one product and its PO.*
+
+
+### 5. Supplier & Factory
+
+Click **Add Supplier** and select the supplier. Then click **Select Existing Factory** and choose the factory where the inspection will take place. Check the contact person, phone and email for each. Click **Next**.
+
+> **Image pending privacy review:** `07-step3-supplier-factory.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Supplier and factory selected, with contact details.*
+
+
+### 6. Additional Information
+
+Upload reference files such as tech packs or previous reports, and write any special requirement in **Remark**. Click **Next**.
+
+> **Image pending privacy review:** `08-step4-additional.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Step 4 Additional Information.*
+
+
+### 7. Review & Submit
+
+Check the summary. Click **Edit** on any section to change it. Click **Submit**.
+
+> **Image pending privacy review:** `09-step5-review.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*Step 5 Review & Submit.*
+
+
+### 8. Done — job detail
+
+QMAS shows “Create job successfully!” and opens the job. It has a Job ID and starts as **Under Review**. The **Quotes**, **Reports**, **Attachments** and **Invoices** tabs follow the job.
+
+> **Image pending privacy review:** `10-job-detail.jpg`
+>
+> Reviewed replacement image not available yet. Follow the written steps above.
+
+*The new inspection job.*
+
+
+## Tips
+
+- Click **Save** on any step to keep a draft. Drafts are on the **Draft** tab.
+- Submit well before the inspection date so there is time for quoting and booking.
+
+## FAQ
+
+**Q: How do I book a third-party QC inspection?**
+
+A: Go to QC Inspection (https://qmas.icw.io/inspection), click Create Job, choose Get QC inspection quote via ICW, then complete the 5 steps and Submit.
+
+**Q: What is the difference between a QC inspection quote and an internal inspection?**
+
+A: A quote via ICW uses a third-party inspector arranged by ICW. An internal inspection is done by your own QC team (Internal QC Inspection).
+
+**Q: Can I save a QC job and finish it later?**
+
+A: Yes. Click Save on any step. The job is kept on the Draft tab.

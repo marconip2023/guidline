@@ -1,0 +1,367 @@
+{
+  "slug": "product-profile",
+  "source_path": "product-profile/",
+  "origin": "guides-json",
+  "tab_title": "Product Profile Tabs",
+  "title": "Product Management — Every Tab of the Product Profile",
+  "purpose": "After you create a product, its profile holds everything about it. This guide explains each tab in the profile's left menu and the import option on the product list.",
+  "meta": [
+    [
+      "Module",
+      "Product Management"
+    ],
+    [
+      "Open a profile",
+      "https://qmas.icw.io/product/list → click a product"
+    ],
+    [
+      "Tabs",
+      "Document · Shipping Detail · Compliance Data · Quality Requirement · AI Risk Screening · CPSC eFiling · Packaging Detail · QR Code"
+    ],
+    [
+      "See also",
+      "Create and edit a product: [[guide:product-management|Product Management — Create and Edit a Product]]"
+    ],
+    [
+      "Checked against",
+      "QMAS dev, 4 Nov 2026. Document, Shipping Detail, the empty Compliance Data tab, the in-progress Test Data form, the empty Certificate Data form, and the Quality Requirement shots included here were rechecked on QMAS dev, 9 Nov 2026."
+    ]
+  ],
+  "overview": [
+    "**Document**: upload, organise, share and set reminders for the product's files.",
+    "**Shipping Detail**: sizes, weights and barcodes for the selling unit and cartons.",
+    "**Compliance Data**: record test results, certificates and other compliance data.",
+    "**Quality Requirement**: list the product's quality requirements, use templates and send them to testing or document review.",
+    "**AI Risk Screening**: run AI compliance screenings for this product.",
+    "**CPSC eFiling**: submit eFiling for this product and see its eFiling log.",
+    "**Packaging Detail**: record each packaging component, its materials and suppliers.",
+    "**QR Code** is also in the left menu. This guide does not yet describe that screen."
+  ],
+  "steps": [
+    {
+      "h": "1. Document",
+      "body": [
+        "Shows every file linked to the product. Use **New Folder** to organise files and **Upload** to add a file (see the Document Management guide for the upload pop-up). Filter by **Type**, **Source** or **Checked**, switch between **All** and **Archived**, and search with **Search Files**. **Sort** and **Reset** sit with those filters.",
+        {
+          "img": "01-document.jpg",
+          "caption": "Document tab with one UAT sample PDF and the filter controls.",
+          "alt": "Document tab with one UAT sample PDF and the filter controls.",
+          "caption_note": "All (1), New Folder, Upload, Type, Source, Checked, Sort and Reset are visible. The file is a UAT sample PDF marked Test Report. Source and the date columns on that row are empty."
+        },
+        "Tick one or more files to open the toolbar:",
+        {
+          "table": [
+            [
+              "Action",
+              "What it does"
+            ],
+            [
+              "Set Data",
+              "Add compliance data (test, certificate or other) from this file."
+            ],
+            [
+              "Set Dates & Reminder",
+              "Set issue, expiry and review dates and an email reminder."
+            ],
+            [
+              "Archive",
+              "Move the file to the Archived tab."
+            ],
+            [
+              "Download",
+              "Download the file."
+            ],
+            [
+              "Share",
+              "Create a share link with an expiry period. Copy it or send it by email."
+            ],
+            [
+              "Rename / Edit Type",
+              "Change the file name or document type."
+            ],
+            [
+              "Move",
+              "Move the file to a folder."
+            ],
+            [
+              "Remove",
+              "Remove the file."
+            ]
+          ]
+        },
+        {
+          "img": "02-document-toolbar.jpg",
+          "caption": "Toolbar after selecting a file.",
+          "caption_note": "The selection toolbar shows Set Data, Set Dates & Reminder, Archive, Download, Share, Rename, Edit Type, Move and Remove for the same UAT sample file."
+        },
+        {
+          "img": "03-document-share.jpg",
+          "caption": "Share Via Link — choose how long the link stays valid, then Copy or By Email."
+        }
+      ]
+    },
+    {
+      "h": "2. Shipping Detail",
+      "body": [
+        "Shows the length, width, height, gross and net weight, quantity and barcode for the **Selling Unit**, **Inner Carton** and **Outer Carton**. To change them, click **⋮** next to the product name → **Edit product** and update **Shipping Information**. The reviewed screenshot shows 0.00 and N/A in those fields, not filled shipping values.",
+        {
+          "img": "04-shipping-detail.jpg",
+          "caption": "Shipping Detail tab — empty values (0.00 / N/A).",
+          "alt": "Shipping Detail tab with 0.00 measurements and N/A barcodes for Selling Unit, Inner Carton and Outer Carton."
+        }
+      ]
+    },
+    {
+      "h": "3. Compliance Data",
+      "body": [
+        "Three sections: **Test Data**, **Certificate Data** and **Other**. Click **Add Data** (or **Add** once a section has records).",
+        {
+          "img": "05-compliance-data.jpg",
+          "caption": "Compliance Data tab before any data is added.",
+          "caption_note": "Test Data, Certificate Data and Other each show 0 and “There is no data here.”, with Add Data. This is the captured empty state."
+        },
+        "**Test Data** records one test result:",
+        {
+          "list": [
+            "**Result** (required): Passed, Failed or Report As Is.",
+            "**Export Market** (required). For US eFiling, choose **United States (CPSC eFiling submission)**.",
+            "**Legislation, Test Item & Citation** (required): type in this field. The reviewed screenshot sets Export Market to Africa and shows **+ Add '[UAT TEST]'**. It is not a legislation results list and not a saved Test Data record.",
+            "**Report ID**, **Issue Party** (required), **Expiry Date** and **Test Date / Report Date**.",
+            "Link the report under **Existing Product Document** (a file already on the product) or **New Document**."
+          ]
+        },
+        {
+          "img": "07-test-item-search.jpg",
+          "caption": "Test Data form — Export Market set; legislation field showing + Add ‘[UAT TEST]’ (not a completed saved record).",
+          "alt": "In-progress Test Data form. Result is unset, Export Market is Africa, and the legislation field shows + Add '[UAT TEST]'. Not a legislation results list and not a saved record."
+        },
+        {
+          "img": "08-test-data-filled.jpg",
+          "caption": "Not captured. A completed Test Data record with a linked report is not in this draft.",
+          "alt": "Not captured. A completed Test Data record with a linked report is not in this draft.",
+          "availability": "not-captured",
+          "pending_note": "Not captured. A Test Data record was not saved and a report was not linked for this screenshot. This placeholder is not a completed or saved record."
+        },
+        "Click **Confirm** to close the Test Data form. This draft does not show a saved Test Data row. Screenshots of a completed record and of the table after saving were not captured, because each needs a real saved record.",
+        {
+          "img": "09-test-data-saved.jpg",
+          "caption": "Not captured. The Test Data table after saving is not in this draft.",
+          "alt": "Not captured. The Test Data table after saving is not in this draft.",
+          "availability": "not-captured",
+          "pending_note": "Not captured. A saved Test Data row was not created for this screenshot. This placeholder is not proof of a saved record."
+        },
+        "**Certificate Data** works the same way. Fill in the certificate **Type**, **Issue Party**, **Score / Overall Rating**, **Expiry Date** and **Certificate Date**, then link the certificate file. The reviewed screenshot shows that form empty.",
+        {
+          "img": "10-certificate-data-form.jpg",
+          "caption": "Empty Certificate Data form.",
+          "alt": "Empty Certificate Data form. Type, Issue Party, score and dates are unset.",
+          "caption_note": "This screenshot does not show filled certificate values."
+        }
+      ]
+    },
+    {
+      "h": "4. Quality Requirement",
+      "body": [
+        "Quality Requirement lists what the product must meet, for example test standards or packaging rules. Each requirement has a **Type** (the group) and a **Name**. You can attach compliance data to it as proof, mark it completed, and reuse the list in Product Testing or Document Review.",
+        "The reviewed screenshot is not an empty tab. It shows one requirement with the name hidden, plus Test Plan, ⋯ and Add. The attachment area under that row is empty.",
+        {
+          "img": "11-quality-requirement.jpg",
+          "caption": "Quality Requirement tab with one existing requirement (name redacted); Test Plan, ⋯, and Add visible — not an empty tab.",
+          "alt": "Quality Requirement tab with one redacted requirement row, Test Plan, the more menu and Add. Not an empty tab."
+        },
+        "**4a. Add a requirement yourself**",
+        {
+          "list": [
+            "Click **Add Requirement** (or **Add** at the top right once the list has items).",
+            "**Type**: pick an existing type, or type a new one and choose **+ Create “…”**.",
+            "**Name**: pick a name from the list for that type. Picking a different Type clears the Name.",
+            "Tick **Mandatory** if the requirement must be met, then click **Confirm**."
+          ]
+        },
+        "The reviewed Add Requirement screenshot shows Type and Name empty, with Mandatory checked. It is not an example of a filled Type and Name.",
+        {
+          "img": "19-requirement-filled.jpg",
+          "caption": "Add Requirement modal — Type and Name empty, Mandatory checked (not a filled Type and Name example).",
+          "alt": "Add Requirement modal with empty Type and Name fields and Mandatory checked."
+        },
+        "**4b. Add requirements from a template (fastest)**",
+        "Click **⋯** next to the title → **Templates**:",
+        {
+          "table": [
+            [
+              "Option",
+              "What it does"
+            ],
+            [
+              "Apply Template",
+              "Pick a saved template (use **View** to preview it) and click **Apply**. All its requirements are added."
+            ],
+            [
+              "Save As Template",
+              "Save this product's requirements as a template for other products."
+            ],
+            [
+              "Manage Templates",
+              "See and manage your saved templates."
+            ]
+          ]
+        },
+        {
+          "img": "20-templates-menu.jpg",
+          "caption": "⋯ → Templates.",
+          "caption_note": "The open menu shows Import To Product Testing, Import to Document Review, Export As Document, and Templates: Apply Template, Save As Template and Manage Templates."
+        },
+        {
+          "img": "21-apply-template.jpg",
+          "caption": "Apply Template — View or Apply a saved template.",
+          "caption_note": "The list shows EU Electrical Compliance Template, EU Electrical Toy and new template 001, each with View and Apply. Creator names are blanked in this screenshot."
+        },
+        "QMAS shows “<template name> applied”. Requirements are grouped by Type; the number next to the Type is how many requirements it has.",
+        "The screenshot of the list after Apply Template was not captured, because that needs a real apply. The placeholder is not that list.",
+        {
+          "img": "22-requirement-list.jpg",
+          "caption": "Requirements after applying a template.",
+          "availability": "not-captured",
+          "pending_note": "Not captured. Apply Template was not run for this screenshot. This placeholder is not the requirement list after a template is applied."
+        },
+        "**4c. Attach proof and complete a requirement**",
+        {
+          "list": [
+            "Click **+** on a requirement to open **Attach Compliance Data**. Choose the **Test Data**, **Certificate Data** or **Other** tab, tick the records and click **Confirm**. If a record you just added is missing, click **Reload Data**. To add new data, go to Compliance Data first.",
+            "Click **⌄** to expand a requirement and see the attached data. Click the bin icon to detach it.",
+            "Click **⋯** on a requirement for **Edit**, **Duplicate**, **Upload Document**, **Mark As Completed** and **Remove**.",
+            "**Mark As Completed** shows “Requirement Completed” and turns the requirement’s tick green."
+          ]
+        },
+        {
+          "img": "23-attach-compliance.jpg",
+          "caption": "Attach Compliance Data — tick the test record."
+        },
+        {
+          "img": "24-requirement-attached.jpg",
+          "caption": "The attached test data under the requirement."
+        },
+        {
+          "img": "25-requirement-row-menu.jpg",
+          "caption": "⋯ menu on one requirement."
+        },
+        {
+          "img": "26-requirement-completed.jpg",
+          "caption": "Requirement marked as completed."
+        },
+        "**4d. Send requirements to a job**",
+        {
+          "list": [
+            "**⋯ → Import To Product Testing**: tick the requirements (or **Select All**) and click **Confirm to Create Job**. Product Testing → Request Quotations opens with this product added, and the requirements appear under **Quality Requirement** in step 2.",
+            "**⋯ → Import to Document Review** → **Create Job** or **Create Job for supplier**: opens the matching Document Review form for this product.",
+            "**⋯ → Export As Document**: exports the requirement list as a document."
+          ]
+        },
+        {
+          "img": "29-import-to-pt.jpg",
+          "caption": "Import To Product Testing — choose requirements, then Confirm to Create Job."
+        },
+        {
+          "img": "31-pt-requirement-carried.jpg",
+          "caption": "The requirement carried into Product Testing step 2."
+        },
+        {
+          "img": "28-import-doc-review.jpg",
+          "caption": "Import to Document Review → Create Job or Create Job for supplier."
+        },
+        "**4e. Test Plan (AI)**",
+        "Click **Test Plan** to let AI suggest a test plan. Fill in the **Product Description** (more detail gives better results), **Import Country** and **Product Intended Used By**, upload up to 6 product images, then click **Generate Test Plan**.",
+        {
+          "img": "27-test-plan.jpg",
+          "caption": "Test Plan pop-up."
+        }
+      ]
+    },
+    {
+      "h": "5. AI Risk Screening",
+      "body": [
+        "Lists the AI screenings for this product. Click **Add** to start one. The pop-up and results are explained in the [[guide:ai-insight|AI Insight]] guide.",
+        {
+          "img": "17-ai-risk-screening.jpg",
+          "caption": "AI Risk Screening tab."
+        }
+      ]
+    },
+    {
+      "h": "6. CPSC eFiling",
+      "body": [
+        "Shows the **eFiling Log** for this product. Click **Submit eFiling** to create an eFiling. Before you can sync with CPSC, add your API Key and Secret Key in **Company Profile** (link in the grey note). The full flow is in the [[guide:efiling|eFiling]] guide.",
+        {
+          "img": "16-cpsc-efiling.jpg",
+          "caption": "CPSC eFiling tab."
+        }
+      ]
+    },
+    {
+      "h": "7. Packaging Detail",
+      "body": [
+        "Lists the packaging components of the product. Click **Create Packaging Component** and fill in:",
+        {
+          "list": [
+            "**Basic Information**: name and description (required), identification no., function, legal role, weight, material type and name, status (Active, Inactive or Draft), and packaging images.",
+            "**Dimension**, **Additional Information**, **Supplier Linkage** and **Technical Documentation** (expand each section)."
+          ]
+        },
+        "Click **Confirm**. Use the **Status** filter to show active, inactive or draft components.",
+        {
+          "img": "14-packaging.jpg",
+          "caption": "Packaging Details tab."
+        },
+        {
+          "img": "15-packaging-component.jpg",
+          "caption": "Create Packaging Component."
+        }
+      ]
+    },
+    {
+      "h": "8. Import products in bulk",
+      "body": [
+        "On the Product Management list, click **Import Product**. Download the ICW Product template (**download here**), fill it in, upload the Excel file (one file at a time), then click **Next**. Only the ICW template can be used.",
+        {
+          "img": "18-import-product.jpg",
+          "caption": "Import Product."
+        }
+      ]
+    }
+  ],
+  "tips": [
+    "**Hide product details** at the top right hides the product card on the left.",
+    "Link test reports to Test Data. eFiling can reuse this data when you quick-select test data.",
+    "Use requirement **Templates** so similar products get the same requirements."
+  ],
+  "faq": [
+    [
+      "How do I add a test result to a product?",
+      "Open the product → Compliance Data → Test Data → Add Data. Fill in Result, Export Market, Legislation/Test Item, Issue Party, link the report, then Confirm."
+    ],
+    [
+      "How do I share a product document?",
+      "Open the product → Document, tick the file, click Share, choose the link expiry, then Copy or By Email."
+    ],
+    [
+      "How do I add quality requirements to a product?",
+      "Open the product → Quality Requirement → Add Requirement, or ⋯ → Templates to apply a saved template."
+    ],
+    [
+      "Where do I record packaging information?",
+      "Open the product → Packaging Detail → Create Packaging Component."
+    ],
+    [
+      "How do I import many products?",
+      "On Product Management, click Import Product, download the ICW template, fill it in and upload it."
+    ],
+    [
+      "How do I reuse quality requirements for many products?",
+      "Open a product → Quality Requirement → ⋯ → Templates → Save As Template. On other products use ⋯ → Templates → Apply Template."
+    ],
+    [
+      "How do I prove a requirement is met?",
+      "On the requirement click +, attach the test or certificate data, then ⋯ → Mark As Completed."
+    ]
+  ]
+}

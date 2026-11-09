@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QMAS User Guide</title>
+<style>
+:root {
+  --bg: #f7faff;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --link: #0041b8;
+  --primary: #005eff;
+  --chip: #0041b8;
+  --line: #e5e7eb;
+  --tip: #eef4ff;
+  --pending: #f3f4f6;
+  --banner: #fff7ed;
+  --banner-text: #7c2d12;
+  --banner-line: #c2410c;
+  --focus: #0038b3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 "Liberation Sans", "Noto Sans", sans-serif;
+  hyphens: manual;
+}
+
+a { color: var(--link); }
+a:focus-visible,
+.table-wrap:focus-visible,
+.skip-link:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: #fff;
+  color: var(--focus);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.site-header, .site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 0;
+}
+.site-header p, .site-footer p { margin: 0; }
+.site-mark { font-weight: 700; }
+.site-mark a { color: var(--text); text-decoration: none; }
+.site-mark a:hover { text-decoration: underline; }
+.version-line { color: var(--muted); font-size: 14px; }
+
+main { max-width: 880px; margin: 0 auto; padding: 16px 16px 64px; }
+main.wide { max-width: 960px; }
+
+h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+h2 { font-size: 22px; line-height: 1.3; margin: 36px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
+.lede { color: var(--muted); margin: 0 0 16px; }
+
+.draft-banner, .status-line {
+  background: var(--banner);
+  color: var(--banner-text);
+  border-left: 4px solid var(--banner-line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+}
+.status-line { background: var(--card); color: var(--text); border-left-color: var(--primary); }
+
+.meta, .module-group, .overview, .tip, figure, table {
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 8px;
+}
+.meta dt { color: var(--muted); font-weight: 600; }
+.meta dd { margin: 0; }
+
+.overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
+.module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.module-group h2 a { font-size: 14px; font-weight: 400; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+
+.ui-label {
+  display: inline-block;
+  background: var(--chip);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.ui-label.ghost { background: #fff; color: var(--chip); border: 1px solid var(--chip); }
+
+figure.shot { margin: 12px 0 20px; border: 0; }
+figure.shot img, .pending {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+figure.shot img { height: auto; background: var(--card); }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.caption-note { display: block; margin-top: 4px; }
+
+.pending {
+  background: var(--pending);
+  color: var(--text);
+  border-style: dashed;
+  padding: 14px 16px;
+}
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+.pending.not-captured { background: #fff7ed; border-color: var(--banner-line); }
+
+.tip {
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--tip);
+}
+.tip p { margin: 0; }
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f4f6; }
+caption.visually-hidden { /* name comes from the region label */ }
+
+.faq dt { font-weight: 700; margin-top: 14px; }
+.faq dd { margin: 4px 0 0; }
+.site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
+
+@media (forced-colors: active) {
+  .pending, .tip, .ui-label, .draft-banner { border: 1px solid CanvasText; }
+}
+
+@media print {
+  body { background: #fff; }
+  .skip-link, .site-header nav, .crumb { display: none; }
+  main { max-width: none; padding: 0; }
+  a { color: #000; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid; }
+  figure, .tip, .pending, .meta, .draft-banner, tr { break-inside: avoid; }
+  article.module + article.module { break-before: page; }
+  figure.shot img {
+    max-width: 100%;
+    max-height: 210mm;
+    object-fit: contain;
+    object-position: left top;
+  }
+  .table-wrap { overflow: visible; }
+  .pending, .tip, .draft-banner, .ui-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 14mm; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <p class="site-mark"><a href="../../">QMAS User Guide</a></p>
+  <p class="version-line">Working copy draft</p>
+</header>
+<main id="content" tabindex="-1">
+<p class="draft-banner">Working copy draft 2026-11-09-draft. Combined PDF generated from the same content as the per-module PDFs.</p><h1>QMAS User Guide</h1><p>Notion working hub: https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b</p><article class="module" id="product-testing"><h1>Product Testing — Request a Quotation</h1>
+<p class="lede">Create a product testing job and get a quotation from a laboratory.</p>
+<p class="status-line">Screenshot slots: 9 reviewed replacement images.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Product Testing</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/product-testing">qmas.icw.io/product-testing</a> → <span class="ui-label">Create Job</span></dd>
+<dt>Direct link</dt><dd><a href="https://qmas.icw.io/product-testing/create-job">qmas.icw.io/product-testing/create-job</a></dd>
+<dt>Steps</dt><dd>1 Product Info → 2 Requirements → 3 Provider Selection → 4 Done</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li><strong>Open Product Testing</strong> and click <span class="ui-label">Create Job</span>.</li>
+<li><strong>Product Info</strong> — add an existing product or create a new one.</li>
+<li><strong>Requirements</strong> — set the export market, test items, quality requirements and service details.</li>
+<li><strong>Provider Selection</strong> — choose Connected Provider, ICW or TicMart, then <span class="ui-label">Submit</span>.</li>
+<li><strong>Done</strong> — the Order details page opens. Track the job there or in the Product Testing list.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open Product Testing</h3>
+<p>In the left menu, open <strong>Product Testing</strong>. The page shows charts of job status, service provider and test results, and the list of all jobs. Click <span class="ui-label">Create Job</span> above the list.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/01-list.jpg" alt="Product Testing list page with the Create Job button" width="1821" height="553" fetchpriority="high" decoding="async"><figcaption>Product Testing list — Create Job is at the top right of the job list.</figcaption></figure>
+<h3>2. Product Info — select products</h3>
+<p>The <strong>Request Quotations</strong> wizard opens. Add the products for this testing order:</p>
+<ul><li><span class="ui-label ghost">+ Existing Products</span> picks from your Product Management list.</li><li><span class="ui-label ghost">+ Add Products</span> creates a new product here.</li></ul>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/02-step1-product-info.jpg" alt="Step 1 Product Info, empty" width="950" height="625" loading="lazy" decoding="async"><figcaption>Step 1 starts empty. Next stays disabled until a product is added.</figcaption></figure>
+<p>In the <strong>Select Product(s)</strong> pop-up, search by product name or ID, click <span class="ui-label ghost">Select</span> on each product you need, then click <span class="ui-label">Confirm</span>. You can select more than one product.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/04-product-selected.jpg" alt="Select Product(s) pop-up with one product selected" width="802" height="235" loading="lazy" decoding="async"><figcaption>A selected product shows a blue “✓ Selected” button.</figcaption></figure>
+<p>Check the product details. You can change <strong>Item name on report</strong> and <strong>Item no. on report</strong>, which are printed on the test report. Click <strong>Add PO Information</strong> to link a purchase order (optional). Then click <span class="ui-label">Next</span>.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/05-step1-filled.jpg" alt="Step 1 with one product added" width="950" height="895" loading="lazy" decoding="async"><figcaption>Use Remove to drop a product, or Edit product profile to update it.</figcaption></figure>
+<h3>3. Requirements</h3>
+<p><strong>1. Test Requirements</strong></p>
+<ul><li><strong>Export Market</strong> — where the product will be sold (required).</li><li><strong>Test Item</strong> (optional) — choose a country, then search for test items or citations.</li><li><strong>Quality Requirement</strong> — Create New Requirements, Add Existing Requirements, or Import Requirement Template.</li><li><strong>Remarks</strong> and <strong>Attachment</strong> (optional) — special instructions and reference files.</li></ul>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/07-step2-export-market.jpg" alt="Step 2 Test Requirements with Export Market filled" width="950" height="910" loading="lazy" decoding="async"><figcaption>Export Market filled in.</figcaption></figure>
+<p><strong>2. Additional Information</strong></p>
+<ul><li><strong>Service Level</strong> — Regular, Express or Shuttle / Emergency.</li><li><strong>Country of Origin</strong> — where the product is made (you can pick more than one).</li><li><strong>Intended Usage</strong> — General product, Adult product, Children product or Toys.</li><li><strong>Buyer Name</strong> (optional).</li></ul>
+<p>When all required fields are filled, <span class="ui-label">Next</span> turns blue. Click it.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/09-step2-filled.jpg" alt="Step 2 Additional Information filled" width="950" height="573" loading="lazy" decoding="async"><figcaption>Additional Information filled — Next is now enabled.</figcaption></figure>
+<h3>4. Provider Selection</h3>
+<p>Choose who should quote this job. You can tick more than one:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Option, Use it when"><table><thead><tr><th scope="col">Option</th><th scope="col">Use it when</th></tr></thead><tbody><tr><td>Connected Provider</td><td>You already work with a lab that is connected to your QMAS account.</td></tr><tr><td>ICW</td><td>You want ICW to find a lab. Pick a preferred lab, or leave “No Preference”.</td></tr><tr><td>TicMart (Marketplace)</td><td>You want quotations from labs in the TicMart marketplace.</td></tr></tbody></table></div>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/11-step3-icw-selected.jpg" alt="Step 3 Provider Selection with ICW ticked" width="950" height="550" loading="lazy" decoding="async"><figcaption>ICW ticked with “No Preference”. Click Submit to send the request.</figcaption></figure>
+<h3>5. Done — track your order</h3>
+<p>After you click <span class="ui-label">Submit</span>, QMAS shows “Product testing created successfully” and opens the <strong>Order details</strong> page. Your job has a new order number (for example 260008342) and starts as <strong>Under Review</strong>.</p>
+<ul><li><strong>Product Testing Requirements</strong>, <strong>Products</strong>, <strong>Supplier</strong>, <strong>PO</strong> and <strong>Test Plan</strong> tabs show what you submitted.</li><li><strong>Quotations</strong> on the right shows lab quotes when they arrive.</li><li>The tabs below (Quotes, Failure Records, Reports, Attachments, Invoices, Tag, Activity Log, Message Board) follow the job until the report is ready.</li></ul>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/13-order-details.jpg" alt="Order details page after submitting" width="1856" height="900" loading="lazy" decoding="async"><figcaption>The new order opens with status Under Review. You can find it again in the Product Testing list.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>Items marked <strong>(optional)</strong> can be skipped. Next stays grey until every required field on the step is filled. A field you leave empty turns red with a message, for example “Country of origin is required”.</p></aside>
+<figure class="shot"><img src="../../assets/reviewed/product-testing/12-required-error.jpg" alt="Country of Origin field showing required error" width="950" height="573" loading="lazy" decoding="async"><figcaption>Required field left empty.</figcaption></figure>
+<aside class="tip"><p>Item name and item no. on report are what the lab prints on the test report. Check them before you continue.</p></aside>
+<aside class="tip"><p>To leave the wizard, click <strong>✕</strong> at the top right.</p></aside>
+</article>
+<article class="module" id="getting-started"><h1>Getting Started — Home, Settings and Company Profile</h1>
+<p class="lede">Find your way around QMAS: the Home page, the top bar and your company settings.</p>
+<p class="status-line">Screenshot slots: 3 reviewed replacement images.</p>
+<dl class="meta">
+<dt>Home</dt><dd><a href="https://qmas.icw.io/home">https://qmas.icw.io/home</a></dd>
+<dt>Company Profile</dt><dd><a href="https://qmas.icw.io/company-profile">https://qmas.icw.io/company-profile</a></dd>
+<dt>Checked against</dt><dd>QMAS dev, 9 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li><strong>Home</strong> shows quick workflows, items that need your attention, and an overview of your business.</li>
+<li>The <strong>left menu</strong> opens each module.</li>
+<li>The <strong>top bar</strong> has analytics, messages, notifications, the account avatar, help and credits.</li>
+<li><strong>Settings</strong> opens from the <strong>avatar</strong> (account control) in the top bar. The menu includes Company Profile, Password, Languages, Account Management, Assign TicMart Job and Logout.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Home</h3>
+<p><strong>TicMate</strong> says “I’m TicMate. What would you like to do today?” and lists these workflow shortcuts:</p>
+<ul><li><strong>Generate product risk assessment report</strong> (AI Assessment workflow).</li><li><strong>Generate export market requirements</strong> (AI Insight workflow).</li><li><strong>CPSC eFiling</strong>. If it shows “API Setup Required”, set up your Certifier ID in Company Profile first.</li><li><strong>Request product testing with your lab partner</strong> (Product Testing).</li><li><strong>Request technical files from your supplier/factory</strong> (Document Review).</li></ul>
+<p><strong>Attention</strong> counts the items that need action in each module, such as Product Testing, Document Review, QC Inspection, IQC Inspection, Factory Audit, Pending Review Doc and Expired Doc. Click a card to see them.</p>
+<p><strong>Business Overview</strong> shows your active products, suppliers, factories and partners. Click <strong>›</strong> to open the list.</p>
+<p><strong>Ask TicMate</strong> on the right edge opens the TicMate assistant.</p>
+<figure class="shot"><img src="../../assets/reviewed/getting-started/01-home.jpg" alt="Home page." width="1855" height="500" fetchpriority="high" decoding="async"><figcaption>Home page.<span class="caption-note">This reviewed screenshot shows the TicMate workflow shortcuts. Attention and Business Overview are described in the steps and are not in this crop.</span></figcaption></figure>
+<h3>2. Settings menu</h3>
+<p>Click your <strong>avatar</strong> (account control) in the top bar:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Option, What it does"><table><thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Company Profile</td><td>Company details, certificates, documents, product categories and CPSC eFiling Certifier ID.</td></tr><tr><td>Password</td><td>Change your password.</td></tr><tr><td>Languages</td><td>Change the system language.</td></tr><tr><td>Account Management</td><td>Manage your company&#x27;s user accounts.</td></tr><tr><td>Assign TicMart Job</td><td>Assign jobs from the TicMart marketplace.</td></tr><tr><td>Logout</td><td>Signs you out of QMAS.</td></tr></tbody></table></div>
+<figure class="shot"><img src="../../assets/reviewed/getting-started/02-settings-menu.jpg" alt="Settings menu." width="241" height="277" loading="lazy" decoding="async"><figcaption>Settings menu.<span class="caption-note">Menu opened from the account avatar: Company Profile, Password, Languages, Account Management, Assign TicMart Job and Logout.</span></figcaption></figure>
+<h3>3. Company Profile</h3>
+<p>Click the pencil icon next to the company name to edit it. The <strong>Overview</strong>, <strong>Certificate</strong> and <strong>Document</strong> tabs hold your company information. <strong>CPSC eFiling - Certifier ID</strong> is where you add and manage the API key for eFiling. <strong>Product Category</strong> lists the categories your company works with.</p>
+<figure class="shot"><img src="../../assets/reviewed/getting-started/03-company-profile.jpg" alt="Company Profile." width="1050" height="820" loading="lazy" decoding="async"><figcaption>Company Profile.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>The question-mark icon opens the QMAS Help Center.</p></aside>
+<aside class="tip"><p>The coin icon shows your credits and tokens for paid features such as AI Insight.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I change the language?</dt><dd>Click your avatar (account control) in the top bar, then Languages.</dd>
+<dt>How do I change my password?</dt><dd>Click your avatar (account control) in the top bar, then Password.</dd>
+<dt>Where do I edit my company information?</dt><dd>Click your avatar (account control), then Company Profile (<a href="https://qmas.icw.io/company-profile">https://qmas.icw.io/company-profile</a>).</dd>
+</dl>
+</article>
+<article class="module" id="product-management"><h1>Product Management — Create and Edit a Product</h1>
+<p class="lede">Add a product profile to QMAS so you can attach documents, compliance data, testing and eFiling to it.</p>
+<p class="status-line">Screenshot slots: 10 reviewed, 1 explicitly not captured, 0 still pending privacy review.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Product Management</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/product/list">https://qmas.icw.io/product/list</a> → <strong>+ New Product</strong></dd>
+<dt>Direct link</dt><dd><a href="https://qmas.icw.io/add-product">https://qmas.icw.io/add-product</a></dd>
+<dt>Steps</dt><dd>1 Product Profile → 2 Related Product → Done</dd>
+<dt>Checked against</dt><dd>QMAS dev, 9 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Open <strong>Product Management</strong> and click <strong>+ New Product</strong>.</li>
+<li><strong>Product Profile</strong>: fill in product details, then choose a supplier. Shipping information, factory and additional info are optional.</li>
+<li><strong>Related Product</strong> (optional): link related products, then click <strong>Done</strong>.</li>
+<li>The product appears at the top of the Product Management list. Open it to see the product profile.</li>
+<li>To change it later, open the product, click <strong>⋮</strong> next to the name, then <strong>Edit product</strong>.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open Product Management</h3>
+<p>In the left menu, open <strong>Product Management</strong>. Click <strong>+ New Product</strong> at the top right. To add many products at once, use <strong>Import Product</strong>.</p>
+<p>Filter the list with <strong>Product Category</strong>, <strong>Customer Product Category</strong>, <strong>Product Number</strong>, <strong>Status</strong>, <strong>Created By</strong> and <strong>Team</strong>. <strong>Sort by Date modified</strong> changes the order. <strong>Reset</strong> clears the filters.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-management/01-list.jpg" alt="Product Management list with Import Product and + New Product at the top right." width="1820" height="188" fetchpriority="high" decoding="async"><figcaption>Product Management list with Import Product and + New Product at the top right.<span class="caption-note">Reviewed screenshot of the list filters and column headers. No data rows are shown.</span></figcaption></figure>
+<h3>2. Product Profile — product details</h3>
+<p>The <strong>Add new product</strong> wizard opens. Under <strong>1. Product Details</strong>, fill in:</p>
+<ul><li><strong>Item No.</strong> and <strong>Product Name</strong> (required).</li><li><strong>Long Descriptions</strong> (optional): purpose, materials and internal parts such as batteries or stuffing.</li><li><strong>Additional Item No.</strong> (optional).</li><li><strong>Product Category (QMAS)</strong>: click <strong>Select Category</strong>.</li><li><strong>Customer Tag</strong>, <strong>Customer Product Category</strong> (Level 1–3) and <strong>Remark</strong> (optional).</li></ul>
+<figure class="shot"><img src="../../assets/reviewed/product-management/02-step1-empty.jpg" alt="Step 1 Product Profile — Product Details." width="705" height="1038" loading="lazy" decoding="async"><figcaption>Step 1 Product Profile — Product Details.</figcaption></figure>
+<p>In <strong>Select Category</strong>, search by name (for example “drinkware”), click the category, then click <strong>Add category</strong>.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-management/03-select-category.jpg" alt="Selected categories show as dark chips at the top. “1 selected” appears next to Add category." width="800" height="813" loading="lazy" decoding="async"><figcaption>Selected categories show as dark chips at the top. “1 selected” appears next to Add category.</figcaption></figure>
+<h3>3. Product Profile — supplier</h3>
+<p>Under <strong>2. Supplier</strong>, choose <strong>My supplier list</strong> and click <strong>Select supplier</strong>, or choose <strong>New supplier</strong> to add one here.</p>
+<p>In the pop-up, click <strong>Select</strong> on one supplier, then <strong>Confirm</strong>.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-management/04-select-supplier.jpg" alt="Select 1 Supplier — you can link one supplier per product." width="525" height="650" loading="lazy" decoding="async"><figcaption>Select 1 Supplier — you can link one supplier per product.</figcaption></figure>
+<p>The supplier card appears. Use <strong>Change Supplier</strong> to pick another one, or <strong>Edit this profile</strong> to update the supplier.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-management/05-supplier-shipping.jpg" alt="Selected supplier, followed by 3. Shipping Information (optional)." width="705" height="900" loading="lazy" decoding="async"><figcaption>Selected supplier, followed by 3. Shipping Information (optional).<span class="caption-note">The supplier card body in this screenshot is intentionally blank. Change Supplier and Edit this profile remain visible. The selected test supplier is shown on the Select supplier screenshot.</span></figcaption></figure>
+<h3>4. Product Profile — optional sections</h3>
+<ul><li><strong>Shipping Information</strong>: size, weight, tolerance and barcode for the selling unit, inner carton and outer carton.</li><li><strong>Factory</strong>: click <strong>Select existing factory</strong>.</li><li><strong>Additional Info</strong>: choose a <strong>Buyer</strong> (or <strong>Add buyer</strong>) and upload up to 30 <strong>product photos</strong> (JPG, JPEG, PNG).</li></ul>
+<p>Click <strong>Next</strong>.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-management/06-factory-additional.jpg" alt="Factory and Additional Info at the bottom of step 1, then Next." width="730" height="1085" loading="lazy" decoding="async"><figcaption>Factory and Additional Info at the bottom of step 1, then Next.</figcaption></figure>
+<h3>5. Related Product (optional)</h3>
+<p>Product linkage helps you manage compliance reports. For example, link a raw material or an assortment to several end products. Click <strong>Select related product</strong>, or skip this step. Click <strong>Done</strong>. <strong>Unlink</strong> removes a product from this step.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-management/07-step2-related.jpg" alt="Step 2 Related Product." width="705" height="960" loading="lazy" decoding="async"><figcaption>Step 2 Related Product.</figcaption></figure>
+<h3>6. Done — find your product</h3>
+<p>QMAS shows “Product added” and returns to the Product Management list. The new product is at the top.</p>
+<p>The screenshot of that new row was not captured, because it would require creating a real product. The placeholder is not a picture of a finished create.</p>
+<figure class="shot"><div class="pending not-captured"><p><strong>Not captured</strong></p><p>File name: <code>08-product-added.jpg</code></p><p>Not captured. A real product was not created for this screenshot, so this placeholder is not confirmation of a completed create.</p></div><figcaption>The new product at the top of the list.</figcaption></figure>
+<p>Click the product to open its profile. From the left menu of the profile you can manage <strong>Document</strong>, <strong>Shipping Detail</strong>, <strong>Compliance Data</strong>, <strong>Quality Requirement</strong>, <strong>AI Risk Screening</strong>, <strong>CPSC eFiling</strong> and <strong>Packaging Detail</strong>.</p>
+<p>The left menu also includes <strong>QR Code</strong>.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-management/09-product-profile.jpg" alt="Product profile." width="1820" height="1045" loading="lazy" decoding="async"><figcaption>Product profile.<span class="caption-note">Left menu includes Document, Shipping Detail, Compliance Data, Quality Requirement, AI Risk Screening, CPSC eFiling, Packaging Detail and QR Code. The Document tab shows New Folder, Upload, All, Archived, Type, Source, Checked, Sort and Reset.</span></figcaption></figure>
+<h3>7. Edit, copy or deactivate a product</h3>
+<p>On the product profile, click <strong>⋮</strong> next to the product name:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Option, What it does"><table><thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Edit product</td><td>Opens the same wizard with your saved details. Change them, then click Next and Done.</td></tr><tr><td>Testing order</td><td>Starts a Product Testing order for this product.</td></tr><tr><td>Make a copy</td><td>Creates a new product with the same details.</td></tr><tr><td>Mark as inactive</td><td>Sets the product to inactive.</td></tr></tbody></table></div>
+<figure class="shot"><img src="../../assets/reviewed/product-management/10-more-menu.jpg" alt="The ⋮ menu on the product profile." width="585" height="430" loading="lazy" decoding="async"><figcaption>The ⋮ menu on the product profile.</figcaption></figure>
+<figure class="shot"><img src="../../assets/reviewed/product-management/11-edit-product.jpg" alt="Edit product profile — the same steps as creating a product." width="705" height="1038" loading="lazy" decoding="async"><figcaption>Edit product profile — the same steps as creating a product.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>Search the list before you create a product so you don’t add a duplicate.</p></aside>
+<aside class="tip"><p>Shipping information is optional when you create the product. You can add it later from <strong>Shipping Detail</strong> on the profile.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I create a new product in QMAS?</dt><dd>Go to Product Management (<a href="https://qmas.icw.io/product/list">https://qmas.icw.io/product/list</a>), click + New Product, fill in Product Profile, then click Next and Done. Direct link: <a href="https://qmas.icw.io/add-product">https://qmas.icw.io/add-product</a></dd>
+<dt>How do I edit a product?</dt><dd>Open the product from the Product Management list, click ⋮ next to the product name, then Edit product.</dd>
+<dt>Can I add many products at once?</dt><dd>Yes. Click Import Product on the Product Management list.</dd>
+<dt>Where do I submit eFiling or add compliance data for a product?</dt><dd>Open the product profile and use CPSC eFiling or Compliance Data in its left menu.</dd>
+</dl>
+</article>
+<article class="module" id="product-profile"><h1>Product Management — Every Tab of the Product Profile</h1>
+<p class="lede">After you create a product, its profile holds everything about it. This guide explains each tab in the profile&#x27;s left menu and the import option on the product list.</p>
+<p class="status-line">Screenshot slots: 11 reviewed, 3 explicitly not captured, 13 still pending privacy review.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Product Management</dd>
+<dt>Open a profile</dt><dd><a href="https://qmas.icw.io/product/list">https://qmas.icw.io/product/list</a> → click a product</dd>
+<dt>Tabs</dt><dd>Document · Shipping Detail · Compliance Data · Quality Requirement · AI Risk Screening · CPSC eFiling · Packaging Detail · QR Code</dd>
+<dt>See also</dt><dd>Create and edit a product: <a href="../../product-management/">Product Management — Create and Edit a Product</a></dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026. Document, Shipping Detail, the empty Compliance Data tab, the in-progress Test Data form, the empty Certificate Data form, and the Quality Requirement shots included here were rechecked on QMAS dev, 9 Nov 2026.</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li><strong>Document</strong>: upload, organise, share and set reminders for the product&#x27;s files.</li>
+<li><strong>Shipping Detail</strong>: sizes, weights and barcodes for the selling unit and cartons.</li>
+<li><strong>Compliance Data</strong>: record test results, certificates and other compliance data.</li>
+<li><strong>Quality Requirement</strong>: list the product&#x27;s quality requirements, use templates and send them to testing or document review.</li>
+<li><strong>AI Risk Screening</strong>: run AI compliance screenings for this product.</li>
+<li><strong>CPSC eFiling</strong>: submit eFiling for this product and see its eFiling log.</li>
+<li><strong>Packaging Detail</strong>: record each packaging component, its materials and suppliers.</li>
+<li><strong>QR Code</strong> is also in the left menu. This guide does not yet describe that screen.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Document</h3>
+<p>Shows every file linked to the product. Use <strong>New Folder</strong> to organise files and <strong>Upload</strong> to add a file (see the Document Management guide for the upload pop-up). Filter by <strong>Type</strong>, <strong>Source</strong> or <strong>Checked</strong>, switch between <strong>All</strong> and <strong>Archived</strong>, and search with <strong>Search Files</strong>. <strong>Sort</strong> and <strong>Reset</strong> sit with those filters.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/01-document.jpg" alt="Document tab with one UAT sample PDF and the filter controls." width="1485" height="635" fetchpriority="high" decoding="async"><figcaption>Document tab with one UAT sample PDF and the filter controls.<span class="caption-note">All (1), New Folder, Upload, Type, Source, Checked, Sort and Reset are visible. The file is a UAT sample PDF marked Test Report. Source and the date columns on that row are empty.</span></figcaption></figure>
+<p>Tick one or more files to open the toolbar:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Action, What it does"><table><thead><tr><th scope="col">Action</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Set Data</td><td>Add compliance data (test, certificate or other) from this file.</td></tr><tr><td>Set Dates &amp; Reminder</td><td>Set issue, expiry and review dates and an email reminder.</td></tr><tr><td>Archive</td><td>Move the file to the Archived tab.</td></tr><tr><td>Download</td><td>Download the file.</td></tr><tr><td>Share</td><td>Create a share link with an expiry period. Copy it or send it by email.</td></tr><tr><td>Rename / Edit Type</td><td>Change the file name or document type.</td></tr><tr><td>Move</td><td>Move the file to a folder.</td></tr><tr><td>Remove</td><td>Remove the file.</td></tr></tbody></table></div>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/02-document-toolbar.jpg" alt="Toolbar after selecting a file." width="1485" height="550" loading="lazy" decoding="async"><figcaption>Toolbar after selecting a file.<span class="caption-note">The selection toolbar shows Set Data, Set Dates &amp; Reminder, Archive, Download, Share, Rename, Edit Type, Move and Remove for the same UAT sample file.</span></figcaption></figure>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/03-document-share.jpg" alt="Share Via Link — choose how long the link stays valid, then Copy or By Email." width="545" height="330" loading="lazy" decoding="async"><figcaption>Share Via Link — choose how long the link stays valid, then Copy or By Email.</figcaption></figure>
+<h3>2. Shipping Detail</h3>
+<p>Shows the length, width, height, gross and net weight, quantity and barcode for the <strong>Selling Unit</strong>, <strong>Inner Carton</strong> and <strong>Outer Carton</strong>. To change them, click <strong>⋮</strong> next to the product name → <strong>Edit product</strong> and update <strong>Shipping Information</strong>. The reviewed screenshot shows 0.00 and N/A in those fields, not filled shipping values.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/04-shipping-detail.jpg" alt="Shipping Detail tab with 0.00 measurements and N/A barcodes for Selling Unit, Inner Carton and Outer Carton." width="1485" height="500" loading="lazy" decoding="async"><figcaption>Shipping Detail tab — empty values (0.00 / N/A).</figcaption></figure>
+<h3>3. Compliance Data</h3>
+<p>Three sections: <strong>Test Data</strong>, <strong>Certificate Data</strong> and <strong>Other</strong>. Click <strong>Add Data</strong> (or <strong>Add</strong> once a section has records).</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/05-compliance-data.jpg" alt="Compliance Data tab before any data is added." width="1485" height="800" loading="lazy" decoding="async"><figcaption>Compliance Data tab before any data is added.<span class="caption-note">Test Data, Certificate Data and Other each show 0 and “There is no data here.”, with Add Data. This is the captured empty state.</span></figcaption></figure>
+<p><strong>Test Data</strong> records one test result:</p>
+<ul><li><strong>Result</strong> (required): Passed, Failed or Report As Is.</li><li><strong>Export Market</strong> (required). For US eFiling, choose <strong>United States (CPSC eFiling submission)</strong>.</li><li><strong>Legislation, Test Item &amp; Citation</strong> (required): type in this field. The reviewed screenshot sets Export Market to Africa and shows <strong>+ Add &#x27;[UAT TEST]&#x27;</strong>. It is not a legislation results list and not a saved Test Data record.</li><li><strong>Report ID</strong>, <strong>Issue Party</strong> (required), <strong>Expiry Date</strong> and <strong>Test Date / Report Date</strong>.</li><li>Link the report under <strong>Existing Product Document</strong> (a file already on the product) or <strong>New Document</strong>.</li></ul>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/07-test-item-search.jpg" alt="In-progress Test Data form. Result is unset, Export Market is Africa, and the legislation field shows + Add &#x27;[UAT TEST]&#x27;. Not a legislation results list and not a saved record." width="1110" height="605" loading="lazy" decoding="async"><figcaption>Test Data form — Export Market set; legislation field showing + Add ‘[UAT TEST]’ (not a completed saved record).</figcaption></figure>
+<figure class="shot"><div class="pending not-captured"><p><strong>Not captured</strong></p><p>File name: <code>08-test-data-filled.jpg</code></p><p>Not captured. A Test Data record was not saved and a report was not linked for this screenshot. This placeholder is not a completed or saved record.</p></div><figcaption>Not captured. A completed Test Data record with a linked report is not in this draft.</figcaption></figure>
+<p>Click <strong>Confirm</strong> to close the Test Data form. This draft does not show a saved Test Data row. Screenshots of a completed record and of the table after saving were not captured, because each needs a real saved record.</p>
+<figure class="shot"><div class="pending not-captured"><p><strong>Not captured</strong></p><p>File name: <code>09-test-data-saved.jpg</code></p><p>Not captured. A saved Test Data row was not created for this screenshot. This placeholder is not proof of a saved record.</p></div><figcaption>Not captured. The Test Data table after saving is not in this draft.</figcaption></figure>
+<p><strong>Certificate Data</strong> works the same way. Fill in the certificate <strong>Type</strong>, <strong>Issue Party</strong>, <strong>Score / Overall Rating</strong>, <strong>Expiry Date</strong> and <strong>Certificate Date</strong>, then link the certificate file. The reviewed screenshot shows that form empty.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/10-certificate-data-form.jpg" alt="Empty Certificate Data form. Type, Issue Party, score and dates are unset." width="1110" height="555" loading="lazy" decoding="async"><figcaption>Empty Certificate Data form.<span class="caption-note">This screenshot does not show filled certificate values.</span></figcaption></figure>
+<h3>4. Quality Requirement</h3>
+<p>Quality Requirement lists what the product must meet, for example test standards or packaging rules. Each requirement has a <strong>Type</strong> (the group) and a <strong>Name</strong>. You can attach compliance data to it as proof, mark it completed, and reuse the list in Product Testing or Document Review.</p>
+<p>The reviewed screenshot is not an empty tab. It shows one requirement with the name hidden, plus Test Plan, ⋯ and Add. The attachment area under that row is empty.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/11-quality-requirement.jpg" alt="Quality Requirement tab with one redacted requirement row, Test Plan, the more menu and Add. Not an empty tab." width="1485" height="265" loading="lazy" decoding="async"><figcaption>Quality Requirement tab with one existing requirement (name redacted); Test Plan, ⋯, and Add visible — not an empty tab.</figcaption></figure>
+<p><strong>4a. Add a requirement yourself</strong></p>
+<ul><li>Click <strong>Add Requirement</strong> (or <strong>Add</strong> at the top right once the list has items).</li><li><strong>Type</strong>: pick an existing type, or type a new one and choose <strong>+ Create “…”</strong>.</li><li><strong>Name</strong>: pick a name from the list for that type. Picking a different Type clears the Name.</li><li>Tick <strong>Mandatory</strong> if the requirement must be met, then click <strong>Confirm</strong>.</li></ul>
+<p>The reviewed Add Requirement screenshot shows Type and Name empty, with Mandatory checked. It is not an example of a filled Type and Name.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/19-requirement-filled.jpg" alt="Add Requirement modal with empty Type and Name fields and Mandatory checked." width="720" height="365" loading="lazy" decoding="async"><figcaption>Add Requirement modal — Type and Name empty, Mandatory checked (not a filled Type and Name example).</figcaption></figure>
+<p><strong>4b. Add requirements from a template (fastest)</strong></p>
+<p>Click <strong>⋯</strong> next to the title → <strong>Templates</strong>:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Option, What it does"><table><thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Apply Template</td><td>Pick a saved template (use <strong>View</strong> to preview it) and click <strong>Apply</strong>. All its requirements are added.</td></tr><tr><td>Save As Template</td><td>Save this product&#x27;s requirements as a template for other products.</td></tr><tr><td>Manage Templates</td><td>See and manage your saved templates.</td></tr></tbody></table></div>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/20-templates-menu.jpg" alt="⋯ → Templates." width="400" height="315" loading="lazy" decoding="async"><figcaption>⋯ → Templates.<span class="caption-note">The open menu shows Import To Product Testing, Import to Document Review, Export As Document, and Templates: Apply Template, Save As Template and Manage Templates.</span></figcaption></figure>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/21-apply-template.jpg" alt="Apply Template — View or Apply a saved template." width="545" height="440" loading="lazy" decoding="async"><figcaption>Apply Template — View or Apply a saved template.<span class="caption-note">The list shows EU Electrical Compliance Template, EU Electrical Toy and new template 001, each with View and Apply. Creator names are blanked in this screenshot.</span></figcaption></figure>
+<p>QMAS shows “&lt;template name&gt; applied”. Requirements are grouped by Type; the number next to the Type is how many requirements it has.</p>
+<p>The screenshot of the list after Apply Template was not captured, because that needs a real apply. The placeholder is not that list.</p>
+<figure class="shot"><div class="pending not-captured"><p><strong>Not captured</strong></p><p>File name: <code>22-requirement-list.jpg</code></p><p>Not captured. Apply Template was not run for this screenshot. This placeholder is not the requirement list after a template is applied.</p></div><figcaption>Requirements after applying a template.</figcaption></figure>
+<p><strong>4c. Attach proof and complete a requirement</strong></p>
+<ul><li>Click <strong>+</strong> on a requirement to open <strong>Attach Compliance Data</strong>. Choose the <strong>Test Data</strong>, <strong>Certificate Data</strong> or <strong>Other</strong> tab, tick the records and click <strong>Confirm</strong>. If a record you just added is missing, click <strong>Reload Data</strong>. To add new data, go to Compliance Data first.</li><li>Click <strong>⌄</strong> to expand a requirement and see the attached data. Click the bin icon to detach it.</li><li>Click <strong>⋯</strong> on a requirement for <strong>Edit</strong>, <strong>Duplicate</strong>, <strong>Upload Document</strong>, <strong>Mark As Completed</strong> and <strong>Remove</strong>.</li><li><strong>Mark As Completed</strong> shows “Requirement Completed” and turns the requirement’s tick green.</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>23-attach-compliance.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Attach Compliance Data — tick the test record.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>24-requirement-attached.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>The attached test data under the requirement.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>25-requirement-row-menu.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>⋯ menu on one requirement.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>26-requirement-completed.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Requirement marked as completed.</figcaption></figure>
+<p><strong>4d. Send requirements to a job</strong></p>
+<ul><li><strong>⋯ → Import To Product Testing</strong>: tick the requirements (or <strong>Select All</strong>) and click <strong>Confirm to Create Job</strong>. Product Testing → Request Quotations opens with this product added, and the requirements appear under <strong>Quality Requirement</strong> in step 2.</li><li><strong>⋯ → Import to Document Review</strong> → <strong>Create Job</strong> or <strong>Create Job for supplier</strong>: opens the matching Document Review form for this product.</li><li><strong>⋯ → Export As Document</strong>: exports the requirement list as a document.</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>29-import-to-pt.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Import To Product Testing — choose requirements, then Confirm to Create Job.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>31-pt-requirement-carried.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>The requirement carried into Product Testing step 2.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>28-import-doc-review.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Import to Document Review → Create Job or Create Job for supplier.</figcaption></figure>
+<p><strong>4e. Test Plan (AI)</strong></p>
+<p>Click <strong>Test Plan</strong> to let AI suggest a test plan. Fill in the <strong>Product Description</strong> (more detail gives better results), <strong>Import Country</strong> and <strong>Product Intended Used By</strong>, upload up to 6 product images, then click <strong>Generate Test Plan</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>27-test-plan.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Test Plan pop-up.</figcaption></figure>
+<h3>5. AI Risk Screening</h3>
+<p>Lists the AI screenings for this product. Click <strong>Add</strong> to start one. The pop-up and results are explained in the <a href="../../ai-insight/">AI Insight</a> guide.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>17-ai-risk-screening.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>AI Risk Screening tab.</figcaption></figure>
+<h3>6. CPSC eFiling</h3>
+<p>Shows the <strong>eFiling Log</strong> for this product. Click <strong>Submit eFiling</strong> to create an eFiling. Before you can sync with CPSC, add your API Key and Secret Key in <strong>Company Profile</strong> (link in the grey note). The full flow is in the <a href="../../efiling/">eFiling</a> guide.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>16-cpsc-efiling.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>CPSC eFiling tab.</figcaption></figure>
+<h3>7. Packaging Detail</h3>
+<p>Lists the packaging components of the product. Click <strong>Create Packaging Component</strong> and fill in:</p>
+<ul><li><strong>Basic Information</strong>: name and description (required), identification no., function, legal role, weight, material type and name, status (Active, Inactive or Draft), and packaging images.</li><li><strong>Dimension</strong>, <strong>Additional Information</strong>, <strong>Supplier Linkage</strong> and <strong>Technical Documentation</strong> (expand each section).</li></ul>
+<p>Click <strong>Confirm</strong>. Use the <strong>Status</strong> filter to show active, inactive or draft components.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>14-packaging.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Packaging Details tab.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>15-packaging-component.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create Packaging Component.</figcaption></figure>
+<h3>8. Import products in bulk</h3>
+<p>On the Product Management list, click <strong>Import Product</strong>. Download the ICW Product template (<strong>download here</strong>), fill it in, upload the Excel file (one file at a time), then click <strong>Next</strong>. Only the ICW template can be used.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>18-import-product.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Import Product.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p><strong>Hide product details</strong> at the top right hides the product card on the left.</p></aside>
+<aside class="tip"><p>Link test reports to Test Data. eFiling can reuse this data when you quick-select test data.</p></aside>
+<aside class="tip"><p>Use requirement <strong>Templates</strong> so similar products get the same requirements.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I add a test result to a product?</dt><dd>Open the product → Compliance Data → Test Data → Add Data. Fill in Result, Export Market, Legislation/Test Item, Issue Party, link the report, then Confirm.</dd>
+<dt>How do I share a product document?</dt><dd>Open the product → Document, tick the file, click Share, choose the link expiry, then Copy or By Email.</dd>
+<dt>How do I add quality requirements to a product?</dt><dd>Open the product → Quality Requirement → Add Requirement, or ⋯ → Templates to apply a saved template.</dd>
+<dt>Where do I record packaging information?</dt><dd>Open the product → Packaging Detail → Create Packaging Component.</dd>
+<dt>How do I import many products?</dt><dd>On Product Management, click Import Product, download the ICW template, fill it in and upload it.</dd>
+<dt>How do I reuse quality requirements for many products?</dt><dd>Open a product → Quality Requirement → ⋯ → Templates → Save As Template. On other products use ⋯ → Templates → Apply Template.</dd>
+<dt>How do I prove a requirement is met?</dt><dd>On the requirement click +, attach the test or certificate data, then ⋯ → Mark As Completed.</dd>
+</dl>
+</article>
+<article class="module" id="efiling"><h1>eFiling — Submit eFiling to CPSC</h1>
+<p class="lede">Create and submit CPSC eFiling certificates for your products, with AI that can fill the form from your test report.</p>
+<p class="status-line">Screenshot slots: 4 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>eFiling</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/efiling">https://qmas.icw.io/efiling</a> → <strong>Add eFiling</strong></dd>
+<dt>Before you start</dt><dd>Set up your CPSC Certifier ID and API keys in Company Profile → <strong>CPSC eFiling - Certifier ID</strong>.</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Make sure your CPSC Certifier ID is set up in Company Profile.</li>
+<li>Open <strong>eFiling</strong> and click <strong>Add eFiling</strong>.</li>
+<li>Upload a report for <strong>AI Extract</strong>, select a document already in QMAS, or <strong>Start With Blank</strong>.</li>
+<li>In <strong>Quick Select eFiling Information</strong>, check the Certifier ID and products, then click <strong>Next</strong>.</li>
+<li>Complete the <strong>eFiling Submission</strong> form, then <strong>Save Draft</strong> or <strong>Preview to Submit</strong>.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open eFiling</h3>
+<p>In the left menu, open <strong>eFiling</strong>. The list shows each eFiling with its log no., product, status, certifier ID, collection ID, product ID and version ID. Use <strong>View</strong> to open one or <strong>Duplicate</strong> to start a new version from it. Click <strong>Add eFiling</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>eFiling list.</figcaption></figure>
+<h3>2. Add documents for AI Extract</h3>
+<ul><li><strong>Upload Report &amp; Auto-fill by AI</strong>: drop a PDF test report. AI extracts the data and fills the form.</li><li><strong>Select Document in QMAS</strong>: choose a document already in Document Management, with no re-upload.</li><li><strong>Start With Blank</strong>: fill the form yourself.</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-ai-extract.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Add Documents for AI Extract.</figcaption></figure>
+<h3>3. Quick Select eFiling Information</h3>
+<p>Choose the <strong>CPSC Certifier ID</strong> and check the products to include. Click <strong>Next</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-quick-select.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Quick Select eFiling Information.</figcaption></figure>
+<h3>4. eFiling Submission form</h3>
+<p>Fill in <strong>eFiling Information</strong> (Certifier ID, collection, point of contact) and <strong>Product Detail</strong>. Use <strong>Link To QMAS Product</strong> to connect the form to a product, or tick <strong>Create As New Product</strong>. Use <strong>+ Add Product</strong> at the top for a multi-product submission.</p>
+<p>Then complete the remaining sections (lab, citations and exclusions). Click <strong>Save Draft</strong> to finish later, or <strong>Preview to Submit</strong> to check and send to CPSC.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-submission-form.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>eFiling Submission form.</figcaption></figure>
+<p>If you close the form without saving, QMAS asks you to confirm. Unsaved values are lost. Saved drafts stay in the eFiling list.</p>
+<h2>Tips</h2>
+<aside class="tip"><p>AI Extract works best with a clear PDF test report.</p></aside>
+<aside class="tip"><p>Within 48 hours you can resubmit with the same Version ID to overwrite. After that, use a new Version ID.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I submit eFiling to CPSC?</dt><dd>Go to eFiling (<a href="https://qmas.icw.io/efiling">https://qmas.icw.io/efiling</a>), click Add eFiling, upload a report for AI Extract or Start With Blank, check the Quick Select information, complete the eFiling Submission form, then Preview to Submit.</dd>
+<dt>Where do I set up my CPSC API key?</dt><dd>Settings (avatar / account control) → Company Profile → CPSC eFiling - Certifier ID.</dd>
+<dt>Can AI fill in the eFiling form?</dt><dd>Yes. In Add eFiling, upload a PDF report under Upload Report &amp; Auto-fill by AI.</dd>
+</dl>
+</article>
+<article class="module" id="supplier-management"><h1>Supplier Management — Create a Supplier</h1>
+<p class="lede">Add a supplier profile so you can link it to products, factories, documents and service jobs.</p>
+<p class="status-line">Screenshot slots: 7 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Supplier / Factory Management</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/supplier-manager/suppliers">https://qmas.icw.io/supplier-manager/suppliers</a> → <strong>Create Supplier</strong></dd>
+<dt>Direct link</dt><dd><a href="https://qmas.icw.io/supplier-manager/create">https://qmas.icw.io/supplier-manager/create</a></dd>
+<dt>Steps</dt><dd>1 Supplier Profile → 2 Classification → 3 Certification → Done</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Open <strong>Supplier / Factory Management</strong>, stay on the <strong>Supplier</strong> tab and click <strong>Create Supplier</strong>.</li>
+<li><strong>Supplier Profile</strong>: company overview and contact.</li>
+<li><strong>Classification</strong> (optional): product category and tags.</li>
+<li><strong>Certification</strong> (optional): add certificates, then click <strong>Done</strong>.</li>
+<li>The supplier profile opens.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open Supplier / Factory Management</h3>
+<p>In the left menu, open <strong>Supplier / Factory Management</strong>. The <strong>Supplier</strong> tab lists your suppliers with their location, category, status, connect status and rating.</p>
+<p>Click <strong>Create Supplier</strong>. You can also use <strong>Import Supplier</strong> to add many suppliers from a file, or <strong>Invite Supplier</strong> to invite a supplier to connect with you on QMAS.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Supplier tab with Import Supplier, Create Supplier and Invite Supplier.</figcaption></figure>
+<h3>2. Supplier Profile — company overview</h3>
+<ul><li><strong>Upload Logo</strong> (optional).</li><li><strong>Supplier ID</strong> (optional): your own reference number.</li><li><strong>Supplier Name</strong>: English name (required) and local-language name (optional).</li><li><strong>Location</strong>: country or region, then province and city.</li><li><strong>Address</strong> and <strong>Website</strong> (optional).</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-step1-overview.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create supplier profile — step 1, Company overview.</figcaption></figure>
+<h3>3. Supplier Profile — contact</h3>
+<p>Under <strong>2. Contact</strong>, fill in the <strong>Contact person</strong>, <strong>Contact Email</strong> and at least one <strong>Email address</strong>. For each email address, choose a type: Company, QA, Sales or Other. Click <strong>Add email</strong> for more. <strong>Contact no.</strong> is optional.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-step1-contact.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Contact section.</figcaption></figure>
+<p>If a required field is empty when you click <strong>Next</strong>, it turns red, for example “Type is required” or “Email is required”.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-email-required.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>The email type and email address are required.</figcaption></figure>
+<h3>4. Classification (optional)</h3>
+<p>Click <strong>Select category</strong> to choose the product categories this supplier offers. Click <strong>Select tag</strong> to add your own tags. Click <strong>Next</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>05-step2-classification.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 2 Classification.</figcaption></figure>
+<h3>5. Certification (optional)</h3>
+<p>Click <strong>Add</strong> to upload a certificate. Choose the certification type, upload the file, and fill in the rating, issue party and dates. Click <strong>Done</strong> to create the supplier.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>06-step3-certification.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 3 Certification.</figcaption></figure>
+<h3>6. Done — supplier profile</h3>
+<p>The supplier profile opens. Use the tabs <strong>Overview</strong>, <strong>Product</strong>, <strong>Factory</strong>, <strong>Certificate</strong>, <strong>Document</strong> and <strong>Compliance Data</strong> to manage everything linked to this supplier. Click the pencil icon next to the name, or next to <strong>Contact</strong>, to edit.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>07-supplier-profile.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Supplier profile — Overview tab.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>Search the Supplier list before you create a supplier so you don’t add a duplicate.</p></aside>
+<aside class="tip"><p>Consistent tags make filtering the list easier later.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I create a new supplier?</dt><dd>Go to Supplier / Factory Management (<a href="https://qmas.icw.io/supplier-manager/suppliers">https://qmas.icw.io/supplier-manager/suppliers</a>), click Create Supplier, fill in Supplier Profile, then Next, Next and Done. Direct link: <a href="https://qmas.icw.io/supplier-manager/create">https://qmas.icw.io/supplier-manager/create</a></dd>
+<dt>Can I add many suppliers at once?</dt><dd>Yes. Click Import Supplier on the Supplier tab.</dd>
+<dt>How do I invite a supplier to QMAS?</dt><dd>Click Invite Supplier on the Supplier tab.</dd>
+<dt>How do I edit a supplier?</dt><dd>Open the supplier from the list and click the pencil icon next to its name or next to Contact.</dd>
+</dl>
+</article>
+<article class="module" id="factory-management"><h1>Factory Management — Create a Factory</h1>
+<p class="lede">Add a factory profile with its location, scale, equipment and certificates, so you can link it to suppliers, products and inspections.</p>
+<p class="status-line">Screenshot slots: 8 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Supplier / Factory Management</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/supplier-manager/suppliers">https://qmas.icw.io/supplier-manager/suppliers</a> → <strong>Factory</strong> tab → <strong>Create Factory</strong></dd>
+<dt>Direct link</dt><dd><a href="https://qmas.icw.io/supplier-manager/factory/create">https://qmas.icw.io/supplier-manager/factory/create</a></dd>
+<dt>Steps</dt><dd>1 Factory Profile → 2 Classification → 3 Certification → Done</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Open <strong>Supplier / Factory Management</strong>, click the <strong>Factory</strong> tab, then <strong>Create Factory</strong>.</li>
+<li><strong>Factory Profile</strong>: overview, scale, equipment and contact.</li>
+<li><strong>Classification</strong> (optional): product category and tags.</li>
+<li><strong>Certification</strong> (optional): add audit reports or certificates, then click <strong>Done</strong>.</li>
+<li>The factory profile opens.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open the Factory tab</h3>
+<p>In the left menu, open <strong>Supplier / Factory Management</strong> and click the <strong>Factory</strong> tab. It lists your factories with location, status and audit certificates.</p>
+<p>Click <strong>Create Factory</strong>, or <strong>Import Factory</strong> to add many factories from a file.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Factory tab with Import Factory and Create Factory.</figcaption></figure>
+<h3>2. Factory Profile — overview</h3>
+<ul><li><strong>Upload Logo</strong> and <strong>Factory ID</strong> (optional).</li><li><strong>Factory Name</strong>: English name (required) and local-language name (optional).</li><li><strong>Location</strong>: country or region, then province and city.</li><li><strong>Address</strong>: English address (required) and local-language address (optional).</li><li><strong>Website</strong> (optional).</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-step1-overview.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create factory profile — step 1, Factory Overview.</figcaption></figure>
+<h3>3. Factory Profile — scale and equipment (optional)</h3>
+<p><strong>Factory Scale</strong>: outsource production, total employees, number of workers, factory size (square meters) and annual volume.</p>
+<p>The equipment section lists machines and <strong>Automation Production Line</strong> entries: machine name, brand and model no., quantity and monthly production volume. Click <strong>Add</strong> for more rows.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-step1-scale.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>2. Factory Scale (optional).</figcaption></figure>
+<h3>4. Factory Profile — contact</h3>
+<p>Under <strong>4. Contact</strong>, fill in the <strong>Contact person</strong> and an <strong>Email address</strong> with its type (Company, QA, Sales or Other). <strong>Contact no.</strong> is optional. Click <strong>Next</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-step1-contact.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Contact section and Next.</figcaption></figure>
+<h3>5. Classification (optional)</h3>
+<p>Click <strong>Select category</strong> for the product categories this factory makes, and <strong>Select tag</strong> for your own tags. Click <strong>Next</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>05-step2-classification.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 2 Classification.</figcaption></figure>
+<h3>6. Certification (optional)</h3>
+<p>Click <strong>Add</strong> to attach an audit report or certificate. In <strong>Add Certification</strong>, choose the certification type, upload the file (JPG, JPEG, PNG, PDF, DOC or XLS), and fill in the score or overall rating, issue party, issue date and expiry date. Click <strong>Add</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>07-add-certification.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Add Certification pop-up.</figcaption></figure>
+<p>Click <strong>Done</strong> to create the factory.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>06-step3-certification.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 3 Certification.</figcaption></figure>
+<h3>7. Done — factory profile</h3>
+<p>QMAS shows “Create factory successfully!” and opens the factory profile. Use the tabs <strong>Overview</strong>, <strong>Supplier</strong>, <strong>Certificate</strong>, <strong>Document</strong> and <strong>Compliance Data</strong> to manage what is linked to this factory.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>08-factory-profile.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Factory profile — Overview tab.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>Set the expiry date on audit certificates so you can see when they need renewing.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I create a new factory?</dt><dd>Go to Supplier / Factory Management, click the Factory tab, then Create Factory. Fill in Factory Profile, then Next, Next and Done. Direct link: <a href="https://qmas.icw.io/supplier-manager/factory/create">https://qmas.icw.io/supplier-manager/factory/create</a></dd>
+<dt>Can I add many factories at once?</dt><dd>Yes. Click Import Factory on the Factory tab.</dd>
+<dt>Where do I upload a factory audit certificate?</dt><dd>In step 3 Certification of Create Factory, or later from the Certificate tab of the factory profile.</dd>
+</dl>
+</article>
+<article class="module" id="document-management"><h1>Document Management — Upload a Document</h1>
+<p class="lede">Upload a compliance document, link it to products, suppliers or factories, set its dates and reminders, and add compliance data.</p>
+<p class="status-line">Screenshot slots: 6 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Document Management</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/document-management">https://qmas.icw.io/document-management</a> → <strong>Upload</strong></dd>
+<dt>Pop-up tabs</dt><dd>Save To → Dates &amp; Reminder → Compliance Data → Confirm</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Open <strong>Document Management</strong> and click <strong>Upload</strong>, then choose one or more files from your computer.</li>
+<li>In <strong>Upload Document</strong>, choose the document <strong>Type</strong>.</li>
+<li><strong>Save To</strong>: link the document to suppliers, factories or products.</li>
+<li><strong>Dates &amp; Reminder</strong>: set issue, expiry and review dates and an email reminder.</li>
+<li><strong>Compliance Data</strong>: add test data, certificate data or other data. Click <strong>Confirm</strong>.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open Document Management</h3>
+<p>In the left menu, open <strong>Document Management</strong>. The tabs show <strong>All</strong>, <strong>Pending Review</strong>, <strong>Expired</strong>, <strong>Archived</strong> and <strong>Trash</strong> documents. Click <strong>Upload</strong> at the top right and choose your file.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Document Management list with the Upload button.</figcaption></figure>
+<h3>2. Choose the document type</h3>
+<p>The <strong>Upload Document</strong> pop-up shows the file name. Click the pencil icon to rename it. Under <strong>Type</strong>, type or select a document type, for example <strong>Test Report</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-upload-modal.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Upload Document pop-up.</figcaption></figure>
+<h3>3. Save To — link the document</h3>
+<p>On the <strong>Save To</strong> tab, click <strong>Add Supplier</strong>, <strong>Add Factory</strong> or <strong>Add Product</strong>. Select the items in the pop-up and click <strong>Confirm</strong>. A document can be linked to several items. Click <strong>Remove</strong> to unlink one.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-save-to.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>The document linked to a product.</figcaption></figure>
+<h3>4. Dates &amp; Reminder</h3>
+<p>Set the <strong>Issue Date</strong>, <strong>Expiry Date</strong> and <strong>Review Date</strong>. Under <strong>Email Reminder</strong>, choose <strong>On Expiry Date</strong>, <strong>On Review Date</strong> or <strong>Custom</strong> to get an email reminder. Use <strong>Clear All Settings</strong> to start again.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-dates-reminder.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Dates &amp; Reminder tab.</figcaption></figure>
+<h3>5. Compliance Data</h3>
+<p>Click <strong>Edit</strong> next to <strong>Test Data</strong>, <strong>Certificate Data</strong> or <strong>Other</strong> to record the details from the document, such as test items and results or certificate numbers.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>05-compliance-data.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Compliance Data tab.</figcaption></figure>
+<h3>6. Confirm</h3>
+<p>Click <strong>Confirm</strong>. QMAS shows a success message and the document appears at the top of the list, with its type and the number of linked products, suppliers and factories.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>06-uploaded.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>The uploaded document at the top of the list.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>Set an expiry date and reminder for certificates and test reports so you know before they expire.</p></aside>
+<aside class="tip"><p>You can also upload documents from a product, supplier or factory profile.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I upload a document?</dt><dd>Go to Document Management (<a href="https://qmas.icw.io/document-management">https://qmas.icw.io/document-management</a>), click Upload, choose the file, set the Type, link it under Save To, then click Confirm.</dd>
+<dt>How do I get a reminder before a document expires?</dt><dd>In the Upload Document pop-up, open Dates &amp; Reminder, set the Expiry Date, then choose an Email Reminder option.</dd>
+<dt>Where can I see expired documents?</dt><dd>Open the Expired tab in Document Management.</dd>
+</dl>
+</article>
+<article class="module" id="qc-inspection"><h1>QC Inspection — Get a QC Inspection Quote via ICW</h1>
+<p class="lede">Ask ICW to quote and arrange a third-party QC inspection for your products.</p>
+<p class="status-line">Screenshot slots: 9 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>QC Inspection</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/inspection">https://qmas.icw.io/inspection</a> → <strong>Create Job</strong> → <strong>Get QC inspection quote via ICW</strong></dd>
+<dt>Direct link</dt><dd><a href="https://qmas.icw.io/inspection/jobs/new">https://qmas.icw.io/inspection/jobs/new</a></dd>
+<dt>Steps</dt><dd>1 Inspection Requirement → 2 Report Details → 3 Supplier &amp; Factory → 4 Additional Information → 5 Review &amp; Submit</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Open <strong>QC Inspection</strong>, click <strong>Create Job</strong>, choose <strong>Get QC inspection quote via ICW</strong> and click <strong>Continue</strong>.</li>
+<li><strong>Inspection Requirement</strong>: date, type, level, AQL, budget and provider preference.</li>
+<li><strong>Report Details</strong>: products and POs to inspect.</li>
+<li><strong>Supplier &amp; Factory</strong>: who makes the goods and where the inspection takes place.</li>
+<li><strong>Additional Information</strong>: files and remarks.</li>
+<li><strong>Review &amp; Submit</strong>: check everything and click <strong>Submit</strong>.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open QC Inspection</h3>
+<p>In the left menu, open <strong>QC Inspection</strong>. The charts show inspection results, service providers and job types. Tabs list <strong>All Job</strong>, <strong>3rd Party Job</strong>, <strong>Inhouse Record</strong> and <strong>Draft</strong>. Click <strong>Create Job</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>QC Inspection list with Create Job.</figcaption></figure>
+<h3>2. Choose what you are looking for</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Option, Use it when"><table><thead><tr><th scope="col">Option</th><th scope="col">Use it when</th></tr></thead><tbody><tr><td>Get QC inspection quote via ICW</td><td>You want ICW to arrange a third-party inspector. This guide.</td></tr><tr><td>Start internal inspection</td><td>Your own QC team will inspect. See the Internal QC Inspection guide.</td></tr><tr><td>Add inspection record</td><td>The inspection is already done and you want to record the result.</td></tr></tbody></table></div>
+<p>Choose <strong>Get QC inspection quote via ICW</strong> and click <strong>Continue</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-looking-to.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create New Job — Looking to…</figcaption></figure>
+<h3>3. Inspection Requirement</h3>
+<ul><li><strong>Inspection Date</strong>.</li><li><strong>Inspection type</strong>: Final Random, Loading, During Production, Re-Inspection, Initial Production, Fabric, 100% or Vendor Own Inspection.</li><li><strong>Inspection Level</strong>: General Inspection Level I–III or Special Level S-1 to S-4.</li><li><strong>Inspection AQL</strong>: Critical, Major and Minor levels. They apply to all products in this job by default.</li><li><strong>Target Budget</strong> (currency and amount) and <strong>Service Provider Preference</strong>. Leave “No preference, ICW will match you with the best inspector” selected if you have no preferred provider.</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-step1-filled.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 1 filled in. Click Save to keep a draft, or Next.</figcaption></figure>
+<h3>4. Report Details</h3>
+<p>Click <strong>Add Product</strong>, search for the product, click <strong>Select</strong>, then <strong>Confirm</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>05-select-product.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Select related product(s) — search by name, item no., supplier or factory.</figcaption></figure>
+<p>For each product, fill in the <strong>PO</strong> details: customer name, customer PO #, PO #, order quantity and number of cartons. Use <strong>Add New PO</strong> for more POs, <strong>Add Product</strong> for more products, and <strong>Add Report</strong> or <strong>Duplicate Report</strong> if you need separate reports. Tick <strong>Signed Sample Available</strong> if there is one. Click <strong>Next</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>06-step2-report.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Report 1 with one product and its PO.</figcaption></figure>
+<h3>5. Supplier &amp; Factory</h3>
+<p>Click <strong>Add Supplier</strong> and select the supplier. Then click <strong>Select Existing Factory</strong> and choose the factory where the inspection will take place. Check the contact person, phone and email for each. Click <strong>Next</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>07-step3-supplier-factory.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Supplier and factory selected, with contact details.</figcaption></figure>
+<h3>6. Additional Information</h3>
+<p>Upload reference files such as tech packs or previous reports, and write any special requirement in <strong>Remark</strong>. Click <strong>Next</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>08-step4-additional.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 4 Additional Information.</figcaption></figure>
+<h3>7. Review &amp; Submit</h3>
+<p>Check the summary. Click <strong>Edit</strong> on any section to change it. Click <strong>Submit</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>09-step5-review.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 5 Review &amp; Submit.</figcaption></figure>
+<h3>8. Done — job detail</h3>
+<p>QMAS shows “Create job successfully!” and opens the job. It has a Job ID and starts as <strong>Under Review</strong>. The <strong>Quotes</strong>, <strong>Reports</strong>, <strong>Attachments</strong> and <strong>Invoices</strong> tabs follow the job.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>10-job-detail.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>The new inspection job.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>Click <strong>Save</strong> on any step to keep a draft. Drafts are on the <strong>Draft</strong> tab.</p></aside>
+<aside class="tip"><p>Submit well before the inspection date so there is time for quoting and booking.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I book a third-party QC inspection?</dt><dd>Go to QC Inspection (<a href="https://qmas.icw.io/inspection">https://qmas.icw.io/inspection</a>), click Create Job, choose Get QC inspection quote via ICW, then complete the 5 steps and Submit.</dd>
+<dt>What is the difference between a QC inspection quote and an internal inspection?</dt><dd>A quote via ICW uses a third-party inspector arranged by ICW. An internal inspection is done by your own QC team (Internal QC Inspection).</dd>
+<dt>Can I save a QC job and finish it later?</dt><dd>Yes. Click Save on any step. The job is kept on the Draft tab.</dd>
+</dl>
+</article>
+<article class="module" id="internal-qc-inspection"><h1>Internal QC Inspection — Start an Internal Inspection</h1>
+<p class="lede">Schedule an inspection that your own QC team carries out, without a third-party provider.</p>
+<p class="status-line">Screenshot slots: 3 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Internal QC Inspection</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/inspection/internal/list">https://qmas.icw.io/inspection/internal/list</a> → <strong>Create Job</strong></dd>
+<dt>Direct link</dt><dd><a href="https://qmas.icw.io/inspection/jobs/new?type=internalInspection">https://qmas.icw.io/inspection/jobs/new?type=internalInspection</a></dd>
+<dt>Steps</dt><dd>1 Inspection Requirement → 2 Report Details → 3 Supplier &amp; Factory → 4 Additional Information → 5 Review &amp; Submit</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Open <strong>Internal QC Inspection</strong> and click <strong>Create Job</strong>. <strong>Start internal inspection</strong> is already selected. Click <strong>Continue</strong>.</li>
+<li><strong>Inspection Requirement</strong>: date, type, level and AQL.</li>
+<li><strong>Report Details</strong>, <strong>Supplier &amp; Factory</strong> and <strong>Additional Information</strong> work the same way as in the QC Inspection quote flow.</li>
+<li><strong>Review &amp; Submit</strong>: check everything and click <strong>Submit</strong>.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open Internal QC Inspection</h3>
+<p>In the left menu, open <strong>Internal QC Inspection</strong>. The tabs show <strong>All Job</strong>, <strong>Onsite Job Calendar</strong> and <strong>Draft</strong>. Click <strong>Create Job</strong>. To add many jobs at once, use <strong>Import Job</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Internal QC Inspection list with Import Job and Create Job.</figcaption></figure>
+<h3>2. Start internal inspection</h3>
+<p><strong>Start internal inspection</strong> is selected. Click <strong>Continue</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-looking-to.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create New Job — Start internal inspection selected.</figcaption></figure>
+<h3>3. Inspection Requirement</h3>
+<p>Choose the <strong>Inspection Date</strong>, <strong>Inspection type</strong>, <strong>Inspection Level</strong> and the <strong>AQL</strong> (Critical, Major, Minor). There is no budget or service provider, because your own team does the inspection. Click <strong>Next</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-step1-requirement.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Step 1 Inspection Requirement for an internal inspection.</figcaption></figure>
+<h3>4. Steps 2–5</h3>
+<p>The next steps are the same as in the QC Inspection quote flow. See the <a href="../../qc-inspection/">QC Inspection</a> guide for those steps.</p>
+<ul><li><strong>Report Details</strong>: add products and their POs.</li><li><strong>Supplier &amp; Factory</strong>: select the supplier and the factory to inspect.</li><li><strong>Additional Information</strong>: upload reference files and add remarks.</li><li><strong>Review &amp; Submit</strong>: check the summary, then click <strong>Submit</strong>. The job opens with its Job ID.</li></ul>
+<h2>Tips</h2>
+<aside class="tip"><p>If you need a third-party inspector instead, use QC Inspection → Create Job → <strong>Get QC inspection quote via ICW</strong>.</p></aside>
+<aside class="tip"><p>Click <strong>Save</strong> on any step to keep a draft.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I start an internal inspection?</dt><dd>Go to Internal QC Inspection (<a href="https://qmas.icw.io/inspection/internal/list">https://qmas.icw.io/inspection/internal/list</a>), click Create Job, keep Start internal inspection selected, click Continue and complete the 5 steps. Direct link: <a href="https://qmas.icw.io/inspection/jobs/new?type=internalInspection">https://qmas.icw.io/inspection/jobs/new?type=internalInspection</a></dd>
+<dt>Can I import internal inspection jobs?</dt><dd>Yes. Click Import Job on the Internal QC Inspection list.</dd>
+</dl>
+</article>
+<article class="module" id="document-review"><h1>Document Review — Create a Review Job</h1>
+<p class="lede">Get compliance documents (CPC, GCC, DoC, test reports, TCF) reviewed by a lab or by yourself, whether you upload them or your supplier does.</p>
+<p class="status-line">Screenshot slots: 7 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>Document Review</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/document-review">https://qmas.icw.io/document-review</a> → <strong>Create Job</strong> or <strong>Create Job for supplier</strong></dd>
+<dt>Direct links</dt><dd>You upload: <a href="https://qmas.icw.io/document-review/upload-document/create">https://qmas.icw.io/document-review/upload-document/create</a> · Supplier uploads: <a href="https://qmas.icw.io/document-review/upload-document/request">https://qmas.icw.io/document-review/upload-document/request</a></dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Choose the flow that fits (table below).</li>
+<li>Fill in <strong>Job Type</strong>, <strong>Product Information</strong> and the documents to review.</li>
+<li>For a supplier job, choose the <strong>connected supplier</strong> who will upload.</li>
+<li>Choose a <strong>partner</strong> (optional) and the <strong>Service Provider</strong>: a connected lab, or <strong>Job Owner Review</strong> to review yourself.</li>
+<li>Click <strong>Confirm</strong>. Follow the status on the Document Review list until the review is concluded.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Choose your flow</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Flow, Button, Who uploads, Who reviews"><table><thead><tr><th scope="col">Flow</th><th scope="col">Button</th><th scope="col">Who uploads</th><th scope="col">Who reviews</th></tr></thead><tbody><tr><td>A. Upload for lab review</td><td>Create Job</td><td>You</td><td>Connected lab</td></tr><tr><td>B. Supplier uploads for lab review</td><td>Create Job for supplier</td><td>Your connected supplier</td><td>Connected lab (Connected Provider)</td></tr><tr><td>C. Supplier uploads for your own review</td><td>Create Job for supplier</td><td>Your connected supplier</td><td>You (Job Owner Review)</td></tr></tbody></table></div>
+<p>In the left menu, open <strong>Document Review</strong>. The dashboard shows service providers, jobs over 12 months, status and reject reasons. The tabs <strong>All Job</strong>, <strong>My Job</strong> and <strong>View Only</strong> list the jobs.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Document Review with Create Job and Create Job for supplier.</figcaption></figure>
+<h3>2. Job Type</h3>
+<p>Choose the <strong>Job Type</strong> (for example Document Review) and tick <strong>CPC/GCC/DOC Review</strong> and/or <strong>Compliance Review</strong>. Optionally fill in <strong>Buyer Name</strong>, <strong>Service Required</strong> (Regular by default) and <strong>Submission Remark</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-create-job-top.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create Job — 1. Job Type and 2. Product Information.</figcaption></figure>
+<h3>3. Product Information</h3>
+<p>Keep <strong>Select Product For Review = Yes</strong>. Click <strong>Existing Product</strong> to pick products, or <strong>New Product</strong> to create one. For each product, check the <strong>Basic Information</strong>, then fill in <strong>Additional Information</strong>: Test Age Grade, Label Age Grade, Export Market and Country Of Origin are required.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-product-info.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Basic Information and Additional Information for the selected product.</figcaption></figure>
+<p>Below that you can add <strong>PO Information</strong>, upload <strong>Product Pictures &amp; Reference Documents</strong>, set the <strong>TCF Requests</strong> (choose document types or import a TCF template) and add <strong>Quality Requirements</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-tcf-requirements.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>TCF Requests and Requirements.</figcaption></figure>
+<h3>4. Documents for Review, partner and provider (Flow A)</h3>
+<p>Under <strong>Documents for Review</strong>, click <strong>Upload files</strong> (at least one file is required). The reviewer gives a conclusion only on documents in this section.</p>
+<p><strong>Select Partner</strong> (optional): choose Yes to let one partner view the job.</p>
+<p><strong>Service Provider</strong>: choose the connected lab under <strong>Connected Provider</strong>. Click <strong>Confirm</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>05-docs-partner-provider.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Documents for Review, Select Partner and Service Provider.</figcaption></figure>
+<h3>5. Create Job for supplier (Flows B and C)</h3>
+<p>Click <strong>Create Job for supplier</strong>. Fill in Job Type and Product Information as above. Then:</p>
+<ul><li><strong>Select Connected Supplier</strong>: choose the supplier who will upload. Only suppliers connected with you on QMAS are listed. See Supplier Management → Invite Supplier.</li><li><strong>Select Partner</strong> (optional).</li><li><strong>Service Provider</strong>: choose <strong>Connected Provider</strong> and a lab for Flow B, or <strong>Job Owner Review</strong> for Flow C.</li><li>Click <strong>Confirm</strong>. The supplier gets a notification to upload the documents.</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>06-supplier-job-top.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create Job for Supplier.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>07-supplier-job-provider.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Select Connected Supplier, Select Partner and Service Provider (Connected Provider or Job Owner Review).</figcaption></figure>
+<h3>6. Follow the review</h3>
+<ul><li>Flow A and B: the job shows <strong>Being Processed</strong> while the lab reviews. The lab concludes each document as <strong>Approve</strong>, <strong>Reject</strong> or <strong>Waiting for Additional Information</strong>.</li><li>Flow C: when the supplier has uploaded, open the job, click <strong>View detail</strong>, and conclude each document yourself with <strong>Approve</strong>, <strong>Reject</strong>, <strong>N/A</strong> or <strong>Waiting for additional information</strong>. Click <strong>Confirm</strong>.</li><li>If a document is rejected or more information is needed, read the comment and upload a corrected file.</li><li>When all documents are approved, complete the job.</li></ul>
+<h2>Tips</h2>
+<aside class="tip"><p>Flows B and C need a connected supplier. Invite the supplier first from Supplier / Factory Management → Invite Supplier.</p></aside>
+<aside class="tip"><p>Save a TCF document-type list as a template so you can reuse it in the next job.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I send documents to a lab for review?</dt><dd>Go to Document Review (<a href="https://qmas.icw.io/document-review">https://qmas.icw.io/document-review</a>), click Create Job, fill in Job Type and Product Information, upload files under Documents for Review, choose the lab under Service Provider, and click Confirm.</dd>
+<dt>How do I ask my supplier to upload documents for review?</dt><dd>Click Create Job for supplier on Document Review, choose the connected supplier, then choose Connected Provider (lab review) or Job Owner Review (you review) and click Confirm.</dd>
+<dt>What does Job Owner Review mean?</dt><dd>You review the supplier&#x27;s documents yourself instead of a lab.</dd>
+<dt>Why can&#x27;t I find my supplier in Select Connected Supplier?</dt><dd>Only suppliers connected with you on QMAS are listed. Invite them from Supplier / Factory Management → Invite Supplier.</dd>
+</dl>
+</article>
+<article class="module" id="ai-insight"><h1>AI Insight — Run an AI Risk Screening</h1>
+<p class="lede">Upload product photos and let AI identify compliance risks and requirements for your import region. You get a compliance guideline report (PDF).</p>
+<p class="status-line">Screenshot slots: 4 pending privacy review. The written steps are included.</p>
+<dl class="meta">
+<dt>Module</dt><dd>AI Insight (shown as “AI Risk Screening” in the QMAS menu)</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/ai-risk-screening">https://qmas.icw.io/ai-risk-screening</a> → <strong>Add</strong>, or a product profile → <strong>AI Risk Screening</strong> → <strong>Add</strong></dd>
+<dt>Uses</dt><dd>Tokens. Your balance shows as <strong>Available Token</strong> in the pop-up.</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
+<h2>Overview</h2>
+<ol class="overview">
+<li>Open <strong>AI Risk Screening</strong> from the left menu (or from a product profile) and click <strong>Add</strong>.</li>
+<li>Upload up to 6 product photos and choose the <strong>Import Region</strong> and <strong>Output Mode</strong>.</li>
+<li>Click <strong>Verify Information</strong> (recommended) or <strong>Skip Verify &amp; Generate Report</strong>.</li>
+<li>When the status is <strong>Completed</strong>, open the report from the list.</li>
+</ol>
+<h2>Step-by-step</h2>
+<h3>1. Open AI Risk Screening</h3>
+<p>In the left menu, open <strong>AI Risk Screening</strong>. The list shows every screening with its import region, output mode (Full or Lite), status and upload date. Click <strong>Add</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>01-list.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>AI Risk Screening list.</figcaption></figure>
+<p>You can also start from a product: open the product profile, choose <strong>AI Risk Screening</strong> in its left menu, then click <strong>Add</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-product-profile-entry.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>AI Risk Screening inside a product profile.</figcaption></figure>
+<h3>2. Fill in the screening</h3>
+<ul><li><strong>Product Page URL</strong> (optional): a link to the product page.</li><li><strong>Product Images</strong> (required): up to 6 photos from different views. PNG, JPEG, JPG, WEBP, GIF, AVIF or HEIC.</li><li><strong>Import Region</strong> (required): where the product will be sold.</li><li><strong>Output Mode</strong> (required): <strong>Full</strong> or <strong>Lite</strong> report.</li><li><strong>Screening Age Grade</strong> (optional): the age grade to screen against, for example 3+ or 8+.</li></ul>
+<p><strong>Available Token</strong> shows your balance.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-new-screening.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>New AI Risk Screening pop-up.</figcaption></figure>
+<h3>3. Verify and generate</h3>
+<p>Click <strong>Verify Information</strong> (recommended: verification improves accuracy and gives a more reliable report), or <strong>Skip Verify &amp; Generate Report</strong> to go straight to the report.</p>
+<p>The new screening appears in the list. When its status is <strong>Completed</strong>, the report is ready. Click the <strong>ⓘ</strong> icon to see the screening details.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-screening-details.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Screening details: product name, import region, age grade, categories, materials, battery/AC/food-contact flags and output mode.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>Use clear photos from several angles (front, back, label, packaging) for a better result.</p></aside>
+<aside class="tip"><p>Check your Available Token balance before you generate.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I run an AI risk screening / AI Insight?</dt><dd>Go to AI Risk Screening (<a href="https://qmas.icw.io/ai-risk-screening">https://qmas.icw.io/ai-risk-screening</a>), click Add, upload product photos, choose Import Region and Output Mode, then click Verify Information or Skip Verify &amp; Generate Report.</dd>
+<dt>Where do I see my token balance?</dt><dd>In the AI Risk Screening pop-up, under Available Token.</dd>
+<dt>What is the difference between Full and Lite?</dt><dd>They are the two report output modes. Choose one in Output Mode when you add a screening.</dd>
+</dl>
+</article>
+</main>
+<footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>
+</body>
+</html>
