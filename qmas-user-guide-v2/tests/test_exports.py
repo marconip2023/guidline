@@ -234,6 +234,14 @@ class GuideContentTests(unittest.TestCase):
 
         css = (ROOT / "assets" / "site.css").read_text(encoding="utf-8")
         self.assertIn(".site-header.is-wide", css)
+        self.assertIn("--heading: #111827", css)
+        self.assertIn("h1 { color: var(--heading);", css)
+        self.assertIn(".guide-card-title { color: var(--heading);", css)
+        self.assertIn("a { color: var(--link);", css)
+        self.assertGreaterEqual(_contrast("#111827", "#ffffff"), 7)
+        self.assertGreaterEqual(_contrast("#1f2937", "#f7faff"), 7)
+        self.assertGreaterEqual(_contrast("#4b5563", "#ffffff"), 4.5)
+        self.assertGreaterEqual(_contrast("#0041b8", "#ffffff"), 4.5)
         self.assertIn("anchor(--menu-button bottom)", css)
         self.assertIn("inset-block-start: 4.75rem", css)
         self.assertIn("min-block-size: 44px", css)
@@ -280,6 +288,21 @@ class GuideContentTests(unittest.TestCase):
                     resolved.exists() or (resolved / "index.html").exists(),
                     f"{path.name} -> {raw}",
                 )
+
+
+def _channel(value: str) -> float:
+    number = int(value, 16) / 255
+    return number / 12.92 if number <= 0.04045 else ((number + 0.055) / 1.055) ** 2.4
+
+
+def _contrast(foreground: str, background: str) -> float:
+    def luminance(hex_color: str) -> float:
+        red, green, blue = hex_color[1:3], hex_color[3:5], hex_color[5:7]
+        return 0.2126 * _channel(red) + 0.7152 * _channel(green) + 0.0722 * _channel(blue)
+
+    lighter = max(luminance(foreground), luminance(background))
+    darker = min(luminance(foreground), luminance(background))
+    return (lighter + 0.05) / (darker + 0.05)
 
 
 def images(module):
