@@ -123,9 +123,17 @@
       "h": "7. Done — factory profile",
       "body": [
         "QMAS shows “Create factory successfully!” and opens the factory profile. Use the tabs **Overview**, **Supplier**, **Certificate**, **Document** and **Compliance Data** to manage what is linked to this factory.",
+        "The reviewed screenshot is a readonly Overview of an existing profile. Product Category, Tag, Factory Capacity and Factory Scale are empty. It is not the Add Certification pop-up, and no record was written for this shot.",
         {
           "img": "08-factory-profile.jpg",
-          "caption": "Factory profile — Overview tab."
+          "caption": "Factory profile — Overview tab.",
+          "caption_note": "Readonly Overview. Category, Tag, Capacity and Scale are empty. Created and Modified dates stay visible. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot."
+        },
+        {
+          "img": "supplemental-profile-certificate.jpg",
+          "caption": "Factory profile — Certificate tab, empty (No Data).",
+          "caption_note": "Supplementary screenshot, not one of the 98 inventory slots. Genuine empty Certificate tab on the same profile. This is not Step 3 Certification or the Add Certification pop-up. No record was created or changed.",
+          "counts_toward_98": false
         }
       ]
     }

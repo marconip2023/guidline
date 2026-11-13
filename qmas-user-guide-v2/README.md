@@ -20,7 +20,7 @@ Fourteen modules. Twelve keep the published pages and 98 screenshot slots. Facto
 
 Help Center additions from 2026-11-13 are appended. They are marked source-documented, dev-verified, or gap. They do not replace earlier steps, captions, or reviewed images.
 
-Reviewed inventory screenshots, 54 of 98. Forty-four slots are still pending. Four supplementary images are not part of the 98: one Factory validation image and three QC views (blank step 1, 3rd Party Job tab, Draft tab). Later batches added 21 inventory slots, including the AI Risk Screening list and blank pop-up (still filed under the AI Insight path) and the eFiling list and blank Add Documents dialog. No screening, extraction, or submission was run for those shots. Those files are 1280×800 desktop captures cropped to 1280×714. They are not high-resolution. Matching 1920 files were 1.5× upscales and were not used. Earlier reviewed files were not replaced.
+Reviewed inventory screenshots, 56 of 98. Forty-two slots are still pending. Six supplementary images are not part of the 98: one Factory validation image, three QC views, and two empty profile Certificate tabs. Those Certificate tabs are not the create-certification wizard. The newest files are 1280×800 desktop captures cropped to 1280×714. They are not high-resolution. Matching 1920 files were 1.5× upscales and were not used. Earlier reviewed files were not replaced. No records were written for the profile shots.
 
 Reviewed replacement screenshots, 45 inventory files:
 

@@ -514,6 +514,46 @@
       "bytes": 68139,
       "counts_toward_98": true,
       "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "07-supplier-profile.jpg",
+      "sha256": "c73333dcff52e0aec3944cf91719a2e3ac13e9a9865beaf27c4b297741c08e3a",
+      "width": 1280,
+      "height": 714,
+      "bytes": 75024,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used. Readonly; no QMAS record was written."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "supplemental-profile-certificate.jpg",
+      "sha256": "3945a85668260fa0f5125c3ad2bb79adda15e76411cfc4863c309547d36fe908",
+      "width": 1280,
+      "height": 714,
+      "bytes": 56981,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used. Readonly; no QMAS record was written."
+    },
+    {
+      "slug": "factory-management",
+      "file": "08-factory-profile.jpg",
+      "sha256": "57fe141f310eb82f972cbc1b29cc75ccdeb92778b135a7cea6b35dc014375bc8",
+      "width": 1280,
+      "height": 714,
+      "bytes": 76575,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used. Readonly; no QMAS record was written."
+    },
+    {
+      "slug": "factory-management",
+      "file": "supplemental-profile-certificate.jpg",
+      "sha256": "76672e6b1ad7af2259ce1a041b01ab880e7c6546b1429ae0697db57a26dd10be",
+      "width": 1280,
+      "height": 714,
+      "bytes": 56697,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used. Readonly; no QMAS record was written."
     }
   ]
 }

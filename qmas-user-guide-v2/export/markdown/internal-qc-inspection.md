@@ -101,7 +101,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Help Center finding
 

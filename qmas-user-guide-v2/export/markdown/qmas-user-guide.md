@@ -165,7 +165,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Source-documented — create path (Help Center updated 2026-11-04)
 
@@ -295,7 +295,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Dev-verified — already in the steps above
 
@@ -522,7 +522,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Dev-verified — list filters (2026-11-09)
 
@@ -892,7 +892,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Dev-verified — already in the steps above (2026-11-09)
 
@@ -1077,7 +1077,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Help Center finding
 
@@ -1188,11 +1188,21 @@ Click **Add** to upload a certificate. Choose the certification type, upload the
 
 The supplier profile opens. Use the tabs **Overview**, **Product**, **Factory**, **Certificate**, **Document** and **Compliance Data** to manage everything linked to this supplier. Click the pencil icon next to the name, or next to **Contact**, to edit.
 
-> **Image pending privacy review:** `07-supplier-profile.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+The reviewed screenshot is a readonly Overview of an existing profile. Product Category, Tag and Rating are empty. It is not the create-certification wizard, and no record was written for this shot.
+
+![Supplier profile — Overview tab.](images/supplier-management/07-supplier-profile.jpg)
+
 
 *Supplier profile — Overview tab.*
+
+Readonly Overview. Category, Tag and Rating are empty. Created and Modified dates stay visible. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot.
+
+![Supplier profile — Certificate tab, empty (No Data).](images/supplier-management/supplemental-profile-certificate.jpg)
+
+
+*Supplier profile — Certificate tab, empty (No Data).*
+
+Supplementary screenshot, not one of the 98 inventory slots. Genuine empty Certificate tab on the same profile. This is not Step 3 Certification. No record was created or changed.
 
 
 ## Tips
@@ -1226,7 +1236,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Source-documented — profile, import, and invite (last edited 2026-01-16)
 
@@ -1377,11 +1387,21 @@ Click **Done** to create the factory.
 
 QMAS shows “Create factory successfully!” and opens the factory profile. Use the tabs **Overview**, **Supplier**, **Certificate**, **Document** and **Compliance Data** to manage what is linked to this factory.
 
-> **Image pending privacy review:** `08-factory-profile.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+The reviewed screenshot is a readonly Overview of an existing profile. Product Category, Tag, Factory Capacity and Factory Scale are empty. It is not the Add Certification pop-up, and no record was written for this shot.
+
+![Factory profile — Overview tab.](images/factory-management/08-factory-profile.jpg)
+
 
 *Factory profile — Overview tab.*
+
+Readonly Overview. Category, Tag, Capacity and Scale are empty. Created and Modified dates stay visible. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot.
+
+![Factory profile — Certificate tab, empty (No Data).](images/factory-management/supplemental-profile-certificate.jpg)
+
+
+*Factory profile — Certificate tab, empty (No Data).*
+
+Supplementary screenshot, not one of the 98 inventory slots. Genuine empty Certificate tab on the same profile. This is not Step 3 Certification or the Add Certification pop-up. No record was created or changed.
 
 
 ## Tips
@@ -1410,7 +1430,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Source-documented — edit, documents, and import (last edited 2026-01-16)
 
@@ -1622,7 +1642,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Help Center finding
 
@@ -1822,7 +1842,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Source-documented — create path (Help Center updated 2026-11-04)
 
@@ -1945,7 +1965,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Help Center finding
 
@@ -2111,7 +2131,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Help Center finding
 
@@ -2232,7 +2252,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Help Center finding
 
