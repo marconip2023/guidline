@@ -35,7 +35,7 @@ body {
 }
 
 a { color: var(--link); }
-:where(a, button):focus-visible,
+:where(a, button, summary):focus-visible,
 .table-wrap:focus-visible,
 .skip-link:focus {
   outline: 3px solid var(--focus);
@@ -231,11 +231,79 @@ h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
 .meta dd { margin: 0; }
 
 .overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: #184dad;
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: #184dad; font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #184dad;
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
 .module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
 .module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .module-group h2 a { font-size: 14px; font-weight: 400; }
-.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
 .tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
 
 .ui-label {
   display: inline-block;
@@ -331,6 +399,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 @media print {
   body { background: #fff; }
   .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
   .site-header { border: 0; background: none; }
   .header-inner { padding: 0 0 8px; }
   main { max-width: none; padding: 0; }
@@ -376,17 +445,11 @@ caption.visually-hidden { /* name comes from the region label */ }
 </header>
 <main id="content" tabindex="-1">
 <nav class="crumb" aria-label="Breadcrumb"><ol><li><a href="../">All guides</a></li><li><span aria-current="page">Document Review — Create a Review Job</span></li></ol></nav>
-<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>Document Review — Create a Review Job</h1>
 <p class="lede">Get compliance documents (CPC, GCC, DoC, test reports, TCF) reviewed by a lab or by yourself, whether you upload them or your supplier does.</p>
+<aside class="verify verify-mixed"><p><strong>Mixed.</strong> The reviewed list and blank create-job screens are current UI verified. There is no Document Review Help Center article. The supplier article only says a connected supplier can be assigned Document Review jobs, and that mention is source-only.</p><details class="source-fold"><summary>Source and verification</summary><p>Do not mark this whole module unverified. Approve, reject, and resubmit remain gaps. Source: QMAS Help Center — Manage your QMAS Supplier Compliance Profile, last edited 2026-01-16 15:38:01 HKT, for the invite mention only.</p><ul><li><a href="https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c">Manage your QMAS Supplier Compliance Profile</a> (last edited 2026-01-16 15:38:01 HKT). Invite and connection mention only. It does not describe how to conclude a review job.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p></details></aside>
 <p class="status-line">Screenshot slots: 3 reviewed and 4 pending privacy review.</p>
-<aside class="verify verify-current-ui"><h2>Source and verification</h2><p><strong>Current UI verified.</strong> Current UI verified for the reviewed list and blank create-job screenshots. Those steps are the existing published guide. There is no Document Review Help Center article. The supplier profile article only says a connected supplier can be assigned Document Review jobs.</p><ul><li><a href="https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c">Manage your QMAS Supplier Compliance Profile</a> (last edited 2026-01-16). Related mention only. It does not describe how to conclude a review job.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a>.</p></aside>
-<dl class="meta">
-<dt>Module</dt><dd>Document Review</dd>
-<dt>Start here</dt><dd><a href="https://qmas.icw.io/document-review">https://qmas.icw.io/document-review</a> → <strong>Create Job</strong> or <strong>Create Job for supplier</strong></dd>
-<dt>Direct links</dt><dd>You upload: <a href="https://qmas.icw.io/document-review/upload-document/create">https://qmas.icw.io/document-review/upload-document/create</a> · Supplier uploads: <a href="https://qmas.icw.io/document-review/upload-document/request">https://qmas.icw.io/document-review/upload-document/request</a></dd>
-<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
-</dl>
+<nav class="page-toc" aria-label="On this page"><ul><li><a href="#1-choose-your-flow">1. Choose your flow</a></li><li><a href="#2-job-type">2. Job Type</a></li><li><a href="#3-product-information">3. Product Information</a></li><li><a href="#4-documents-for-review-partner-and-provider-flow">4. Documents for Review, partner and provider (Flow A)</a></li><li><a href="#5-create-job-for-supplier-flows-b-and-c">5. Create Job for supplier (Flows B and C)</a></li><li><a href="#6-follow-the-review">6. Follow the review</a></li></ul></nav>
 <h2>Overview</h2>
 <ol class="overview">
 <li>Choose the flow that fits (table below).</li>
@@ -395,31 +458,37 @@ caption.visually-hidden { /* name comes from the region label */ }
 <li>Choose a <strong>partner</strong> (optional) and the <strong>Service Provider</strong>: a connected lab, or <strong>Job Owner Review</strong> to review yourself.</li>
 <li>Click <strong>Confirm</strong>. Follow the status on the Document Review list until the review is concluded.</li>
 </ol>
+<dl class="meta">
+<dt>Module</dt><dd>Document Review</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/document-review">https://qmas.icw.io/document-review</a> → <strong>Create Job</strong> or <strong>Create Job for supplier</strong></dd>
+<dt>Direct links</dt><dd>You upload: <a href="https://qmas.icw.io/document-review/upload-document/create">https://qmas.icw.io/document-review/upload-document/create</a> · Supplier uploads: <a href="https://qmas.icw.io/document-review/upload-document/request">https://qmas.icw.io/document-review/upload-document/request</a></dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
 <h2>Step-by-step</h2>
-<h3>1. Choose your flow</h3>
+<h3 id="1-choose-your-flow">1. Choose your flow</h3>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Flow, Button, Who uploads, Who reviews"><table><thead><tr><th scope="col">Flow</th><th scope="col">Button</th><th scope="col">Who uploads</th><th scope="col">Who reviews</th></tr></thead><tbody><tr><td>A. Upload for lab review</td><td>Create Job</td><td>You</td><td>Connected lab</td></tr><tr><td>B. Supplier uploads for lab review</td><td>Create Job for supplier</td><td>Your connected supplier</td><td>Connected lab (Connected Provider)</td></tr><tr><td>C. Supplier uploads for your own review</td><td>Create Job for supplier</td><td>Your connected supplier</td><td>You (Job Owner Review)</td></tr></tbody></table></div>
 <p>In the left menu, open <strong>Document Review</strong>. The dashboard shows service providers, jobs over 12 months, status and reject reasons. The tabs <strong>All Job</strong>, <strong>My Job</strong> and <strong>View Only</strong> list the jobs.</p>
 <figure class="shot"><img src="../assets/reviewed/document-review/01-list.jpg" alt="Document Review with Create Job and Create Job for supplier." width="1280" height="714" fetchpriority="high" decoding="async"><figcaption>Document Review with Create Job and Create Job for supplier.</figcaption></figure>
-<h3>2. Job Type</h3>
+<h3 id="2-job-type">2. Job Type</h3>
 <p>Choose the <strong>Job Type</strong> (for example Document Review) and tick <strong>CPC/GCC/DOC Review</strong> and/or <strong>Compliance Review</strong>. Optionally fill in <strong>Buyer Name</strong>, <strong>Service Required</strong> (Regular by default) and <strong>Submission Remark</strong>. The screenshot shows this form at those defaults, before a review type is ticked or a product is added. It is not a submitted job.</p>
 <figure class="shot"><img src="../assets/reviewed/document-review/02-create-job-top.jpg" alt="Create Job — 1. Job Type and 2. Product Information." width="1280" height="714" loading="lazy" decoding="async"><figcaption>Create Job — 1. Job Type and 2. Product Information.<span class="caption-note">Blank/default form, not a submitted job. Job Type shows the Document Review default and Service Required shows Regular. Sections 3 and 4 are also in view. The account header was redacted.</span></figcaption></figure>
-<h3>3. Product Information</h3>
+<h3 id="3-product-information">3. Product Information</h3>
 <p>Keep <strong>Select Product For Review = Yes</strong>. Click <strong>Existing Product</strong> to pick products, or <strong>New Product</strong> to create one. For each product, check the <strong>Basic Information</strong>, then fill in <strong>Additional Information</strong>: Test Age Grade, Label Age Grade, Export Market and Country Of Origin are required.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-product-info.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Basic Information and Additional Information for the selected product.</figcaption></figure>
 <p>Below that you can add <strong>PO Information</strong>, upload <strong>Product Pictures &amp; Reference Documents</strong>, set the <strong>TCF Requests</strong> (choose document types or import a TCF template) and add <strong>Quality Requirements</strong>.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-tcf-requirements.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>TCF Requests and Requirements.</figcaption></figure>
-<h3>4. Documents for Review, partner and provider (Flow A)</h3>
+<h3 id="4-documents-for-review-partner-and-provider-flow">4. Documents for Review, partner and provider (Flow A)</h3>
 <p>Under <strong>Documents for Review</strong>, click <strong>Upload files</strong> (at least one file is required). The reviewer gives a conclusion only on documents in this section.</p>
 <p><strong>Select Partner</strong> (optional): choose Yes to let one partner view the job.</p>
 <p><strong>Service Provider</strong>: choose the connected lab under <strong>Connected Provider</strong>. Click <strong>Confirm</strong>.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>05-docs-partner-provider.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Documents for Review, Select Partner and Service Provider.</figcaption></figure>
-<h3>5. Create Job for supplier (Flows B and C)</h3>
+<h3 id="5-create-job-for-supplier-flows-b-and-c">5. Create Job for supplier (Flows B and C)</h3>
 <p>Click <strong>Create Job for supplier</strong>. Fill in Job Type and Product Information as above. Then:</p>
 <p>The screenshot is the default form: no supplier is selected, and section 5 is clipped at the bottom.</p>
 <ul><li><strong>Select Connected Supplier</strong>: choose the supplier who will upload. Only suppliers connected with you on QMAS are listed. See Supplier Management → Invite Supplier.</li><li><strong>Select Partner</strong> (optional).</li><li><strong>Service Provider</strong>: choose <strong>Connected Provider</strong> and a lab for Flow B, or <strong>Job Owner Review</strong> for Flow C.</li><li>Click <strong>Confirm</strong>. The supplier gets a notification to upload the documents.</li></ul>
 <figure class="shot"><img src="../assets/reviewed/document-review/06-supplier-job-top.jpg" alt="Create Job for Supplier." width="1280" height="714" loading="lazy" decoding="async"><figcaption>Create Job for Supplier.<span class="caption-note">Blank/default form, not a submitted job. Sections 1–5 are in view and section 5 is clipped at the bottom. No supplier is selected. The account header was redacted.</span></figcaption></figure>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>07-supplier-job-provider.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Select Connected Supplier, Select Partner and Service Provider (Connected Provider or Job Owner Review).</figcaption></figure>
-<h3>6. Follow the review</h3>
+<h3 id="6-follow-the-review">6. Follow the review</h3>
 <ul><li>Flow A and B: the job shows <strong>Being Processed</strong> while the lab reviews. The lab concludes each document as <strong>Approve</strong>, <strong>Reject</strong> or <strong>Waiting for Additional Information</strong>.</li><li>Flow C: when the supplier has uploaded, open the job, click <strong>View detail</strong>, and conclude each document yourself with <strong>Approve</strong>, <strong>Reject</strong>, <strong>N/A</strong> or <strong>Waiting for additional information</strong>. Click <strong>Confirm</strong>.</li><li>If a document is rejected or more information is needed, read the comment and upload a corrected file.</li><li>When all documents are approved, complete the job.</li></ul>
 <h2>Tips</h2>
 <aside class="tip"><p>Flows B and C need a connected supplier. Invite the supplier first from Supplier / Factory Management → Invite Supplier.</p></aside>
@@ -431,7 +500,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>What does Job Owner Review mean?</dt><dd>You review the supplier&#x27;s documents yourself instead of a lab.</dd>
 <dt>Why can&#x27;t I find my supplier in Select Connected Supplier?</dt><dd>Only suppliers connected with you on QMAS are listed. Invite them from Supplier / Factory Management → Invite Supplier.</dd>
 </dl>
-<section class="additions"><h2>Help Center additions and remaining gaps</h2><aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></aside><h3 class="kind-finding">Help Center finding</h3>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><details class="source-fold"><summary>How these labels are used</summary><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></details><h3 class="kind-finding">Help Center finding</h3>
 <p>There is no Document Review Help Center article.</p>
 <p>The only related Help Center text is on the supplier profile article (last edited 2026-01-16): inviting or connecting a supplier “allows you to assign Document Review jobs to your connected suppliers.” Statuses Invite, No Connection, and Connected are documented there. That text does not describe how to conclude a review job.</p>
 <h3 class="kind-gap">Remaining gaps</h3>

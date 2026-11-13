@@ -35,7 +35,7 @@ body {
 }
 
 a { color: var(--link); }
-:where(a, button):focus-visible,
+:where(a, button, summary):focus-visible,
 .table-wrap:focus-visible,
 .skip-link:focus {
   outline: 3px solid var(--focus);
@@ -231,11 +231,79 @@ h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
 .meta dd { margin: 0; }
 
 .overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: #184dad;
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: #184dad; font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #184dad;
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
 .module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
 .module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .module-group h2 a { font-size: 14px; font-weight: 400; }
-.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
 .tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
 
 .ui-label {
   display: inline-block;
@@ -331,6 +399,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 @media print {
   body { background: #fff; }
   .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
   .site-header { border: 0; background: none; }
   .header-inner { padding: 0 0 8px; }
   main { max-width: none; padding: 0; }
@@ -376,12 +445,18 @@ caption.visually-hidden { /* name comes from the region label */ }
 </header>
 <main id="content" tabindex="-1">
 <nav class="crumb" aria-label="Breadcrumb"><ol><li><a href="../">All guides</a></li><li><span aria-current="page">Test Plan — Request a Test Plan</span></li></ol></nav>
-<p class="draft-banner">Source-documented only, from the original Help Center. Not confirmed on the current QMAS dev site. No reviewed screenshots. Do not treat the labels below as current UI until they are checked.</p>
-<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>Test Plan — Request a Test Plan</h1>
+<p class="draft-banner">Source-documented only, from the original Help Center. Not confirmed on the current QMAS dev site. No reviewed screenshots. Do not treat the labels below as current UI until they are checked.</p>
 <p class="lede">Source-documented only. The Help Center has a short 2024 article for a top-menu Test Plan. The published Product Profile guide instead shows a Test Plan (AI) pop-up on Quality Requirement. These may be different features. Do not merge them into one invented flow.</p>
+<aside class="verify verify-source-only"><p><strong>Source-only, not dev-verified.</strong> This is the 2024 Help Center article, last edited 2024-03-28 15:44:01 HKT. It has no reviewed screenshots and it is not on the existing published site. It is not the Product Profile Test Plan (AI) pop-up.</p><details class="source-fold"><summary>Source and verification</summary><p>Source: QMAS Help Center — How To Request A Test Plan, last edited 2024-03-28 15:44:01 HKT. Not current-UI verified. Do not invent a live /test-plan/ URL.</p><ul><li><a href="https://app.notion.com/p/1a502da19803417aae2cd72190a1a542">How To Request A Test Plan</a> (last edited 2024-03-28 15:44:01 HKT). The whole page. Source-only, not dev-verified.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p></details></aside>
 <p class="status-line">Screenshot slots: none. This page does not include screenshots.</p>
-<aside class="verify verify-source-only"><h2>Source and verification</h2><p><strong>Source-only, not dev-verified.</strong> Source-only, not dev-verified. This page is the 2024 Help Center article How To Request A Test Plan. It has no reviewed screenshots. It is not the Product Profile Test Plan (AI) pop-up.</p><ul><li><a href="https://app.notion.com/p/1a502da19803417aae2cd72190a1a542">How To Request A Test Plan</a> (last edited 2024-03-28). The whole page.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a>.</p></aside>
+<nav class="page-toc" aria-label="On this page"><ul><li><a href="#1-help-center-steps-2024-quoted-closely">1. Help Center steps (2024, quoted closely)</a></li><li><a href="#2-what-the-published-guide-already-shows">2. What the published guide already shows</a></li></ul></nav>
+<h2>Overview</h2>
+<ol class="overview">
+<li><strong>Historical Help Center path:</strong> top menu <strong>TEST PLAN</strong>, then product details, then receive or download a PDF.</li>
+<li><strong>Current published-guide path:</strong> product profile → Quality Requirement → <strong>Test Plan (AI)</strong> pop-up.</li>
+<li>The internal index previously marked Test Plan as coming soon. A dev check is still required.</li>
+</ol>
 <dl class="meta">
 <dt>Status</dt><dd>Source-documented only. Not dev-verified.</dd>
 <dt>Help Center article</dt><dd>How To Request A Test Plan</dd>
@@ -390,18 +465,12 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>Published-guide path</dt><dd><a href="../product-profile/">Product profile</a> → Quality Requirement → Test Plan (AI)</dd>
 <dt>Screenshots</dt><dd>None on this page. The product-profile pop-up image is still pending review.</dd>
 </dl>
-<h2>Overview</h2>
-<ol class="overview">
-<li><strong>Historical Help Center path:</strong> top menu <strong>TEST PLAN</strong>, then product details, then receive or download a PDF.</li>
-<li><strong>Current published-guide path:</strong> product profile → Quality Requirement → <strong>Test Plan (AI)</strong> pop-up.</li>
-<li>The internal index previously marked Test Plan as coming soon. A dev check is still required.</li>
-</ol>
 <h2>Step-by-step</h2>
-<h3>1. Help Center steps (2024, quoted closely)</h3>
+<h3 id="1-help-center-steps-2024-quoted-closely">1. Help Center steps (2024, quoted closely)</h3>
 <p>This is the entire Help Center article. It was last edited on 2024-03-28.</p>
 <ol><li>“Navigate to the top menu bar, select <strong>TEST PLAN</strong>.”</li><li>“Fill out your product details.”</li><li>“Receive your test plan, you can also download it in PDF format.”</li></ol>
 <p>Do not assume the 2024 top-menu path still exists.</p>
-<h3>2. What the published guide already shows</h3>
+<h3 id="2-what-the-published-guide-already-shows">2. What the published guide already shows</h3>
 <p>The <a href="../product-profile/">Product Profile</a> guide documents a <strong>Test Plan (AI)</strong> control on Quality Requirement. Its pop-up slot is `27-test-plan.jpg`, still pending privacy review. That guide does not show a generated plan or an apply-to-requirements result.</p>
 <p>Keep both descriptions until a dev check says they are the same feature.</p>
 <h2>Tips</h2>

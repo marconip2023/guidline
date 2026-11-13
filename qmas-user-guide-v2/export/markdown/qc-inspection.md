@@ -15,11 +15,13 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 ## Source and verification
 
-**Mixed.** Current UI verified for the reviewed list and Looking-to screenshots. Those create steps match the November 2026 Help Center article. Mixed: the later quote, SELECT, and booking statuses are older Help Center wording and are not dev-verified.
+**Mixed.** The reviewed list and Looking-to create path are current UI verified. Quote Available, QUOTES, and SELECT are older Help Center wording and are not dev-verified.
 
-- [How To Request Quotation For QC Inspection From Global Laboratories](https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e) (last edited 2026-11-04). Create path, including Start internal inspection. The post-submit booking wording was not part of that November rewrite.
+Do not mark this whole module unverified. Source: QMAS Help Center — How To Request Quotation For QC Inspection From Global Laboratories, last edited 2026-11-04 12:15:22 HKT. The November 2026 update covers the create path. The later quote flow still needs verification.
 
-Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
+- [How To Request Quotation For QC Inspection From Global Laboratories](https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e) (last edited 2026-11-04 12:15:22 HKT). Create path is current UI verified. The later Quote Available flow is source-only, not dev-verified.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af) (last edited 2026-01-20 13:54:13 HKT). User Guide index: [User Guide](https://app.notion.com/p/a92963a30e584145bb457a62b7706541) (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.
 
 Ask ICW to quote and arrange a third-party QC inspection for your products.
 

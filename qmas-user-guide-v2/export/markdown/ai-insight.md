@@ -15,11 +15,13 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 ## Source and verification
 
-**Current UI verified.** Current UI verified for the reviewed AI Risk Screening list and the blank New AI Risk Screening dialog. Those screens are the existing published guide, filed under this AI Insight path. There is no Help Center article for AI Insight, AI Risk Screening, or AI Assessment. No screening was run.
+**Current UI verified.** Current UI verified for the reviewed AI Risk Screening list and the blank New AI Risk Screening dialog. There is no Help Center article for AI Insight, AI Risk Screening, or AI Assessment. No screening was run.
+
+Do not mark this whole module unverified. A completed report and Verify Information remain gaps.
 
 No Help Center article is the source of the steps on this page.
 
-Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af) (last edited 2026-01-20 13:54:13 HKT). User Guide index: [User Guide](https://app.notion.com/p/a92963a30e584145bb457a62b7706541) (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.
 
 Upload product photos and let AI identify compliance risks and requirements for your import region. You get a compliance guideline report (PDF).
 

@@ -35,7 +35,7 @@ body {
 }
 
 a { color: var(--link); }
-:where(a, button):focus-visible,
+:where(a, button, summary):focus-visible,
 .table-wrap:focus-visible,
 .skip-link:focus {
   outline: 3px solid var(--focus);
@@ -231,11 +231,79 @@ h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
 .meta dd { margin: 0; }
 
 .overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: #184dad;
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: #184dad; font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #184dad;
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
 .module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
 .module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .module-group h2 a { font-size: 14px; font-weight: 400; }
-.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
 .tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
 
 .ui-label {
   display: inline-block;
@@ -331,6 +399,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 @media print {
   body { background: #fff; }
   .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
   .site-header { border: 0; background: none; }
   .header-inner { padding: 0 0 8px; }
   main { max-width: none; padding: 0; }
@@ -376,18 +445,11 @@ caption.visually-hidden { /* name comes from the region label */ }
 </header>
 <main id="content" tabindex="-1">
 <nav class="crumb" aria-label="Breadcrumb"><ol><li><a href="../">All guides</a></li><li><span aria-current="page">Product Management — Every Tab of the Product Profile</span></li></ol></nav>
-<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>Product Management — Every Tab of the Product Profile</h1>
 <p class="lede">After you create a product, its profile holds everything about it. This guide explains each tab in the profile&#x27;s left menu and the import option on the product list.</p>
+<aside class="verify verify-mixed"><p><strong>Mixed.</strong> The reviewed tab screenshots are current UI verified. Expiry reminders, share wording, and Get DoC are source-only and not dev-verified. There is no CPC or GCC Help Center article.</p><details class="source-fold"><summary>Source and verification</summary><p>Do not mark this whole module unverified. Pending screenshot slots do not make the reviewed tabs unverified. Source: QMAS Help Center — Manage your QMAS Product Information Pack, last edited 2026-11-04 11:39:48 HKT. Reminder, share, and Get DoC sections were not part of the November 2026 rewrite.</p><ul><li><a href="https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61">Manage your QMAS Product Information Pack</a> (last edited 2026-11-04 11:39:48 HKT). Reviewed tabs are current UI verified. Reminder, share, and Get DoC wording is source-only, not dev-verified.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p></details></aside>
 <p class="status-line">Screenshot slots: 11 reviewed, 3 explicitly not captured, 13 still pending privacy review.</p>
-<aside class="verify verify-current-ui"><h2>Source and verification</h2><p><strong>Current UI verified.</strong> Current UI verified for the reviewed tab screenshots. Those steps are the existing published guide. Get DoC, expiry reminders, and older document wording stay in the source-documented section. They were not rewritten in November 2026 and are not a current-UI claim.</p><ul><li><a href="https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61">Manage your QMAS Product Information Pack</a> (last edited 2026-11-04). Same article as Product Management. Document, reminder, and DoC sections were not rewritten in that update.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a>.</p></aside>
-<dl class="meta">
-<dt>Module</dt><dd>Product Management</dd>
-<dt>Open a profile</dt><dd><a href="https://qmas.icw.io/product/list">https://qmas.icw.io/product/list</a> → click a product</dd>
-<dt>Tabs</dt><dd>Document · Shipping Detail · Compliance Data · Quality Requirement · AI Risk Screening · CPSC eFiling · Packaging Detail · QR Code</dd>
-<dt>See also</dt><dd>Create and edit a product: <a href="../product-management/">Product Management — Create and Edit a Product</a></dd>
-<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026. Document, Shipping Detail, the empty Compliance Data tab, the in-progress Test Data form, the empty Certificate Data form, and the Quality Requirement shots included here were rechecked on QMAS dev, 9 Nov 2026.</dd>
-</dl>
+<nav class="page-toc" aria-label="On this page"><ul><li><a href="#1-document">1. Document</a></li><li><a href="#2-shipping-detail">2. Shipping Detail</a></li><li><a href="#3-compliance-data">3. Compliance Data</a></li><li><a href="#4-quality-requirement">4. Quality Requirement</a></li><li><a href="#5-ai-risk-screening">5. AI Risk Screening</a></li><li><a href="#6-cpsc-efiling">6. CPSC eFiling</a></li><li><a href="#7-packaging-detail">7. Packaging Detail</a></li><li><a href="#8-import-products-in-bulk">8. Import products in bulk</a></li></ul></nav>
 <h2>Overview</h2>
 <ol class="overview">
 <li><strong>Document</strong>: upload, organise, share and set reminders for the product&#x27;s files.</li>
@@ -399,18 +461,25 @@ caption.visually-hidden { /* name comes from the region label */ }
 <li><strong>Packaging Detail</strong>: record each packaging component, its materials and suppliers.</li>
 <li><strong>QR Code</strong> is also in the left menu. This guide does not yet describe that screen.</li>
 </ol>
+<dl class="meta">
+<dt>Module</dt><dd>Product Management</dd>
+<dt>Open a profile</dt><dd><a href="https://qmas.icw.io/product/list">https://qmas.icw.io/product/list</a> → click a product</dd>
+<dt>Tabs</dt><dd>Document · Shipping Detail · Compliance Data · Quality Requirement · AI Risk Screening · CPSC eFiling · Packaging Detail · QR Code</dd>
+<dt>See also</dt><dd>Create and edit a product: <a href="../product-management/">Product Management — Create and Edit a Product</a></dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026. Document, Shipping Detail, the empty Compliance Data tab, the in-progress Test Data form, the empty Certificate Data form, and the Quality Requirement shots included here were rechecked on QMAS dev, 9 Nov 2026.</dd>
+</dl>
 <h2>Step-by-step</h2>
-<h3>1. Document</h3>
+<h3 id="1-document">1. Document</h3>
 <p>Shows every file linked to the product. Use <strong>New Folder</strong> to organise files and <strong>Upload</strong> to add a file (see the Document Management guide for the upload pop-up). Filter by <strong>Type</strong>, <strong>Source</strong> or <strong>Checked</strong>, switch between <strong>All</strong> and <strong>Archived</strong>, and search with <strong>Search Files</strong>. <strong>Sort</strong> and <strong>Reset</strong> sit with those filters.</p>
 <figure class="shot"><img src="../assets/reviewed/product-profile/01-document.jpg" alt="Document tab with one UAT sample PDF and the filter controls." width="1485" height="635" fetchpriority="high" decoding="async"><figcaption>Document tab with one UAT sample PDF and the filter controls.<span class="caption-note">All (1), New Folder, Upload, Type, Source, Checked, Sort and Reset are visible. The file is a UAT sample PDF marked Test Report. Source and the date columns on that row are empty.</span></figcaption></figure>
 <p>Tick one or more files to open the toolbar:</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Action, What it does"><table><thead><tr><th scope="col">Action</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Set Data</td><td>Add compliance data (test, certificate or other) from this file.</td></tr><tr><td>Set Dates &amp; Reminder</td><td>Set issue, expiry and review dates and an email reminder.</td></tr><tr><td>Archive</td><td>Move the file to the Archived tab.</td></tr><tr><td>Download</td><td>Download the file.</td></tr><tr><td>Share</td><td>Create a share link with an expiry period. Copy it or send it by email.</td></tr><tr><td>Rename / Edit Type</td><td>Change the file name or document type.</td></tr><tr><td>Move</td><td>Move the file to a folder.</td></tr><tr><td>Remove</td><td>Remove the file.</td></tr></tbody></table></div>
 <figure class="shot"><img src="../assets/reviewed/product-profile/02-document-toolbar.jpg" alt="Toolbar after selecting a file." width="1485" height="550" loading="lazy" decoding="async"><figcaption>Toolbar after selecting a file.<span class="caption-note">The selection toolbar shows Set Data, Set Dates &amp; Reminder, Archive, Download, Share, Rename, Edit Type, Move and Remove for the same UAT sample file.</span></figcaption></figure>
 <figure class="shot"><img src="../assets/reviewed/product-profile/03-document-share.jpg" alt="Share Via Link — choose how long the link stays valid, then Copy or By Email." width="545" height="330" loading="lazy" decoding="async"><figcaption>Share Via Link — choose how long the link stays valid, then Copy or By Email.</figcaption></figure>
-<h3>2. Shipping Detail</h3>
+<h3 id="2-shipping-detail">2. Shipping Detail</h3>
 <p>Shows the length, width, height, gross and net weight, quantity and barcode for the <strong>Selling Unit</strong>, <strong>Inner Carton</strong> and <strong>Outer Carton</strong>. To change them, click <strong>⋮</strong> next to the product name → <strong>Edit product</strong> and update <strong>Shipping Information</strong>. The reviewed screenshot shows 0.00 and N/A in those fields, not filled shipping values.</p>
 <figure class="shot"><img src="../assets/reviewed/product-profile/04-shipping-detail.jpg" alt="Shipping Detail tab with 0.00 measurements and N/A barcodes for Selling Unit, Inner Carton and Outer Carton." width="1485" height="500" loading="lazy" decoding="async"><figcaption>Shipping Detail tab — empty values (0.00 / N/A).</figcaption></figure>
-<h3>3. Compliance Data</h3>
+<h3 id="3-compliance-data">3. Compliance Data</h3>
 <p>Three sections: <strong>Test Data</strong>, <strong>Certificate Data</strong> and <strong>Other</strong>. Click <strong>Add Data</strong> (or <strong>Add</strong> once a section has records).</p>
 <figure class="shot"><img src="../assets/reviewed/product-profile/05-compliance-data.jpg" alt="Compliance Data tab before any data is added." width="1485" height="800" loading="lazy" decoding="async"><figcaption>Compliance Data tab before any data is added.<span class="caption-note">Test Data, Certificate Data and Other each show 0 and “There is no data here.”, with Add Data. This is the captured empty state.</span></figcaption></figure>
 <p><strong>Test Data</strong> records one test result:</p>
@@ -421,7 +490,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 <figure class="shot"><div class="pending not-captured"><p><strong>Not captured</strong></p><p>File name: <code>09-test-data-saved.jpg</code></p><p>Not captured. A saved Test Data row was not created for this screenshot. This placeholder is not proof of a saved record.</p></div><figcaption>Not captured. The Test Data table after saving is not in this draft.</figcaption></figure>
 <p><strong>Certificate Data</strong> works the same way. Fill in the certificate <strong>Type</strong>, <strong>Issue Party</strong>, <strong>Score / Overall Rating</strong>, <strong>Expiry Date</strong> and <strong>Certificate Date</strong>, then link the certificate file. The reviewed screenshot shows that form empty.</p>
 <figure class="shot"><img src="../assets/reviewed/product-profile/10-certificate-data-form.jpg" alt="Empty Certificate Data form. Type, Issue Party, score and dates are unset." width="1110" height="555" loading="lazy" decoding="async"><figcaption>Empty Certificate Data form.<span class="caption-note">This screenshot does not show filled certificate values.</span></figcaption></figure>
-<h3>4. Quality Requirement</h3>
+<h3 id="4-quality-requirement">4. Quality Requirement</h3>
 <p>Quality Requirement lists what the product must meet, for example test standards or packaging rules. Each requirement has a <strong>Type</strong> (the group) and a <strong>Name</strong>. You can attach compliance data to it as proof, mark it completed, and reuse the list in Product Testing or Document Review.</p>
 <p>The reviewed screenshot is not an empty tab. It shows one requirement with the name hidden, plus Test Plan, ⋯ and Add. The attachment area under that row is empty.</p>
 <figure class="shot"><img src="../assets/reviewed/product-profile/11-quality-requirement.jpg" alt="Quality Requirement tab with one redacted requirement row, Test Plan, the more menu and Add. Not an empty tab." width="1485" height="265" loading="lazy" decoding="async"><figcaption>Quality Requirement tab with one existing requirement (name redacted); Test Plan, ⋯, and Add visible — not an empty tab.</figcaption></figure>
@@ -451,19 +520,19 @@ caption.visually-hidden { /* name comes from the region label */ }
 <p><strong>4e. Test Plan (AI)</strong></p>
 <p>Click <strong>Test Plan</strong> to let AI suggest a test plan. Fill in the <strong>Product Description</strong> (more detail gives better results), <strong>Import Country</strong> and <strong>Product Intended Used By</strong>, upload up to 6 product images, then click <strong>Generate Test Plan</strong>.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>27-test-plan.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Test Plan pop-up.</figcaption></figure>
-<h3>5. AI Risk Screening</h3>
+<h3 id="5-ai-risk-screening">5. AI Risk Screening</h3>
 <p>Lists the AI screenings for this product. Click <strong>Add</strong> to start one. The pop-up and results are explained in the <a href="../ai-insight/">AI Insight</a> guide.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>17-ai-risk-screening.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>AI Risk Screening tab.</figcaption></figure>
-<h3>6. CPSC eFiling</h3>
+<h3 id="6-cpsc-efiling">6. CPSC eFiling</h3>
 <p>Shows the <strong>eFiling Log</strong> for this product. Click <strong>Submit eFiling</strong> to create an eFiling. Before you can sync with CPSC, add your API Key and Secret Key in <strong>Company Profile</strong> (link in the grey note). The full flow is in the <a href="../efiling/">eFiling</a> guide.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>16-cpsc-efiling.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>CPSC eFiling tab.</figcaption></figure>
-<h3>7. Packaging Detail</h3>
+<h3 id="7-packaging-detail">7. Packaging Detail</h3>
 <p>Lists the packaging components of the product. Click <strong>Create Packaging Component</strong> and fill in:</p>
 <ul><li><strong>Basic Information</strong>: name and description (required), identification no., function, legal role, weight, material type and name, status (Active, Inactive or Draft), and packaging images.</li><li><strong>Dimension</strong>, <strong>Additional Information</strong>, <strong>Supplier Linkage</strong> and <strong>Technical Documentation</strong> (expand each section).</li></ul>
 <p>Click <strong>Confirm</strong>. Use the <strong>Status</strong> filter to show active, inactive or draft components.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>14-packaging.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Packaging Details tab.</figcaption></figure>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>15-packaging-component.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create Packaging Component.</figcaption></figure>
-<h3>8. Import products in bulk</h3>
+<h3 id="8-import-products-in-bulk">8. Import products in bulk</h3>
 <p>On the Product Management list, click <strong>Import Product</strong>. Download the ICW Product template (<strong>download here</strong>), fill it in, upload the Excel file (one file at a time), then click <strong>Next</strong>. Only the ICW template can be used.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>18-import-product.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Import Product.</figcaption></figure>
 <h2>Tips</h2>
@@ -480,7 +549,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>How do I reuse quality requirements for many products?</dt><dd>Open a product → Quality Requirement → ⋯ → Templates → Save As Template. On other products use ⋯ → Templates → Apply Template.</dd>
 <dt>How do I prove a requirement is met?</dt><dd>On the requirement click +, attach the test or certificate data, then ⋯ → Mark As Completed.</dd>
 </dl>
-<section class="additions"><h2>Help Center additions and remaining gaps</h2><aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></aside><h3 class="kind-dev-verified">Dev-verified — already in the steps above (2026-11-09)</h3>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><details class="source-fold"><summary>How these labels are used</summary><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></details><h3 class="kind-dev-verified">Dev-verified — already in the steps above (2026-11-09)</h3>
 <p>The left menu includes <strong>QR Code</strong> as well as Document, Shipping Detail, Compliance Data, Quality Requirement, AI Risk Screening, CPSC eFiling, and Packaging Detail.</p>
 <p>Document tab chrome on the reviewed screenshot: <strong>New Folder</strong>, <strong>Upload</strong>, <strong>All / Archived</strong>, filters <strong>Type</strong> / <strong>Source</strong> / <strong>Checked</strong>, and <strong>Sort</strong> (plus Reset).</p>
 <p>When older Help Center wording disagrees with that chrome, prefer these dev-verified labels.</p>

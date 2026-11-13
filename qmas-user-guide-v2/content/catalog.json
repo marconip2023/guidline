@@ -123,6 +123,13 @@
       ]
     }
   ],
+  "related_resources": [
+    {
+      "label": "QMAS Chatbot",
+      "href": "https://workflow-dev.icw.io/chat/QDSPY8f58691bu1P",
+      "note": "Published about 17:40 HKT on 13 Nov 2026. The published product name is Marco Test 3.0. The published product text and 2 images were checked. The header in that app still reads QMAS Chatbot 2.0."
+    }
+  ],
   "order": [
     "product-testing",
     "getting-started",

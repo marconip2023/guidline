@@ -15,11 +15,13 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 ## Source and verification
 
-**Mixed.** Current UI verified for the reviewed create-job screenshots. Those steps are the existing published guide, and the November 2026 Help Center create path matches them. Mixed: the later quote and accept flow, including Preliminary Accept and Final Quote, is older Help Center wording. It was not rewritten in November 2026 and is not dev-verified.
+**Mixed.** The reviewed create-job screens are current UI verified. Quote Available, Preliminary Accept, and Final Quote are older Help Center wording and are not dev-verified.
 
-- [How To Request Quotation For Product Testing From Global Laboratories](https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12) (last edited 2026-11-04). Create path. The post-submit quote flow in that article was not part of the November rewrite.
+Do not mark this whole module unverified. Source: QMAS Help Center — How To Request Quotation For Product Testing From Global Laboratories, last edited 2026-11-04 11:18:27 HKT. The November 2026 update covers the create path. The later quote and accept flow still needs verification.
 
-Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
+- [How To Request Quotation For Product Testing From Global Laboratories](https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12) (last edited 2026-11-04 11:18:27 HKT). Create path is current UI verified. Preliminary Accept and Final Quote are source-only, not dev-verified.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af) (last edited 2026-01-20 13:54:13 HKT). User Guide index: [User Guide](https://app.notion.com/p/a92963a30e584145bb457a62b7706541) (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.
 
 Create a product testing job and get a quotation from a laboratory.
 

@@ -35,7 +35,7 @@ body {
 }
 
 a { color: var(--link); }
-:where(a, button):focus-visible,
+:where(a, button, summary):focus-visible,
 .table-wrap:focus-visible,
 .skip-link:focus {
   outline: 3px solid var(--focus);
@@ -231,11 +231,79 @@ h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
 .meta dd { margin: 0; }
 
 .overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: #184dad;
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: #184dad; font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #184dad;
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
 .module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
 .module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .module-group h2 a { font-size: 14px; font-weight: 400; }
-.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
 .tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
 
 .ui-label {
   display: inline-block;
@@ -331,6 +399,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 @media print {
   body { background: #fff; }
   .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
   .site-header { border: 0; background: none; }
   .header-inner { padding: 0 0 8px; }
   main { max-width: none; padding: 0; }
@@ -376,17 +445,11 @@ caption.visually-hidden { /* name comes from the region label */ }
 </header>
 <main id="content" tabindex="-1">
 <nav class="crumb" aria-label="Breadcrumb"><ol><li><a href="../">All guides</a></li><li><span aria-current="page">Product Testing — Request a Quotation</span></li></ol></nav>
-<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>Product Testing — Request a Quotation</h1>
 <p class="lede">Create a product testing job and get a quotation from a laboratory.</p>
+<aside class="verify verify-mixed"><p><strong>Mixed.</strong> The reviewed create-job screens are current UI verified. Quote Available, Preliminary Accept, and Final Quote are older Help Center wording and are not dev-verified.</p><details class="source-fold"><summary>Source and verification</summary><p>Do not mark this whole module unverified. Source: QMAS Help Center — How To Request Quotation For Product Testing From Global Laboratories, last edited 2026-11-04 11:18:27 HKT. The November 2026 update covers the create path. The later quote and accept flow still needs verification.</p><ul><li><a href="https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12">How To Request Quotation For Product Testing From Global Laboratories</a> (last edited 2026-11-04 11:18:27 HKT). Create path is current UI verified. Preliminary Accept and Final Quote are source-only, not dev-verified.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p></details></aside>
 <p class="status-line">Screenshot slots: 9 reviewed replacement images.</p>
-<aside class="verify verify-mixed"><h2>Source and verification</h2><p><strong>Mixed.</strong> Current UI verified for the reviewed create-job screenshots. Those steps are the existing published guide, and the November 2026 Help Center create path matches them. Mixed: the later quote and accept flow, including Preliminary Accept and Final Quote, is older Help Center wording. It was not rewritten in November 2026 and is not dev-verified.</p><ul><li><a href="https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12">How To Request Quotation For Product Testing From Global Laboratories</a> (last edited 2026-11-04). Create path. The post-submit quote flow in that article was not part of the November rewrite.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a>.</p></aside>
-<dl class="meta">
-<dt>Module</dt><dd>Product Testing</dd>
-<dt>Start here</dt><dd><a href="https://qmas.icw.io/product-testing">qmas.icw.io/product-testing</a> → <span class="ui-label">Create Job</span></dd>
-<dt>Direct link</dt><dd><a href="https://qmas.icw.io/product-testing/create-job">qmas.icw.io/product-testing/create-job</a></dd>
-<dt>Steps</dt><dd>1 Product Info → 2 Requirements → 3 Provider Selection → 4 Done</dd>
-</dl>
+<nav class="page-toc" aria-label="On this page"><ul><li><a href="#1-open-product-testing">1. Open Product Testing</a></li><li><a href="#2-product-info-select-products">2. Product Info — select products</a></li><li><a href="#3-requirements">3. Requirements</a></li><li><a href="#4-provider-selection">4. Provider Selection</a></li><li><a href="#5-done-track-your-order">5. Done — track your order</a></li></ul></nav>
 <h2>Overview</h2>
 <ol class="overview">
 <li><strong>Open Product Testing</strong> and click <span class="ui-label">Create Job</span>.</li>
@@ -395,11 +458,17 @@ caption.visually-hidden { /* name comes from the region label */ }
 <li><strong>Provider Selection</strong> — choose Connected Provider, ICW or TicMart, then <span class="ui-label">Submit</span>.</li>
 <li><strong>Done</strong> — the Order details page opens. Track the job there or in the Product Testing list.</li>
 </ol>
+<dl class="meta">
+<dt>Module</dt><dd>Product Testing</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/product-testing">qmas.icw.io/product-testing</a> → <span class="ui-label">Create Job</span></dd>
+<dt>Direct link</dt><dd><a href="https://qmas.icw.io/product-testing/create-job">qmas.icw.io/product-testing/create-job</a></dd>
+<dt>Steps</dt><dd>1 Product Info → 2 Requirements → 3 Provider Selection → 4 Done</dd>
+</dl>
 <h2>Step-by-step</h2>
-<h3>1. Open Product Testing</h3>
+<h3 id="1-open-product-testing">1. Open Product Testing</h3>
 <p>In the left menu, open <strong>Product Testing</strong>. The page shows charts of job status, service provider and test results, and the list of all jobs. Click <span class="ui-label">Create Job</span> above the list.</p>
 <figure class="shot"><img src="../assets/reviewed/product-testing/01-list.jpg" alt="Product Testing list page with the Create Job button" width="1821" height="553" fetchpriority="high" decoding="async"><figcaption>Product Testing list — Create Job is at the top right of the job list.</figcaption></figure>
-<h3>2. Product Info — select products</h3>
+<h3 id="2-product-info-select-products">2. Product Info — select products</h3>
 <p>The <strong>Request Quotations</strong> wizard opens. Add the products for this testing order:</p>
 <ul><li><span class="ui-label ghost">+ Existing Products</span> picks from your Product Management list.</li><li><span class="ui-label ghost">+ Add Products</span> creates a new product here.</li></ul>
 <figure class="shot"><img src="../assets/reviewed/product-testing/02-step1-product-info.jpg" alt="Step 1 Product Info, empty" width="950" height="625" loading="lazy" decoding="async"><figcaption>Step 1 starts empty. Next stays disabled until a product is added.</figcaption></figure>
@@ -407,7 +476,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 <figure class="shot"><img src="../assets/reviewed/product-testing/04-product-selected.jpg" alt="Select Product(s) pop-up with one product selected" width="802" height="235" loading="lazy" decoding="async"><figcaption>A selected product shows a blue “✓ Selected” button.</figcaption></figure>
 <p>Check the product details. You can change <strong>Item name on report</strong> and <strong>Item no. on report</strong>, which are printed on the test report. Click <strong>Add PO Information</strong> to link a purchase order (optional). Then click <span class="ui-label">Next</span>.</p>
 <figure class="shot"><img src="../assets/reviewed/product-testing/05-step1-filled.jpg" alt="Step 1 with one product added" width="950" height="895" loading="lazy" decoding="async"><figcaption>Use Remove to drop a product, or Edit product profile to update it.</figcaption></figure>
-<h3>3. Requirements</h3>
+<h3 id="3-requirements">3. Requirements</h3>
 <p><strong>1. Test Requirements</strong></p>
 <ul><li><strong>Export Market</strong> — where the product will be sold (required).</li><li><strong>Test Item</strong> (optional) — choose a country, then search for test items or citations.</li><li><strong>Quality Requirement</strong> — Create New Requirements, Add Existing Requirements, or Import Requirement Template.</li><li><strong>Remarks</strong> and <strong>Attachment</strong> (optional) — special instructions and reference files.</li></ul>
 <figure class="shot"><img src="../assets/reviewed/product-testing/07-step2-export-market.jpg" alt="Step 2 Test Requirements with Export Market filled" width="950" height="910" loading="lazy" decoding="async"><figcaption>Export Market filled in.</figcaption></figure>
@@ -415,11 +484,11 @@ caption.visually-hidden { /* name comes from the region label */ }
 <ul><li><strong>Service Level</strong> — Regular, Express or Shuttle / Emergency.</li><li><strong>Country of Origin</strong> — where the product is made (you can pick more than one).</li><li><strong>Intended Usage</strong> — General product, Adult product, Children product or Toys.</li><li><strong>Buyer Name</strong> (optional).</li></ul>
 <p>When all required fields are filled, <span class="ui-label">Next</span> turns blue. Click it.</p>
 <figure class="shot"><img src="../assets/reviewed/product-testing/09-step2-filled.jpg" alt="Step 2 Additional Information filled" width="950" height="573" loading="lazy" decoding="async"><figcaption>Additional Information filled — Next is now enabled.</figcaption></figure>
-<h3>4. Provider Selection</h3>
+<h3 id="4-provider-selection">4. Provider Selection</h3>
 <p>Choose who should quote this job. You can tick more than one:</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Option, Use it when"><table><thead><tr><th scope="col">Option</th><th scope="col">Use it when</th></tr></thead><tbody><tr><td>Connected Provider</td><td>You already work with a lab that is connected to your QMAS account.</td></tr><tr><td>ICW</td><td>You want ICW to find a lab. Pick a preferred lab, or leave “No Preference”.</td></tr><tr><td>TicMart (Marketplace)</td><td>You want quotations from labs in the TicMart marketplace.</td></tr></tbody></table></div>
 <figure class="shot"><img src="../assets/reviewed/product-testing/11-step3-icw-selected.jpg" alt="Step 3 Provider Selection with ICW ticked" width="950" height="550" loading="lazy" decoding="async"><figcaption>ICW ticked with “No Preference”. Click Submit to send the request.</figcaption></figure>
-<h3>5. Done — track your order</h3>
+<h3 id="5-done-track-your-order">5. Done — track your order</h3>
 <p>After you click <span class="ui-label">Submit</span>, QMAS shows “Product testing created successfully” and opens the <strong>Order details</strong> page. Your job has a new order number (for example 260008342) and starts as <strong>Under Review</strong>.</p>
 <ul><li><strong>Product Testing Requirements</strong>, <strong>Products</strong>, <strong>Supplier</strong>, <strong>PO</strong> and <strong>Test Plan</strong> tabs show what you submitted.</li><li><strong>Quotations</strong> on the right shows lab quotes when they arrive.</li><li>The tabs below (Quotes, Failure Records, Reports, Attachments, Invoices, Tag, Activity Log, Message Board) follow the job until the report is ready.</li></ul>
 <figure class="shot"><img src="../assets/reviewed/product-testing/13-order-details.jpg" alt="Order details page after submitting" width="1856" height="900" loading="lazy" decoding="async"><figcaption>The new order opens with status Under Review. You can find it again in the Product Testing list.</figcaption></figure>
@@ -428,7 +497,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 <figure class="shot"><img src="../assets/reviewed/product-testing/12-required-error.jpg" alt="Country of Origin field showing required error" width="950" height="573" loading="lazy" decoding="async"><figcaption>Required field left empty.</figcaption></figure>
 <aside class="tip"><p>Item name and item no. on report are what the lab prints on the test report. Check them before you continue.</p></aside>
 <aside class="tip"><p>To leave the wizard, click <strong>✕</strong> at the top right.</p></aside>
-<section class="additions"><h2>Help Center additions and remaining gaps</h2><aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></aside><h3 class="kind-source-documented">Source-documented — create path (Help Center updated 2026-11-04)</h3>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><details class="source-fold"><summary>How these labels are used</summary><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></details><h3 class="kind-source-documented">Source-documented — create path (Help Center updated 2026-11-04)</h3>
 <p>Source: How To Request Quotation For Product Testing From Global Laboratories, <a href="https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12">https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12</a>. Direct link cited there: <a href="https://qmas.icw.io/product-testing/create-job">https://qmas.icw.io/product-testing/create-job</a>.</p>
 <p>The November 2026 create steps already match this page. Help Center step 7 also says you can tick <strong>Connected Provider</strong> (a lab already linked to the account), <strong>ICW</strong> (ICW finds a lab; preferred lab or “No Preference”), and/or <strong>TicMart (Marketplace)</strong>, then Submit. This page still only has an ICW screenshot.</p>
 <h3 class="kind-source-documented">Source-documented — post-submit quote flow (older wording; needs verification)</h3>

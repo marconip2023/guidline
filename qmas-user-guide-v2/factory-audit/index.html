@@ -35,7 +35,7 @@ body {
 }
 
 a { color: var(--link); }
-:where(a, button):focus-visible,
+:where(a, button, summary):focus-visible,
 .table-wrap:focus-visible,
 .skip-link:focus {
   outline: 3px solid var(--focus);
@@ -231,11 +231,79 @@ h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
 .meta dd { margin: 0; }
 
 .overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: #184dad;
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: #184dad; font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #184dad;
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
 .module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
 .module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .module-group h2 a { font-size: 14px; font-weight: 400; }
-.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
 .tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
 
 .ui-label {
   display: inline-block;
@@ -331,6 +399,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 @media print {
   body { background: #fff; }
   .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
   .site-header { border: 0; background: none; }
   .header-inner { padding: 0 0 8px; }
   main { max-width: none; padding: 0; }
@@ -376,12 +445,18 @@ caption.visually-hidden { /* name comes from the region label */ }
 </header>
 <main id="content" tabindex="-1">
 <nav class="crumb" aria-label="Breadcrumb"><ol><li><a href="../">All guides</a></li><li><span aria-current="page">Factory Audit — Request a Quotation</span></li></ol></nav>
-<p class="draft-banner">Source-documented only, from the original Help Center. Not confirmed on the current QMAS dev site. No reviewed screenshots. Do not treat the labels below as current UI until they are checked.</p>
-<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>Factory Audit — Request a Quotation</h1>
+<p class="draft-banner">Source-documented only, from the original Help Center. Not confirmed on the current QMAS dev site. No reviewed screenshots. Do not treat the labels below as current UI until they are checked.</p>
 <p class="lede">Source-documented only. The original Help Center describes how to request a factory audit quotation, confirm a booking, and open the report and invoice. This article was last edited on 2024-04-02 and was not updated in November 2026. It is not confirmed on the current QMAS dev site. There is no published guide page and no reviewed screenshot.</p>
+<aside class="verify verify-source-only"><p><strong>Source-only, not dev-verified.</strong> This repeats the 2024 Help Center article, last edited 2024-04-02 18:08:00 HKT. It is not confirmed on the current dev site, it has no reviewed screenshots, and it is not on the existing published site.</p><details class="source-fold"><summary>Source and verification</summary><p>Source: QMAS Help Center — How To Request Quotation For Factory Audit From Global Laboratories, last edited 2024-04-02 18:08:00 HKT. Not current-UI verified. Do not invent a live /factory-audit/ URL.</p><ul><li><a href="https://app.notion.com/p/8bdd7dbfdb1347dd86da4694aba5dd1e">How To Request Quotation For Factory Audit From Global Laboratories</a> (last edited 2024-04-02 18:08:00 HKT). The whole page. Source-only, not dev-verified.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p></details></aside>
 <p class="status-line">Screenshot slots: none. This page does not include screenshots.</p>
-<aside class="verify verify-source-only"><h2>Source and verification</h2><p><strong>Source-only, not dev-verified.</strong> Source-only, not dev-verified. This page repeats the 2024 Help Center article. It was not updated in November 2026, it is not confirmed on the current QMAS dev site, and it has no reviewed screenshots.</p><ul><li><a href="https://app.notion.com/p/8bdd7dbfdb1347dd86da4694aba5dd1e">How To Request Quotation For Factory Audit From Global Laboratories</a> (last edited 2024-04-02). The whole page.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a>.</p></aside>
+<nav class="page-toc" aria-label="On this page"><ul><li><a href="#1-request-a-quotation-2024-labels">1. Request a quotation (2024 labels)</a></li><li><a href="#2-receive-a-quotation-and-confirm-the-booking">2. Receive a quotation and confirm the booking</a></li><li><a href="#3-monitor-progress">3. Monitor progress</a></li><li><a href="#4-view-the-report-and-invoice">4. View the report and invoice</a></li></ul></nav>
+<h2>Overview</h2>
+<ol class="overview">
+<li>The Help Center says: “The QMAS Factory Audit Process Management Module lets you execute and monitor your factory audit workflow online.”</li>
+<li>The 2024 article covers a quotation, booking confirmation, progress, the report, and invoices.</li>
+<li>Getting Started Attention cards already name <strong>Factory Audit</strong>, but the exact current path was not re-opened on dev.</li>
+</ol>
 <dl class="meta">
 <dt>Status</dt><dd>Source-documented only. Not dev-verified.</dd>
 <dt>Help Center article</dt><dd>How To Request Quotation For Factory Audit From Global Laboratories</dd>
@@ -389,23 +464,17 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>Source</dt><dd><a href="https://app.notion.com/p/8bdd7dbfdb1347dd86da4694aba5dd1e">https://app.notion.com/p/8bdd7dbfdb1347dd86da4694aba5dd1e</a></dd>
 <dt>Screenshots</dt><dd>None. Unreviewed Help Center images are not included.</dd>
 </dl>
-<h2>Overview</h2>
-<ol class="overview">
-<li>The Help Center says: “The QMAS Factory Audit Process Management Module lets you execute and monitor your factory audit workflow online.”</li>
-<li>The 2024 article covers a quotation, booking confirmation, progress, the report, and invoices.</li>
-<li>Getting Started Attention cards already name <strong>Factory Audit</strong>, but the exact current path was not re-opened on dev.</li>
-</ol>
 <h2>Step-by-step</h2>
-<h3>1. Request a quotation (2024 labels)</h3>
+<h3 id="1-request-a-quotation-2024-labels">1. Request a quotation (2024 labels)</h3>
 <p>These labels are Help Center text from 2024. Confirm them on dev before treating them as the current buttons.</p>
 <ol><li>In the left menu, go to <strong>Factory Audit</strong> and click <strong>Create Factory Audit Order</strong>.</li><li>Fill out <strong>Audit Requirements</strong>, then click <strong>NEXT</strong>.</li><li>Fill out <strong>Factory info</strong> and contact person information, then click <strong>Submit</strong>.</li></ol>
-<h3>2. Receive a quotation and confirm the booking</h3>
+<h3 id="2-receive-a-quotation-and-confirm-the-booking">2. Receive a quotation and confirm the booking</h3>
 <p>The Help Center says to return to <strong>Factory Audit List</strong> “at the top menu bar”. That top-menu wording is likely outdated. Confirm whether the list is in the left menu.</p>
 <ol><li>After submit, job status is <strong>Under Review</strong>.</li><li>When the request is approved, status becomes <strong>Waiting for Quote</strong>.</li><li>When quotes are ready, status becomes <strong>Quote Available</strong>.</li><li>Click <strong>View Detail</strong>.</li><li>Quotes are under the <strong>QUOTES</strong> tab.</li><li>Click <strong>Accept Quotes</strong> to confirm the booking.</li></ol>
-<h3>3. Monitor progress</h3>
+<h3 id="3-monitor-progress">3. Monitor progress</h3>
 <ol><li>After accepting the quotation, status becomes <strong>Waiting for reserve booking</strong>.</li><li>When the booking is confirmed, status becomes <strong>Booking Reserved</strong>.</li><li>When the audit is completed, status becomes <strong>Completed</strong>.</li></ol>
 <p>The Help Center source has typographical errors (“you quotes”, “you job status swill change”). Those are not treated as UI labels.</p>
-<h3>4. View the report and invoice</h3>
+<h3 id="4-view-the-report-and-invoice">4. View the report and invoice</h3>
 <ol><li>Click <strong>View Detail</strong> next to the job status.</li><li>Open the <strong>REPORT</strong> tab to view the audit report.</li><li>Locate the invoice under <strong>INVOICES</strong>.</li></ol>
 <h2>Tips</h2>
 <aside class="tip"><p>Do not copy Help Center screenshots into this public draft. They were not privacy-reviewed.</p></aside>

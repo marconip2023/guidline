@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -215,25 +216,43 @@ def article_html(module, reviewed, guide_prefix: str, catalog: dict, banner: boo
     else:
         status = f"Screenshot slots: {reviewed_count} reviewed replacement images."
     parts = []
-    if banner:
-        parts.append(
-            '<p class="draft-banner">Working copy draft '
-            f'{html.escape(catalog["version"])}. English text from the published QMAS User Guide, '
-            "with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>\n"
-        )
     parts.append(f"<h1>{html.escape(module['title'])}</h1>\n")
+    if module.get("confidence") == "source-documented":
+        parts.append(
+            '<p class="draft-banner">Source-documented only, from the original Help Center. '
+            "Not confirmed on the current QMAS dev site. No reviewed screenshots. "
+            "Do not treat the labels below as current UI until they are checked.</p>\n"
+        )
     parts.append(f'<p class="lede">{inline_html(module["purpose"], guide_prefix, titles)}</p>\n')
-    parts.append(f'<p class="status-line">{html.escape(status)}</p>\n')
     parts.append(verification_html(module, catalog))
+    parts.append(f'<p class="status-line">{html.escape(status)}</p>\n')
+    used_ids = set()
+    toc = ['<nav class="page-toc" aria-label="On this page"><ul>']
+    step_ids = []
+    for step in module["steps"]:
+        base = re.sub(r"[^a-z0-9]+", "-", step["h"].lower()).strip("-")[:48] or "step"
+        candidate = base
+        number = 2
+        while candidate in used_ids:
+            candidate = f"{base}-{number}"
+            number += 1
+        used_ids.add(candidate)
+        step_ids.append(candidate)
+        toc.append(
+            f'<li><a href="#{html.escape(candidate, quote=True)}">{html.escape(step["h"])}</a></li>'
+        )
+    toc.append("</ul></nav>\n")
+    parts.append("".join(toc))
+    parts.append("<h2>Overview</h2>\n<ol class=\"overview\">\n")
+    for item in module["overview"]:
+        parts.append(f"<li>{inline_html(item, guide_prefix, titles)}</li>\n")
+    parts.append("</ol>\n")
     parts.append('<dl class="meta">\n')
     for key, value in module["meta"]:
         parts.append(f"<dt>{html.escape(key)}</dt><dd>{inline_html(value, guide_prefix, titles)}</dd>\n")
-    parts.append("</dl>\n<h2>Overview</h2>\n<ol class=\"overview\">\n")
-    for item in module["overview"]:
-        parts.append(f"<li>{inline_html(item, guide_prefix, titles)}</li>\n")
-    parts.append("</ol>\n<h2>Step-by-step</h2>\n")
-    for step in module["steps"]:
-        parts.append(f"<h3>{html.escape(step['h'])}</h3>\n")
+    parts.append("</dl>\n<h2>Step-by-step</h2>\n")
+    for step, step_id in zip(module["steps"], step_ids):
+        parts.append(f'<h3 id="{html.escape(step_id, quote=True)}">{html.escape(step["h"])}</h3>\n')
         parts.append(blocks_html(module, step["body"], reviewed, guide_prefix, first_image))
     if module.get("tips"):
         parts.append("<h2>Tips</h2>\n")
@@ -250,12 +269,6 @@ def article_html(module, reviewed, guide_prefix: str, catalog: dict, banner: boo
                 f"<dd>{inline_html(answer, guide_prefix, titles)}</dd>\n"
             )
         parts.append("</dl>\n")
-    if module.get("confidence") == "source-documented":
-        parts.insert(0, (
-            '<p class="draft-banner">Source-documented only, from the original Help Center. '
-            "Not confirmed on the current QMAS dev site. No reviewed screenshots. "
-            "Do not treat the labels below as current UI until they are checked.</p>\n"
-        ))
     parts.append(additions_html(module, guide_prefix, titles))
     return "".join(parts)
 
@@ -267,12 +280,13 @@ def additions_html(module, guide_prefix, titles) -> str:
     parts = [
         '<section class="additions">',
         "<h2>Help Center additions and remaining gaps</h2>",
-        '<aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p>',
+        '<p>This section adds Help Center material and named gaps. It does not replace the steps above.</p>',
+        '<details class="source-fold"><summary>How these labels are used</summary>',
         "<ul>",
         "<li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li>",
         "<li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li>",
         "<li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li>",
-        "</ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></aside>",
+        "</ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></details>",
     ]
     for section in data["sections"]:
         kind = section.get("kind", "source-documented")
@@ -300,9 +314,30 @@ def asset_href(home: str, path: str) -> str:
     return path if home == "./" else f"{home}{path}"
 
 
+def verification_sources_html(catalog) -> str:
+    home = catalog["verification"]["help_center_home"]
+    index = catalog["verification"]["user_guide_index"]
+    return (
+        "<p>Help Center home: "
+        f'<a href="{html.escape(home["url"], quote=True)}">{html.escape(home["title"])}</a>'
+        f' (last edited {html.escape(home["edited"])}). '
+        "User Guide index: "
+        f'<a href="{html.escape(index["url"], quote=True)}">{html.escape(index["title"])}</a>'
+        f' (last edited {html.escape(index["edited"])}). '
+        "Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p>"
+    )
+
+
+def visible_lead(record) -> str:
+    lead = record["lead"]
+    prefix = f"{record['label']}."
+    if lead.startswith(prefix):
+        return lead[len(prefix):].lstrip()
+    return lead
+
+
 def verification_html(module, catalog) -> str:
     record = catalog["verification"]["modules"][module["slug"]]
-    home = catalog["verification"]["help_center_home"]
     if record["articles"]:
         items = "".join(
             "<li>"
@@ -316,22 +351,25 @@ def verification_html(module, catalog) -> str:
         articles = "<p>No Help Center article is the source of the steps on this page.</p>"
     return (
         f'<aside class="verify verify-{html.escape(record["status"])}">'
-        "<h2>Source and verification</h2>"
-        f'<p><strong>{html.escape(record["label"])}.</strong> {html.escape(record["note"])}</p>'
+        f'<p><strong>{html.escape(record["label"])}.</strong> {html.escape(visible_lead(record))}</p>'
+        '<details class="source-fold"><summary>Source and verification</summary>'
+        f'<p>{html.escape(record["note"])}</p>'
         f"{articles}"
-        "<p>Help Center home: "
-        f'<a href="{html.escape(home["url"], quote=True)}">{html.escape(home["title"])}</a>.</p>'
-        "</aside>\n"
+        f"{verification_sources_html(catalog)}"
+        "</details></aside>\n"
     )
 
 
 def verification_md(module, catalog) -> str:
     record = catalog["verification"]["modules"][module["slug"]]
     home = catalog["verification"]["help_center_home"]
+    index = catalog["verification"]["user_guide_index"]
     lines = [
         "## Source and verification",
         "",
-        f"**{record['label']}.** {record['note']}",
+        f"**{record['label']}.** {visible_lead(record)}",
+        "",
+        record["note"],
         "",
     ]
     if record["articles"]:
@@ -343,7 +381,11 @@ def verification_md(module, catalog) -> str:
     else:
         lines.append("No Help Center article is the source of the steps on this page.")
         lines.append("")
-    lines.append(f"Help Center home: [{home['title']}]({home['url']}).")
+    lines.append(
+        f"Help Center home: [{home['title']}]({home['url']}) (last edited {home['edited']}). "
+        f"User Guide index: [{index['title']}]({index['url']}) (last edited {index['edited']}). "
+        "Public icw-io addresses for individual articles were not verified, so those links use app.notion.com."
+    )
     lines.append("")
     return "\n".join(lines)
 
@@ -486,31 +528,53 @@ def render_index(catalog, modules, reviewed) -> str:
             else:
                 pending += 1
         counts[module["slug"]] = (reviewed_count, pending, missed)
-    groups = []
+    labels = {}
+    app_for = {}
     for group in catalog["groups"]:
-        app = ""
-        if group.get("app_href"):
-            app = f'<a href="{html.escape(group["app_href"], quote=True)}">Open module</a>'
-        items = []
+        slugs = []
         for item in group["items"]:
-            reviewed_count, pending, missed = counts[item["slug"]]
-            module = next(entry for entry in modules if entry["slug"] == item["slug"])
-            if module.get("confidence") == "source-documented" and reviewed_count + pending + missed == 0:
-                tag = '<span class="tag">Source-documented · no screenshots</span>'
-            elif missed:
-                tag = f'<span class="tag">{reviewed_count} reviewed, {missed} not captured</span>'
-            elif pending and reviewed_count:
-                tag = f'<span class="tag">{reviewed_count} reviewed, {pending} pending</span>'
-            elif pending:
-                tag = f'<span class="tag">Screenshots pending</span>'
-            else:
-                tag = f'<span class="tag reviewed">Reviewed screenshots</span>'
-            items.append(
-                f'<li><a href="{html.escape(item["slug"], quote=True)}/">{html.escape(item["label"])}</a> {tag}</li>'
+            labels.setdefault(item["slug"], item["label"])
+            slugs.append(item["slug"])
+        if group.get("app_href") and slugs:
+            primary = slugs[0]
+            if len(slugs) == 1 or primary in {"product-management", "supplier-management"}:
+                app_for[primary] = group["app_href"]
+    home_groups = [
+        ("Getting Started", ["getting-started"]),
+        ("Product & Compliance", ["product-management", "product-profile", "efiling", "ai-insight", "test-plan"]),
+        ("Supplier & Factory", ["supplier-management", "factory-management"]),
+        ("Testing & Inspection", ["product-testing", "qc-inspection", "internal-qc-inspection", "factory-audit"]),
+        ("Documents", ["document-management", "document-review"]),
+    ]
+    grouped = [slug for _, slugs in home_groups for slug in slugs]
+    if sorted(grouped) != sorted(module["slug"] for module in modules):
+        raise SystemExit("home groups do not match the 14 modules")
+    groups = []
+    for heading, slugs in home_groups:
+        cards = []
+        for slug in slugs:
+            module = next(entry for entry in modules if entry["slug"] == slug)
+            record = catalog["verification"]["modules"][slug]
+            badge = ""
+            if record["status"] == "source-only":
+                badge = '<span class="tag tag-warn">Source-only, not on the published site</span>'
+            app = ""
+            if slug in app_for:
+                app = (
+                    f'<a class="app-link" href="{html.escape(app_for[slug], quote=True)}">Open in QMAS</a>'
+                )
+            cards.append(
+                "<li>"
+                f'<a class="guide-card" href="{html.escape(slug, quote=True)}/">'
+                f'<span class="guide-card-title">{html.escape(record["nav"])}</span>'
+                f'<span class="guide-card-text">{html.escape(labels[slug])}</span>'
+                f"{badge}</a>{app}</li>"
             )
+        anchor = re.sub(r"[^a-z0-9]+", "-", heading.lower()).strip("-")
         groups.append(
-            '<section class="module-group">'
-            f"<h2>{html.escape(group['heading'])} {app}</h2><ul>{''.join(items)}</ul></section>\n"
+            f'<section class="guide-group" aria-labelledby="{anchor}">'
+            f'<h2 id="{anchor}">{html.escape(heading)}</h2>'
+            f'<ul class="guide-cards" role="list">{"".join(cards)}</ul></section>\n'
         )
     published = catalog["source_site"]
     rows = []
@@ -532,16 +596,24 @@ def render_index(catalog, modules, reviewed) -> str:
             "</tr>"
         )
     help_home = catalog["verification"]["help_center_home"]
+    guide_index = catalog["verification"]["user_guide_index"]
+    related = []
+    for item in catalog.get("related_resources", []):
+        related.append(
+            f'<a href="{html.escape(item["href"], quote=True)}">{html.escape(item["label"])}</a>. {html.escape(item["note"])}'
+        )
+    related_html = " ".join(related)
     body = f"""
 <h1>QMAS User Guide</h1>
-<p class="lede">Updated working draft. Existing published version: <a href="{html.escape(published, quote=True)}">{html.escape(published)}</a>. This branch is not deployed.</p>
-<p class="draft-banner">Working copy draft {html.escape(catalog["version"])}. Fourteen English modules. Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Factory Audit and Test Plan have no screenshots.</p>
-<p>Existing create-path steps, captions, and reviewed images are unchanged. Help Center text is marked on each module. It is not the source of every step.</p>
-<p>The same 14 modules are in the <a href="{html.escape(catalog["notion_working_hub"], quote=True)}">Notion working hub</a>. <a href="combined/">Read all guides in one page</a>.</p>
-<section class="source-map">
-<h2>Source and verification</h2>
-<p>The step-by-step sections of the original 12 modules come from the existing published version, with dev-verified corrections where a reviewed screenshot or the 9 Nov 2026 check backs them. Factory Audit and the standalone Test Plan are source-only and were not confirmed on the current dev site. Product Testing and QC Inspection are mixed: the reviewed create screens are current UI, and the later quote or accept flow is older Help Center wording. This page does not mark every paragraph as unverified, and it does not mark every paragraph as Help Center text.</p>
-<p>Help Center home: <a href="{html.escape(help_home["url"], quote=True)}">{html.escape(help_home["title"])}</a>.</p>
+<p class="lede">Choose a module. These are the 14 existing guides.</p>
+<p class="draft-notice">Working copy draft. Not deployed. Existing published version: <a href="{html.escape(published, quote=True)}">{html.escape(published)}</a>.</p>
+{''.join(groups)}
+<p class="related-line">Related: <a href="{html.escape(catalog["notion_working_hub"], quote=True)}">Notion working hub</a>. {related_html} <a href="combined/">Read all guides in one page</a>.</p>
+<details class="source-fold">
+<summary>Source and verification</summary>
+<p>Working copy draft {html.escape(catalog["version"])}. Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Factory Audit and Test Plan have no screenshots and are not on the existing published site.</p>
+<p>The original 12 modules keep their published steps. A reviewed screenshot means that part is current UI verified. Help Center text is marked on the module and is not the source of every step. Factory Audit and the standalone Test Plan are source-only and not dev-verified. Where a page is mixed, the create path can be current UI verified while a later quote or accept flow is still older Help Center wording.</p>
+<p>Help Center home: <a href="{html.escape(help_home["url"], quote=True)}">{html.escape(help_home["title"])}</a> (last edited {html.escape(help_home["edited"])}). User Guide index: <a href="{html.escape(guide_index["url"], quote=True)}">{html.escape(guide_index["title"])}</a> (last edited {html.escape(guide_index["edited"])}). Public icw-io addresses for individual articles were not verified, so the table uses app.notion.com.</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Source and verification">
 <table>
 <caption class="visually-hidden">Source and verification for the 14 modules</caption>
@@ -551,8 +623,7 @@ def render_index(catalog, modules, reviewed) -> str:
 </tbody>
 </table>
 </div>
-</section>
-{''.join(groups)}
+</details>
 """
     return page("QMAS User Guide (working copy draft)", body, "./", None, catalog, "home").replace(
         '<main id="content" tabindex="-1">',
@@ -710,9 +781,14 @@ def render_combined_md(catalog, modules, reviewed, titles) -> str:
         "",
         f"Notion working hub: {catalog['notion_working_hub']}",
         "",
+    ]
+    for item in catalog.get("related_resources", []):
+        lines.append(f"{item['label']}: {item['href']}. {item['note']}")
+        lines.append("")
+    lines.extend([
         "## Contents",
         "",
-    ]
+    ])
     for module in modules:
         lines.append(f"- [{module['title']}](#{module['slug']})")
     lines.append("")
@@ -803,6 +879,10 @@ def write_text(catalog, modules, reviewed, titles):
         f'{html.escape(catalog["version"])}. Combined PDF generated from the same content as the per-module PDFs.</p>'
         f"<h1>{html.escape(catalog['title'])}</h1>"
         f"<p>Notion working hub: {html.escape(catalog['notion_working_hub'])}</p>"
+        + "".join(
+            f"<p>{html.escape(item['label'])}: <a href=\"{html.escape(item['href'], quote=True)}\">{html.escape(item['href'])}</a>. {html.escape(item['note'])}</p>"
+            for item in catalog.get("related_resources", [])
+        )
     )
     (print_dir / "qmas-user-guide.html").write_text(
         page(catalog["title"], cover + "\n".join(combined_print_articles), "../../", None, catalog, None),

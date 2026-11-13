@@ -15,11 +15,16 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 ## Source and verification
 
-**Current UI verified.** Current UI verified for the reviewed Home screenshots, including the avatar account control confirmed on 9 Nov 2026. Those steps are the existing published guide. The 2024 Help Center onboarding article is an addition only. It is not these steps.
+**Mixed.** Home, Settings, and Company Profile are current UI verified, including the avatar account control and the five TicMate shortcuts. The 2024 Help Center onboarding steps are source-only and not dev-verified.
 
-- [Getting Started](https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc) (last edited 2024-04-02). Historical onboarding. It still says top menu bar.
+Do not mark this whole module unverified. The reviewed Home screenshots are current UI. Source: QMAS Help Center — Getting Started, last edited 2024-04-02 15:23:02 HKT, for the onboarding pointers only.
 
-Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
+- [Getting Started](https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc) (last edited 2024-04-02 15:23:02 HKT). Onboarding pointers only. Source-only, not dev-verified.
+- [Set Up Your Product Compliance Module](https://app.notion.com/p/3200ac0e049d4aa8b2409bad15cea3cd) (last edited 2024-04-02 19:08:58 HKT). Related 2024 setup pointer. Source-only, not dev-verified.
+- [Set Up Your Supplier Management Module](https://app.notion.com/p/01167450c4d54a98a3670fe13e056f12) (last edited 2024-04-02 18:20:47 HKT). Related 2024 setup pointer. Source-only, not dev-verified.
+- [FAQs](https://app.notion.com/p/84844e89cab14819b021b0aa8e33ef31) (last edited 2022-12-19 15:59:00 HKT). Related FAQ pointer. Source-only, not dev-verified.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af) (last edited 2026-01-20 13:54:13 HKT). User Guide index: [User Guide](https://app.notion.com/p/a92963a30e584145bb457a62b7706541) (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.
 
 Find your way around QMAS: the Home page, the top bar and your company settings.
 

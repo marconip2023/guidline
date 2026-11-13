@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -210,6 +211,18 @@ class GuideContentTests(unittest.TestCase):
         self.assertIn("Mixed.", testing)
         self.assertIn("Preliminary Accept", testing)
         self.assertIn("Final Quote", testing)
+        self.assertLess(testing.index("<h1>"), testing.index("Mixed."))
+        self.assertLess(testing.index("Mixed."), testing.index('aria-label="On this page"'))
+        started = (ROOT / "getting-started" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Mixed.", started)
+        self.assertIn("2024-04-02 15:23:02 HKT", started)
+        self.assertIn("2026-11-04 11:18:27 HKT", testing)
+        for page in pages:
+            public_children = [
+                url for url in re.findall(r"https://icw-io\.notion\.site/[^\"'\s<]+", page)
+                if "QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af" not in url
+            ]
+            self.assertEqual(public_children, [])
         for block in self.blocks["product-testing"]:
             if block in SECTION_HEADINGS or "←" in block:
                 continue
@@ -235,6 +248,25 @@ class GuideContentTests(unittest.TestCase):
             self.assertIn('popovertarget="site-menu"', text)
             self.assertIn('alt="QMAS"', text)
             self.assertIn("assets/brand/qmas-logo.png", text)
+        home = (ROOT / "index.html").read_text(encoding="utf-8")
+        main = home.split("<main", 1)[1]
+        self.assertLess(main.index("guide-card"), main.index('class="source-fold"'))
+        self.assertEqual(home.count('class="guide-card"'), 14)
+        for heading in (
+            "Getting Started",
+            "Product &amp; Compliance",
+            "Supplier &amp; Factory",
+            "Testing &amp; Inspection",
+            "Documents",
+        ):
+            self.assertIn(heading, home)
+        self.assertIn("QMAS Chatbot", home)
+        self.assertIn("https://workflow-dev.icw.io/chat/QDSPY8f58691bu1P", home)
+        self.assertIn("QMAS Chatbot 2.0", home)
+        self.assertNotIn("QMAS Chatbot 3.0", home)
+        self.assertIn("Source-only, not on the published site", home)
+        for path in pages:
+            text = path.read_text(encoding="utf-8")
             for raw in href_re.findall(text):
                 if raw.startswith(("https://", "http://", "mailto:")):
                     self.assertTrue(raw.startswith("https://"), raw)

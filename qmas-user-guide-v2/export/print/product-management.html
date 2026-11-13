@@ -35,7 +35,7 @@ body {
 }
 
 a { color: var(--link); }
-:where(a, button):focus-visible,
+:where(a, button, summary):focus-visible,
 .table-wrap:focus-visible,
 .skip-link:focus {
   outline: 3px solid var(--focus);
@@ -231,11 +231,79 @@ h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
 .meta dd { margin: 0; }
 
 .overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: #184dad;
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: #184dad; font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #184dad;
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
 .module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
 .module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .module-group h2 a { font-size: 14px; font-weight: 400; }
-.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
 .tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
 
 .ui-label {
   display: inline-block;
@@ -331,6 +399,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 @media print {
   body { background: #fff; }
   .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
   .site-header { border: 0; background: none; }
   .header-inner { padding: 0 0 8px; }
   main { max-width: none; padding: 0; }
@@ -375,18 +444,11 @@ caption.visually-hidden { /* name comes from the region label */ }
   <p class="edition"><span class="edition-draft">Updated working draft</span> <a href="https://marconip2026.github.io/qmas-user-guide/">Existing published version</a></p>
 </header>
 <main id="content" tabindex="-1">
-<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>Product Management — Create and Edit a Product</h1>
 <p class="lede">Add a product profile to QMAS so you can attach documents, compliance data, testing and eFiling to it.</p>
+<aside class="verify verify-mixed"><p><strong>Mixed.</strong> The reviewed create path and list filters are current UI verified. The Import Product pointer is Help Center text and is not dev-verified.</p><details class="source-fold"><summary>Source and verification</summary><p>Do not mark this whole module unverified. Source: QMAS Help Center — Manage your QMAS Product Information Pack, last edited 2026-11-04 11:39:48 HKT. Current UI verified for the create and edit path. One inventory slot, 08-product-added, is still not captured.</p><ul><li><a href="https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61">Manage your QMAS Product Information Pack</a> (last edited 2026-11-04 11:39:48 HKT). Create path is current UI verified. Import Product is source-only, not dev-verified.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p></details></aside>
 <p class="status-line">Screenshot slots: 10 reviewed, 1 explicitly not captured, 0 still pending privacy review.</p>
-<aside class="verify verify-current-ui"><h2>Source and verification</h2><p><strong>Current UI verified.</strong> Current UI verified for the reviewed list and create screenshots, including the list filters confirmed on 9 Nov 2026. Those steps are the existing published guide. Import Product is named from the Help Center and is not a full extra walkthrough.</p><ul><li><a href="https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61">Manage your QMAS Product Information Pack</a> (last edited 2026-11-04). Create path alignment, plus the Import Product mention.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a>.</p></aside>
-<dl class="meta">
-<dt>Module</dt><dd>Product Management</dd>
-<dt>Start here</dt><dd><a href="https://qmas.icw.io/product/list">https://qmas.icw.io/product/list</a> → <strong>+ New Product</strong></dd>
-<dt>Direct link</dt><dd><a href="https://qmas.icw.io/add-product">https://qmas.icw.io/add-product</a></dd>
-<dt>Steps</dt><dd>1 Product Profile → 2 Related Product → Done</dd>
-<dt>Checked against</dt><dd>QMAS dev, 9 Nov 2026</dd>
-</dl>
+<nav class="page-toc" aria-label="On this page"><ul><li><a href="#1-open-product-management">1. Open Product Management</a></li><li><a href="#2-product-profile-product-details">2. Product Profile — product details</a></li><li><a href="#3-product-profile-supplier">3. Product Profile — supplier</a></li><li><a href="#4-product-profile-optional-sections">4. Product Profile — optional sections</a></li><li><a href="#5-related-product-optional">5. Related Product (optional)</a></li><li><a href="#6-done-find-your-product">6. Done — find your product</a></li><li><a href="#7-edit-copy-or-deactivate-a-product">7. Edit, copy or deactivate a product</a></li></ul></nav>
 <h2>Overview</h2>
 <ol class="overview">
 <li>Open <strong>Product Management</strong> and click <strong>+ New Product</strong>.</li>
@@ -395,38 +457,45 @@ caption.visually-hidden { /* name comes from the region label */ }
 <li>The product appears at the top of the Product Management list. Open it to see the product profile.</li>
 <li>To change it later, open the product, click <strong>⋮</strong> next to the name, then <strong>Edit product</strong>.</li>
 </ol>
+<dl class="meta">
+<dt>Module</dt><dd>Product Management</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/product/list">https://qmas.icw.io/product/list</a> → <strong>+ New Product</strong></dd>
+<dt>Direct link</dt><dd><a href="https://qmas.icw.io/add-product">https://qmas.icw.io/add-product</a></dd>
+<dt>Steps</dt><dd>1 Product Profile → 2 Related Product → Done</dd>
+<dt>Checked against</dt><dd>QMAS dev, 9 Nov 2026</dd>
+</dl>
 <h2>Step-by-step</h2>
-<h3>1. Open Product Management</h3>
+<h3 id="1-open-product-management">1. Open Product Management</h3>
 <p>In the left menu, open <strong>Product Management</strong>. Click <strong>+ New Product</strong> at the top right. To add many products at once, use <strong>Import Product</strong>.</p>
 <p>Filter the list with <strong>Product Category</strong>, <strong>Customer Product Category</strong>, <strong>Product Number</strong>, <strong>Status</strong>, <strong>Created By</strong> and <strong>Team</strong>. <strong>Sort by Date modified</strong> changes the order. <strong>Reset</strong> clears the filters.</p>
 <figure class="shot"><img src="../../assets/reviewed/product-management/01-list.jpg" alt="Product Management list with Import Product and + New Product at the top right." width="1820" height="188" fetchpriority="high" decoding="async"><figcaption>Product Management list with Import Product and + New Product at the top right.<span class="caption-note">Reviewed screenshot of the list filters and column headers. No data rows are shown.</span></figcaption></figure>
-<h3>2. Product Profile — product details</h3>
+<h3 id="2-product-profile-product-details">2. Product Profile — product details</h3>
 <p>The <strong>Add new product</strong> wizard opens. Under <strong>1. Product Details</strong>, fill in:</p>
 <ul><li><strong>Item No.</strong> and <strong>Product Name</strong> (required).</li><li><strong>Long Descriptions</strong> (optional): purpose, materials and internal parts such as batteries or stuffing.</li><li><strong>Additional Item No.</strong> (optional).</li><li><strong>Product Category (QMAS)</strong>: click <strong>Select Category</strong>.</li><li><strong>Customer Tag</strong>, <strong>Customer Product Category</strong> (Level 1–3) and <strong>Remark</strong> (optional).</li></ul>
 <figure class="shot"><img src="../../assets/reviewed/product-management/02-step1-empty.jpg" alt="Step 1 Product Profile — Product Details." width="705" height="1038" loading="lazy" decoding="async"><figcaption>Step 1 Product Profile — Product Details.</figcaption></figure>
 <p>In <strong>Select Category</strong>, search by name (for example “drinkware”), click the category, then click <strong>Add category</strong>.</p>
 <figure class="shot"><img src="../../assets/reviewed/product-management/03-select-category.jpg" alt="Selected categories show as dark chips at the top. “1 selected” appears next to Add category." width="800" height="813" loading="lazy" decoding="async"><figcaption>Selected categories show as dark chips at the top. “1 selected” appears next to Add category.</figcaption></figure>
-<h3>3. Product Profile — supplier</h3>
+<h3 id="3-product-profile-supplier">3. Product Profile — supplier</h3>
 <p>Under <strong>2. Supplier</strong>, choose <strong>My supplier list</strong> and click <strong>Select supplier</strong>, or choose <strong>New supplier</strong> to add one here.</p>
 <p>In the pop-up, click <strong>Select</strong> on one supplier, then <strong>Confirm</strong>.</p>
 <figure class="shot"><img src="../../assets/reviewed/product-management/04-select-supplier.jpg" alt="Select 1 Supplier — you can link one supplier per product." width="525" height="650" loading="lazy" decoding="async"><figcaption>Select 1 Supplier — you can link one supplier per product.</figcaption></figure>
 <p>The supplier card appears. Use <strong>Change Supplier</strong> to pick another one, or <strong>Edit this profile</strong> to update the supplier.</p>
 <figure class="shot"><img src="../../assets/reviewed/product-management/05-supplier-shipping.jpg" alt="Selected supplier, followed by 3. Shipping Information (optional)." width="705" height="900" loading="lazy" decoding="async"><figcaption>Selected supplier, followed by 3. Shipping Information (optional).<span class="caption-note">The supplier card body in this screenshot is intentionally blank. Change Supplier and Edit this profile remain visible. The selected test supplier is shown on the Select supplier screenshot.</span></figcaption></figure>
-<h3>4. Product Profile — optional sections</h3>
+<h3 id="4-product-profile-optional-sections">4. Product Profile — optional sections</h3>
 <ul><li><strong>Shipping Information</strong>: size, weight, tolerance and barcode for the selling unit, inner carton and outer carton.</li><li><strong>Factory</strong>: click <strong>Select existing factory</strong>.</li><li><strong>Additional Info</strong>: choose a <strong>Buyer</strong> (or <strong>Add buyer</strong>) and upload up to 30 <strong>product photos</strong> (JPG, JPEG, PNG).</li></ul>
 <p>Click <strong>Next</strong>.</p>
 <figure class="shot"><img src="../../assets/reviewed/product-management/06-factory-additional.jpg" alt="Factory and Additional Info at the bottom of step 1, then Next." width="730" height="1085" loading="lazy" decoding="async"><figcaption>Factory and Additional Info at the bottom of step 1, then Next.</figcaption></figure>
-<h3>5. Related Product (optional)</h3>
+<h3 id="5-related-product-optional">5. Related Product (optional)</h3>
 <p>Product linkage helps you manage compliance reports. For example, link a raw material or an assortment to several end products. Click <strong>Select related product</strong>, or skip this step. Click <strong>Done</strong>. <strong>Unlink</strong> removes a product from this step.</p>
 <figure class="shot"><img src="../../assets/reviewed/product-management/07-step2-related.jpg" alt="Step 2 Related Product." width="705" height="960" loading="lazy" decoding="async"><figcaption>Step 2 Related Product.</figcaption></figure>
-<h3>6. Done — find your product</h3>
+<h3 id="6-done-find-your-product">6. Done — find your product</h3>
 <p>QMAS shows “Product added” and returns to the Product Management list. The new product is at the top.</p>
 <p>The screenshot of that new row was not captured, because it would require creating a real product. The placeholder is not a picture of a finished create.</p>
 <figure class="shot"><div class="pending not-captured"><p><strong>Not captured</strong></p><p>File name: <code>08-product-added.jpg</code></p><p>Not captured. A real product was not created for this screenshot, so this placeholder is not confirmation of a completed create.</p></div><figcaption>The new product at the top of the list.</figcaption></figure>
 <p>Click the product to open its profile. From the left menu of the profile you can manage <strong>Document</strong>, <strong>Shipping Detail</strong>, <strong>Compliance Data</strong>, <strong>Quality Requirement</strong>, <strong>AI Risk Screening</strong>, <strong>CPSC eFiling</strong> and <strong>Packaging Detail</strong>.</p>
 <p>The left menu also includes <strong>QR Code</strong>.</p>
 <figure class="shot"><img src="../../assets/reviewed/product-management/09-product-profile.jpg" alt="Product profile." width="1820" height="1045" loading="lazy" decoding="async"><figcaption>Product profile.<span class="caption-note">Left menu includes Document, Shipping Detail, Compliance Data, Quality Requirement, AI Risk Screening, CPSC eFiling, Packaging Detail and QR Code. The Document tab shows New Folder, Upload, All, Archived, Type, Source, Checked, Sort and Reset.</span></figcaption></figure>
-<h3>7. Edit, copy or deactivate a product</h3>
+<h3 id="7-edit-copy-or-deactivate-a-product">7. Edit, copy or deactivate a product</h3>
 <p>On the product profile, click <strong>⋮</strong> next to the product name:</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Option, What it does"><table><thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Edit product</td><td>Opens the same wizard with your saved details. Change them, then click Next and Done.</td></tr><tr><td>Testing order</td><td>Starts a Product Testing order for this product.</td></tr><tr><td>Make a copy</td><td>Creates a new product with the same details.</td></tr><tr><td>Mark as inactive</td><td>Sets the product to inactive.</td></tr></tbody></table></div>
 <figure class="shot"><img src="../../assets/reviewed/product-management/10-more-menu.jpg" alt="The ⋮ menu on the product profile." width="585" height="430" loading="lazy" decoding="async"><figcaption>The ⋮ menu on the product profile.</figcaption></figure>
@@ -441,7 +510,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>Can I add many products at once?</dt><dd>Yes. Click Import Product on the Product Management list.</dd>
 <dt>Where do I submit eFiling or add compliance data for a product?</dt><dd>Open the product profile and use CPSC eFiling or Compliance Data in its left menu.</dd>
 </dl>
-<section class="additions"><h2>Help Center additions and remaining gaps</h2><aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></aside><h3 class="kind-dev-verified">Dev-verified — list filters (2026-11-09)</h3>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><details class="source-fold"><summary>How these labels are used</summary><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></details><h3 class="kind-dev-verified">Dev-verified — list filters (2026-11-09)</h3>
 <p>The list filters are already in the steps above: <strong>Product Category</strong>, <strong>Customer Product Category</strong>, <strong>Product Number</strong>, <strong>Status</strong>, <strong>Created By</strong>, <strong>Team</strong>, sort, and <strong>Reset</strong>. The reviewed list screenshot shows those filters with no data rows.</p>
 <p>Optional <strong>Factory</strong> and <strong>Additional Info</strong> (buyer, up to 30 product photos) are already in the wizard steps.</p>
 <h3 class="kind-source-documented">Source-documented — Product Information Pack (last edited 2026-11-04)</h3>

@@ -35,7 +35,7 @@ body {
 }
 
 a { color: var(--link); }
-:where(a, button):focus-visible,
+:where(a, button, summary):focus-visible,
 .table-wrap:focus-visible,
 .skip-link:focus {
   outline: 3px solid var(--focus);
@@ -231,11 +231,79 @@ h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
 .meta dd { margin: 0; }
 
 .overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: #184dad;
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: #184dad; font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #184dad;
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
 .module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
 .module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .module-group h2 a { font-size: 14px; font-weight: 400; }
-.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
 .tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
 
 .ui-label {
   display: inline-block;
@@ -331,6 +399,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 @media print {
   body { background: #fff; }
   .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
   .site-header { border: 0; background: none; }
   .header-inner { padding: 0 0 8px; }
   main { max-width: none; padding: 0; }
@@ -375,17 +444,11 @@ caption.visually-hidden { /* name comes from the region label */ }
   <p class="edition"><span class="edition-draft">Updated working draft</span> <a href="https://marconip2026.github.io/qmas-user-guide/">Existing published version</a></p>
 </header>
 <main id="content" tabindex="-1">
-<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>Document Management — Upload a Document</h1>
 <p class="lede">Upload a compliance document, link it to products, suppliers or factories, set its dates and reminders, and add compliance data.</p>
+<aside class="verify verify-current-ui"><p><strong>Current UI verified.</strong> Current UI verified for the reviewed list screenshot. There is no Help Center article for this module. Product Profile document steps are a different page.</p><details class="source-fold"><summary>Source and verification</summary><p>Do not mark this whole module unverified. Pending upload slots and the lifecycle tabs remain gaps.</p><p>No Help Center article is the source of the steps on this page.</p><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p></details></aside>
 <p class="status-line">Screenshot slots: 1 reviewed and 5 pending privacy review.</p>
-<aside class="verify verify-current-ui"><h2>Source and verification</h2><p><strong>Current UI verified.</strong> Current UI verified for the reviewed list screenshot. Those steps are the existing published guide. There is no Help Center article for this module. Product Profile document steps are a different page.</p><p>No Help Center article is the source of the steps on this page.</p><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a>.</p></aside>
-<dl class="meta">
-<dt>Module</dt><dd>Document Management</dd>
-<dt>Start here</dt><dd><a href="https://qmas.icw.io/document-management">https://qmas.icw.io/document-management</a> → <strong>Upload</strong></dd>
-<dt>Pop-up tabs</dt><dd>Save To → Dates &amp; Reminder → Compliance Data → Confirm</dd>
-<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
-</dl>
+<nav class="page-toc" aria-label="On this page"><ul><li><a href="#1-open-document-management">1. Open Document Management</a></li><li><a href="#2-choose-the-document-type">2. Choose the document type</a></li><li><a href="#3-save-to-link-the-document">3. Save To — link the document</a></li><li><a href="#4-dates-reminder">4. Dates &amp; Reminder</a></li><li><a href="#5-compliance-data">5. Compliance Data</a></li><li><a href="#6-confirm">6. Confirm</a></li></ul></nav>
 <h2>Overview</h2>
 <ol class="overview">
 <li>Open <strong>Document Management</strong> and click <strong>Upload</strong>, then choose one or more files from your computer.</li>
@@ -394,23 +457,29 @@ caption.visually-hidden { /* name comes from the region label */ }
 <li><strong>Dates &amp; Reminder</strong>: set issue, expiry and review dates and an email reminder.</li>
 <li><strong>Compliance Data</strong>: add test data, certificate data or other data. Click <strong>Confirm</strong>.</li>
 </ol>
+<dl class="meta">
+<dt>Module</dt><dd>Document Management</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/document-management">https://qmas.icw.io/document-management</a> → <strong>Upload</strong></dd>
+<dt>Pop-up tabs</dt><dd>Save To → Dates &amp; Reminder → Compliance Data → Confirm</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
 <h2>Step-by-step</h2>
-<h3>1. Open Document Management</h3>
+<h3 id="1-open-document-management">1. Open Document Management</h3>
 <p>In the left menu, open <strong>Document Management</strong>. The tabs show <strong>All</strong>, <strong>Pending Review</strong>, <strong>Expired</strong>, <strong>Archived</strong> and <strong>Trash</strong> documents. Click <strong>Upload</strong> at the top right and choose your file.</p>
 <figure class="shot"><img src="../../assets/reviewed/document-management/01-list.jpg" alt="Document Management list with the Upload button." width="1280" height="714" fetchpriority="high" decoding="async"><figcaption>Document Management list with the Upload button.<span class="caption-note">File names in this screenshot are masked. Tabs, column headers, and Upload stay visible.</span></figcaption></figure>
-<h3>2. Choose the document type</h3>
+<h3 id="2-choose-the-document-type">2. Choose the document type</h3>
 <p>The <strong>Upload Document</strong> pop-up shows the file name. Click the pencil icon to rename it. Under <strong>Type</strong>, type or select a document type, for example <strong>Test Report</strong>.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>02-upload-modal.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Upload Document pop-up.</figcaption></figure>
-<h3>3. Save To — link the document</h3>
+<h3 id="3-save-to-link-the-document">3. Save To — link the document</h3>
 <p>On the <strong>Save To</strong> tab, click <strong>Add Supplier</strong>, <strong>Add Factory</strong> or <strong>Add Product</strong>. Select the items in the pop-up and click <strong>Confirm</strong>. A document can be linked to several items. Click <strong>Remove</strong> to unlink one.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-save-to.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>The document linked to a product.</figcaption></figure>
-<h3>4. Dates &amp; Reminder</h3>
+<h3 id="4-dates-reminder">4. Dates &amp; Reminder</h3>
 <p>Set the <strong>Issue Date</strong>, <strong>Expiry Date</strong> and <strong>Review Date</strong>. Under <strong>Email Reminder</strong>, choose <strong>On Expiry Date</strong>, <strong>On Review Date</strong> or <strong>Custom</strong> to get an email reminder. Use <strong>Clear All Settings</strong> to start again.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-dates-reminder.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Dates &amp; Reminder tab.</figcaption></figure>
-<h3>5. Compliance Data</h3>
+<h3 id="5-compliance-data">5. Compliance Data</h3>
 <p>Click <strong>Edit</strong> next to <strong>Test Data</strong>, <strong>Certificate Data</strong> or <strong>Other</strong> to record the details from the document, such as test items and results or certificate numbers.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>05-compliance-data.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Compliance Data tab.</figcaption></figure>
-<h3>6. Confirm</h3>
+<h3 id="6-confirm">6. Confirm</h3>
 <p>Click <strong>Confirm</strong>. QMAS shows a success message and the document appears at the top of the list, with its type and the number of linked products, suppliers and factories.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>06-uploaded.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>The uploaded document at the top of the list.</figcaption></figure>
 <h2>Tips</h2>
@@ -422,7 +491,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>How do I get a reminder before a document expires?</dt><dd>In the Upload Document pop-up, open Dates &amp; Reminder, set the Expiry Date, then choose an Email Reminder option.</dd>
 <dt>Where can I see expired documents?</dt><dd>Open the Expired tab in Document Management.</dd>
 </dl>
-<section class="additions"><h2>Help Center additions and remaining gaps</h2><aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></aside><h3 class="kind-finding">Help Center finding</h3>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><details class="source-fold"><summary>How these labels are used</summary><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></details><h3 class="kind-finding">Help Center finding</h3>
 <p>There is no Help Center article for the Document Management module.</p>
 <p>Upload, folders, share, and <strong>Set Reminder</strong> in the Product Information Pack are written against the product profile Document tab, not this module. See the <a href="../../product-profile/">Product Profile</a> page. Do not copy those steps here as if they were Document Management module steps.</p>
 <h3 class="kind-gap">Remaining gaps</h3>

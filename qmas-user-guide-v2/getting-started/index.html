@@ -35,7 +35,7 @@ body {
 }
 
 a { color: var(--link); }
-:where(a, button):focus-visible,
+:where(a, button, summary):focus-visible,
 .table-wrap:focus-visible,
 .skip-link:focus {
   outline: 3px solid var(--focus);
@@ -231,11 +231,79 @@ h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
 .meta dd { margin: 0; }
 
 .overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: #184dad;
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: #184dad; font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #184dad;
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
 .module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
 .module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .module-group h2 a { font-size: 14px; font-weight: 400; }
-.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
 .tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
 
 .ui-label {
   display: inline-block;
@@ -331,6 +399,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 @media print {
   body { background: #fff; }
   .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
   .site-header { border: 0; background: none; }
   .header-inner { padding: 0 0 8px; }
   main { max-width: none; padding: 0; }
@@ -376,16 +445,11 @@ caption.visually-hidden { /* name comes from the region label */ }
 </header>
 <main id="content" tabindex="-1">
 <nav class="crumb" aria-label="Breadcrumb"><ol><li><a href="../">All guides</a></li><li><span aria-current="page">Getting Started — Home, Settings and Company Profile</span></li></ol></nav>
-<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>Getting Started — Home, Settings and Company Profile</h1>
 <p class="lede">Find your way around QMAS: the Home page, the top bar and your company settings.</p>
+<aside class="verify verify-mixed"><p><strong>Mixed.</strong> Home, Settings, and Company Profile are current UI verified, including the avatar account control and the five TicMate shortcuts. The 2024 Help Center onboarding steps are source-only and not dev-verified.</p><details class="source-fold"><summary>Source and verification</summary><p>Do not mark this whole module unverified. The reviewed Home screenshots are current UI. Source: QMAS Help Center — Getting Started, last edited 2024-04-02 15:23:02 HKT, for the onboarding pointers only.</p><ul><li><a href="https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc">Getting Started</a> (last edited 2024-04-02 15:23:02 HKT). Onboarding pointers only. Source-only, not dev-verified.</li><li><a href="https://app.notion.com/p/3200ac0e049d4aa8b2409bad15cea3cd">Set Up Your Product Compliance Module</a> (last edited 2024-04-02 19:08:58 HKT). Related 2024 setup pointer. Source-only, not dev-verified.</li><li><a href="https://app.notion.com/p/01167450c4d54a98a3670fe13e056f12">Set Up Your Supplier Management Module</a> (last edited 2024-04-02 18:20:47 HKT). Related 2024 setup pointer. Source-only, not dev-verified.</li><li><a href="https://app.notion.com/p/84844e89cab14819b021b0aa8e33ef31">FAQs</a> (last edited 2022-12-19 15:59:00 HKT). Related FAQ pointer. Source-only, not dev-verified.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p></details></aside>
 <p class="status-line">Screenshot slots: 3 reviewed replacement images.</p>
-<aside class="verify verify-current-ui"><h2>Source and verification</h2><p><strong>Current UI verified.</strong> Current UI verified for the reviewed Home screenshots, including the avatar account control confirmed on 9 Nov 2026. Those steps are the existing published guide. The 2024 Help Center onboarding article is an addition only. It is not these steps.</p><ul><li><a href="https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc">Getting Started</a> (last edited 2024-04-02). Historical onboarding. It still says top menu bar.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a>.</p></aside>
-<dl class="meta">
-<dt>Home</dt><dd><a href="https://qmas.icw.io/home">https://qmas.icw.io/home</a></dd>
-<dt>Company Profile</dt><dd><a href="https://qmas.icw.io/company-profile">https://qmas.icw.io/company-profile</a></dd>
-<dt>Checked against</dt><dd>QMAS dev, 9 Nov 2026</dd>
-</dl>
+<nav class="page-toc" aria-label="On this page"><ul><li><a href="#1-home">1. Home</a></li><li><a href="#2-settings-menu">2. Settings menu</a></li><li><a href="#3-company-profile">3. Company Profile</a></li></ul></nav>
 <h2>Overview</h2>
 <ol class="overview">
 <li><strong>Home</strong> shows quick workflows, items that need your attention, and an overview of your business.</li>
@@ -393,19 +457,24 @@ caption.visually-hidden { /* name comes from the region label */ }
 <li>The <strong>top bar</strong> has analytics, messages, notifications, the account avatar, help and credits.</li>
 <li><strong>Settings</strong> opens from the <strong>avatar</strong> (account control) in the top bar. The menu includes Company Profile, Password, Languages, Account Management, Assign TicMart Job and Logout.</li>
 </ol>
+<dl class="meta">
+<dt>Home</dt><dd><a href="https://qmas.icw.io/home">https://qmas.icw.io/home</a></dd>
+<dt>Company Profile</dt><dd><a href="https://qmas.icw.io/company-profile">https://qmas.icw.io/company-profile</a></dd>
+<dt>Checked against</dt><dd>QMAS dev, 9 Nov 2026</dd>
+</dl>
 <h2>Step-by-step</h2>
-<h3>1. Home</h3>
+<h3 id="1-home">1. Home</h3>
 <p><strong>TicMate</strong> says “I’m TicMate. What would you like to do today?” and lists these workflow shortcuts:</p>
 <ul><li><strong>Generate product risk assessment report</strong> (AI Assessment workflow).</li><li><strong>Generate export market requirements</strong> (AI Insight workflow).</li><li><strong>CPSC eFiling</strong>. If it shows “API Setup Required”, set up your Certifier ID in Company Profile first.</li><li><strong>Request product testing with your lab partner</strong> (Product Testing).</li><li><strong>Request technical files from your supplier/factory</strong> (Document Review).</li></ul>
 <p><strong>Attention</strong> counts the items that need action in each module, such as Product Testing, Document Review, QC Inspection, IQC Inspection, Factory Audit, Pending Review Doc and Expired Doc. Click a card to see them.</p>
 <p><strong>Business Overview</strong> shows your active products, suppliers, factories and partners. Click <strong>›</strong> to open the list.</p>
 <p><strong>Ask TicMate</strong> on the right edge opens the TicMate assistant.</p>
 <figure class="shot"><img src="../assets/reviewed/getting-started/01-home.jpg" alt="Home page." width="1855" height="500" fetchpriority="high" decoding="async"><figcaption>Home page.<span class="caption-note">This reviewed screenshot shows the TicMate workflow shortcuts. Attention and Business Overview are described in the steps and are not in this crop.</span></figcaption></figure>
-<h3>2. Settings menu</h3>
+<h3 id="2-settings-menu">2. Settings menu</h3>
 <p>Click your <strong>avatar</strong> (account control) in the top bar:</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Option, What it does"><table><thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Company Profile</td><td>Company details, certificates, documents, product categories and CPSC eFiling Certifier ID.</td></tr><tr><td>Password</td><td>Change your password.</td></tr><tr><td>Languages</td><td>Change the system language.</td></tr><tr><td>Account Management</td><td>Manage your company&#x27;s user accounts.</td></tr><tr><td>Assign TicMart Job</td><td>Assign jobs from the TicMart marketplace.</td></tr><tr><td>Logout</td><td>Signs you out of QMAS.</td></tr></tbody></table></div>
 <figure class="shot"><img src="../assets/reviewed/getting-started/02-settings-menu.jpg" alt="Settings menu." width="241" height="277" loading="lazy" decoding="async"><figcaption>Settings menu.<span class="caption-note">Menu opened from the account avatar: Company Profile, Password, Languages, Account Management, Assign TicMart Job and Logout.</span></figcaption></figure>
-<h3>3. Company Profile</h3>
+<h3 id="3-company-profile">3. Company Profile</h3>
 <p>Click the pencil icon next to the company name to edit it. The <strong>Overview</strong>, <strong>Certificate</strong> and <strong>Document</strong> tabs hold your company information. <strong>CPSC eFiling - Certifier ID</strong> is where you add and manage the API key for eFiling. <strong>Product Category</strong> lists the categories your company works with.</p>
 <figure class="shot"><img src="../assets/reviewed/getting-started/03-company-profile.jpg" alt="Company Profile." width="1050" height="820" loading="lazy" decoding="async"><figcaption>Company Profile.</figcaption></figure>
 <h2>Tips</h2>
@@ -417,7 +486,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>How do I change my password?</dt><dd>Click your avatar (account control) in the top bar, then Password.</dd>
 <dt>Where do I edit my company information?</dt><dd>Click your avatar (account control), then Company Profile (<a href="https://qmas.icw.io/company-profile">https://qmas.icw.io/company-profile</a>).</dd>
 </dl>
-<section class="additions"><h2>Help Center additions and remaining gaps</h2><aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></aside><h3 class="kind-dev-verified">Dev-verified — already in the steps above</h3>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><details class="source-fold"><summary>How these labels are used</summary><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></details><h3 class="kind-dev-verified">Dev-verified — already in the steps above</h3>
 <p>Settings opens from the <strong>avatar / account control</strong>. That correction is already in the steps above.</p>
 <p>Home shows <strong>5</strong> TicMate workflow shortcuts: AI Assessment, AI Insight, CPSC eFiling, Product Testing, Document Review.</p>
 <h3 class="kind-source-documented">Source-documented — Help Center onboarding (last edited 2024-04-02)</h3>

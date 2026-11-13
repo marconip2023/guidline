@@ -35,7 +35,7 @@ body {
 }
 
 a { color: var(--link); }
-:where(a, button):focus-visible,
+:where(a, button, summary):focus-visible,
 .table-wrap:focus-visible,
 .skip-link:focus {
   outline: 3px solid var(--focus);
@@ -231,11 +231,79 @@ h3 { font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
 .meta dd { margin: 0; }
 
 .overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: #184dad;
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: #184dad; font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #184dad;
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
 .module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
 .module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .module-group h2 a { font-size: 14px; font-weight: 400; }
-.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; margin-left: 6px; background: var(--pending); color: var(--muted); white-space: nowrap; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
 .tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
 
 .ui-label {
   display: inline-block;
@@ -331,6 +399,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 @media print {
   body { background: #fff; }
   .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
   .site-header { border: 0; background: none; }
   .header-inner { padding: 0 0 8px; }
   main { max-width: none; padding: 0; }
@@ -375,17 +444,11 @@ caption.visually-hidden { /* name comes from the region label */ }
   <p class="edition"><span class="edition-draft">Updated working draft</span> <a href="https://marconip2026.github.io/qmas-user-guide/">Existing published version</a></p>
 </header>
 <main id="content" tabindex="-1">
-<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>AI Insight — Run an AI Risk Screening</h1>
 <p class="lede">Upload product photos and let AI identify compliance risks and requirements for your import region. You get a compliance guideline report (PDF).</p>
+<aside class="verify verify-current-ui"><p><strong>Current UI verified.</strong> Current UI verified for the reviewed AI Risk Screening list and the blank New AI Risk Screening dialog. There is no Help Center article for AI Insight, AI Risk Screening, or AI Assessment. No screening was run.</p><details class="source-fold"><summary>Source and verification</summary><p>Do not mark this whole module unverified. A completed report and Verify Information remain gaps.</p><p>No Help Center article is the source of the steps on this page.</p><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p></details></aside>
 <p class="status-line">Screenshot slots: 2 reviewed and 2 pending privacy review.</p>
-<aside class="verify verify-current-ui"><h2>Source and verification</h2><p><strong>Current UI verified.</strong> Current UI verified for the reviewed AI Risk Screening list and the blank New AI Risk Screening dialog. Those screens are the existing published guide, filed under this AI Insight path. There is no Help Center article for AI Insight, AI Risk Screening, or AI Assessment. No screening was run.</p><p>No Help Center article is the source of the steps on this page.</p><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a>.</p></aside>
-<dl class="meta">
-<dt>Module</dt><dd>AI Insight (shown as “AI Risk Screening” in the QMAS menu)</dd>
-<dt>Start here</dt><dd><a href="https://qmas.icw.io/ai-risk-screening">https://qmas.icw.io/ai-risk-screening</a> → <strong>Add</strong>, or a product profile → <strong>AI Risk Screening</strong> → <strong>Add</strong></dd>
-<dt>Uses</dt><dd>Tokens. Your balance shows as <strong>Available Token</strong> in the pop-up.</dd>
-<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
-</dl>
+<nav class="page-toc" aria-label="On this page"><ul><li><a href="#1-open-ai-risk-screening">1. Open AI Risk Screening</a></li><li><a href="#2-fill-in-the-screening">2. Fill in the screening</a></li><li><a href="#3-verify-and-generate">3. Verify and generate</a></li></ul></nav>
 <h2>Overview</h2>
 <ol class="overview">
 <li>Open <strong>AI Risk Screening</strong> from the left menu (or from a product profile) and click <strong>Add</strong>.</li>
@@ -393,19 +456,25 @@ caption.visually-hidden { /* name comes from the region label */ }
 <li>Click <strong>Verify Information</strong> (recommended) or <strong>Skip Verify &amp; Generate Report</strong>.</li>
 <li>When the status is <strong>Completed</strong>, open the report from the list.</li>
 </ol>
+<dl class="meta">
+<dt>Module</dt><dd>AI Insight (shown as “AI Risk Screening” in the QMAS menu)</dd>
+<dt>Start here</dt><dd><a href="https://qmas.icw.io/ai-risk-screening">https://qmas.icw.io/ai-risk-screening</a> → <strong>Add</strong>, or a product profile → <strong>AI Risk Screening</strong> → <strong>Add</strong></dd>
+<dt>Uses</dt><dd>Tokens. Your balance shows as <strong>Available Token</strong> in the pop-up.</dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026</dd>
+</dl>
 <h2>Step-by-step</h2>
-<h3>1. Open AI Risk Screening</h3>
+<h3 id="1-open-ai-risk-screening">1. Open AI Risk Screening</h3>
 <p>In the left menu, open <strong>AI Risk Screening</strong>. The list shows every screening with its import region, output mode (Full or Lite), status and upload date. Click <strong>Add</strong>.</p>
 <p>The guide still files this module under AI Insight. The current screen title and address are AI Risk Screening (`/ai-risk-screening`).</p>
 <figure class="shot"><img src="../../assets/reviewed/ai-insight/01-list.jpg" alt="AI Risk Screening list." width="1280" height="714" fetchpriority="high" decoding="async"><figcaption>AI Risk Screening list.<span class="caption-note">Current UI name is AI Risk Screening. Search, the All tab, filters and Add are visible. List rows are masked. No screening was run. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot.</span></figcaption></figure>
 <p>You can also start from a product: open the product profile, choose <strong>AI Risk Screening</strong> in its left menu, then click <strong>Add</strong>.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>04-product-profile-entry.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>AI Risk Screening inside a product profile.</figcaption></figure>
-<h3>2. Fill in the screening</h3>
+<h3 id="2-fill-in-the-screening">2. Fill in the screening</h3>
 <ul><li><strong>Product Page URL</strong> (optional): a link to the product page.</li><li><strong>Product Images</strong> (required): up to 6 photos from different views. PNG, JPEG, JPG, WEBP, GIF, AVIF or HEIC.</li><li><strong>Import Region</strong> (required): where the product will be sold.</li><li><strong>Output Mode</strong> (required): <strong>Full</strong> or <strong>Lite</strong> report.</li><li><strong>Screening Age Grade</strong> (optional): the age grade to screen against, for example 3+ or 8+.</li></ul>
 <p><strong>Available Token</strong> shows your balance. The number in this screenshot is redacted.</p>
 <p>The reviewed pop-up is blank. Product Page URL is only the placeholder, no images are uploaded, and Import Region, Output Mode and Screening Age Grade are empty. Verify Information and Skip Verify &amp; Generate Report are visible and were not used. No report was generated.</p>
 <figure class="shot"><img src="../../assets/reviewed/ai-insight/02-new-screening.jpg" alt="New AI Risk Screening pop-up." width="1280" height="714" loading="lazy" decoding="async"><figcaption>New AI Risk Screening pop-up.<span class="caption-note">Dialog title is AI Risk Screening. Blank form only. No photos uploaded and neither action button was used.</span></figcaption></figure>
-<h3>3. Verify and generate</h3>
+<h3 id="3-verify-and-generate">3. Verify and generate</h3>
 <p>Click <strong>Verify Information</strong> (recommended: verification improves accuracy and gives a more reliable report), or <strong>Skip Verify &amp; Generate Report</strong> to go straight to the report.</p>
 <p>The new screening appears in the list. When its status is <strong>Completed</strong>, the report is ready. Click the <strong>ⓘ</strong> icon to see the screening details.</p>
 <figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>03-screening-details.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Screening details: product name, import region, age grade, categories, materials, battery/AC/food-contact flags and output mode.</figcaption></figure>
@@ -418,7 +487,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>Where do I see my token balance?</dt><dd>In the AI Risk Screening pop-up, under Available Token.</dd>
 <dt>What is the difference between Full and Lite?</dt><dd>They are the two report output modes. Choose one in Output Mode when you add a screening.</dd>
 </dl>
-<section class="additions"><h2>Help Center additions and remaining gaps</h2><aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></aside><h3 class="kind-finding">Help Center finding</h3>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><details class="source-fold"><summary>How these labels are used</summary><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></details><h3 class="kind-finding">Help Center finding</h3>
 <p>There is no Help Center article for AI Insight, AI Risk Screening, or AI Assessment.</p>
 <h3 class="kind-gap">Remaining gaps</h3>
 <ul><li>Completed report: open it, download the PDF, and what Full versus Lite actually contain.</li><li><strong>Verify Information</strong> intermediate UI. It is the recommended path and is not shown.</li><li>Empty state. A wrong empty-state description is a filed bug. Wait for the fixed UI.</li><li>Naming is still undecided: this guide title <strong>AI Insight</strong>, menu <strong>AI Risk Screening</strong>, Home <strong>AI Assessment</strong> and <strong>AI Insight</strong>.</li><li>Token spend: the guide already warns. Do not run a screening unless asked.</li></ul>
