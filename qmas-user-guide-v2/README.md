@@ -20,7 +20,7 @@ Fourteen modules. Twelve keep the published pages and 98 screenshot slots. Facto
 
 Help Center additions from 2026-11-13 are appended. They are marked source-documented, dev-verified, or gap. They do not replace earlier steps, captions, or reviewed images.
 
-Reviewed inventory screenshots, 45 of 98. Fifty-three slots are still pending. The 13 Nov 2026 batch added 12 of those slots plus one Factory validation image that is not part of the 98. Those new files are 1280×800 desktop captures cropped to 1280×714. They are not high-resolution. Matching 1920 files were 1.5× upscales and were not used. The earlier 33 reviewed files were not replaced.
+Reviewed inventory screenshots, 50 of 98. Forty-eight slots are still pending. Later batches added 17 inventory slots. Four supplementary images are not part of the 98: one Factory validation image and three QC views (blank step 1, 3rd Party Job tab, Draft tab). Those files are 1280×800 desktop captures cropped to 1280×714. They are not high-resolution. Matching 1920 files were 1.5× upscales and were not used. Earlier reviewed files were not replaced.
 
 Reviewed replacement screenshots, 45 inventory files:
 
@@ -32,6 +32,8 @@ Reviewed replacement screenshots, 45 inventory files:
 - Supplier Management: list, company overview, contact, and the Next validation state
 - Factory Management: list, overview, scale, and contact
 - Document Review: list, default Create Job form, and default Create Job for Supplier form
+- QC Inspection: list and the Looking-to screen (Get QC inspection quote via ICW selected)
+- Internal QC Inspection: list, Start internal inspection selected, and the blank step 1 requirement form
 
 Supplementary, not one of the 98: `factory-management/required-validation.jpg` shows required Contact person, email type, and email address after **Next**, not Submit.
 

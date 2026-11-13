@@ -34,33 +34,38 @@ Schedule an inspection that your own QC team carries out, without a third-party 
 
 In the left menu, open **Internal QC Inspection**. The tabs show **All Job**, **Onsite Job Calendar** and **Draft**. Click **Create Job**. To add many jobs at once, use **Import Job**.
 
-> **Image pending privacy review:** `01-list.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Internal QC Inspection list with Import Job and Create Job.](images/internal-qc-inspection/01-list.jpg)
+
 
 *Internal QC Inspection list with Import Job and Create Job.*
+
+Import Job and Create Job are visible. Job rows are masked. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot.
 
 
 ### 2. Start internal inspection
 
 **Start internal inspection** is selected. Click **Continue**.
 
-> **Image pending privacy review:** `02-looking-to.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Create New Job — Start internal inspection selected.](images/internal-qc-inspection/02-looking-to.jpg)
+
 
 *Create New Job — Start internal inspection selected.*
+
+Start internal inspection is selected. Continue is visible. No personal data is filled in.
 
 
 ### 3. Inspection Requirement
 
 Choose the **Inspection Date**, **Inspection type**, **Inspection Level** and the **AQL** (Critical, Major, Minor). There is no budget or service provider, because your own team does the inspection. Click **Next**.
 
-> **Image pending privacy review:** `03-step1-requirement.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+The reviewed screenshot is that blank form. It does not show Target Budget or Service Provider Preference. Wizard steps 2–5 are labels only. Those screens were not captured and were not invented.
+
+![Step 1 Inspection Requirement for an internal inspection.](images/internal-qc-inspection/03-step1-requirement.jpg)
+
 
 *Step 1 Inspection Requirement for an internal inspection.*
+
+Blank form. No Target Budget or Service Provider Preference, unlike the QC quote flow. Steps 2–5 remain pending.
 
 
 ### 4. Steps 2–5
@@ -96,7 +101,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 45 of 98. Fifty-three inventory slots are still pending. One Factory validation image is supplementary and is not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 50 of 98. Forty-eight inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Help Center finding
 

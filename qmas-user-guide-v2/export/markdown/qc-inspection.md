@@ -36,11 +36,26 @@ Ask ICW to quote and arrange a third-party QC inspection for your products.
 
 In the left menu, open **QC Inspection**. The charts show inspection results, service providers and job types. Tabs list **All Job**, **3rd Party Job**, **Inhouse Record** and **Draft**. Click **Create Job**.
 
-> **Image pending privacy review:** `01-list.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![QC Inspection list with Create Job.](images/qc-inspection/01-list.jpg)
+
 
 *QC Inspection list with Create Job.*
+
+Job rows are masked. Tabs, column headers, and Create Job stay visible. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot.
+
+![QC Inspection — 3rd Party Job tab.](images/qc-inspection/supplemental-3rd-party-tab.jpg)
+
+
+*QC Inspection — 3rd Party Job tab.*
+
+Supplementary screenshot, not one of the 98 inventory slots. Job rows are masked.
+
+![QC Inspection — Draft tab.](images/qc-inspection/supplemental-draft-tab.jpg)
+
+
+*QC Inspection — Draft tab.*
+
+Supplementary screenshot, not one of the 98 inventory slots. Job rows are masked.
 
 
 ### 2. Choose what you are looking for
@@ -53,11 +68,12 @@ In the left menu, open **QC Inspection**. The charts show inspection results, se
 
 Choose **Get QC inspection quote via ICW** and click **Continue**.
 
-> **Image pending privacy review:** `02-looking-to.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Create New Job — Looking to…](images/qc-inspection/02-looking-to.jpg)
+
 
 *Create New Job — Looking to…*
+
+Default selection is Get QC inspection quote via ICW. Continue is visible. No personal data is filled in.
 
 
 ### 3. Inspection Requirement
@@ -67,6 +83,15 @@ Choose **Get QC inspection quote via ICW** and click **Continue**.
 - **Inspection Level**: General Inspection Level I–III or Special Level S-1 to S-4.
 - **Inspection AQL**: Critical, Major and Minor levels. They apply to all products in this job by default.
 - **Target Budget** (currency and amount) and **Service Provider Preference**. Leave “No preference, ICW will match you with the best inspector” selected if you have no preferred provider.
+
+The reviewed screenshot of this step is the blank form. It includes Target Budget and Service Provider Preference. It is not a filled or submitted job. The filled step-1 screenshot is still pending.
+
+![Create Job step 1 Inspection Requirement, blank (includes Target Budget and Service Provider Preference).](images/qc-inspection/supplemental-step1-requirement-blank.jpg)
+
+
+*Create Job step 1 Inspection Requirement, blank (includes Target Budget and Service Provider Preference).*
+
+Supplementary screenshot, not one of the 98 inventory slots. Blank form only.
 
 > **Image pending privacy review:** `04-step1-filled.jpg`
 >
@@ -165,7 +190,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 45 of 98. Fifty-three inventory slots are still pending. One Factory validation image is supplementary and is not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 50 of 98. Forty-eight inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Source-documented — create path (Help Center updated 2026-11-04)
 

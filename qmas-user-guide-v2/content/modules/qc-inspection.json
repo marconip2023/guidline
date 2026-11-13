@@ -42,7 +42,20 @@
         "In the left menu, open **QC Inspection**. The charts show inspection results, service providers and job types. Tabs list **All Job**, **3rd Party Job**, **Inhouse Record** and **Draft**. Click **Create Job**.",
         {
           "img": "01-list.jpg",
-          "caption": "QC Inspection list with Create Job."
+          "caption": "QC Inspection list with Create Job.",
+          "caption_note": "Job rows are masked. Tabs, column headers, and Create Job stay visible. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot."
+        },
+        {
+          "img": "supplemental-3rd-party-tab.jpg",
+          "caption": "QC Inspection — 3rd Party Job tab.",
+          "caption_note": "Supplementary screenshot, not one of the 98 inventory slots. Job rows are masked.",
+          "counts_toward_98": false
+        },
+        {
+          "img": "supplemental-draft-tab.jpg",
+          "caption": "QC Inspection — Draft tab.",
+          "caption_note": "Supplementary screenshot, not one of the 98 inventory slots. Job rows are masked.",
+          "counts_toward_98": false
         }
       ]
     },
@@ -72,7 +85,8 @@
         "Choose **Get QC inspection quote via ICW** and click **Continue**.",
         {
           "img": "02-looking-to.jpg",
-          "caption": "Create New Job — Looking to…"
+          "caption": "Create New Job — Looking to…",
+          "caption_note": "Default selection is Get QC inspection quote via ICW. Continue is visible. No personal data is filled in."
         }
       ]
     },
@@ -87,6 +101,13 @@
             "**Inspection AQL**: Critical, Major and Minor levels. They apply to all products in this job by default.",
             "**Target Budget** (currency and amount) and **Service Provider Preference**. Leave “No preference, ICW will match you with the best inspector” selected if you have no preferred provider."
           ]
+        },
+        "The reviewed screenshot of this step is the blank form. It includes Target Budget and Service Provider Preference. It is not a filled or submitted job. The filled step-1 screenshot is still pending.",
+        {
+          "img": "supplemental-step1-requirement-blank.jpg",
+          "caption": "Create Job step 1 Inspection Requirement, blank (includes Target Budget and Service Provider Preference).",
+          "caption_note": "Supplementary screenshot, not one of the 98 inventory slots. Blank form only.",
+          "counts_toward_98": false
         },
         {
           "img": "04-step1-filled.jpg",

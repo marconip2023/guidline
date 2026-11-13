@@ -394,6 +394,86 @@
       "bytes": 73009,
       "counts_toward_98": true,
       "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "qc-inspection",
+      "file": "01-list.jpg",
+      "sha256": "8c4955efa44b7ea0372c22e57905fd3acce328e4b8bee323cf3eaaf8197c4c3c",
+      "width": 1280,
+      "height": 714,
+      "bytes": 82927,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "qc-inspection",
+      "file": "02-looking-to.jpg",
+      "sha256": "81a4447827c282bb824d87c558a0f818934ac0fdb1d823995652d0f3a9e2402b",
+      "width": 1280,
+      "height": 714,
+      "bytes": 39257,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "qc-inspection",
+      "file": "supplemental-step1-requirement-blank.jpg",
+      "sha256": "36ba2cc011ac6a0b4ff0e9b2d04212d6e552552c2fc513dd33e669953f094286",
+      "width": 1280,
+      "height": 714,
+      "bytes": 76569,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "qc-inspection",
+      "file": "supplemental-3rd-party-tab.jpg",
+      "sha256": "70d0ebd30af5abe98e6a437cba62faf4d8b19e2f3e52882eee4bf28697684a6a",
+      "width": 1280,
+      "height": 714,
+      "bytes": 82745,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "qc-inspection",
+      "file": "supplemental-draft-tab.jpg",
+      "sha256": "8bec5d33898beac2d9ecd6e8547c11eaaaa180c10ff1ebc5f4a352629277a73d",
+      "width": 1280,
+      "height": 714,
+      "bytes": 81818,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "internal-qc-inspection",
+      "file": "01-list.jpg",
+      "sha256": "13cb632e57196e3eb1d1fe0f8329693ba4e523de6671e86f77199feb1c46328b",
+      "width": 1280,
+      "height": 714,
+      "bytes": 61343,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "internal-qc-inspection",
+      "file": "02-looking-to.jpg",
+      "sha256": "236011738e32d034acf9887c9ba5302fe02a203540ae2857cf83603480c124b9",
+      "width": 1280,
+      "height": 714,
+      "bytes": 39257,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "internal-qc-inspection",
+      "file": "03-step1-requirement.jpg",
+      "sha256": "1346fbee3fdedb1bf3bcb1e6df6ba31dc29307659c28c799f8e08b1c0fd636ac",
+      "width": 1280,
+      "height": 714,
+      "bytes": 58778,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
     }
   ]
 }
