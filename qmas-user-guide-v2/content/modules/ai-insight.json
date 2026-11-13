@@ -1,0 +1,101 @@
+{
+  "slug": "ai-insight",
+  "source_path": "ai-insight/",
+  "origin": "guides-json",
+  "tab_title": "AI Insight",
+  "title": "AI Insight — Run an AI Risk Screening",
+  "purpose": "Upload product photos and let AI identify compliance risks and requirements for your import region. You get a compliance guideline report (PDF).",
+  "meta": [
+    [
+      "Module",
+      "AI Insight (shown as “AI Risk Screening” in the QMAS menu)"
+    ],
+    [
+      "Start here",
+      "https://qmas.icw.io/ai-risk-screening → **Add**, or a product profile → **AI Risk Screening** → **Add**"
+    ],
+    [
+      "Uses",
+      "Tokens. Your balance shows as **Available Token** in the pop-up."
+    ],
+    [
+      "Checked against",
+      "QMAS dev, 4 Nov 2026"
+    ]
+  ],
+  "overview": [
+    "Open **AI Risk Screening** from the left menu (or from a product profile) and click **Add**.",
+    "Upload up to 6 product photos and choose the **Import Region** and **Output Mode**.",
+    "Click **Verify Information** (recommended) or **Skip Verify & Generate Report**.",
+    "When the status is **Completed**, open the report from the list."
+  ],
+  "steps": [
+    {
+      "h": "1. Open AI Risk Screening",
+      "body": [
+        "In the left menu, open **AI Risk Screening**. The list shows every screening with its import region, output mode (Full or Lite), status and upload date. Click **Add**.",
+        "The guide still files this module under AI Insight. The current screen title and address are AI Risk Screening (`/ai-risk-screening`).",
+        {
+          "img": "01-list.jpg",
+          "caption": "AI Risk Screening list.",
+          "caption_note": "Current UI name is AI Risk Screening. Search, the All tab, filters and Add are visible. List rows are masked. No screening was run. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot."
+        },
+        "You can also start from a product: open the product profile, choose **AI Risk Screening** in its left menu, then click **Add**.",
+        {
+          "img": "04-product-profile-entry.jpg",
+          "caption": "AI Risk Screening inside a product profile."
+        }
+      ]
+    },
+    {
+      "h": "2. Fill in the screening",
+      "body": [
+        {
+          "list": [
+            "**Product Page URL** (optional): a link to the product page.",
+            "**Product Images** (required): up to 6 photos from different views. PNG, JPEG, JPG, WEBP, GIF, AVIF or HEIC.",
+            "**Import Region** (required): where the product will be sold.",
+            "**Output Mode** (required): **Full** or **Lite** report.",
+            "**Screening Age Grade** (optional): the age grade to screen against, for example 3+ or 8+."
+          ]
+        },
+        "**Available Token** shows your balance. The number in this screenshot is redacted.",
+        "The reviewed pop-up is blank. Product Page URL is only the placeholder, no images are uploaded, and Import Region, Output Mode and Screening Age Grade are empty. Verify Information and Skip Verify & Generate Report are visible and were not used. No report was generated.",
+        {
+          "img": "02-new-screening.jpg",
+          "caption": "New AI Risk Screening pop-up.",
+          "caption_note": "Dialog title is AI Risk Screening. Blank form only. No photos uploaded and neither action button was used."
+        }
+      ]
+    },
+    {
+      "h": "3. Verify and generate",
+      "body": [
+        "Click **Verify Information** (recommended: verification improves accuracy and gives a more reliable report), or **Skip Verify & Generate Report** to go straight to the report.",
+        "The new screening appears in the list. When its status is **Completed**, the report is ready. Click the **ⓘ** icon to see the screening details.",
+        {
+          "img": "03-screening-details.jpg",
+          "caption": "Screening details: product name, import region, age grade, categories, materials, battery/AC/food-contact flags and output mode."
+        }
+      ]
+    }
+  ],
+  "tips": [
+    "Use clear photos from several angles (front, back, label, packaging) for a better result.",
+    "Check your Available Token balance before you generate."
+  ],
+  "faq": [
+    [
+      "How do I run an AI risk screening / AI Insight?",
+      "Go to AI Risk Screening (https://qmas.icw.io/ai-risk-screening), click Add, upload product photos, choose Import Region and Output Mode, then click Verify Information or Skip Verify & Generate Report."
+    ],
+    [
+      "Where do I see my token balance?",
+      "In the AI Risk Screening pop-up, under Available Token."
+    ],
+    [
+      "What is the difference between Full and Lite?",
+      "They are the two report output modes. Choose one in Output Mode when you add a screening."
+    ]
+  ]
+}

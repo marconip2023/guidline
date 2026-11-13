@@ -1,0 +1,149 @@
+{
+  "title": "QMAS User Guide",
+  "version": "2026-11-13-draft",
+  "status": "working-copy-draft",
+  "language": "en",
+  "source_site": "https://marconip2026.github.io/qmas-user-guide/",
+  "notion_working_hub": "https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b",
+  "groups": [
+    {
+      "heading": "Product Testing",
+      "app_href": "https://qmas.icw.io/product-testing",
+      "items": [
+        {
+          "slug": "product-testing",
+          "label": "Request a quotation (Create Job)"
+        }
+      ]
+    },
+    {
+      "heading": "Getting started",
+      "items": [
+        {
+          "slug": "getting-started",
+          "label": "Home, settings and company profile"
+        }
+      ]
+    },
+    {
+      "heading": "Product Management",
+      "app_href": "https://qmas.icw.io/product/list",
+      "items": [
+        {
+          "slug": "product-management",
+          "label": "Create and edit a product"
+        },
+        {
+          "slug": "product-profile",
+          "label": "Every tab of the product profile (Document, Compliance Data, Quality Requirement, Packaging…)"
+        },
+        {
+          "slug": "test-plan",
+          "label": "Request a Test Plan (Help Center, 2024)"
+        },
+        {
+          "slug": "efiling",
+          "label": "Submit eFiling to CPSC"
+        }
+      ]
+    },
+    {
+      "heading": "Supplier & Factory Management",
+      "app_href": "https://qmas.icw.io/supplier-manager/suppliers",
+      "items": [
+        {
+          "slug": "supplier-management",
+          "label": "Create a supplier"
+        },
+        {
+          "slug": "factory-management",
+          "label": "Create a factory"
+        },
+        {
+          "slug": "factory-audit",
+          "label": "Request a Factory Audit quotation (Help Center, 2024)"
+        }
+      ]
+    },
+    {
+      "heading": "Document Management",
+      "app_href": "https://qmas.icw.io/document-management",
+      "items": [
+        {
+          "slug": "document-management",
+          "label": "Upload a document"
+        }
+      ]
+    },
+    {
+      "heading": "QC Inspection",
+      "app_href": "https://qmas.icw.io/inspection",
+      "items": [
+        {
+          "slug": "qc-inspection",
+          "label": "Get a QC inspection quote via ICW"
+        }
+      ]
+    },
+    {
+      "heading": "Internal QC Inspection",
+      "app_href": "https://qmas.icw.io/inspection/internal/list",
+      "items": [
+        {
+          "slug": "internal-qc-inspection",
+          "label": "Start an internal inspection"
+        }
+      ]
+    },
+    {
+      "heading": "Document Review",
+      "app_href": "https://qmas.icw.io/document-review",
+      "items": [
+        {
+          "slug": "document-review",
+          "label": "Upload documents for lab review"
+        },
+        {
+          "slug": "document-review",
+          "label": "Ask a supplier to upload for lab review"
+        },
+        {
+          "slug": "document-review",
+          "label": "Ask a supplier to upload for your own review"
+        }
+      ]
+    },
+    {
+      "heading": "AI Insight",
+      "items": [
+        {
+          "slug": "ai-insight",
+          "label": "Run an AI Risk Screening"
+        }
+      ]
+    }
+  ],
+  "related_resources": [
+    {
+      "label": "QMAS Chatbot",
+      "href": "https://workflow-dev.icw.io/chat/QDSPY8f58691bu1P",
+      "note": "Published about 17:40 HKT on 13 Nov 2026. The published product name is Marco Test 3.0. The published product text and 2 images were checked. The header in that app still reads QMAS Chatbot 2.0."
+    }
+  ],
+  "order": [
+    "product-testing",
+    "getting-started",
+    "product-management",
+    "product-profile",
+    "test-plan",
+    "efiling",
+    "supplier-management",
+    "factory-management",
+    "factory-audit",
+    "document-management",
+    "qc-inspection",
+    "internal-qc-inspection",
+    "document-review",
+    "ai-insight"
+  ]
+}

@@ -1,0 +1,559 @@
+{
+  "version": "2026-11-09-draft",
+  "images": [
+    {
+      "slug": "product-testing",
+      "file": "01-list.jpg",
+      "sha256": "4473dbe8622633f550690e9252fc294649c20f7871949f0e65dfda364f62f928",
+      "width": 1821,
+      "height": 553,
+      "bytes": 182226
+    },
+    {
+      "slug": "product-testing",
+      "file": "02-step1-product-info.jpg",
+      "sha256": "5b75240147488994f76960f246f2de6c2288773af29dbb5ec2b063ebe03ea044",
+      "width": 950,
+      "height": 625,
+      "bytes": 52476
+    },
+    {
+      "slug": "product-testing",
+      "file": "04-product-selected.jpg",
+      "sha256": "d1d655c5ad0bccc6e3ab72ef9aa95faf106e4d35c7fd481101a86556aa2baa90",
+      "width": 802,
+      "height": 235,
+      "bytes": 23425
+    },
+    {
+      "slug": "product-testing",
+      "file": "05-step1-filled.jpg",
+      "sha256": "afbee5372f5529ee3c82b23218ee1addb338abdec82ae3719ed23b5da9c5d63a",
+      "width": 950,
+      "height": 895,
+      "bytes": 81703
+    },
+    {
+      "slug": "product-testing",
+      "file": "07-step2-export-market.jpg",
+      "sha256": "7b890be2d322ec7f1dd629988fdc2d14e2265f538c3d554aadc9d44cf350a591",
+      "width": 950,
+      "height": 910,
+      "bytes": 107418
+    },
+    {
+      "slug": "product-testing",
+      "file": "09-step2-filled.jpg",
+      "sha256": "b650b0086fbafd8fa1eeda88bc6410ebbee5b0726e04140c48f5ffc598002270",
+      "width": 950,
+      "height": 573,
+      "bytes": 51571
+    },
+    {
+      "slug": "product-testing",
+      "file": "11-step3-icw-selected.jpg",
+      "sha256": "2680aaa13c772e8b0d1d41538f667ea8ad9995a15d1960a509fc0f43b25da86e",
+      "width": 950,
+      "height": 550,
+      "bytes": 55576
+    },
+    {
+      "slug": "product-testing",
+      "file": "13-order-details.jpg",
+      "sha256": "b62f46d0cc03782e0a47fdabb6b2e45323605736972b9da9e0f28f0a3d8db580",
+      "width": 1856,
+      "height": 900,
+      "bytes": 122686
+    },
+    {
+      "slug": "product-testing",
+      "file": "12-required-error.jpg",
+      "sha256": "84e1068b83e8cc37f0eb027159618c289f302be1f5f151662e6bec3e840a9478",
+      "width": 950,
+      "height": 573,
+      "bytes": 57240
+    },
+    {
+      "slug": "getting-started",
+      "file": "01-home.jpg",
+      "sha256": "a1caab1a34c0b43492ead95c2b86b8510e5093ac5b866de785eae25e2d878ceb",
+      "width": 1855,
+      "height": 500,
+      "bytes": 100706
+    },
+    {
+      "slug": "getting-started",
+      "file": "02-settings-menu.jpg",
+      "sha256": "67c9a6a1885bca24d6ea9e3e78d459c424e7a167786abb44e7a6e61b8be282d2",
+      "width": 241,
+      "height": 277,
+      "bytes": 13454
+    },
+    {
+      "slug": "getting-started",
+      "file": "03-company-profile.jpg",
+      "sha256": "7a732128dd28ef87dcc0e5364c42ecb5c055b30bf962d28d1255a76c5949f04f",
+      "width": 1050,
+      "height": 820,
+      "bytes": 74035
+    },
+    {
+      "slug": "product-management",
+      "file": "01-list.jpg",
+      "sha256": "bcf58046510951154749e4a98ceb2981975f7e32ad1a66f9ab4db4bca712420a",
+      "width": 1820,
+      "height": 188,
+      "bytes": 73907
+    },
+    {
+      "slug": "product-management",
+      "file": "02-step1-empty.jpg",
+      "sha256": "90854320bc32e9c7b719d8e82792a638044fb4e7bd7be047eab90ea46111f1d1",
+      "width": 705,
+      "height": 1038,
+      "bytes": 84684
+    },
+    {
+      "slug": "product-management",
+      "file": "03-select-category.jpg",
+      "sha256": "795483bc36cb7666df1a34baecc6bea0300b007cd8a47829535ea8ebc4eaddec",
+      "width": 800,
+      "height": 813,
+      "bytes": 117340
+    },
+    {
+      "slug": "product-management",
+      "file": "04-select-supplier.jpg",
+      "sha256": "34c1bc35bc290c421437bb500419ec479bbec35124c9d7dd8c555f11eda39fd7",
+      "width": 525,
+      "height": 650,
+      "bytes": 19110
+    },
+    {
+      "slug": "product-management",
+      "file": "05-supplier-shipping.jpg",
+      "sha256": "1704a53e51e3e3d27042f06f5773fbbabbb6d795424d0c9c7068b9aa97ca6998",
+      "width": 705,
+      "height": 900,
+      "bytes": 64000
+    },
+    {
+      "slug": "product-management",
+      "file": "06-factory-additional.jpg",
+      "sha256": "877b2c11f91da1b29c2adcfd339462eb9d90760753870a38507c0d9bc45cc121",
+      "width": 730,
+      "height": 1085,
+      "bytes": 79461
+    },
+    {
+      "slug": "product-management",
+      "file": "07-step2-related.jpg",
+      "sha256": "cc7569b238478204f61583cc69dcbe0af7f18c3a954e061eb7cc2850714e8b3a",
+      "width": 705,
+      "height": 960,
+      "bytes": 85705
+    },
+    {
+      "slug": "product-management",
+      "file": "09-product-profile.jpg",
+      "sha256": "434a2b4173769a60e28bd992d05723e0fa75748ee7b22273e5d5563059e2f6d5",
+      "width": 1820,
+      "height": 1045,
+      "bytes": 174804
+    },
+    {
+      "slug": "product-management",
+      "file": "10-more-menu.jpg",
+      "sha256": "c936391409dfd0504e265b1eaf945751bab712e2276a93a8bc0c3cbd1c6e7878",
+      "width": 585,
+      "height": 430,
+      "bytes": 47300
+    },
+    {
+      "slug": "product-management",
+      "file": "11-edit-product.jpg",
+      "sha256": "cbbdfb28d9fbdf8d54485e9dc7d1c7a21a988c979c1b73320a65ab6b7a63cc51",
+      "width": 705,
+      "height": 1038,
+      "bytes": 87329
+    },
+    {
+      "slug": "product-profile",
+      "file": "01-document.jpg",
+      "sha256": "c193491c185cb5b1d6e25eb7d8124fd1bbd3304631e63517ff510a5e448f3a99",
+      "width": 1485,
+      "height": 635,
+      "bytes": 82786
+    },
+    {
+      "slug": "product-profile",
+      "file": "02-document-toolbar.jpg",
+      "sha256": "dc44e2062f8e716f88fd8a37ed7690764c7cde17cf2d64447cb003eaec76b236",
+      "width": 1485,
+      "height": 550,
+      "bytes": 80311
+    },
+    {
+      "slug": "product-profile",
+      "file": "03-document-share.jpg",
+      "sha256": "09f8281309823d4a7209518490e0c9a0902d9462c1bad65695ea8d73a35db586",
+      "width": 545,
+      "height": 330,
+      "bytes": 27376
+    },
+    {
+      "slug": "product-profile",
+      "file": "04-shipping-detail.jpg",
+      "sha256": "4c240792396ce632f14465193076da6ae19c67a840978eee153cbef395dd51a8",
+      "width": 1485,
+      "height": 500,
+      "bytes": 62166
+    },
+    {
+      "slug": "product-profile",
+      "file": "05-compliance-data.jpg",
+      "sha256": "5261cb16331a183f3a390c2f72d490f038687d567e4bc5c572ba8476dbd61adb",
+      "width": 1485,
+      "height": 800,
+      "bytes": 106180
+    },
+    {
+      "slug": "product-profile",
+      "file": "07-test-item-search.jpg",
+      "sha256": "9d6a6e6114558176bdb061573b771d544402e224f7e260bdc8b44b03df6459f5",
+      "width": 1110,
+      "height": 605,
+      "bytes": 84993
+    },
+    {
+      "slug": "product-profile",
+      "file": "10-certificate-data-form.jpg",
+      "sha256": "d927e498c5f3e84aa679fbcd883ea61b2f7fb206287de74d7e8c01e96bae4215",
+      "width": 1110,
+      "height": 555,
+      "bytes": 68667
+    },
+    {
+      "slug": "product-profile",
+      "file": "11-quality-requirement.jpg",
+      "sha256": "a629c1ecaf0900d3a5154d6e347ef3e9c3c46647697bb3fc2e207680db5c9fd2",
+      "width": 1485,
+      "height": 265,
+      "bytes": 28339
+    },
+    {
+      "slug": "product-profile",
+      "file": "19-requirement-filled.jpg",
+      "sha256": "28fd372094b086c8388720abab1120dfa534df3fea92845dc44e1965712e8496",
+      "width": 720,
+      "height": 365,
+      "bytes": 24255
+    },
+    {
+      "slug": "product-profile",
+      "file": "20-templates-menu.jpg",
+      "sha256": "8aefdf4d3108c8dbd055c867a70d15dfe5c9534ae9312f4a1dbc50d10c93afa8",
+      "width": 400,
+      "height": 315,
+      "bytes": 25764
+    },
+    {
+      "slug": "product-profile",
+      "file": "21-apply-template.jpg",
+      "sha256": "caaa7799682232cbe5132f5f79e0a31b1dd156f840745cb14e05eb99e6157306",
+      "width": 545,
+      "height": 440,
+      "bytes": 42106
+    },
+    {
+      "slug": "document-management",
+      "file": "01-list.jpg",
+      "sha256": "45ea42374e08adb40b13f8d3fc878f9dc817ef6f3832a6fd5e3bc467770b9961",
+      "width": 1280,
+      "height": 714,
+      "bytes": 73994,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "document-review",
+      "file": "01-list.jpg",
+      "sha256": "33edaddf5440dffacb66e1a661836e47b061d84e538289ae79f23c7c4c169f35",
+      "width": 1280,
+      "height": 714,
+      "bytes": 96127,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "document-review",
+      "file": "02-create-job-top.jpg",
+      "sha256": "d34d0e901fecfae7c6d274581fa1e93726ec46bc44b2b521a2b2279ea771648b",
+      "width": 1280,
+      "height": 714,
+      "bytes": 68640,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "document-review",
+      "file": "06-supplier-job-top.jpg",
+      "sha256": "919692d79bbadfd45e4bc9961ca38667d3029c18d2ada5ec6d458d0887e70912",
+      "width": 1280,
+      "height": 714,
+      "bytes": 72881,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "factory-management",
+      "file": "01-list.jpg",
+      "sha256": "f5c75fd31dc4f650ef24a85d3d8aaed6f23f68b006319d02ce4cf290e1c9bdf1",
+      "width": 1280,
+      "height": 714,
+      "bytes": 72411,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "factory-management",
+      "file": "02-step1-overview.jpg",
+      "sha256": "d5a47d5e4027351fd9a3b0221979f5783f8baf229f1a7fd5be8dbe458cfb1335",
+      "width": 1280,
+      "height": 714,
+      "bytes": 62413,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "factory-management",
+      "file": "03-step1-scale.jpg",
+      "sha256": "965d5723827377301916e89c4d84058d7263b8ade2704d0cc0c9e682d51cbbaf",
+      "width": 1280,
+      "height": 714,
+      "bytes": 54890,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "factory-management",
+      "file": "04-step1-contact.jpg",
+      "sha256": "1c4da5a2bc301cf30b1a402d32c078699042e113359be3344648b53c68713f4a",
+      "width": 1280,
+      "height": 714,
+      "bytes": 59105,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "factory-management",
+      "file": "required-validation.jpg",
+      "sha256": "20662834525ea9c5e6c7459876bc319d3d185e86f0cc1f727214bf0d05dfd7e5",
+      "width": 1280,
+      "height": 714,
+      "bytes": 69247,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "01-list.jpg",
+      "sha256": "7b040a48e73ffff11b0ef70aba8170b1f9c19a69bf92cb09729b2aa812df9137",
+      "width": 1280,
+      "height": 714,
+      "bytes": 94869,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "02-step1-overview.jpg",
+      "sha256": "f63267fb2bb79630ec6b0a4eed4fc110c4557102aa27d33be966ac834a7083b9",
+      "width": 1280,
+      "height": 714,
+      "bytes": 62749,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "03-step1-contact.jpg",
+      "sha256": "ccc3b4f490bb949a3fe6660772d71f79d2e091f919fa770673a858bbe889096a",
+      "width": 1280,
+      "height": 714,
+      "bytes": 59935,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "04-email-required.jpg",
+      "sha256": "e83c9f2f3822032b015003bb6369bf172bde6e9cfa21801015a6f39a408c5342",
+      "width": 1280,
+      "height": 714,
+      "bytes": 73009,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "qc-inspection",
+      "file": "01-list.jpg",
+      "sha256": "8c4955efa44b7ea0372c22e57905fd3acce328e4b8bee323cf3eaaf8197c4c3c",
+      "width": 1280,
+      "height": 714,
+      "bytes": 82927,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "qc-inspection",
+      "file": "02-looking-to.jpg",
+      "sha256": "81a4447827c282bb824d87c558a0f818934ac0fdb1d823995652d0f3a9e2402b",
+      "width": 1280,
+      "height": 714,
+      "bytes": 39257,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "qc-inspection",
+      "file": "supplemental-step1-requirement-blank.jpg",
+      "sha256": "36ba2cc011ac6a0b4ff0e9b2d04212d6e552552c2fc513dd33e669953f094286",
+      "width": 1280,
+      "height": 714,
+      "bytes": 76569,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "qc-inspection",
+      "file": "supplemental-3rd-party-tab.jpg",
+      "sha256": "70d0ebd30af5abe98e6a437cba62faf4d8b19e2f3e52882eee4bf28697684a6a",
+      "width": 1280,
+      "height": 714,
+      "bytes": 82745,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "qc-inspection",
+      "file": "supplemental-draft-tab.jpg",
+      "sha256": "8bec5d33898beac2d9ecd6e8547c11eaaaa180c10ff1ebc5f4a352629277a73d",
+      "width": 1280,
+      "height": 714,
+      "bytes": 81818,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "internal-qc-inspection",
+      "file": "01-list.jpg",
+      "sha256": "13cb632e57196e3eb1d1fe0f8329693ba4e523de6671e86f77199feb1c46328b",
+      "width": 1280,
+      "height": 714,
+      "bytes": 61343,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "internal-qc-inspection",
+      "file": "02-looking-to.jpg",
+      "sha256": "236011738e32d034acf9887c9ba5302fe02a203540ae2857cf83603480c124b9",
+      "width": 1280,
+      "height": 714,
+      "bytes": 39257,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "internal-qc-inspection",
+      "file": "03-step1-requirement.jpg",
+      "sha256": "1346fbee3fdedb1bf3bcb1e6df6ba31dc29307659c28c799f8e08b1c0fd636ac",
+      "width": 1280,
+      "height": 714,
+      "bytes": 58778,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "ai-insight",
+      "file": "01-list.jpg",
+      "sha256": "e7913245aaa525d9e3d25e67c84e395ba0d1f5abb7f98e416e4d8a7613fc814e",
+      "width": 1280,
+      "height": 714,
+      "bytes": 44218,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "ai-insight",
+      "file": "02-new-screening.jpg",
+      "sha256": "0ff1da5a8f195a70a07a733542096c4d48288e0f549b2229d2be67d2ab4d7d8d",
+      "width": 1280,
+      "height": 714,
+      "bytes": 68356,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "efiling",
+      "file": "01-list.jpg",
+      "sha256": "575e16c089e04be4d116d456341f030bab9d303afc4bb44dcbff6d6e014f8a47",
+      "width": 1280,
+      "height": 714,
+      "bytes": 49456,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "efiling",
+      "file": "02-ai-extract.jpg",
+      "sha256": "398beae508f2a2cf4e35314966ee72be43f88d407af788eb87437778fa2a299c",
+      "width": 1280,
+      "height": 714,
+      "bytes": 68139,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "07-supplier-profile.jpg",
+      "sha256": "c73333dcff52e0aec3944cf91719a2e3ac13e9a9865beaf27c4b297741c08e3a",
+      "width": 1280,
+      "height": 714,
+      "bytes": 75024,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used. Readonly; no QMAS record was written."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "supplemental-profile-certificate.jpg",
+      "sha256": "3945a85668260fa0f5125c3ad2bb79adda15e76411cfc4863c309547d36fe908",
+      "width": 1280,
+      "height": 714,
+      "bytes": 56981,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used. Readonly; no QMAS record was written."
+    },
+    {
+      "slug": "factory-management",
+      "file": "08-factory-profile.jpg",
+      "sha256": "57fe141f310eb82f972cbc1b29cc75ccdeb92778b135a7cea6b35dc014375bc8",
+      "width": 1280,
+      "height": 714,
+      "bytes": 76575,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used. Readonly; no QMAS record was written."
+    },
+    {
+      "slug": "factory-management",
+      "file": "supplemental-profile-certificate.jpg",
+      "sha256": "76672e6b1ad7af2259ce1a041b01ab880e7c6546b1429ae0697db57a26dd10be",
+      "width": 1280,
+      "height": 714,
+      "bytes": 56697,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used. Readonly; no QMAS record was written."
+    }
+  ]
+}

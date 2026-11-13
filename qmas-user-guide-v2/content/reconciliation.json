@@ -1,0 +1,397 @@
+{
+  "getting-started": {
+    "sections": [
+      {
+        "kind": "dev-verified",
+        "h": "Dev-verified — already in the steps above",
+        "body": [
+          "Settings opens from the **avatar / account control**. That correction is already in the steps above.",
+          "Home shows **5** TicMate workflow shortcuts: AI Assessment, AI Insight, CPSC eFiling, Product Testing, Document Review."
+        ]
+      },
+      {
+        "kind": "source-documented",
+        "h": "Source-documented — Help Center onboarding (last edited 2024-04-02)",
+        "body": [
+          "Source: Help Center Getting Started, https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc. This does not replace the Home walkthrough above.",
+          "The 2024 landing tells new accounts to watch the walkthrough videos, set up Product Compliance and Supplier Management, schedule an onboarding session after the customer-success email (or use Help Center Support if that email is missing), then use the Help Center and product-update emails.",
+          "Those 2024 setup guides still say “top menu bar”. Prefer this page and the current create guides for live steps.",
+          {"list": [
+            "Set Up Your Product Compliance Module (2024-04-02), historical: https://app.notion.com/p/3200ac0e049d4aa8b2409bad15cea3cd",
+            "Set Up Your Supplier Management Module (2024-04-02), historical: https://app.notion.com/p/01167450c4d54a98a3670fe13e056f12"
+          ]},
+          "Help Center videos were not re-watched and are not current-UI evidence:",
+          {"list": [
+            "Introduction of QMAS: https://www.youtube.com/watch?v=Qn02Yu-0Ppk",
+            "Manage your product compliance with QMAS: https://www.youtube.com/watch?v=3zpn_gHhW7s",
+            "How to request quotation for product testing with QMAS: https://www.youtube.com/watch?v=AaZ9zHeQ23s",
+            "How to manage your supplier information with QMAS: https://www.youtube.com/watch?v=xZyHOMg7_yc"
+          ]}
+        ]
+      },
+      {
+        "kind": "source-documented",
+        "h": "Source-documented — FAQs (last edited 2022-12-19)",
+        "body": [
+          "Source: https://app.notion.com/p/84844e89cab14819b021b0aa8e33ef31",
+          {"list": [
+            "Ordering product testing: the FAQ points at the Help Center Product Testing article.",
+            "Cancelling a product testing order: “contact our customer support team via email or online chat.” Not re-verified against current Support or in-app cancel behaviour.",
+            "Integrating an existing supplier or product database: the 2022 FAQ says an import feature is available and mentions an enterprise API plan. Treat the plan and API wording as historical until confirmed."
+          ]}
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "**Notifications** and **Messages** centers. No Help Center article. Exact paths need a dev check. No new module was invented.",
+            "Company Profile Certificate, Document, and CPSC eFiling Certifier ID setup. The page above is an overview only.",
+            "Attention card drill-downs, including Factory Audit and Pending/Expired Doc.",
+            "TicMate / Ask TicMate usage beyond the shortcut list.",
+            "Login page. Older notes say it is outdated. It is not on the public guide.",
+            "Naming is still undecided: Home **AI Assessment** and **AI Insight**, menu **AI Risk Screening**, and this guide title **AI Insight**."
+          ]}
+        ]
+      }
+    ]
+  },
+  "product-management": {
+    "sections": [
+      {
+        "kind": "dev-verified",
+        "h": "Dev-verified — list filters (2026-11-09)",
+        "body": [
+          "The list filters are already in the steps above: **Product Category**, **Customer Product Category**, **Product Number**, **Status**, **Created By**, **Team**, sort, and **Reset**. The reviewed list screenshot shows those filters with no data rows.",
+          "Optional **Factory** and **Additional Info** (buyer, up to 30 product photos) are already in the wizard steps."
+        ]
+      },
+      {
+        "kind": "source-documented",
+        "h": "Source-documented — Product Information Pack (last edited 2026-11-04)",
+        "body": [
+          "Source: Manage your QMAS Product Information Pack, https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61. The November 2026 create steps follow the same path as this page.",
+          "**Import Product:** the Help Center intro says “To add many products at once, use **Import Product**.” The Product Profile FAQ already says to download the ICW template, fill it in, and upload it. A full multi-step import walkthrough is still missing. Do not invent extra import steps.",
+          "The 2024 setup guide still says “top menu bar, select PRODUCT MANAGEMENT”. Prefer the current left menu and this page."
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "Full Import Product wizard screenshots and field notes.",
+            "List Export Data, row-select / bulk toolbar, and search. Only the filters above are dev-verified.",
+            "Further Related Product linkage examples. **Unlink** is already named on the reviewed step 2 screenshot.",
+            "Section numbering, stepper tick, and Title Case bugs are filed separately. Match the fixed UI once it ships. Do not invent the fix."
+          ]}
+        ]
+      }
+    ]
+  },
+  "product-profile": {
+    "sections": [
+      {
+        "kind": "dev-verified",
+        "h": "Dev-verified — already in the steps above (2026-11-09)",
+        "body": [
+          "The left menu includes **QR Code** as well as Document, Shipping Detail, Compliance Data, Quality Requirement, AI Risk Screening, CPSC eFiling, and Packaging Detail.",
+          "Document tab chrome on the reviewed screenshot: **New Folder**, **Upload**, **All / Archived**, filters **Type** / **Source** / **Checked**, and **Sort** (plus Reset).",
+          "When older Help Center wording disagrees with that chrome, prefer these dev-verified labels."
+        ]
+      },
+      {
+        "kind": "source-documented",
+        "h": "Source-documented — reminders and Get DoC (not rewritten in November 2026)",
+        "body": [
+          "Source: the same Product Information Pack article, last edited 2026-11-04. The document, reminder, and DoC sections were not rewritten in that November update. Treat the labels below as Help Center text, not as a current-UI claim.",
+          "Historical Help Center document wording uses **Upload file**, three dots next to Document → **New tab**, and **New folder**. Prefer **Upload** and **New Folder** from the dev-verified chrome when they differ.",
+          "**Expiry reminders:** select the document, choose **Set Reminder** in the toolbar, pick the date, click **Create**. The Help Center says the reminder is sent to the email inbox on that date. Needs a dev check.",
+          "**Declaration of Conformity (DoC):** the Help Center says you can request ICW to generate a DoC, “subjected to additional fee.” “Navigate to the document in the tool bar, then select **Get DoC**, then click **Send request**.” “You will receive your product DoC by email within 3 days.”",
+          "The Help Center does not document Generate **CPC** or **GCC**, or a separate PO DoC Management module. Those remain gaps. Do not invent those steps."
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "Current entry point for Generate CPC / GCC / DOC, if it is different from Get DoC.",
+            "Test Plan (AI) after the pop-up: a generated plan, or applying it to requirements. See also the separate [[guide:test-plan|Test Plan]] page for the 2024 top-menu article. Do not merge the two.",
+            "Compliance Data **Other**; edit or delete of existing rows; packaging edit and status filter.",
+            "Manage Templates, Save As Template, and Export As Document are text only today.",
+            "Saved Test Data and the post-template requirement list were not captured. Those slots stay placeholders and are not pictures of saved data."
+          ]}
+        ]
+      }
+    ]
+  },
+  "product-testing": {
+    "sections": [
+      {
+        "kind": "source-documented",
+        "h": "Source-documented — create path (Help Center updated 2026-11-04)",
+        "body": [
+          "Source: How To Request Quotation For Product Testing From Global Laboratories, https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12. Direct link cited there: https://qmas.icw.io/product-testing/create-job.",
+          "The November 2026 create steps already match this page. Help Center step 7 also says you can tick **Connected Provider** (a lab already linked to the account), **ICW** (ICW finds a lab; preferred lab or “No Preference”), and/or **TicMart (Marketplace)**, then Submit. This page still only has an ICW screenshot."
+        ]
+      },
+      {
+        "kind": "source-documented",
+        "h": "Source-documented — post-submit quote flow (older wording; needs verification)",
+        "body": [
+          "This “receive and confirm” section was not rewritten in November 2026.",
+          {"olist": [
+            "After submission, the job appears on the list with status **under review**.",
+            "When the quotation is ready, the status changes to **Quote Available**.",
+            "Open order details. Under **Quotations**, select a quotation and click **Preliminary Accept**.",
+            "The Help Center says the designated agency or ICW agency service will then contact you about sample delivery.",
+            "“The price may vary according to the actual sample. Accept the **Final Quote** to proceed to product testing.”"
+          ]},
+          "A 2022 FAQ says cancelling an order is done by contacting customer support via email or online chat. Not re-verified."
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "Screenshots and current-UI confirmation for Connected Provider and TicMart.",
+            "Job-detail tabs named in the create steps but not walked through: Quotes, Failure Records, Reports, Attachments, Invoices, Tag, Activity Log, Message Board.",
+            "Edit, cancel, reopen, list search, status filters, and charts."
+          ]}
+        ]
+      }
+    ]
+  },
+  "efiling": {
+    "sections": [
+      {
+        "kind": "finding",
+        "h": "Help Center finding",
+        "body": [
+          "There is no Help Center User Guide article for eFiling.",
+          "The Product Information Pack checklist links “How to submit eFiling to CPSC” to an internal Documents / User Guide page, not to the public Help Center: https://app.notion.com/p/32e9c62c39fc80faa0e3e510e7f30265. Do not treat that page as a Help Center source. Prefer this page for user-facing steps. This guide does not submit a certificate to CPSC."
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "Preview to Submit, draft resume, Duplicate, and View are mentioned above and have no shots.",
+            "Certifier ID and API key setup in Company Profile.",
+            "Select Document in QMAS, and Start With Blank.",
+            "Multi-product submission and Link To QMAS Product detail."
+          ]}
+        ]
+      }
+    ]
+  },
+  "supplier-management": {
+    "sections": [
+      {
+        "kind": "source-documented",
+        "h": "Source-documented — profile, import, and invite (last edited 2026-01-16)",
+        "body": [
+          "Source: Manage your QMAS Supplier Compliance Profile, https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c. It was not marked “Updated November 2026”. Labels need a dev check before they are published as current UI.",
+          "The 2024 setup guide is an older subset (no Import or Invite) and still says “top menu bar”. Prefer the create steps above, and the January 2026 article for the items below.",
+          "**Edit and add documents** (Help Center): edit company and contact information with the icon next to each section. Edit categories and tags with the pen icon. **Add rating** lists Responsiveness, Quality, Pricing, and Market Awareness. Add **Internal notes** for others in the company. Add missed certificates or documents later in the **CERTIFICATE** and **DOCUMENT** sections.",
+          "**Product and Factory linkage** (Help Center): related products use **+Product Linkage** (existing product list, or **New Product**). Related factories are under **FACTORY**, then **+Factory Linkage** (**Current Factory** or **New Factory**).",
+          "**Import Supplier** (Help Center): click **Import Supplier**, then **Download here** for the template, fill it in (the article says create, update, and delete are supported), upload, and click **Next**. A toast confirms completion.",
+          "Invite / connect a supplier “allows you to assign Document Review jobs to your connected suppliers.”",
+          {"olist": [
+            "Click **Invite Supplier**.",
+            "Choose a supplier from the existing list, or invite a new supplier by entering their name.",
+            "Optionally enter a custom message for the invitation email.",
+            "Click **Invite**. The Help Center says an invitation email is sent to the supplier’s email address.",
+            "The supplier can accept via the invite link or, if they already have a QMAS account, via a pop-up the next time they log in."
+          ]},
+          "Help Center connection statuses: **Invite** (invitation sent), **No Connection** (cannot interact via the platform), **Connected** (can be assigned Document Review jobs)."
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "Current-UI confirmation of the labels above, especially linkage buttons and connection statuses.",
+            "Screenshots for import, invite, ratings, notes, and tabs other than Overview.",
+            "List filters, Export, and the row toolbar.",
+            "Contact Email versus Email address, and Title Case. Filed bugs; re-check on dev. Do not invent the corrected labels."
+          ]}
+        ]
+      }
+    ]
+  },
+  "factory-management": {
+    "sections": [
+      {
+        "kind": "source-documented",
+        "h": "Source-documented — edit, documents, and import (last edited 2026-01-16)",
+        "body": [
+          "Source: Manage your QMAS Factory Compliance Profile, https://app.notion.com/p/2ea9c62c39fc80198eddc3c9e7d20007. Not marked “Updated November 2026”. Labels need a dev check.",
+          "Edit company and contact information with the icon next to each section. Edit categories and tags with the pen icon.",
+          "**Add rating** uses the same four dimensions as suppliers in the Help Center (Responsiveness, Quality, Pricing, Market Awareness). Confirm whether a factory rating still exists and still uses these labels.",
+          "**Internal notes.** Add missed certificates or documents later in the **CERTIFICATE** and **DOCUMENT** sections.",
+          "The Help Center text has typographical errors (“thisfactory”, “factyory”). Those are not UI labels.",
+          "**Import Factory:** click **Import Factory**, then **Download here** for the factory template, fill it in (the article says create, update, and delete are supported), upload, and click **Next**. A toast confirms completion. One Help Center step title still says “Upload the filled **supplier** template”. Treat that as a source typo unless dev shows that exact wording.",
+          "Do not blanket-replace “supplier” wording on Factory screens. A filed bug asks for a context-by-context check."
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "Profile tabs Supplier, Certificate, Document, and Compliance Data are named, not walked through.",
+            "Overview Product Category and Tag empty-state wording.",
+            "List filters, Export, and the row toolbar.",
+            "Screenshots for import, rating, notes, and tabs other than Overview."
+          ]}
+        ]
+      }
+    ]
+  },
+  "document-management": {
+    "sections": [
+      {
+        "kind": "finding",
+        "h": "Help Center finding",
+        "body": [
+          "There is no Help Center article for the Document Management module.",
+          "Upload, folders, share, and **Set Reminder** in the Product Information Pack are written against the product profile Document tab, not this module. See the [[guide:product-profile|Product Profile]] page. Do not copy those steps here as if they were Document Management module steps."
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "Workflows for **Pending Review**, **Expired**, **Archived**, and **Trash**.",
+            "Post-upload row toolbar (share, archive, download, rename, move). Needs a dev check on this module.",
+            "Filters, search, and Export.",
+            "Edit dates, reminder, or compliance after upload.",
+            "The upload toast “Upload Document Succeed” is a filed bug. Keep neutral “success message” language until the UI is fixed."
+          ]}
+        ]
+      }
+    ]
+  },
+  "qc-inspection": {
+    "sections": [
+      {
+        "kind": "source-documented",
+        "h": "Source-documented — create path (Help Center updated 2026-11-04)",
+        "body": [
+          "Source: How To Request Quotation For QC Inspection From Global Laboratories, https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e. Direct link cited there: https://qmas.icw.io/inspection/jobs/new.",
+          "The November 2026 create steps already match this page. The Help Center also says: choose **Get QC inspection quote via ICW** and click Continue; choose **Start internal inspection** if your own QC team will inspect; or **Add inspection record** to record a finished inspection. The Internal QC page covers starting an internal inspection. **Add inspection record** still has no guide.",
+          "The November 2026 steps also say: click **Save** on any step to finish later. Drafts are on the **Draft** tab."
+        ]
+      },
+      {
+        "kind": "source-documented",
+        "h": "Source-documented — post-submit flow (older wording; needs verification)",
+        "body": [
+          {"olist": [
+            "After submission, the list status is **Under Review**.",
+            "When the quotation is ready, the status changes to **Quote Available**.",
+            "Click **View detail** next to Status.",
+            "Scroll to the **QUOTES** tab.",
+            "Choose a quotation and click **SELECT** to confirm the order.",
+            "Status becomes **Waiting for reserved booking**, then **Booking Reserved** when the booking is confirmed.",
+            "After the inspection is completed, the Help Center says you will receive the inspection report and the status will be **Completed**."
+          ]}
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "The full **Add inspection record** flow.",
+            "Job-detail tabs Quotes, Reports, Attachments, and Invoices are named. One overview shot exists.",
+            "All Job, 3rd Party, and Inhouse Record tabs, and more detail on the Draft tab.",
+            "List filters, Export, and the row toolbar.",
+            "Filed wording bugs (“Add New Po”, “XLSL”, level labels, empty product picker until search). Confirm the live UI. Do not invent fixes."
+          ]}
+        ]
+      }
+    ]
+  },
+  "internal-qc-inspection": {
+    "sections": [
+      {
+        "kind": "finding",
+        "h": "Help Center finding",
+        "body": [
+          "There is no standalone Internal QC Help Center article.",
+          "The November 2026 QC article mentions **Start internal inspection** as a Looking-to option when your own QC team will inspect. That is the only Help Center mention. It does not document steps 2–5, Import Job, or the Onsite Job Calendar."
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "Own screenshots, or a clearly labelled “same as QC” set, for steps 2–5 and the completed job detail.",
+            "**Import Job**.",
+            "**Onsite Job Calendar** tab.",
+            "Draft tab and job detail after submit.",
+            "Difference callouts versus third-party QC beyond “no budget/provider”."
+          ]}
+        ]
+      }
+    ]
+  },
+  "document-review": {
+    "sections": [
+      {
+        "kind": "finding",
+        "h": "Help Center finding",
+        "body": [
+          "There is no Document Review Help Center article.",
+          "The only related Help Center text is on the supplier profile article (last edited 2026-01-16): inviting or connecting a supplier “allows you to assign Document Review jobs to your connected suppliers.” Statuses Invite, No Connection, and Connected are documented there. That text does not describe how to conclude a review job."
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "Job detail after create: View detail, conclusion controls (the steps above name Approve, Reject, N/A, and Waiting), and re-upload after reject. Zero screenshots.",
+            "List filters, Export, and My Job versus View Only.",
+            "Save or reuse a TCF template (tip only today).",
+            "The Quality Requirements block on the create form is thin.",
+            "Filed typos (“Exising Product”, “JEPG”, “Select Connect Supplier”). This guide uses corrected English. Confirm the live UI."
+          ]}
+        ]
+      }
+    ]
+  },
+  "ai-insight": {
+    "sections": [
+      {
+        "kind": "finding",
+        "h": "Help Center finding",
+        "body": [
+          "There is no Help Center article for AI Insight, AI Risk Screening, or AI Assessment."
+        ]
+      },
+      {
+        "kind": "gap",
+        "h": "Remaining gaps",
+        "body": [
+          {"list": [
+            "Completed report: open it, download the PDF, and what Full versus Lite actually contain.",
+            "**Verify Information** intermediate UI. It is the recommended path and is not shown.",
+            "Empty state. A wrong empty-state description is a filed bug. Wait for the fixed UI.",
+            "Naming is still undecided: this guide title **AI Insight**, menu **AI Risk Screening**, Home **AI Assessment** and **AI Insight**.",
+            "Token spend: the guide already warns. Do not run a screening unless asked."
+          ]}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "slug": "supplier-management",
+  "source_path": "supplier-management/",
+  "origin": "guides-json",
+  "tab_title": "Create a Supplier",
+  "title": "Supplier Management — Create a Supplier",
+  "purpose": "Add a supplier profile so you can link it to products, factories, documents and service jobs.",
+  "meta": [
+    [
+      "Module",
+      "Supplier / Factory Management"
+    ],
+    [
+      "Start here",
+      "https://qmas.icw.io/supplier-manager/suppliers → **Create Supplier**"
+    ],
+    [
+      "Direct link",
+      "https://qmas.icw.io/supplier-manager/create"
+    ],
+    [
+      "Steps",
+      "1 Supplier Profile → 2 Classification → 3 Certification → Done"
+    ],
+    [
+      "Checked against",
+      "QMAS dev, 4 Nov 2026"
+    ]
+  ],
+  "overview": [
+    "Open **Supplier / Factory Management**, stay on the **Supplier** tab and click **Create Supplier**.",
+    "**Supplier Profile**: company overview and contact.",
+    "**Classification** (optional): product category and tags.",
+    "**Certification** (optional): add certificates, then click **Done**.",
+    "The supplier profile opens."
+  ],
+  "steps": [
+    {
+      "h": "1. Open Supplier / Factory Management",
+      "body": [
+        "In the left menu, open **Supplier / Factory Management**. The **Supplier** tab lists your suppliers with their location, category, status, connect status and rating.",
+        "Click **Create Supplier**. You can also use **Import Supplier** to add many suppliers from a file, or **Invite Supplier** to invite a supplier to connect with you on QMAS.",
+        {
+          "img": "01-list.jpg",
+          "caption": "Supplier tab with Import Supplier, Create Supplier and Invite Supplier."
+        }
+      ]
+    },
+    {
+      "h": "2. Supplier Profile — company overview",
+      "body": [
+        {
+          "list": [
+            "**Upload Logo** (optional).",
+            "**Supplier ID** (optional): your own reference number.",
+            "**Supplier Name**: English name (required) and local-language name (optional).",
+            "**Location**: country or region, then province and city.",
+            "**Address** and **Website** (optional)."
+          ]
+        },
+        {
+          "img": "02-step1-overview.jpg",
+          "caption": "Create supplier profile — step 1, Company overview."
+        }
+      ]
+    },
+    {
+      "h": "3. Supplier Profile — contact",
+      "body": [
+        "Under **2. Contact**, fill in the **Contact person**, **Contact Email** and at least one **Email address**. For each email address, choose a type: Company, QA, Sales or Other. Click **Add email** for more. **Contact no.** is optional.",
+        {
+          "img": "03-step1-contact.jpg",
+          "caption": "Contact section."
+        },
+        "If a required field is empty when you click **Next**, it turns red, for example “Type is required” or “Email is required”. This screenshot also shows **English name is required**, **Location is required**, and **Contact person is required**. Next triggers the errors, not Submit. The fields still show empty or example placeholders, not a completed profile.",
+        {
+          "img": "04-email-required.jpg",
+          "caption": "The email type and email address are required.",
+          "caption_note": "Also shows required errors on English name, Location, and Contact person. Triggered by Next, not Submit. Blank or example placeholders only."
+        }
+      ]
+    },
+    {
+      "h": "4. Classification (optional)",
+      "body": [
+        "Click **Select category** to choose the product categories this supplier offers. Click **Select tag** to add your own tags. Click **Next**.",
+        {
+          "img": "05-step2-classification.jpg",
+          "caption": "Step 2 Classification."
+        }
+      ]
+    },
+    {
+      "h": "5. Certification (optional)",
+      "body": [
+        "Click **Add** to upload a certificate. Choose the certification type, upload the file, and fill in the rating, issue party and dates. Click **Done** to create the supplier.",
+        {
+          "img": "06-step3-certification.jpg",
+          "caption": "Step 3 Certification."
+        }
+      ]
+    },
+    {
+      "h": "6. Done — supplier profile",
+      "body": [
+        "The supplier profile opens. Use the tabs **Overview**, **Product**, **Factory**, **Certificate**, **Document** and **Compliance Data** to manage everything linked to this supplier. Click the pencil icon next to the name, or next to **Contact**, to edit.",
+        "The reviewed screenshot is a readonly Overview of an existing profile. Product Category, Tag and Rating are empty. It is not the create-certification wizard, and no record was written for this shot.",
+        {
+          "img": "07-supplier-profile.jpg",
+          "caption": "Supplier profile — Overview tab.",
+          "caption_note": "Readonly Overview. Category, Tag and Rating are empty. Created and Modified dates stay visible. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot."
+        },
+        {
+          "img": "supplemental-profile-certificate.jpg",
+          "caption": "Supplier profile — Certificate tab, empty (No Data).",
+          "caption_note": "Supplementary screenshot, not one of the 98 inventory slots. Genuine empty Certificate tab on the same profile. This is not Step 3 Certification. No record was created or changed.",
+          "counts_toward_98": false
+        }
+      ]
+    }
+  ],
+  "tips": [
+    "Search the Supplier list before you create a supplier so you don’t add a duplicate.",
+    "Consistent tags make filtering the list easier later."
+  ],
+  "faq": [
+    [
+      "How do I create a new supplier?",
+      "Go to Supplier / Factory Management (https://qmas.icw.io/supplier-manager/suppliers), click Create Supplier, fill in Supplier Profile, then Next, Next and Done. Direct link: https://qmas.icw.io/supplier-manager/create"
+    ],
+    [
+      "Can I add many suppliers at once?",
+      "Yes. Click Import Supplier on the Supplier tab."
+    ],
+    [
+      "How do I invite a supplier to QMAS?",
+      "Click Invite Supplier on the Supplier tab."
+    ],
+    [
+      "How do I edit a supplier?",
+      "Open the supplier from the list and click the pencil icon next to its name or next to Contact."
+    ]
+  ]
+}

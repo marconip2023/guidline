@@ -1,0 +1,158 @@
+{
+  "slug": "factory-management",
+  "source_path": "factory-management/",
+  "origin": "guides-json",
+  "tab_title": "Create a Factory",
+  "title": "Factory Management — Create a Factory",
+  "purpose": "Add a factory profile with its location, scale, equipment and certificates, so you can link it to suppliers, products and inspections.",
+  "meta": [
+    [
+      "Module",
+      "Supplier / Factory Management"
+    ],
+    [
+      "Start here",
+      "https://qmas.icw.io/supplier-manager/suppliers → **Factory** tab → **Create Factory**"
+    ],
+    [
+      "Direct link",
+      "https://qmas.icw.io/supplier-manager/factory/create"
+    ],
+    [
+      "Steps",
+      "1 Factory Profile → 2 Classification → 3 Certification → Done"
+    ],
+    [
+      "Checked against",
+      "QMAS dev, 4 Nov 2026"
+    ]
+  ],
+  "overview": [
+    "Open **Supplier / Factory Management**, click the **Factory** tab, then **Create Factory**.",
+    "**Factory Profile**: overview, scale, equipment and contact.",
+    "**Classification** (optional): product category and tags.",
+    "**Certification** (optional): add audit reports or certificates, then click **Done**.",
+    "The factory profile opens."
+  ],
+  "steps": [
+    {
+      "h": "1. Open the Factory tab",
+      "body": [
+        "In the left menu, open **Supplier / Factory Management** and click the **Factory** tab. It lists your factories with location, status and audit certificates.",
+        "Click **Create Factory**, or **Import Factory** to add many factories from a file.",
+        {
+          "img": "01-list.jpg",
+          "caption": "Factory tab with Import Factory and Create Factory."
+        }
+      ]
+    },
+    {
+      "h": "2. Factory Profile — overview",
+      "body": [
+        {
+          "list": [
+            "**Upload Logo** and **Factory ID** (optional).",
+            "**Factory Name**: English name (required) and local-language name (optional).",
+            "**Location**: country or region, then province and city.",
+            "**Address**: English address (required) and local-language address (optional).",
+            "**Website** (optional)."
+          ]
+        },
+        {
+          "img": "02-step1-overview.jpg",
+          "caption": "Create factory profile — step 1, Factory Overview."
+        }
+      ]
+    },
+    {
+      "h": "3. Factory Profile — scale and equipment (optional)",
+      "body": [
+        "**Factory Scale**: outsource production, total employees, number of workers, factory size (square meters) and annual volume.",
+        "The equipment section lists machines and **Automation Production Line** entries: machine name, brand and model no., quantity and monthly production volume. Click **Add** for more rows.",
+        {
+          "img": "03-step1-scale.jpg",
+          "caption": "2. Factory Scale (optional).",
+          "caption_note": "Scrolled view. Factory Scale is fully visible. Lower Factory Overview fields are blank placeholders, and a sliver of 3. Factory Capacity is also in frame."
+        }
+      ]
+    },
+    {
+      "h": "4. Factory Profile — contact",
+      "body": [
+        "Under **4. Contact**, fill in the **Contact person** and an **Email address** with its type (Company, QA, Sales or Other). **Contact no.** is optional. Click **Next**.",
+        {
+          "img": "04-step1-contact.jpg",
+          "caption": "Contact section and Next.",
+          "caption_note": "Scrolled view. 3. Factory Capacity is blank and visible above 4. Contact and Next."
+        },
+        "If Contact person or the email type and address are empty, **Next** (not Submit) marks them required. The fields stay on example placeholders.",
+        {
+          "img": "required-validation.jpg",
+          "caption": "Factory create-profile required-field validation after Next (not Submit): Contact person, email type and email address.",
+          "caption_note": "Supplementary screenshot. It is not one of the 98 published inventory slots. Same scrolled Contact view as the previous image, after Next.",
+          "counts_toward_98": false
+        }
+      ]
+    },
+    {
+      "h": "5. Classification (optional)",
+      "body": [
+        "Click **Select category** for the product categories this factory makes, and **Select tag** for your own tags. Click **Next**.",
+        {
+          "img": "05-step2-classification.jpg",
+          "caption": "Step 2 Classification."
+        }
+      ]
+    },
+    {
+      "h": "6. Certification (optional)",
+      "body": [
+        "Click **Add** to attach an audit report or certificate. In **Add Certification**, choose the certification type, upload the file (JPG, JPEG, PNG, PDF, DOC or XLS), and fill in the score or overall rating, issue party, issue date and expiry date. Click **Add**.",
+        {
+          "img": "07-add-certification.jpg",
+          "caption": "Add Certification pop-up."
+        },
+        "Click **Done** to create the factory.",
+        {
+          "img": "06-step3-certification.jpg",
+          "caption": "Step 3 Certification."
+        }
+      ]
+    },
+    {
+      "h": "7. Done — factory profile",
+      "body": [
+        "QMAS shows “Create factory successfully!” and opens the factory profile. Use the tabs **Overview**, **Supplier**, **Certificate**, **Document** and **Compliance Data** to manage what is linked to this factory.",
+        "The reviewed screenshot is a readonly Overview of an existing profile. Product Category, Tag, Factory Capacity and Factory Scale are empty. It is not the Add Certification pop-up, and no record was written for this shot.",
+        {
+          "img": "08-factory-profile.jpg",
+          "caption": "Factory profile — Overview tab.",
+          "caption_note": "Readonly Overview. Category, Tag, Capacity and Scale are empty. Created and Modified dates stay visible. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot."
+        },
+        {
+          "img": "supplemental-profile-certificate.jpg",
+          "caption": "Factory profile — Certificate tab, empty (No Data).",
+          "caption_note": "Supplementary screenshot, not one of the 98 inventory slots. Genuine empty Certificate tab on the same profile. This is not Step 3 Certification or the Add Certification pop-up. No record was created or changed.",
+          "counts_toward_98": false
+        }
+      ]
+    }
+  ],
+  "tips": [
+    "Set the expiry date on audit certificates so you can see when they need renewing."
+  ],
+  "faq": [
+    [
+      "How do I create a new factory?",
+      "Go to Supplier / Factory Management, click the Factory tab, then Create Factory. Fill in Factory Profile, then Next, Next and Done. Direct link: https://qmas.icw.io/supplier-manager/factory/create"
+    ],
+    [
+      "Can I add many factories at once?",
+      "Yes. Click Import Factory on the Factory tab."
+    ],
+    [
+      "Where do I upload a factory audit certificate?",
+      "In step 3 Certification of Create Factory, or later from the Certificate tab of the factory profile."
+    ]
+  ]
+}

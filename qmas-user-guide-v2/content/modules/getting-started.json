@@ -1,0 +1,124 @@
+{
+  "slug": "getting-started",
+  "source_path": "getting-started/",
+  "origin": "guides-json",
+  "tab_title": "Getting Started",
+  "title": "Getting Started — Home, Settings and Company Profile",
+  "purpose": "Find your way around QMAS: the Home page, the top bar and your company settings.",
+  "meta": [
+    [
+      "Home",
+      "https://qmas.icw.io/home"
+    ],
+    [
+      "Company Profile",
+      "https://qmas.icw.io/company-profile"
+    ],
+    [
+      "Checked against",
+      "QMAS dev, 9 Nov 2026"
+    ]
+  ],
+  "overview": [
+    "**Home** shows quick workflows, items that need your attention, and an overview of your business.",
+    "The **left menu** opens each module.",
+    "The **top bar** has analytics, messages, notifications, the account avatar, help and credits.",
+    "**Settings** opens from the **avatar** (account control) in the top bar. The menu includes Company Profile, Password, Languages, Account Management, Assign TicMart Job and Logout."
+  ],
+  "steps": [
+    {
+      "h": "1. Home",
+      "body": [
+        "**TicMate** says “I’m TicMate. What would you like to do today?” and lists these workflow shortcuts:",
+        {
+          "list": [
+            "**Generate product risk assessment report** (AI Assessment workflow).",
+            "**Generate export market requirements** (AI Insight workflow).",
+            "**CPSC eFiling**. If it shows “API Setup Required”, set up your Certifier ID in Company Profile first.",
+            "**Request product testing with your lab partner** (Product Testing).",
+            "**Request technical files from your supplier/factory** (Document Review)."
+          ]
+        },
+        "**Attention** counts the items that need action in each module, such as Product Testing, Document Review, QC Inspection, IQC Inspection, Factory Audit, Pending Review Doc and Expired Doc. Click a card to see them.",
+        "**Business Overview** shows your active products, suppliers, factories and partners. Click **›** to open the list.",
+        "**Ask TicMate** on the right edge opens the TicMate assistant.",
+        {
+          "img": "01-home.jpg",
+          "caption": "Home page.",
+          "caption_note": "This reviewed screenshot shows the TicMate workflow shortcuts. Attention and Business Overview are described in the steps and are not in this crop."
+        }
+      ]
+    },
+    {
+      "h": "2. Settings menu",
+      "body": [
+        "Click your **avatar** (account control) in the top bar:",
+        {
+          "table": [
+            [
+              "Option",
+              "What it does"
+            ],
+            [
+              "Company Profile",
+              "Company details, certificates, documents, product categories and CPSC eFiling Certifier ID."
+            ],
+            [
+              "Password",
+              "Change your password."
+            ],
+            [
+              "Languages",
+              "Change the system language."
+            ],
+            [
+              "Account Management",
+              "Manage your company's user accounts."
+            ],
+            [
+              "Assign TicMart Job",
+              "Assign jobs from the TicMart marketplace."
+            ],
+            [
+              "Logout",
+              "Signs you out of QMAS."
+            ]
+          ]
+        },
+        {
+          "img": "02-settings-menu.jpg",
+          "caption": "Settings menu.",
+          "caption_note": "Menu opened from the account avatar: Company Profile, Password, Languages, Account Management, Assign TicMart Job and Logout."
+        }
+      ]
+    },
+    {
+      "h": "3. Company Profile",
+      "body": [
+        "Click the pencil icon next to the company name to edit it. The **Overview**, **Certificate** and **Document** tabs hold your company information. **CPSC eFiling - Certifier ID** is where you add and manage the API key for eFiling. **Product Category** lists the categories your company works with.",
+        {
+          "img": "03-company-profile.jpg",
+          "caption": "Company Profile."
+        }
+      ]
+    }
+  ],
+  "tips": [
+    "The question-mark icon opens the QMAS Help Center.",
+    "The coin icon shows your credits and tokens for paid features such as AI Insight."
+  ],
+  "faq": [
+    [
+      "How do I change the language?",
+      "Click your avatar (account control) in the top bar, then Languages."
+    ],
+    [
+      "How do I change my password?",
+      "Click your avatar (account control) in the top bar, then Password."
+    ],
+    [
+      "Where do I edit my company information?",
+      "Click your avatar (account control), then Company Profile (https://qmas.icw.io/company-profile)."
+    ]
+  ]
+}

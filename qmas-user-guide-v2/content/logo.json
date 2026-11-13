@@ -1,0 +1,13 @@
+{
+  "file": "assets/brand/qmas-logo.png",
+  "source_file": "logo.png",
+  "source_commit": "48b1f77",
+  "source_date": "2026-03-25",
+  "width": 60,
+  "height": 24,
+  "sha256": "1e877b20c7d3725b4f1a16bc40ff384127d229231ba1235cd18b2aad72a6b6d2",
+  "bytes": 2617,
+  "alt": "QMAS",
+  "license": null,
+  "note": "Byte copy of the repository-root logo.png. It is the QMAS wordmark with the check through the M, the same mark visible in reviewed QMAS screenshots such as the supplier list header. The root guide labels the slot Company Logo. No license text is stored next to the file. It is not a generated wordmark and it is not a WBA or ICW logo. No higher-resolution official file is in this repository, so the header uses these native 60 by 24 pixels."
+}

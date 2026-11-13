@@ -1,0 +1,170 @@
+{
+  "slug": "document-review",
+  "source_path": "document-review/",
+  "origin": "guides-json",
+  "tab_title": "Document Review",
+  "title": "Document Review — Create a Review Job",
+  "purpose": "Get compliance documents (CPC, GCC, DoC, test reports, TCF) reviewed by a lab or by yourself, whether you upload them or your supplier does.",
+  "meta": [
+    [
+      "Module",
+      "Document Review"
+    ],
+    [
+      "Start here",
+      "https://qmas.icw.io/document-review → **Create Job** or **Create Job for supplier**"
+    ],
+    [
+      "Direct links",
+      "You upload: https://qmas.icw.io/document-review/upload-document/create · Supplier uploads: https://qmas.icw.io/document-review/upload-document/request"
+    ],
+    [
+      "Checked against",
+      "QMAS dev, 4 Nov 2026"
+    ]
+  ],
+  "overview": [
+    "Choose the flow that fits (table below).",
+    "Fill in **Job Type**, **Product Information** and the documents to review.",
+    "For a supplier job, choose the **connected supplier** who will upload.",
+    "Choose a **partner** (optional) and the **Service Provider**: a connected lab, or **Job Owner Review** to review yourself.",
+    "Click **Confirm**. Follow the status on the Document Review list until the review is concluded."
+  ],
+  "steps": [
+    {
+      "h": "1. Choose your flow",
+      "body": [
+        {
+          "table": [
+            [
+              "Flow",
+              "Button",
+              "Who uploads",
+              "Who reviews"
+            ],
+            [
+              "A. Upload for lab review",
+              "Create Job",
+              "You",
+              "Connected lab"
+            ],
+            [
+              "B. Supplier uploads for lab review",
+              "Create Job for supplier",
+              "Your connected supplier",
+              "Connected lab (Connected Provider)"
+            ],
+            [
+              "C. Supplier uploads for your own review",
+              "Create Job for supplier",
+              "Your connected supplier",
+              "You (Job Owner Review)"
+            ]
+          ]
+        },
+        "In the left menu, open **Document Review**. The dashboard shows service providers, jobs over 12 months, status and reject reasons. The tabs **All Job**, **My Job** and **View Only** list the jobs.",
+        {
+          "img": "01-list.jpg",
+          "caption": "Document Review with Create Job and Create Job for supplier."
+        }
+      ]
+    },
+    {
+      "h": "2. Job Type",
+      "body": [
+        "Choose the **Job Type** (for example Document Review) and tick **CPC/GCC/DOC Review** and/or **Compliance Review**. Optionally fill in **Buyer Name**, **Service Required** (Regular by default) and **Submission Remark**. The screenshot shows this form at those defaults, before a review type is ticked or a product is added. It is not a submitted job.",
+        {
+          "img": "02-create-job-top.jpg",
+          "caption": "Create Job — 1. Job Type and 2. Product Information.",
+          "caption_note": "Blank/default form, not a submitted job. Job Type shows the Document Review default and Service Required shows Regular. Sections 3 and 4 are also in view. The account header was redacted."
+        }
+      ]
+    },
+    {
+      "h": "3. Product Information",
+      "body": [
+        "Keep **Select Product For Review = Yes**. Click **Existing Product** to pick products, or **New Product** to create one. For each product, check the **Basic Information**, then fill in **Additional Information**: Test Age Grade, Label Age Grade, Export Market and Country Of Origin are required.",
+        {
+          "img": "03-product-info.jpg",
+          "caption": "Basic Information and Additional Information for the selected product."
+        },
+        "Below that you can add **PO Information**, upload **Product Pictures & Reference Documents**, set the **TCF Requests** (choose document types or import a TCF template) and add **Quality Requirements**.",
+        {
+          "img": "04-tcf-requirements.jpg",
+          "caption": "TCF Requests and Requirements."
+        }
+      ]
+    },
+    {
+      "h": "4. Documents for Review, partner and provider (Flow A)",
+      "body": [
+        "Under **Documents for Review**, click **Upload files** (at least one file is required). The reviewer gives a conclusion only on documents in this section.",
+        "**Select Partner** (optional): choose Yes to let one partner view the job.",
+        "**Service Provider**: choose the connected lab under **Connected Provider**. Click **Confirm**.",
+        {
+          "img": "05-docs-partner-provider.jpg",
+          "caption": "Documents for Review, Select Partner and Service Provider."
+        }
+      ]
+    },
+    {
+      "h": "5. Create Job for supplier (Flows B and C)",
+      "body": [
+        "Click **Create Job for supplier**. Fill in Job Type and Product Information as above. Then:",
+        "The screenshot is the default form: no supplier is selected, and section 5 is clipped at the bottom.",
+        {
+          "list": [
+            "**Select Connected Supplier**: choose the supplier who will upload. Only suppliers connected with you on QMAS are listed. See Supplier Management → Invite Supplier.",
+            "**Select Partner** (optional).",
+            "**Service Provider**: choose **Connected Provider** and a lab for Flow B, or **Job Owner Review** for Flow C.",
+            "Click **Confirm**. The supplier gets a notification to upload the documents."
+          ]
+        },
+        {
+          "img": "06-supplier-job-top.jpg",
+          "caption": "Create Job for Supplier.",
+          "caption_note": "Blank/default form, not a submitted job. Sections 1–5 are in view and section 5 is clipped at the bottom. No supplier is selected. The account header was redacted."
+        },
+        {
+          "img": "07-supplier-job-provider.jpg",
+          "caption": "Select Connected Supplier, Select Partner and Service Provider (Connected Provider or Job Owner Review)."
+        }
+      ]
+    },
+    {
+      "h": "6. Follow the review",
+      "body": [
+        {
+          "list": [
+            "Flow A and B: the job shows **Being Processed** while the lab reviews. The lab concludes each document as **Approve**, **Reject** or **Waiting for Additional Information**.",
+            "Flow C: when the supplier has uploaded, open the job, click **View detail**, and conclude each document yourself with **Approve**, **Reject**, **N/A** or **Waiting for additional information**. Click **Confirm**.",
+            "If a document is rejected or more information is needed, read the comment and upload a corrected file.",
+            "When all documents are approved, complete the job."
+          ]
+        }
+      ]
+    }
+  ],
+  "tips": [
+    "Flows B and C need a connected supplier. Invite the supplier first from Supplier / Factory Management → Invite Supplier.",
+    "Save a TCF document-type list as a template so you can reuse it in the next job."
+  ],
+  "faq": [
+    [
+      "How do I send documents to a lab for review?",
+      "Go to Document Review (https://qmas.icw.io/document-review), click Create Job, fill in Job Type and Product Information, upload files under Documents for Review, choose the lab under Service Provider, and click Confirm."
+    ],
+    [
+      "How do I ask my supplier to upload documents for review?",
+      "Click Create Job for supplier on Document Review, choose the connected supplier, then choose Connected Provider (lab review) or Job Owner Review (you review) and click Confirm."
+    ],
+    [
+      "What does Job Owner Review mean?",
+      "You review the supplier's documents yourself instead of a lab."
+    ],
+    [
+      "Why can't I find my supplier in Select Connected Supplier?",
+      "Only suppliers connected with you on QMAS are listed. Invite them from Supplier / Factory Management → Invite Supplier."
+    ]
+  ]
+}

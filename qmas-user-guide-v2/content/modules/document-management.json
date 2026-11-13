@@ -1,0 +1,114 @@
+{
+  "slug": "document-management",
+  "source_path": "document-management/",
+  "origin": "guides-json",
+  "tab_title": "Upload a Document",
+  "title": "Document Management — Upload a Document",
+  "purpose": "Upload a compliance document, link it to products, suppliers or factories, set its dates and reminders, and add compliance data.",
+  "meta": [
+    [
+      "Module",
+      "Document Management"
+    ],
+    [
+      "Start here",
+      "https://qmas.icw.io/document-management → **Upload**"
+    ],
+    [
+      "Pop-up tabs",
+      "Save To → Dates & Reminder → Compliance Data → Confirm"
+    ],
+    [
+      "Checked against",
+      "QMAS dev, 4 Nov 2026"
+    ]
+  ],
+  "overview": [
+    "Open **Document Management** and click **Upload**, then choose one or more files from your computer.",
+    "In **Upload Document**, choose the document **Type**.",
+    "**Save To**: link the document to suppliers, factories or products.",
+    "**Dates & Reminder**: set issue, expiry and review dates and an email reminder.",
+    "**Compliance Data**: add test data, certificate data or other data. Click **Confirm**."
+  ],
+  "steps": [
+    {
+      "h": "1. Open Document Management",
+      "body": [
+        "In the left menu, open **Document Management**. The tabs show **All**, **Pending Review**, **Expired**, **Archived** and **Trash** documents. Click **Upload** at the top right and choose your file.",
+        {
+          "img": "01-list.jpg",
+          "caption": "Document Management list with the Upload button.",
+          "caption_note": "File names in this screenshot are masked. Tabs, column headers, and Upload stay visible."
+        }
+      ]
+    },
+    {
+      "h": "2. Choose the document type",
+      "body": [
+        "The **Upload Document** pop-up shows the file name. Click the pencil icon to rename it. Under **Type**, type or select a document type, for example **Test Report**.",
+        {
+          "img": "02-upload-modal.jpg",
+          "caption": "Upload Document pop-up."
+        }
+      ]
+    },
+    {
+      "h": "3. Save To — link the document",
+      "body": [
+        "On the **Save To** tab, click **Add Supplier**, **Add Factory** or **Add Product**. Select the items in the pop-up and click **Confirm**. A document can be linked to several items. Click **Remove** to unlink one.",
+        {
+          "img": "03-save-to.jpg",
+          "caption": "The document linked to a product."
+        }
+      ]
+    },
+    {
+      "h": "4. Dates & Reminder",
+      "body": [
+        "Set the **Issue Date**, **Expiry Date** and **Review Date**. Under **Email Reminder**, choose **On Expiry Date**, **On Review Date** or **Custom** to get an email reminder. Use **Clear All Settings** to start again.",
+        {
+          "img": "04-dates-reminder.jpg",
+          "caption": "Dates & Reminder tab."
+        }
+      ]
+    },
+    {
+      "h": "5. Compliance Data",
+      "body": [
+        "Click **Edit** next to **Test Data**, **Certificate Data** or **Other** to record the details from the document, such as test items and results or certificate numbers.",
+        {
+          "img": "05-compliance-data.jpg",
+          "caption": "Compliance Data tab."
+        }
+      ]
+    },
+    {
+      "h": "6. Confirm",
+      "body": [
+        "Click **Confirm**. QMAS shows a success message and the document appears at the top of the list, with its type and the number of linked products, suppliers and factories.",
+        {
+          "img": "06-uploaded.jpg",
+          "caption": "The uploaded document at the top of the list."
+        }
+      ]
+    }
+  ],
+  "tips": [
+    "Set an expiry date and reminder for certificates and test reports so you know before they expire.",
+    "You can also upload documents from a product, supplier or factory profile."
+  ],
+  "faq": [
+    [
+      "How do I upload a document?",
+      "Go to Document Management (https://qmas.icw.io/document-management), click Upload, choose the file, set the Type, link it under Save To, then click Confirm."
+    ],
+    [
+      "How do I get a reminder before a document expires?",
+      "In the Upload Document pop-up, open Dates & Reminder, set the Expiry Date, then choose an Email Reminder option."
+    ],
+    [
+      "Where can I see expired documents?",
+      "Open the Expired tab in Document Management."
+    ]
+  ]
+}

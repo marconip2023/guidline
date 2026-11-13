@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Management — Every Tab of the Product Profile</title>
+<style>
+:root {
+  --bg: #f7faff;
+  --card: #ffffff;
+  --heading: #111827;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --link: #0041b8;
+  --primary: #005eff;
+  --chip: #0041b8;
+  --line: #e5e7eb;
+  --tip: #eef4ff;
+  --pending: #f3f4f6;
+  --banner: #fff7ed;
+  --banner-text: #7c2d12;
+  --banner-line: #c2410c;
+  --focus: #0038b3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 "Liberation Sans", "Noto Sans", sans-serif;
+  hyphens: manual;
+}
+
+a { color: var(--link); }
+:where(a, button, summary):focus-visible,
+.table-wrap:focus-visible,
+.skip-link:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: #fff;
+  color: var(--focus);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.site-header {
+  background: #fff;
+  border-block-end: 1px solid var(--line);
+  border-block-start: 4px solid #184dad;
+  padding: 0;
+}
+.header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px 16px;
+  padding: 10px 16px;
+  min-block-size: 56px;
+}
+.header-inner > * { flex-shrink: 0; white-space: nowrap; }
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--heading);
+  font-weight: 700;
+  text-decoration: none;
+  min-block-size: 44px;
+}
+.site-logo img { display: block; width: 60px; height: 24px; }
+.site-logo:hover { text-decoration: underline; }
+.edition {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  white-space: normal;
+}
+.edition-draft {
+  color: var(--banner-text);
+  background: var(--banner);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-weight: 700;
+}
+.site-nav { margin-inline-start: auto; }
+.menu-button {
+  anchor-name: --menu-button;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+}
+.menu-button svg { display: block; }
+.site-menu {
+  position: fixed;
+  inset: auto;
+  inset-block-start: 4.75rem;
+  inset-block-start: anchor(--menu-button bottom);
+  inset-inline-end: 1rem;
+  inline-size: min(80dvw, 22rem);
+  max-inline-size: calc(100dvw - 2rem);
+  max-block-size: calc(100dvh - 6rem);
+  margin: 0.5rem 0 0;
+  padding: 8px;
+  overflow: auto;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.site-menu a {
+  display: flex;
+  align-items: center;
+  min-block-size: 44px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+}
+.site-menu a:hover { background: var(--tip); }
+.site-menu a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 2px;
+}
+.site-header.is-wide .menu-button { display: none; }
+.site-header.is-wide .site-menu {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  inline-size: auto;
+  max-inline-size: none;
+  max-block-size: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+}
+.site-header.is-wide .site-menu a { min-block-size: 44px; padding: 8px; }
+.site-header.is-wide .site-menu::backdrop { display: none; }
+.site-header.is-measuring, .site-header.is-measuring * { transition: none; }
+.site-menu:is(:popover-open, .\:popover-open) { display: block; }
+.site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 8px 16px 32px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.site-footer p { margin: 0 0 8px; }
+
+main { max-width: 880px; margin: 0 auto; padding: 16px 16px 64px; }
+main.wide { max-width: 960px; }
+
+h1 { color: var(--heading); font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+h2 { color: var(--heading); font-size: 22px; line-height: 1.3; margin: 36px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { color: var(--heading); font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
+.lede { color: var(--muted); margin: 0 0 16px; }
+
+.draft-banner, .status-line {
+  background: var(--banner);
+  color: var(--banner-text);
+  border-left: 4px solid var(--banner-line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+}
+.status-line { background: var(--card); color: var(--text); border-left-color: var(--primary); }
+
+.meta, .module-group, .overview, .tip, figure, table {
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 8px;
+}
+.meta dt { color: var(--muted); font-weight: 600; }
+.meta dd { margin: 0; }
+
+.overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: var(--heading);
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: var(--heading); font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--heading);
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
+.source-fold summary:hover { color: var(--link); }
+.module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
+.module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.module-group h2 a { font-size: 14px; font-weight: 400; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
+.tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
+
+.ui-label {
+  display: inline-block;
+  background: var(--chip);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.ui-label.ghost { background: #fff; color: var(--chip); border: 1px solid var(--chip); }
+
+figure.shot { margin: 12px 0 20px; border: 0; }
+figure.shot img, .pending {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+figure.shot img { height: auto; background: var(--card); }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.caption-note { display: block; margin-top: 4px; }
+
+.pending {
+  background: var(--pending);
+  color: var(--text);
+  border-style: dashed;
+  padding: 14px 16px;
+}
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+.pending.not-captured { background: #fff7ed; border-color: var(--banner-line); }
+
+.tip {
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--tip);
+}
+.tip p { margin: 0; }
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f4f6; }
+caption.visually-hidden { /* name comes from the region label */ }
+
+.additions { margin-top: 28px; }
+.callout { background: var(--tip); border-left: 4px solid var(--link); border-radius: 6px; padding: 12px 16px; margin: 12px 0 20px; }
+.callout p, .callout li { margin: 0 0 6px; }
+.kind-dev-verified, .kind-source-documented, .kind-gap, .kind-finding { padding-top: 8px; }
+.kind-dev-verified { border-top: 3px solid #1b5e20; }
+.kind-source-documented { border-top: 3px solid var(--link); }
+.kind-gap, .kind-finding { border-top: 3px solid var(--banner-line); }
+.reconcile-note { color: var(--muted); font-size: 14px; }
+.faq dt { font-weight: 700; margin-top: 14px; }
+.faq dd { margin: 4px 0 0; }
+.crumb { margin: 0 0 12px; }
+.crumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 14px;
+}
+.crumb li { display: inline-flex; align-items: center; }
+.crumb li:not(:last-child)::after { content: "/" / ""; margin-inline: 6px; color: var(--muted); }
+.verify {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 0 0 16px;
+}
+.verify h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; }
+.verify p { margin: 0 0 8px; }
+.verify p:last-child { margin: 0; }
+.verify-current-ui { border-block-start: 3px solid #1b5e20; }
+.verify-mixed { border-block-start: 3px solid #b45309; }
+.verify-source-only { border-block-start: 3px solid var(--banner-line); }
+.source-map { margin-top: 8px; }
+
+@media (forced-colors: active) {
+  .pending, .tip, .ui-label, .draft-banner, .verify, .menu-button, .site-menu { border: 1px solid CanvasText; }
+  .site-menu a[aria-current="page"] { outline: 2px solid CanvasText; }
+}
+
+@media print {
+  body { background: #fff; }
+  .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
+  .site-header { border: 0; background: none; }
+  .header-inner { padding: 0 0 8px; }
+  main { max-width: none; padding: 0; }
+  a { color: #000; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid; }
+  figure, .tip, .pending, .meta, .draft-banner, tr { break-inside: avoid; }
+  article.module + article.module { break-before: page; }
+  figure.shot img {
+    max-width: 100%;
+    max-height: 210mm;
+    object-fit: contain;
+    object-position: left top;
+  }
+  .table-wrap { overflow: visible; }
+  .pending, .tip, .draft-banner, .ui-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 14mm; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="../../">
+      <img src="../../assets/brand/qmas-logo.png" alt="QMAS" width="60" height="24">
+      <span>QMAS User Guide</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <button class="menu-button" type="button" popovertarget="site-menu" popovertargetaction="toggle" aria-controls="site-menu">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M1 3h14v1.5H1zm0 4.25h14v1.5H1zM1 11.5h14V13H1z"/></svg>
+        <span>Guides</span>
+      </button>
+      <ul id="site-menu" class="site-menu" popover="auto">
+        <li><a href="../../">Home</a></li><li><a href="../../product-testing/">Product Testing</a></li><li><a href="../../getting-started/">Getting Started</a></li><li><a href="../../product-management/">Product Management</a></li><li><a href="../../product-profile/" aria-current="page">Product Profile</a></li><li><a href="../../test-plan/">Test Plan</a></li><li><a href="../../efiling/">eFiling</a></li><li><a href="../../supplier-management/">Suppliers</a></li><li><a href="../../factory-management/">Factories</a></li><li><a href="../../factory-audit/">Factory Audit</a></li><li><a href="../../document-management/">Documents</a></li><li><a href="../../qc-inspection/">QC Inspection</a></li><li><a href="../../internal-qc-inspection/">Internal QC</a></li><li><a href="../../document-review/">Document Review</a></li><li><a href="../../ai-insight/">AI Insight</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="edition"><span class="edition-draft">Updated working draft</span> <a href="https://marconip2026.github.io/qmas-user-guide/">Existing published version</a></p>
+</header>
+<main id="content" tabindex="-1">
+<h1>Product Management — Every Tab of the Product Profile</h1>
+<p class="lede">After you create a product, its profile holds everything about it. This guide explains each tab in the profile&#x27;s left menu and the import option on the product list.</p>
+<aside class="verify verify-mixed"><p><strong>Mixed.</strong> The reviewed tab screenshots are current UI verified. Expiry reminders, share wording, and Get DoC are source-only and not dev-verified. There is no CPC or GCC Help Center article.</p><details class="source-fold"><summary>Source and verification</summary><p>Do not mark this whole module unverified. Pending screenshot slots do not make the reviewed tabs unverified. Source: QMAS Help Center — Manage your QMAS Product Information Pack, last edited 2026-11-04 11:39:48 HKT. Reminder, share, and Get DoC sections were not part of the November 2026 rewrite.</p><ul><li><a href="https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61">Manage your QMAS Product Information Pack</a> (last edited 2026-11-04 11:39:48 HKT). Reviewed tabs are current UI verified. Reminder, share, and Get DoC wording is source-only, not dev-verified.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p></details></aside>
+<p class="status-line">Screenshot slots: 11 reviewed, 3 explicitly not captured, 13 still pending privacy review.</p>
+<nav class="page-toc" aria-label="On this page"><ul><li><a href="#1-document">1. Document</a></li><li><a href="#2-shipping-detail">2. Shipping Detail</a></li><li><a href="#3-compliance-data">3. Compliance Data</a></li><li><a href="#4-quality-requirement">4. Quality Requirement</a></li><li><a href="#5-ai-risk-screening">5. AI Risk Screening</a></li><li><a href="#6-cpsc-efiling">6. CPSC eFiling</a></li><li><a href="#7-packaging-detail">7. Packaging Detail</a></li><li><a href="#8-import-products-in-bulk">8. Import products in bulk</a></li></ul></nav>
+<h2>Overview</h2>
+<ol class="overview">
+<li><strong>Document</strong>: upload, organise, share and set reminders for the product&#x27;s files.</li>
+<li><strong>Shipping Detail</strong>: sizes, weights and barcodes for the selling unit and cartons.</li>
+<li><strong>Compliance Data</strong>: record test results, certificates and other compliance data.</li>
+<li><strong>Quality Requirement</strong>: list the product&#x27;s quality requirements, use templates and send them to testing or document review.</li>
+<li><strong>AI Risk Screening</strong>: run AI compliance screenings for this product.</li>
+<li><strong>CPSC eFiling</strong>: submit eFiling for this product and see its eFiling log.</li>
+<li><strong>Packaging Detail</strong>: record each packaging component, its materials and suppliers.</li>
+<li><strong>QR Code</strong> is also in the left menu. This guide does not yet describe that screen.</li>
+</ol>
+<dl class="meta">
+<dt>Module</dt><dd>Product Management</dd>
+<dt>Open a profile</dt><dd><a href="https://qmas.icw.io/product/list">https://qmas.icw.io/product/list</a> → click a product</dd>
+<dt>Tabs</dt><dd>Document · Shipping Detail · Compliance Data · Quality Requirement · AI Risk Screening · CPSC eFiling · Packaging Detail · QR Code</dd>
+<dt>See also</dt><dd>Create and edit a product: <a href="../../product-management/">Product Management — Create and Edit a Product</a></dd>
+<dt>Checked against</dt><dd>QMAS dev, 4 Nov 2026. Document, Shipping Detail, the empty Compliance Data tab, the in-progress Test Data form, the empty Certificate Data form, and the Quality Requirement shots included here were rechecked on QMAS dev, 9 Nov 2026.</dd>
+</dl>
+<h2>Step-by-step</h2>
+<h3 id="1-document">1. Document</h3>
+<p>Shows every file linked to the product. Use <strong>New Folder</strong> to organise files and <strong>Upload</strong> to add a file (see the Document Management guide for the upload pop-up). Filter by <strong>Type</strong>, <strong>Source</strong> or <strong>Checked</strong>, switch between <strong>All</strong> and <strong>Archived</strong>, and search with <strong>Search Files</strong>. <strong>Sort</strong> and <strong>Reset</strong> sit with those filters.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/01-document.jpg" alt="Document tab with one UAT sample PDF and the filter controls." width="1485" height="635" fetchpriority="high" decoding="async"><figcaption>Document tab with one UAT sample PDF and the filter controls.<span class="caption-note">All (1), New Folder, Upload, Type, Source, Checked, Sort and Reset are visible. The file is a UAT sample PDF marked Test Report. Source and the date columns on that row are empty.</span></figcaption></figure>
+<p>Tick one or more files to open the toolbar:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Action, What it does"><table><thead><tr><th scope="col">Action</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Set Data</td><td>Add compliance data (test, certificate or other) from this file.</td></tr><tr><td>Set Dates &amp; Reminder</td><td>Set issue, expiry and review dates and an email reminder.</td></tr><tr><td>Archive</td><td>Move the file to the Archived tab.</td></tr><tr><td>Download</td><td>Download the file.</td></tr><tr><td>Share</td><td>Create a share link with an expiry period. Copy it or send it by email.</td></tr><tr><td>Rename / Edit Type</td><td>Change the file name or document type.</td></tr><tr><td>Move</td><td>Move the file to a folder.</td></tr><tr><td>Remove</td><td>Remove the file.</td></tr></tbody></table></div>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/02-document-toolbar.jpg" alt="Toolbar after selecting a file." width="1485" height="550" loading="lazy" decoding="async"><figcaption>Toolbar after selecting a file.<span class="caption-note">The selection toolbar shows Set Data, Set Dates &amp; Reminder, Archive, Download, Share, Rename, Edit Type, Move and Remove for the same UAT sample file.</span></figcaption></figure>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/03-document-share.jpg" alt="Share Via Link — choose how long the link stays valid, then Copy or By Email." width="545" height="330" loading="lazy" decoding="async"><figcaption>Share Via Link — choose how long the link stays valid, then Copy or By Email.</figcaption></figure>
+<h3 id="2-shipping-detail">2. Shipping Detail</h3>
+<p>Shows the length, width, height, gross and net weight, quantity and barcode for the <strong>Selling Unit</strong>, <strong>Inner Carton</strong> and <strong>Outer Carton</strong>. To change them, click <strong>⋮</strong> next to the product name → <strong>Edit product</strong> and update <strong>Shipping Information</strong>. The reviewed screenshot shows 0.00 and N/A in those fields, not filled shipping values.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/04-shipping-detail.jpg" alt="Shipping Detail tab with 0.00 measurements and N/A barcodes for Selling Unit, Inner Carton and Outer Carton." width="1485" height="500" loading="lazy" decoding="async"><figcaption>Shipping Detail tab — empty values (0.00 / N/A).</figcaption></figure>
+<h3 id="3-compliance-data">3. Compliance Data</h3>
+<p>Three sections: <strong>Test Data</strong>, <strong>Certificate Data</strong> and <strong>Other</strong>. Click <strong>Add Data</strong> (or <strong>Add</strong> once a section has records).</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/05-compliance-data.jpg" alt="Compliance Data tab before any data is added." width="1485" height="800" loading="lazy" decoding="async"><figcaption>Compliance Data tab before any data is added.<span class="caption-note">Test Data, Certificate Data and Other each show 0 and “There is no data here.”, with Add Data. This is the captured empty state.</span></figcaption></figure>
+<p><strong>Test Data</strong> records one test result:</p>
+<ul><li><strong>Result</strong> (required): Passed, Failed or Report As Is.</li><li><strong>Export Market</strong> (required). For US eFiling, choose <strong>United States (CPSC eFiling submission)</strong>.</li><li><strong>Legislation, Test Item &amp; Citation</strong> (required): type in this field. The reviewed screenshot sets Export Market to Africa and shows <strong>+ Add &#x27;[UAT TEST]&#x27;</strong>. It is not a legislation results list and not a saved Test Data record.</li><li><strong>Report ID</strong>, <strong>Issue Party</strong> (required), <strong>Expiry Date</strong> and <strong>Test Date / Report Date</strong>.</li><li>Link the report under <strong>Existing Product Document</strong> (a file already on the product) or <strong>New Document</strong>.</li></ul>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/07-test-item-search.jpg" alt="In-progress Test Data form. Result is unset, Export Market is Africa, and the legislation field shows + Add &#x27;[UAT TEST]&#x27;. Not a legislation results list and not a saved record." width="1110" height="605" loading="lazy" decoding="async"><figcaption>Test Data form — Export Market set; legislation field showing + Add ‘[UAT TEST]’ (not a completed saved record).</figcaption></figure>
+<figure class="shot"><div class="pending not-captured"><p><strong>Not captured</strong></p><p>File name: <code>08-test-data-filled.jpg</code></p><p>Not captured. A Test Data record was not saved and a report was not linked for this screenshot. This placeholder is not a completed or saved record.</p></div><figcaption>Not captured. A completed Test Data record with a linked report is not in this draft.</figcaption></figure>
+<p>Click <strong>Confirm</strong> to close the Test Data form. This draft does not show a saved Test Data row. Screenshots of a completed record and of the table after saving were not captured, because each needs a real saved record.</p>
+<figure class="shot"><div class="pending not-captured"><p><strong>Not captured</strong></p><p>File name: <code>09-test-data-saved.jpg</code></p><p>Not captured. A saved Test Data row was not created for this screenshot. This placeholder is not proof of a saved record.</p></div><figcaption>Not captured. The Test Data table after saving is not in this draft.</figcaption></figure>
+<p><strong>Certificate Data</strong> works the same way. Fill in the certificate <strong>Type</strong>, <strong>Issue Party</strong>, <strong>Score / Overall Rating</strong>, <strong>Expiry Date</strong> and <strong>Certificate Date</strong>, then link the certificate file. The reviewed screenshot shows that form empty.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/10-certificate-data-form.jpg" alt="Empty Certificate Data form. Type, Issue Party, score and dates are unset." width="1110" height="555" loading="lazy" decoding="async"><figcaption>Empty Certificate Data form.<span class="caption-note">This screenshot does not show filled certificate values.</span></figcaption></figure>
+<h3 id="4-quality-requirement">4. Quality Requirement</h3>
+<p>Quality Requirement lists what the product must meet, for example test standards or packaging rules. Each requirement has a <strong>Type</strong> (the group) and a <strong>Name</strong>. You can attach compliance data to it as proof, mark it completed, and reuse the list in Product Testing or Document Review.</p>
+<p>The reviewed screenshot is not an empty tab. It shows one requirement with the name hidden, plus Test Plan, ⋯ and Add. The attachment area under that row is empty.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/11-quality-requirement.jpg" alt="Quality Requirement tab with one redacted requirement row, Test Plan, the more menu and Add. Not an empty tab." width="1485" height="265" loading="lazy" decoding="async"><figcaption>Quality Requirement tab with one existing requirement (name redacted); Test Plan, ⋯, and Add visible — not an empty tab.</figcaption></figure>
+<p><strong>4a. Add a requirement yourself</strong></p>
+<ul><li>Click <strong>Add Requirement</strong> (or <strong>Add</strong> at the top right once the list has items).</li><li><strong>Type</strong>: pick an existing type, or type a new one and choose <strong>+ Create “…”</strong>.</li><li><strong>Name</strong>: pick a name from the list for that type. Picking a different Type clears the Name.</li><li>Tick <strong>Mandatory</strong> if the requirement must be met, then click <strong>Confirm</strong>.</li></ul>
+<p>The reviewed Add Requirement screenshot shows Type and Name empty, with Mandatory checked. It is not an example of a filled Type and Name.</p>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/19-requirement-filled.jpg" alt="Add Requirement modal with empty Type and Name fields and Mandatory checked." width="720" height="365" loading="lazy" decoding="async"><figcaption>Add Requirement modal — Type and Name empty, Mandatory checked (not a filled Type and Name example).</figcaption></figure>
+<p><strong>4b. Add requirements from a template (fastest)</strong></p>
+<p>Click <strong>⋯</strong> next to the title → <strong>Templates</strong>:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Option, What it does"><table><thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Apply Template</td><td>Pick a saved template (use <strong>View</strong> to preview it) and click <strong>Apply</strong>. All its requirements are added.</td></tr><tr><td>Save As Template</td><td>Save this product&#x27;s requirements as a template for other products.</td></tr><tr><td>Manage Templates</td><td>See and manage your saved templates.</td></tr></tbody></table></div>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/20-templates-menu.jpg" alt="⋯ → Templates." width="400" height="315" loading="lazy" decoding="async"><figcaption>⋯ → Templates.<span class="caption-note">The open menu shows Import To Product Testing, Import to Document Review, Export As Document, and Templates: Apply Template, Save As Template and Manage Templates.</span></figcaption></figure>
+<figure class="shot"><img src="../../assets/reviewed/product-profile/21-apply-template.jpg" alt="Apply Template — View or Apply a saved template." width="545" height="440" loading="lazy" decoding="async"><figcaption>Apply Template — View or Apply a saved template.<span class="caption-note">The list shows EU Electrical Compliance Template, EU Electrical Toy and new template 001, each with View and Apply. Creator names are blanked in this screenshot.</span></figcaption></figure>
+<p>QMAS shows “&lt;template name&gt; applied”. Requirements are grouped by Type; the number next to the Type is how many requirements it has.</p>
+<p>The screenshot of the list after Apply Template was not captured, because that needs a real apply. The placeholder is not that list.</p>
+<figure class="shot"><div class="pending not-captured"><p><strong>Not captured</strong></p><p>File name: <code>22-requirement-list.jpg</code></p><p>Not captured. Apply Template was not run for this screenshot. This placeholder is not the requirement list after a template is applied.</p></div><figcaption>Requirements after applying a template.</figcaption></figure>
+<p><strong>4c. Attach proof and complete a requirement</strong></p>
+<ul><li>Click <strong>+</strong> on a requirement to open <strong>Attach Compliance Data</strong>. Choose the <strong>Test Data</strong>, <strong>Certificate Data</strong> or <strong>Other</strong> tab, tick the records and click <strong>Confirm</strong>. If a record you just added is missing, click <strong>Reload Data</strong>. To add new data, go to Compliance Data first.</li><li>Click <strong>⌄</strong> to expand a requirement and see the attached data. Click the bin icon to detach it.</li><li>Click <strong>⋯</strong> on a requirement for <strong>Edit</strong>, <strong>Duplicate</strong>, <strong>Upload Document</strong>, <strong>Mark As Completed</strong> and <strong>Remove</strong>.</li><li><strong>Mark As Completed</strong> shows “Requirement Completed” and turns the requirement’s tick green.</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>23-attach-compliance.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Attach Compliance Data — tick the test record.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>24-requirement-attached.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>The attached test data under the requirement.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>25-requirement-row-menu.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>⋯ menu on one requirement.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>26-requirement-completed.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Requirement marked as completed.</figcaption></figure>
+<p><strong>4d. Send requirements to a job</strong></p>
+<ul><li><strong>⋯ → Import To Product Testing</strong>: tick the requirements (or <strong>Select All</strong>) and click <strong>Confirm to Create Job</strong>. Product Testing → Request Quotations opens with this product added, and the requirements appear under <strong>Quality Requirement</strong> in step 2.</li><li><strong>⋯ → Import to Document Review</strong> → <strong>Create Job</strong> or <strong>Create Job for supplier</strong>: opens the matching Document Review form for this product.</li><li><strong>⋯ → Export As Document</strong>: exports the requirement list as a document.</li></ul>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>29-import-to-pt.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Import To Product Testing — choose requirements, then Confirm to Create Job.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>31-pt-requirement-carried.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>The requirement carried into Product Testing step 2.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>28-import-doc-review.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Import to Document Review → Create Job or Create Job for supplier.</figcaption></figure>
+<p><strong>4e. Test Plan (AI)</strong></p>
+<p>Click <strong>Test Plan</strong> to let AI suggest a test plan. Fill in the <strong>Product Description</strong> (more detail gives better results), <strong>Import Country</strong> and <strong>Product Intended Used By</strong>, upload up to 6 product images, then click <strong>Generate Test Plan</strong>.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>27-test-plan.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Test Plan pop-up.</figcaption></figure>
+<h3 id="5-ai-risk-screening">5. AI Risk Screening</h3>
+<p>Lists the AI screenings for this product. Click <strong>Add</strong> to start one. The pop-up and results are explained in the <a href="../../ai-insight/">AI Insight</a> guide.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>17-ai-risk-screening.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>AI Risk Screening tab.</figcaption></figure>
+<h3 id="6-cpsc-efiling">6. CPSC eFiling</h3>
+<p>Shows the <strong>eFiling Log</strong> for this product. Click <strong>Submit eFiling</strong> to create an eFiling. Before you can sync with CPSC, add your API Key and Secret Key in <strong>Company Profile</strong> (link in the grey note). The full flow is in the <a href="../../efiling/">eFiling</a> guide.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>16-cpsc-efiling.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>CPSC eFiling tab.</figcaption></figure>
+<h3 id="7-packaging-detail">7. Packaging Detail</h3>
+<p>Lists the packaging components of the product. Click <strong>Create Packaging Component</strong> and fill in:</p>
+<ul><li><strong>Basic Information</strong>: name and description (required), identification no., function, legal role, weight, material type and name, status (Active, Inactive or Draft), and packaging images.</li><li><strong>Dimension</strong>, <strong>Additional Information</strong>, <strong>Supplier Linkage</strong> and <strong>Technical Documentation</strong> (expand each section).</li></ul>
+<p>Click <strong>Confirm</strong>. Use the <strong>Status</strong> filter to show active, inactive or draft components.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>14-packaging.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Packaging Details tab.</figcaption></figure>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>15-packaging-component.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Create Packaging Component.</figcaption></figure>
+<h3 id="8-import-products-in-bulk">8. Import products in bulk</h3>
+<p>On the Product Management list, click <strong>Import Product</strong>. Download the ICW Product template (<strong>download here</strong>), fill it in, upload the Excel file (one file at a time), then click <strong>Next</strong>. Only the ICW template can be used.</p>
+<figure class="shot"><div class="pending pending"><p><strong>Image pending privacy review</strong></p><p>File name: <code>18-import-product.jpg</code></p><p>Reviewed replacement image not available yet. Follow the written steps above.</p></div><figcaption>Import Product.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p><strong>Hide product details</strong> at the top right hides the product card on the left.</p></aside>
+<aside class="tip"><p>Link test reports to Test Data. eFiling can reuse this data when you quick-select test data.</p></aside>
+<aside class="tip"><p>Use requirement <strong>Templates</strong> so similar products get the same requirements.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I add a test result to a product?</dt><dd>Open the product → Compliance Data → Test Data → Add Data. Fill in Result, Export Market, Legislation/Test Item, Issue Party, link the report, then Confirm.</dd>
+<dt>How do I share a product document?</dt><dd>Open the product → Document, tick the file, click Share, choose the link expiry, then Copy or By Email.</dd>
+<dt>How do I add quality requirements to a product?</dt><dd>Open the product → Quality Requirement → Add Requirement, or ⋯ → Templates to apply a saved template.</dd>
+<dt>Where do I record packaging information?</dt><dd>Open the product → Packaging Detail → Create Packaging Component.</dd>
+<dt>How do I import many products?</dt><dd>On Product Management, click Import Product, download the ICW template, fill it in and upload it.</dd>
+<dt>How do I reuse quality requirements for many products?</dt><dd>Open a product → Quality Requirement → ⋯ → Templates → Save As Template. On other products use ⋯ → Templates → Apply Template.</dd>
+<dt>How do I prove a requirement is met?</dt><dd>On the requirement click +, attach the test or certificate data, then ⋯ → Mark As Completed.</dd>
+</dl>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><details class="source-fold"><summary>How these labels are used</summary><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></details><h3 class="kind-dev-verified">Dev-verified — already in the steps above (2026-11-09)</h3>
+<p>The left menu includes <strong>QR Code</strong> as well as Document, Shipping Detail, Compliance Data, Quality Requirement, AI Risk Screening, CPSC eFiling, and Packaging Detail.</p>
+<p>Document tab chrome on the reviewed screenshot: <strong>New Folder</strong>, <strong>Upload</strong>, <strong>All / Archived</strong>, filters <strong>Type</strong> / <strong>Source</strong> / <strong>Checked</strong>, and <strong>Sort</strong> (plus Reset).</p>
+<p>When older Help Center wording disagrees with that chrome, prefer these dev-verified labels.</p>
+<h3 class="kind-source-documented">Source-documented — reminders and Get DoC (not rewritten in November 2026)</h3>
+<p>Source: the same Product Information Pack article, last edited 2026-11-04. The document, reminder, and DoC sections were not rewritten in that November update. Treat the labels below as Help Center text, not as a current-UI claim.</p>
+<p>Historical Help Center document wording uses <strong>Upload file</strong>, three dots next to Document → <strong>New tab</strong>, and <strong>New folder</strong>. Prefer <strong>Upload</strong> and <strong>New Folder</strong> from the dev-verified chrome when they differ.</p>
+<p><strong>Expiry reminders:</strong> select the document, choose <strong>Set Reminder</strong> in the toolbar, pick the date, click <strong>Create</strong>. The Help Center says the reminder is sent to the email inbox on that date. Needs a dev check.</p>
+<p><strong>Declaration of Conformity (DoC):</strong> the Help Center says you can request ICW to generate a DoC, “subjected to additional fee.” “Navigate to the document in the tool bar, then select <strong>Get DoC</strong>, then click <strong>Send request</strong>.” “You will receive your product DoC by email within 3 days.”</p>
+<p>The Help Center does not document Generate <strong>CPC</strong> or <strong>GCC</strong>, or a separate PO DoC Management module. Those remain gaps. Do not invent those steps.</p>
+<h3 class="kind-gap">Remaining gaps</h3>
+<ul><li>Current entry point for Generate CPC / GCC / DOC, if it is different from Get DoC.</li><li>Test Plan (AI) after the pop-up: a generated plan, or applying it to requirements. See also the separate <a href="../../test-plan/">Test Plan</a> page for the 2024 top-menu article. Do not merge the two.</li><li>Compliance Data <strong>Other</strong>; edit or delete of existing rows; packaging edit and status filter.</li><li>Manage Templates, Save As Template, and Export As Document are text only today.</li><li>Saved Test Data and the post-template requirement list were not captured. Those slots stay placeholders and are not pictures of saved data.</li></ul>
+<p class="reconcile-note">Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide at the marconip2026 site. No Dify upload.</p></section>
+
+</main>
+<footer class="site-footer"><p>Updated working draft. This page is not deployed. Existing published version: <a href="https://marconip2026.github.io/qmas-user-guide/">https://marconip2026.github.io/qmas-user-guide/</a>.</p><p>Byte copy of the repository-root logo.png. It is the QMAS wordmark with the check through the M, the same mark visible in reviewed QMAS screenshots such as the supplier list header. The root guide labels the slot Company Logo. No license text is stored next to the file. It is not a generated wordmark and it is not a WBA or ICW logo. No higher-resolution official file is in this repository, so the header uses these native 60 by 24 pixels.</p></footer>
+
+<script>
+if (!Object.hasOwn(HTMLElement.prototype, "popover")) {
+  var polyfill = document.createElement("script");
+  polyfill.src = "https://unpkg.com/@oddbird/popover-polyfill@latest/dist/popover.min.js";
+  document.head.appendChild(polyfill);
+}
+</script>
+<script>
+(function () {
+  var header = document.querySelector(".site-header");
+  var inner = header && header.querySelector(".header-inner");
+  var menu = document.getElementById("site-menu");
+  if (!header || !inner || !menu) return;
+  var seen = false;
+  var lastWidth = 0;
+  function layout() {
+    var width = inner.clientWidth;
+    var grown = width > lastWidth + 0.5;
+    var collapsed = !header.classList.contains("is-wide");
+    lastWidth = width;
+    if (collapsed && seen && !grown) return;
+    seen = true;
+    var open = typeof menu.showPopover === "function" && menu.matches(":popover-open");
+    header.classList.add("is-measuring", "is-wide");
+    menu.removeAttribute("popover");
+    var fits = inner.scrollWidth <= inner.clientWidth;
+    if (!fits) {
+      header.classList.remove("is-wide");
+      menu.setAttribute("popover", "auto");
+      if (open) {
+        try { menu.showPopover(); } catch (err) {}
+      }
+    }
+    requestAnimationFrame(function () { header.classList.remove("is-measuring"); });
+  }
+  var observer = new ResizeObserver(layout);
+  observer.observe(header);
+  observer.observe(menu);
+  layout();
+})();
+</script>
+
+</body>
+</html>

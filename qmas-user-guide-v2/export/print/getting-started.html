@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started — Home, Settings and Company Profile</title>
+<style>
+:root {
+  --bg: #f7faff;
+  --card: #ffffff;
+  --heading: #111827;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --link: #0041b8;
+  --primary: #005eff;
+  --chip: #0041b8;
+  --line: #e5e7eb;
+  --tip: #eef4ff;
+  --pending: #f3f4f6;
+  --banner: #fff7ed;
+  --banner-text: #7c2d12;
+  --banner-line: #c2410c;
+  --focus: #0038b3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 "Liberation Sans", "Noto Sans", sans-serif;
+  hyphens: manual;
+}
+
+a { color: var(--link); }
+:where(a, button, summary):focus-visible,
+.table-wrap:focus-visible,
+.skip-link:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: #fff;
+  color: var(--focus);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.site-header {
+  background: #fff;
+  border-block-end: 1px solid var(--line);
+  border-block-start: 4px solid #184dad;
+  padding: 0;
+}
+.header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px 16px;
+  padding: 10px 16px;
+  min-block-size: 56px;
+}
+.header-inner > * { flex-shrink: 0; white-space: nowrap; }
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--heading);
+  font-weight: 700;
+  text-decoration: none;
+  min-block-size: 44px;
+}
+.site-logo img { display: block; width: 60px; height: 24px; }
+.site-logo:hover { text-decoration: underline; }
+.edition {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  white-space: normal;
+}
+.edition-draft {
+  color: var(--banner-text);
+  background: var(--banner);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-weight: 700;
+}
+.site-nav { margin-inline-start: auto; }
+.menu-button {
+  anchor-name: --menu-button;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+}
+.menu-button svg { display: block; }
+.site-menu {
+  position: fixed;
+  inset: auto;
+  inset-block-start: 4.75rem;
+  inset-block-start: anchor(--menu-button bottom);
+  inset-inline-end: 1rem;
+  inline-size: min(80dvw, 22rem);
+  max-inline-size: calc(100dvw - 2rem);
+  max-block-size: calc(100dvh - 6rem);
+  margin: 0.5rem 0 0;
+  padding: 8px;
+  overflow: auto;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.site-menu a {
+  display: flex;
+  align-items: center;
+  min-block-size: 44px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+}
+.site-menu a:hover { background: var(--tip); }
+.site-menu a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 2px;
+}
+.site-header.is-wide .menu-button { display: none; }
+.site-header.is-wide .site-menu {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  inline-size: auto;
+  max-inline-size: none;
+  max-block-size: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+}
+.site-header.is-wide .site-menu a { min-block-size: 44px; padding: 8px; }
+.site-header.is-wide .site-menu::backdrop { display: none; }
+.site-header.is-measuring, .site-header.is-measuring * { transition: none; }
+.site-menu:is(:popover-open, .\:popover-open) { display: block; }
+.site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 8px 16px 32px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.site-footer p { margin: 0 0 8px; }
+
+main { max-width: 880px; margin: 0 auto; padding: 16px 16px 64px; }
+main.wide { max-width: 960px; }
+
+h1 { color: var(--heading); font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+h2 { color: var(--heading); font-size: 22px; line-height: 1.3; margin: 36px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { color: var(--heading); font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
+.lede { color: var(--muted); margin: 0 0 16px; }
+
+.draft-banner, .status-line {
+  background: var(--banner);
+  color: var(--banner-text);
+  border-left: 4px solid var(--banner-line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+}
+.status-line { background: var(--card); color: var(--text); border-left-color: var(--primary); }
+
+.meta, .module-group, .overview, .tip, figure, table {
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 8px;
+}
+.meta dt { color: var(--muted); font-weight: 600; }
+.meta dd { margin: 0; }
+
+.overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: var(--heading);
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: var(--heading); font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--heading);
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
+.source-fold summary:hover { color: var(--link); }
+.module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
+.module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.module-group h2 a { font-size: 14px; font-weight: 400; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
+.tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
+
+.ui-label {
+  display: inline-block;
+  background: var(--chip);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.ui-label.ghost { background: #fff; color: var(--chip); border: 1px solid var(--chip); }
+
+figure.shot { margin: 12px 0 20px; border: 0; }
+figure.shot img, .pending {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+figure.shot img { height: auto; background: var(--card); }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.caption-note { display: block; margin-top: 4px; }
+
+.pending {
+  background: var(--pending);
+  color: var(--text);
+  border-style: dashed;
+  padding: 14px 16px;
+}
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+.pending.not-captured { background: #fff7ed; border-color: var(--banner-line); }
+
+.tip {
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--tip);
+}
+.tip p { margin: 0; }
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f4f6; }
+caption.visually-hidden { /* name comes from the region label */ }
+
+.additions { margin-top: 28px; }
+.callout { background: var(--tip); border-left: 4px solid var(--link); border-radius: 6px; padding: 12px 16px; margin: 12px 0 20px; }
+.callout p, .callout li { margin: 0 0 6px; }
+.kind-dev-verified, .kind-source-documented, .kind-gap, .kind-finding { padding-top: 8px; }
+.kind-dev-verified { border-top: 3px solid #1b5e20; }
+.kind-source-documented { border-top: 3px solid var(--link); }
+.kind-gap, .kind-finding { border-top: 3px solid var(--banner-line); }
+.reconcile-note { color: var(--muted); font-size: 14px; }
+.faq dt { font-weight: 700; margin-top: 14px; }
+.faq dd { margin: 4px 0 0; }
+.crumb { margin: 0 0 12px; }
+.crumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 14px;
+}
+.crumb li { display: inline-flex; align-items: center; }
+.crumb li:not(:last-child)::after { content: "/" / ""; margin-inline: 6px; color: var(--muted); }
+.verify {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 0 0 16px;
+}
+.verify h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; }
+.verify p { margin: 0 0 8px; }
+.verify p:last-child { margin: 0; }
+.verify-current-ui { border-block-start: 3px solid #1b5e20; }
+.verify-mixed { border-block-start: 3px solid #b45309; }
+.verify-source-only { border-block-start: 3px solid var(--banner-line); }
+.source-map { margin-top: 8px; }
+
+@media (forced-colors: active) {
+  .pending, .tip, .ui-label, .draft-banner, .verify, .menu-button, .site-menu { border: 1px solid CanvasText; }
+  .site-menu a[aria-current="page"] { outline: 2px solid CanvasText; }
+}
+
+@media print {
+  body { background: #fff; }
+  .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
+  .site-header { border: 0; background: none; }
+  .header-inner { padding: 0 0 8px; }
+  main { max-width: none; padding: 0; }
+  a { color: #000; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid; }
+  figure, .tip, .pending, .meta, .draft-banner, tr { break-inside: avoid; }
+  article.module + article.module { break-before: page; }
+  figure.shot img {
+    max-width: 100%;
+    max-height: 210mm;
+    object-fit: contain;
+    object-position: left top;
+  }
+  .table-wrap { overflow: visible; }
+  .pending, .tip, .draft-banner, .ui-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 14mm; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="../../">
+      <img src="../../assets/brand/qmas-logo.png" alt="QMAS" width="60" height="24">
+      <span>QMAS User Guide</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <button class="menu-button" type="button" popovertarget="site-menu" popovertargetaction="toggle" aria-controls="site-menu">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M1 3h14v1.5H1zm0 4.25h14v1.5H1zM1 11.5h14V13H1z"/></svg>
+        <span>Guides</span>
+      </button>
+      <ul id="site-menu" class="site-menu" popover="auto">
+        <li><a href="../../">Home</a></li><li><a href="../../product-testing/">Product Testing</a></li><li><a href="../../getting-started/" aria-current="page">Getting Started</a></li><li><a href="../../product-management/">Product Management</a></li><li><a href="../../product-profile/">Product Profile</a></li><li><a href="../../test-plan/">Test Plan</a></li><li><a href="../../efiling/">eFiling</a></li><li><a href="../../supplier-management/">Suppliers</a></li><li><a href="../../factory-management/">Factories</a></li><li><a href="../../factory-audit/">Factory Audit</a></li><li><a href="../../document-management/">Documents</a></li><li><a href="../../qc-inspection/">QC Inspection</a></li><li><a href="../../internal-qc-inspection/">Internal QC</a></li><li><a href="../../document-review/">Document Review</a></li><li><a href="../../ai-insight/">AI Insight</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="edition"><span class="edition-draft">Updated working draft</span> <a href="https://marconip2026.github.io/qmas-user-guide/">Existing published version</a></p>
+</header>
+<main id="content" tabindex="-1">
+<h1>Getting Started — Home, Settings and Company Profile</h1>
+<p class="lede">Find your way around QMAS: the Home page, the top bar and your company settings.</p>
+<aside class="verify verify-mixed"><p><strong>Mixed.</strong> Home, Settings, and Company Profile are current UI verified, including the avatar account control and the five TicMate shortcuts. The 2024 Help Center onboarding steps are source-only and not dev-verified.</p><details class="source-fold"><summary>Source and verification</summary><p>Do not mark this whole module unverified. The reviewed Home screenshots are current UI. Source: QMAS Help Center — Getting Started, last edited 2024-04-02 15:23:02 HKT, for the onboarding pointers only.</p><ul><li><a href="https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc">Getting Started</a> (last edited 2024-04-02 15:23:02 HKT). Onboarding pointers only. Source-only, not dev-verified.</li><li><a href="https://app.notion.com/p/3200ac0e049d4aa8b2409bad15cea3cd">Set Up Your Product Compliance Module</a> (last edited 2024-04-02 19:08:58 HKT). Related 2024 setup pointer. Source-only, not dev-verified.</li><li><a href="https://app.notion.com/p/01167450c4d54a98a3670fe13e056f12">Set Up Your Supplier Management Module</a> (last edited 2024-04-02 18:20:47 HKT). Related 2024 setup pointer. Source-only, not dev-verified.</li><li><a href="https://app.notion.com/p/84844e89cab14819b021b0aa8e33ef31">FAQs</a> (last edited 2022-12-19 15:59:00 HKT). Related FAQ pointer. Source-only, not dev-verified.</li></ul><p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so those links use app.notion.com.</p></details></aside>
+<p class="status-line">Screenshot slots: 3 reviewed replacement images.</p>
+<nav class="page-toc" aria-label="On this page"><ul><li><a href="#1-home">1. Home</a></li><li><a href="#2-settings-menu">2. Settings menu</a></li><li><a href="#3-company-profile">3. Company Profile</a></li></ul></nav>
+<h2>Overview</h2>
+<ol class="overview">
+<li><strong>Home</strong> shows quick workflows, items that need your attention, and an overview of your business.</li>
+<li>The <strong>left menu</strong> opens each module.</li>
+<li>The <strong>top bar</strong> has analytics, messages, notifications, the account avatar, help and credits.</li>
+<li><strong>Settings</strong> opens from the <strong>avatar</strong> (account control) in the top bar. The menu includes Company Profile, Password, Languages, Account Management, Assign TicMart Job and Logout.</li>
+</ol>
+<dl class="meta">
+<dt>Home</dt><dd><a href="https://qmas.icw.io/home">https://qmas.icw.io/home</a></dd>
+<dt>Company Profile</dt><dd><a href="https://qmas.icw.io/company-profile">https://qmas.icw.io/company-profile</a></dd>
+<dt>Checked against</dt><dd>QMAS dev, 9 Nov 2026</dd>
+</dl>
+<h2>Step-by-step</h2>
+<h3 id="1-home">1. Home</h3>
+<p><strong>TicMate</strong> says “I’m TicMate. What would you like to do today?” and lists these workflow shortcuts:</p>
+<ul><li><strong>Generate product risk assessment report</strong> (AI Assessment workflow).</li><li><strong>Generate export market requirements</strong> (AI Insight workflow).</li><li><strong>CPSC eFiling</strong>. If it shows “API Setup Required”, set up your Certifier ID in Company Profile first.</li><li><strong>Request product testing with your lab partner</strong> (Product Testing).</li><li><strong>Request technical files from your supplier/factory</strong> (Document Review).</li></ul>
+<p><strong>Attention</strong> counts the items that need action in each module, such as Product Testing, Document Review, QC Inspection, IQC Inspection, Factory Audit, Pending Review Doc and Expired Doc. Click a card to see them.</p>
+<p><strong>Business Overview</strong> shows your active products, suppliers, factories and partners. Click <strong>›</strong> to open the list.</p>
+<p><strong>Ask TicMate</strong> on the right edge opens the TicMate assistant.</p>
+<figure class="shot"><img src="../../assets/reviewed/getting-started/01-home.jpg" alt="Home page." width="1855" height="500" fetchpriority="high" decoding="async"><figcaption>Home page.<span class="caption-note">This reviewed screenshot shows the TicMate workflow shortcuts. Attention and Business Overview are described in the steps and are not in this crop.</span></figcaption></figure>
+<h3 id="2-settings-menu">2. Settings menu</h3>
+<p>Click your <strong>avatar</strong> (account control) in the top bar:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Option, What it does"><table><thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>Company Profile</td><td>Company details, certificates, documents, product categories and CPSC eFiling Certifier ID.</td></tr><tr><td>Password</td><td>Change your password.</td></tr><tr><td>Languages</td><td>Change the system language.</td></tr><tr><td>Account Management</td><td>Manage your company&#x27;s user accounts.</td></tr><tr><td>Assign TicMart Job</td><td>Assign jobs from the TicMart marketplace.</td></tr><tr><td>Logout</td><td>Signs you out of QMAS.</td></tr></tbody></table></div>
+<figure class="shot"><img src="../../assets/reviewed/getting-started/02-settings-menu.jpg" alt="Settings menu." width="241" height="277" loading="lazy" decoding="async"><figcaption>Settings menu.<span class="caption-note">Menu opened from the account avatar: Company Profile, Password, Languages, Account Management, Assign TicMart Job and Logout.</span></figcaption></figure>
+<h3 id="3-company-profile">3. Company Profile</h3>
+<p>Click the pencil icon next to the company name to edit it. The <strong>Overview</strong>, <strong>Certificate</strong> and <strong>Document</strong> tabs hold your company information. <strong>CPSC eFiling - Certifier ID</strong> is where you add and manage the API key for eFiling. <strong>Product Category</strong> lists the categories your company works with.</p>
+<figure class="shot"><img src="../../assets/reviewed/getting-started/03-company-profile.jpg" alt="Company Profile." width="1050" height="820" loading="lazy" decoding="async"><figcaption>Company Profile.</figcaption></figure>
+<h2>Tips</h2>
+<aside class="tip"><p>The question-mark icon opens the QMAS Help Center.</p></aside>
+<aside class="tip"><p>The coin icon shows your credits and tokens for paid features such as AI Insight.</p></aside>
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>How do I change the language?</dt><dd>Click your avatar (account control) in the top bar, then Languages.</dd>
+<dt>How do I change my password?</dt><dd>Click your avatar (account control) in the top bar, then Password.</dd>
+<dt>Where do I edit my company information?</dt><dd>Click your avatar (account control), then Company Profile (<a href="https://qmas.icw.io/company-profile">https://qmas.icw.io/company-profile</a>).</dd>
+</dl>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><details class="source-fold"><summary>How these labels are used</summary><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Unreviewed screenshots were not copied.</p></details><h3 class="kind-dev-verified">Dev-verified — already in the steps above</h3>
+<p>Settings opens from the <strong>avatar / account control</strong>. That correction is already in the steps above.</p>
+<p>Home shows <strong>5</strong> TicMate workflow shortcuts: AI Assessment, AI Insight, CPSC eFiling, Product Testing, Document Review.</p>
+<h3 class="kind-source-documented">Source-documented — Help Center onboarding (last edited 2024-04-02)</h3>
+<p>Source: Help Center Getting Started, <a href="https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc">https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc</a>. This does not replace the Home walkthrough above.</p>
+<p>The 2024 landing tells new accounts to watch the walkthrough videos, set up Product Compliance and Supplier Management, schedule an onboarding session after the customer-success email (or use Help Center Support if that email is missing), then use the Help Center and product-update emails.</p>
+<p>Those 2024 setup guides still say “top menu bar”. Prefer this page and the current create guides for live steps.</p>
+<ul><li>Set Up Your Product Compliance Module (2024-04-02), historical: <a href="https://app.notion.com/p/3200ac0e049d4aa8b2409bad15cea3cd">https://app.notion.com/p/3200ac0e049d4aa8b2409bad15cea3cd</a></li><li>Set Up Your Supplier Management Module (2024-04-02), historical: <a href="https://app.notion.com/p/01167450c4d54a98a3670fe13e056f12">https://app.notion.com/p/01167450c4d54a98a3670fe13e056f12</a></li></ul>
+<p>Help Center videos were not re-watched and are not current-UI evidence:</p>
+<ul><li>Introduction of QMAS: <a href="https://www.youtube.com/watch?v=Qn02Yu-0Ppk">https://www.youtube.com/watch?v=Qn02Yu-0Ppk</a></li><li>Manage your product compliance with QMAS: <a href="https://www.youtube.com/watch?v=3zpn_gHhW7s">https://www.youtube.com/watch?v=3zpn_gHhW7s</a></li><li>How to request quotation for product testing with QMAS: <a href="https://www.youtube.com/watch?v=AaZ9zHeQ23s">https://www.youtube.com/watch?v=AaZ9zHeQ23s</a></li><li>How to manage your supplier information with QMAS: <a href="https://www.youtube.com/watch?v=xZyHOMg7_yc">https://www.youtube.com/watch?v=xZyHOMg7_yc</a></li></ul>
+<h3 class="kind-source-documented">Source-documented — FAQs (last edited 2022-12-19)</h3>
+<p>Source: <a href="https://app.notion.com/p/84844e89cab14819b021b0aa8e33ef31">https://app.notion.com/p/84844e89cab14819b021b0aa8e33ef31</a></p>
+<ul><li>Ordering product testing: the FAQ points at the Help Center Product Testing article.</li><li>Cancelling a product testing order: “contact our customer support team via email or online chat.” Not re-verified against current Support or in-app cancel behaviour.</li><li>Integrating an existing supplier or product database: the 2022 FAQ says an import feature is available and mentions an enterprise API plan. Treat the plan and API wording as historical until confirmed.</li></ul>
+<h3 class="kind-gap">Remaining gaps</h3>
+<ul><li><strong>Notifications</strong> and <strong>Messages</strong> centers. No Help Center article. Exact paths need a dev check. No new module was invented.</li><li>Company Profile Certificate, Document, and CPSC eFiling Certifier ID setup. The page above is an overview only.</li><li>Attention card drill-downs, including Factory Audit and Pending/Expired Doc.</li><li>TicMate / Ask TicMate usage beyond the shortcut list.</li><li>Login page. Older notes say it is outdated. It is not on the public guide.</li><li>Naming is still undecided: Home <strong>AI Assessment</strong> and <strong>AI Insight</strong>, menu <strong>AI Risk Screening</strong>, and this guide title <strong>AI Insight</strong>.</li></ul>
+<p class="reconcile-note">Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide at the marconip2026 site. No Dify upload.</p></section>
+
+</main>
+<footer class="site-footer"><p>Updated working draft. This page is not deployed. Existing published version: <a href="https://marconip2026.github.io/qmas-user-guide/">https://marconip2026.github.io/qmas-user-guide/</a>.</p><p>Byte copy of the repository-root logo.png. It is the QMAS wordmark with the check through the M, the same mark visible in reviewed QMAS screenshots such as the supplier list header. The root guide labels the slot Company Logo. No license text is stored next to the file. It is not a generated wordmark and it is not a WBA or ICW logo. No higher-resolution official file is in this repository, so the header uses these native 60 by 24 pixels.</p></footer>
+
+<script>
+if (!Object.hasOwn(HTMLElement.prototype, "popover")) {
+  var polyfill = document.createElement("script");
+  polyfill.src = "https://unpkg.com/@oddbird/popover-polyfill@latest/dist/popover.min.js";
+  document.head.appendChild(polyfill);
+}
+</script>
+<script>
+(function () {
+  var header = document.querySelector(".site-header");
+  var inner = header && header.querySelector(".header-inner");
+  var menu = document.getElementById("site-menu");
+  if (!header || !inner || !menu) return;
+  var seen = false;
+  var lastWidth = 0;
+  function layout() {
+    var width = inner.clientWidth;
+    var grown = width > lastWidth + 0.5;
+    var collapsed = !header.classList.contains("is-wide");
+    lastWidth = width;
+    if (collapsed && seen && !grown) return;
+    seen = true;
+    var open = typeof menu.showPopover === "function" && menu.matches(":popover-open");
+    header.classList.add("is-measuring", "is-wide");
+    menu.removeAttribute("popover");
+    var fits = inner.scrollWidth <= inner.clientWidth;
+    if (!fits) {
+      header.classList.remove("is-wide");
+      menu.setAttribute("popover", "auto");
+      if (open) {
+        try { menu.showPopover(); } catch (err) {}
+      }
+    }
+    requestAnimationFrame(function () { header.classList.remove("is-measuring"); });
+  }
+  var observer = new ResizeObserver(layout);
+  observer.observe(header);
+  observer.observe(menu);
+  layout();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QMAS User Guide (working copy draft)</title>
+<style>
+:root {
+  --bg: #f7faff;
+  --card: #ffffff;
+  --heading: #111827;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --link: #0041b8;
+  --primary: #005eff;
+  --chip: #0041b8;
+  --line: #e5e7eb;
+  --tip: #eef4ff;
+  --pending: #f3f4f6;
+  --banner: #fff7ed;
+  --banner-text: #7c2d12;
+  --banner-line: #c2410c;
+  --focus: #0038b3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 "Liberation Sans", "Noto Sans", sans-serif;
+  hyphens: manual;
+}
+
+a { color: var(--link); }
+:where(a, button, summary):focus-visible,
+.table-wrap:focus-visible,
+.skip-link:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  background: #fff;
+  color: var(--focus);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 30;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+.site-header {
+  background: #fff;
+  border-block-end: 1px solid var(--line);
+  border-block-start: 4px solid #184dad;
+  padding: 0;
+}
+.header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px 16px;
+  padding: 10px 16px;
+  min-block-size: 56px;
+}
+.header-inner > * { flex-shrink: 0; white-space: nowrap; }
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--heading);
+  font-weight: 700;
+  text-decoration: none;
+  min-block-size: 44px;
+}
+.site-logo img { display: block; width: 60px; height: 24px; }
+.site-logo:hover { text-decoration: underline; }
+.edition {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  white-space: normal;
+}
+.edition-draft {
+  color: var(--banner-text);
+  background: var(--banner);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-weight: 700;
+}
+.site-nav { margin-inline-start: auto; }
+.menu-button {
+  anchor-name: --menu-button;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+}
+.menu-button svg { display: block; }
+.site-menu {
+  position: fixed;
+  inset: auto;
+  inset-block-start: 4.75rem;
+  inset-block-start: anchor(--menu-button bottom);
+  inset-inline-end: 1rem;
+  inline-size: min(80dvw, 22rem);
+  max-inline-size: calc(100dvw - 2rem);
+  max-block-size: calc(100dvh - 6rem);
+  margin: 0.5rem 0 0;
+  padding: 8px;
+  overflow: auto;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.site-menu a {
+  display: flex;
+  align-items: center;
+  min-block-size: 44px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+}
+.site-menu a:hover { background: var(--tip); }
+.site-menu a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 2px;
+}
+.site-header.is-wide .menu-button { display: none; }
+.site-header.is-wide .site-menu {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  inline-size: auto;
+  max-inline-size: none;
+  max-block-size: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+}
+.site-header.is-wide .site-menu a { min-block-size: 44px; padding: 8px; }
+.site-header.is-wide .site-menu::backdrop { display: none; }
+.site-header.is-measuring, .site-header.is-measuring * { transition: none; }
+.site-menu:is(:popover-open, .\:popover-open) { display: block; }
+.site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 8px 16px 32px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.site-footer p { margin: 0 0 8px; }
+
+main { max-width: 880px; margin: 0 auto; padding: 16px 16px 64px; }
+main.wide { max-width: 960px; }
+
+h1 { color: var(--heading); font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+h2 { color: var(--heading); font-size: 22px; line-height: 1.3; margin: 36px 0 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { color: var(--heading); font-size: 18px; line-height: 1.35; margin: 24px 0 8px; }
+.lede { color: var(--muted); margin: 0 0 16px; }
+
+.draft-banner, .status-line {
+  background: var(--banner);
+  color: var(--banner-text);
+  border-left: 4px solid var(--banner-line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+}
+.status-line { background: var(--card); color: var(--text); border-left-color: var(--primary); }
+
+.meta, .module-group, .overview, .tip, figure, table {
+  background: var(--card);
+}
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 8px;
+}
+.meta dt { color: var(--muted); font-weight: 600; }
+.meta dd { margin: 0; }
+
+.overview { border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 12px 36px; }
+.draft-notice {
+  background: #fff;
+  color: var(--text);
+  border-left: 4px solid #184dad;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0 0 20px;
+}
+.guide-group { margin: 0 0 8px; }
+.guide-group h2 {
+  border: 0;
+  margin: 20px 0 10px;
+  padding: 0;
+  color: var(--heading);
+  font-size: 18px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide-cards > li { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.guide-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-block-size: 44px;
+  padding: 14px 16px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.guide-card:hover { border-color: #184dad; }
+.guide-card-title { color: var(--heading); font-weight: 700; }
+.guide-card-text { color: var(--muted); font-size: 14px; }
+.app-link { font-size: 14px; min-block-size: 24px; }
+.related-line { margin: 20px 0 0; }
+.page-toc {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px 8px 32px;
+  margin: 0 0 16px;
+}
+.page-toc ul { margin: 0; padding-inline-start: 1.1rem; }
+.source-fold {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 8px;
+  margin: 16px 0;
+}
+.source-fold summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--heading);
+  min-block-size: 44px;
+  display: flex;
+  align-items: center;
+}
+.source-fold summary:hover { color: var(--link); }
+.module-group { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 0 0 16px; }
+.module-group h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.module-group h2 a { font-size: 14px; font-weight: 400; }
+.tag { font-size: 12px; border-radius: 4px; padding: 2px 6px; background: var(--pending); color: var(--muted); }
+.tag.reviewed { background: #e8f5e9; color: #1b5e20; }
+.tag-warn { background: var(--banner); color: var(--banner-text); border: 1px solid var(--banner-line); }
+
+.ui-label {
+  display: inline-block;
+  background: var(--chip);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.ui-label.ghost { background: #fff; color: var(--chip); border: 1px solid var(--chip); }
+
+figure.shot { margin: 12px 0 20px; border: 0; }
+figure.shot img, .pending {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+}
+figure.shot img { height: auto; background: var(--card); }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.caption-note { display: block; margin-top: 4px; }
+
+.pending {
+  background: var(--pending);
+  color: var(--text);
+  border-style: dashed;
+  padding: 14px 16px;
+}
+.pending p { margin: 0 0 6px; }
+.pending p:last-child { margin: 0; }
+.pending.not-captured { background: #fff7ed; border-color: var(--banner-line); }
+
+.tip {
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  background: var(--tip);
+}
+.tip p { margin: 0; }
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f3f4f6; }
+caption.visually-hidden { /* name comes from the region label */ }
+
+.additions { margin-top: 28px; }
+.callout { background: var(--tip); border-left: 4px solid var(--link); border-radius: 6px; padding: 12px 16px; margin: 12px 0 20px; }
+.callout p, .callout li { margin: 0 0 6px; }
+.kind-dev-verified, .kind-source-documented, .kind-gap, .kind-finding { padding-top: 8px; }
+.kind-dev-verified { border-top: 3px solid #1b5e20; }
+.kind-source-documented { border-top: 3px solid var(--link); }
+.kind-gap, .kind-finding { border-top: 3px solid var(--banner-line); }
+.reconcile-note { color: var(--muted); font-size: 14px; }
+.faq dt { font-weight: 700; margin-top: 14px; }
+.faq dd { margin: 4px 0 0; }
+.crumb { margin: 0 0 12px; }
+.crumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 14px;
+}
+.crumb li { display: inline-flex; align-items: center; }
+.crumb li:not(:last-child)::after { content: "/" / ""; margin-inline: 6px; color: var(--muted); }
+.verify {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 0 0 16px;
+}
+.verify h2 { border: 0; margin: 0 0 8px; padding: 0; font-size: 18px; }
+.verify p { margin: 0 0 8px; }
+.verify p:last-child { margin: 0; }
+.verify-current-ui { border-block-start: 3px solid #1b5e20; }
+.verify-mixed { border-block-start: 3px solid #b45309; }
+.verify-source-only { border-block-start: 3px solid var(--banner-line); }
+.source-map { margin-top: 8px; }
+
+@media (forced-colors: active) {
+  .pending, .tip, .ui-label, .draft-banner, .verify, .menu-button, .site-menu { border: 1px solid CanvasText; }
+  .site-menu a[aria-current="page"] { outline: 2px solid CanvasText; }
+}
+
+@media print {
+  body { background: #fff; }
+  .skip-link, .site-header nav, .crumb, .menu-button, .site-logo img { display: none; }
+  details::details-content { display: block !important; content-visibility: visible !important; }
+  .site-header { border: 0; background: none; }
+  .header-inner { padding: 0 0 8px; }
+  main { max-width: none; padding: 0; }
+  a { color: #000; text-decoration: none; }
+  h1, h2, h3 { break-after: avoid; }
+  figure, .tip, .pending, .meta, .draft-banner, tr { break-inside: avoid; }
+  article.module + article.module { break-before: page; }
+  figure.shot img {
+    max-width: 100%;
+    max-height: 210mm;
+    object-fit: contain;
+    object-position: left top;
+  }
+  .table-wrap { overflow: visible; }
+  .pending, .tip, .draft-banner, .ui-label {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 14mm; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="./">
+      <img src="assets/brand/qmas-logo.png" alt="QMAS" width="60" height="24">
+      <span>QMAS User Guide</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <button class="menu-button" type="button" popovertarget="site-menu" popovertargetaction="toggle" aria-controls="site-menu">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M1 3h14v1.5H1zm0 4.25h14v1.5H1zM1 11.5h14V13H1z"/></svg>
+        <span>Guides</span>
+      </button>
+      <ul id="site-menu" class="site-menu" popover="auto">
+        <li><a href="./" aria-current="page">Home</a></li><li><a href="product-testing/">Product Testing</a></li><li><a href="getting-started/">Getting Started</a></li><li><a href="product-management/">Product Management</a></li><li><a href="product-profile/">Product Profile</a></li><li><a href="test-plan/">Test Plan</a></li><li><a href="efiling/">eFiling</a></li><li><a href="supplier-management/">Suppliers</a></li><li><a href="factory-management/">Factories</a></li><li><a href="factory-audit/">Factory Audit</a></li><li><a href="document-management/">Documents</a></li><li><a href="qc-inspection/">QC Inspection</a></li><li><a href="internal-qc-inspection/">Internal QC</a></li><li><a href="document-review/">Document Review</a></li><li><a href="ai-insight/">AI Insight</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="edition"><span class="edition-draft">Updated working draft</span> <a href="https://marconip2026.github.io/qmas-user-guide/">Existing published version</a></p>
+</header>
+<main id="content" class="wide" tabindex="-1">
+
+<h1>QMAS User Guide</h1>
+<p class="lede">Choose a module. These are the 14 existing guides.</p>
+<p class="draft-notice">Working copy draft. Not deployed. Existing published version: <a href="https://marconip2026.github.io/qmas-user-guide/">https://marconip2026.github.io/qmas-user-guide/</a>.</p>
+<section class="guide-group" aria-labelledby="getting-started"><h2 id="getting-started">Getting Started</h2><ul class="guide-cards" role="list"><li><a class="guide-card" href="getting-started/"><span class="guide-card-title">Getting Started</span><span class="guide-card-text">Home, settings and company profile</span></a></li></ul></section>
+<section class="guide-group" aria-labelledby="product-compliance"><h2 id="product-compliance">Product &amp; Compliance</h2><ul class="guide-cards" role="list"><li><a class="guide-card" href="product-management/"><span class="guide-card-title">Product Management</span><span class="guide-card-text">Create and edit a product</span></a><a class="app-link" href="https://qmas.icw.io/product/list">Open in QMAS</a></li><li><a class="guide-card" href="product-profile/"><span class="guide-card-title">Product Profile</span><span class="guide-card-text">Every tab of the product profile (Document, Compliance Data, Quality Requirement, Packaging…)</span></a></li><li><a class="guide-card" href="efiling/"><span class="guide-card-title">eFiling</span><span class="guide-card-text">Submit eFiling to CPSC</span></a></li><li><a class="guide-card" href="ai-insight/"><span class="guide-card-title">AI Insight</span><span class="guide-card-text">Run an AI Risk Screening</span></a></li><li><a class="guide-card" href="test-plan/"><span class="guide-card-title">Test Plan</span><span class="guide-card-text">Request a Test Plan (Help Center, 2024)</span><span class="tag tag-warn">Source-only, not on the published site</span></a></li></ul></section>
+<section class="guide-group" aria-labelledby="supplier-factory"><h2 id="supplier-factory">Supplier &amp; Factory</h2><ul class="guide-cards" role="list"><li><a class="guide-card" href="supplier-management/"><span class="guide-card-title">Suppliers</span><span class="guide-card-text">Create a supplier</span></a><a class="app-link" href="https://qmas.icw.io/supplier-manager/suppliers">Open in QMAS</a></li><li><a class="guide-card" href="factory-management/"><span class="guide-card-title">Factories</span><span class="guide-card-text">Create a factory</span></a></li></ul></section>
+<section class="guide-group" aria-labelledby="testing-inspection"><h2 id="testing-inspection">Testing &amp; Inspection</h2><ul class="guide-cards" role="list"><li><a class="guide-card" href="product-testing/"><span class="guide-card-title">Product Testing</span><span class="guide-card-text">Request a quotation (Create Job)</span></a><a class="app-link" href="https://qmas.icw.io/product-testing">Open in QMAS</a></li><li><a class="guide-card" href="qc-inspection/"><span class="guide-card-title">QC Inspection</span><span class="guide-card-text">Get a QC inspection quote via ICW</span></a><a class="app-link" href="https://qmas.icw.io/inspection">Open in QMAS</a></li><li><a class="guide-card" href="internal-qc-inspection/"><span class="guide-card-title">Internal QC</span><span class="guide-card-text">Start an internal inspection</span></a><a class="app-link" href="https://qmas.icw.io/inspection/internal/list">Open in QMAS</a></li><li><a class="guide-card" href="factory-audit/"><span class="guide-card-title">Factory Audit</span><span class="guide-card-text">Request a Factory Audit quotation (Help Center, 2024)</span><span class="tag tag-warn">Source-only, not on the published site</span></a></li></ul></section>
+<section class="guide-group" aria-labelledby="documents"><h2 id="documents">Documents</h2><ul class="guide-cards" role="list"><li><a class="guide-card" href="document-management/"><span class="guide-card-title">Documents</span><span class="guide-card-text">Upload a document</span></a><a class="app-link" href="https://qmas.icw.io/document-management">Open in QMAS</a></li><li><a class="guide-card" href="document-review/"><span class="guide-card-title">Document Review</span><span class="guide-card-text">Upload documents for lab review</span></a></li></ul></section>
+
+<p class="related-line">Related: <a href="https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b">Notion working hub</a>. <a href="https://workflow-dev.icw.io/chat/QDSPY8f58691bu1P">QMAS Chatbot</a>. Published about 17:40 HKT on 13 Nov 2026. The published product name is Marco Test 3.0. The published product text and 2 images were checked. The header in that app still reads QMAS Chatbot 2.0. <a href="combined/">Read all guides in one page</a>.</p>
+<details class="source-fold">
+<summary>Source and verification</summary>
+<p>Working copy draft 2026-11-13-draft. Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Factory Audit and Test Plan have no screenshots and are not on the existing published site.</p>
+<p>The original 12 modules keep their published steps. A reviewed screenshot means that part is current UI verified. Help Center text is marked on the module and is not the source of every step. Factory Audit and the standalone Test Plan are source-only and not dev-verified. Where a page is mixed, the create path can be current UI verified while a later quote or accept flow is still older Help Center wording.</p>
+<p>Help Center home: <a href="https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af">QMAS Help Center</a> (last edited 2026-01-20 13:54:13 HKT). User Guide index: <a href="https://app.notion.com/p/a92963a30e584145bb457a62b7706541">User Guide</a> (last edited 2026-01-16 15:44:49 HKT). Public icw-io addresses for individual articles were not verified, so the table uses app.notion.com.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Source and verification">
+<table>
+<caption class="visually-hidden">Source and verification for the 14 modules</caption>
+<thead><tr><th scope="col">Module</th><th scope="col">Verification</th><th scope="col">Help Center article</th></tr></thead>
+<tbody>
+<tr><td><a href="product-testing/">Product Testing — Request a Quotation</a></td><td>Mixed</td><td><a href="https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12">How To Request Quotation For Product Testing From Global Laboratories</a> (2026-11-04 11:18:27 HKT)</td></tr><tr><td><a href="getting-started/">Getting Started — Home, Settings and Company Profile</a></td><td>Mixed</td><td><a href="https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc">Getting Started</a> (2024-04-02 15:23:02 HKT)<br><a href="https://app.notion.com/p/3200ac0e049d4aa8b2409bad15cea3cd">Set Up Your Product Compliance Module</a> (2024-04-02 19:08:58 HKT)<br><a href="https://app.notion.com/p/01167450c4d54a98a3670fe13e056f12">Set Up Your Supplier Management Module</a> (2024-04-02 18:20:47 HKT)<br><a href="https://app.notion.com/p/84844e89cab14819b021b0aa8e33ef31">FAQs</a> (2022-12-19 15:59:00 HKT)</td></tr><tr><td><a href="product-management/">Product Management — Create and Edit a Product</a></td><td>Mixed</td><td><a href="https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61">Manage your QMAS Product Information Pack</a> (2026-11-04 11:39:48 HKT)</td></tr><tr><td><a href="product-profile/">Product Management — Every Tab of the Product Profile</a></td><td>Mixed</td><td><a href="https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61">Manage your QMAS Product Information Pack</a> (2026-11-04 11:39:48 HKT)</td></tr><tr><td><a href="test-plan/">Test Plan — Request a Test Plan</a></td><td>Source-only, not dev-verified</td><td><a href="https://app.notion.com/p/1a502da19803417aae2cd72190a1a542">How To Request A Test Plan</a> (2024-03-28 15:44:01 HKT)</td></tr><tr><td><a href="efiling/">eFiling — Submit eFiling to CPSC</a></td><td>Current UI verified</td><td>No Help Center article for these steps</td></tr><tr><td><a href="supplier-management/">Supplier Management — Create a Supplier</a></td><td>Mixed</td><td><a href="https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c">Manage your QMAS Supplier Compliance Profile</a> (2026-01-16 15:38:01 HKT)</td></tr><tr><td><a href="factory-management/">Factory Management — Create a Factory</a></td><td>Mixed</td><td><a href="https://app.notion.com/p/2ea9c62c39fc80198eddc3c9e7d20007">Manage your QMAS Factory Compliance Profile</a> (2026-01-16 16:11:21 HKT)</td></tr><tr><td><a href="factory-audit/">Factory Audit — Request a Quotation</a></td><td>Source-only, not dev-verified</td><td><a href="https://app.notion.com/p/8bdd7dbfdb1347dd86da4694aba5dd1e">How To Request Quotation For Factory Audit From Global Laboratories</a> (2024-04-02 18:08:00 HKT)</td></tr><tr><td><a href="document-management/">Document Management — Upload a Document</a></td><td>Current UI verified</td><td>No Help Center article for these steps</td></tr><tr><td><a href="qc-inspection/">QC Inspection — Get a QC Inspection Quote via ICW</a></td><td>Mixed</td><td><a href="https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e">How To Request Quotation For QC Inspection From Global Laboratories</a> (2026-11-04 12:15:22 HKT)</td></tr><tr><td><a href="internal-qc-inspection/">Internal QC Inspection — Start an Internal Inspection</a></td><td>Mixed</td><td><a href="https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e">How To Request Quotation For QC Inspection From Global Laboratories</a> (2026-11-04 12:15:22 HKT)</td></tr><tr><td><a href="document-review/">Document Review — Create a Review Job</a></td><td>Mixed</td><td><a href="https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c">Manage your QMAS Supplier Compliance Profile</a> (2026-01-16 15:38:01 HKT)</td></tr><tr><td><a href="ai-insight/">AI Insight — Run an AI Risk Screening</a></td><td>Current UI verified</td><td>No Help Center article for these steps</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+
+</main>
+<footer class="site-footer"><p>Updated working draft. This page is not deployed. Existing published version: <a href="https://marconip2026.github.io/qmas-user-guide/">https://marconip2026.github.io/qmas-user-guide/</a>.</p><p>Byte copy of the repository-root logo.png. It is the QMAS wordmark with the check through the M, the same mark visible in reviewed QMAS screenshots such as the supplier list header. The root guide labels the slot Company Logo. No license text is stored next to the file. It is not a generated wordmark and it is not a WBA or ICW logo. No higher-resolution official file is in this repository, so the header uses these native 60 by 24 pixels.</p></footer>
+
+<script>
+if (!Object.hasOwn(HTMLElement.prototype, "popover")) {
+  var polyfill = document.createElement("script");
+  polyfill.src = "https://unpkg.com/@oddbird/popover-polyfill@latest/dist/popover.min.js";
+  document.head.appendChild(polyfill);
+}
+</script>
+<script>
+(function () {
+  var header = document.querySelector(".site-header");
+  var inner = header && header.querySelector(".header-inner");
+  var menu = document.getElementById("site-menu");
+  if (!header || !inner || !menu) return;
+  var seen = false;
+  var lastWidth = 0;
+  function layout() {
+    var width = inner.clientWidth;
+    var grown = width > lastWidth + 0.5;
+    var collapsed = !header.classList.contains("is-wide");
+    lastWidth = width;
+    if (collapsed && seen && !grown) return;
+    seen = true;
+    var open = typeof menu.showPopover === "function" && menu.matches(":popover-open");
+    header.classList.add("is-measuring", "is-wide");
+    menu.removeAttribute("popover");
+    var fits = inner.scrollWidth <= inner.clientWidth;
+    if (!fits) {
+      header.classList.remove("is-wide");
+      menu.setAttribute("popover", "auto");
+      if (open) {
+        try { menu.showPopover(); } catch (err) {}
+      }
+    }
+    requestAnimationFrame(function () { header.classList.remove("is-measuring"); });
+  }
+  var observer = new ResizeObserver(layout);
+  observer.observe(header);
+  observer.observe(menu);
+  layout();
+})();
+</script>
+
+</body>
+</html>

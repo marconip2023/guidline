@@ -1,0 +1,192 @@
+{
+  "slug": "qc-inspection",
+  "source_path": "qc-inspection/",
+  "origin": "guides-json",
+  "tab_title": "QC Inspection Quote",
+  "title": "QC Inspection — Get a QC Inspection Quote via ICW",
+  "purpose": "Ask ICW to quote and arrange a third-party QC inspection for your products.",
+  "meta": [
+    [
+      "Module",
+      "QC Inspection"
+    ],
+    [
+      "Start here",
+      "https://qmas.icw.io/inspection → **Create Job** → **Get QC inspection quote via ICW**"
+    ],
+    [
+      "Direct link",
+      "https://qmas.icw.io/inspection/jobs/new"
+    ],
+    [
+      "Steps",
+      "1 Inspection Requirement → 2 Report Details → 3 Supplier & Factory → 4 Additional Information → 5 Review & Submit"
+    ],
+    [
+      "Checked against",
+      "QMAS dev, 4 Nov 2026"
+    ]
+  ],
+  "overview": [
+    "Open **QC Inspection**, click **Create Job**, choose **Get QC inspection quote via ICW** and click **Continue**.",
+    "**Inspection Requirement**: date, type, level, AQL, budget and provider preference.",
+    "**Report Details**: products and POs to inspect.",
+    "**Supplier & Factory**: who makes the goods and where the inspection takes place.",
+    "**Additional Information**: files and remarks.",
+    "**Review & Submit**: check everything and click **Submit**."
+  ],
+  "steps": [
+    {
+      "h": "1. Open QC Inspection",
+      "body": [
+        "In the left menu, open **QC Inspection**. The charts show inspection results, service providers and job types. Tabs list **All Job**, **3rd Party Job**, **Inhouse Record** and **Draft**. Click **Create Job**.",
+        {
+          "img": "01-list.jpg",
+          "caption": "QC Inspection list with Create Job.",
+          "caption_note": "Job rows are masked. Tabs, column headers, and Create Job stay visible. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot."
+        },
+        {
+          "img": "supplemental-3rd-party-tab.jpg",
+          "caption": "QC Inspection — 3rd Party Job tab.",
+          "caption_note": "Supplementary screenshot, not one of the 98 inventory slots. Job rows are masked.",
+          "counts_toward_98": false
+        },
+        {
+          "img": "supplemental-draft-tab.jpg",
+          "caption": "QC Inspection — Draft tab.",
+          "caption_note": "Supplementary screenshot, not one of the 98 inventory slots. Job rows are masked.",
+          "counts_toward_98": false
+        }
+      ]
+    },
+    {
+      "h": "2. Choose what you are looking for",
+      "body": [
+        {
+          "table": [
+            [
+              "Option",
+              "Use it when"
+            ],
+            [
+              "Get QC inspection quote via ICW",
+              "You want ICW to arrange a third-party inspector. This guide."
+            ],
+            [
+              "Start internal inspection",
+              "Your own QC team will inspect. See the Internal QC Inspection guide."
+            ],
+            [
+              "Add inspection record",
+              "The inspection is already done and you want to record the result."
+            ]
+          ]
+        },
+        "Choose **Get QC inspection quote via ICW** and click **Continue**.",
+        {
+          "img": "02-looking-to.jpg",
+          "caption": "Create New Job — Looking to…",
+          "caption_note": "Default selection is Get QC inspection quote via ICW. Continue is visible. No personal data is filled in."
+        }
+      ]
+    },
+    {
+      "h": "3. Inspection Requirement",
+      "body": [
+        {
+          "list": [
+            "**Inspection Date**.",
+            "**Inspection type**: Final Random, Loading, During Production, Re-Inspection, Initial Production, Fabric, 100% or Vendor Own Inspection.",
+            "**Inspection Level**: General Inspection Level I–III or Special Level S-1 to S-4.",
+            "**Inspection AQL**: Critical, Major and Minor levels. They apply to all products in this job by default.",
+            "**Target Budget** (currency and amount) and **Service Provider Preference**. Leave “No preference, ICW will match you with the best inspector” selected if you have no preferred provider."
+          ]
+        },
+        "The reviewed screenshot of this step is the blank form. It includes Target Budget and Service Provider Preference. It is not a filled or submitted job. The filled step-1 screenshot is still pending.",
+        {
+          "img": "supplemental-step1-requirement-blank.jpg",
+          "caption": "Create Job step 1 Inspection Requirement, blank (includes Target Budget and Service Provider Preference).",
+          "caption_note": "Supplementary screenshot, not one of the 98 inventory slots. Blank form only.",
+          "counts_toward_98": false
+        },
+        {
+          "img": "04-step1-filled.jpg",
+          "caption": "Step 1 filled in. Click Save to keep a draft, or Next."
+        }
+      ]
+    },
+    {
+      "h": "4. Report Details",
+      "body": [
+        "Click **Add Product**, search for the product, click **Select**, then **Confirm**.",
+        {
+          "img": "05-select-product.jpg",
+          "caption": "Select related product(s) — search by name, item no., supplier or factory."
+        },
+        "For each product, fill in the **PO** details: customer name, customer PO #, PO #, order quantity and number of cartons. Use **Add New PO** for more POs, **Add Product** for more products, and **Add Report** or **Duplicate Report** if you need separate reports. Tick **Signed Sample Available** if there is one. Click **Next**.",
+        {
+          "img": "06-step2-report.jpg",
+          "caption": "Report 1 with one product and its PO."
+        }
+      ]
+    },
+    {
+      "h": "5. Supplier & Factory",
+      "body": [
+        "Click **Add Supplier** and select the supplier. Then click **Select Existing Factory** and choose the factory where the inspection will take place. Check the contact person, phone and email for each. Click **Next**.",
+        {
+          "img": "07-step3-supplier-factory.jpg",
+          "caption": "Supplier and factory selected, with contact details."
+        }
+      ]
+    },
+    {
+      "h": "6. Additional Information",
+      "body": [
+        "Upload reference files such as tech packs or previous reports, and write any special requirement in **Remark**. Click **Next**.",
+        {
+          "img": "08-step4-additional.jpg",
+          "caption": "Step 4 Additional Information."
+        }
+      ]
+    },
+    {
+      "h": "7. Review & Submit",
+      "body": [
+        "Check the summary. Click **Edit** on any section to change it. Click **Submit**.",
+        {
+          "img": "09-step5-review.jpg",
+          "caption": "Step 5 Review & Submit."
+        }
+      ]
+    },
+    {
+      "h": "8. Done — job detail",
+      "body": [
+        "QMAS shows “Create job successfully!” and opens the job. It has a Job ID and starts as **Under Review**. The **Quotes**, **Reports**, **Attachments** and **Invoices** tabs follow the job.",
+        {
+          "img": "10-job-detail.jpg",
+          "caption": "The new inspection job."
+        }
+      ]
+    }
+  ],
+  "tips": [
+    "Click **Save** on any step to keep a draft. Drafts are on the **Draft** tab.",
+    "Submit well before the inspection date so there is time for quoting and booking."
+  ],
+  "faq": [
+    [
+      "How do I book a third-party QC inspection?",
+      "Go to QC Inspection (https://qmas.icw.io/inspection), click Create Job, choose Get QC inspection quote via ICW, then complete the 5 steps and Submit."
+    ],
+    [
+      "What is the difference between a QC inspection quote and an internal inspection?",
+      "A quote via ICW uses a third-party inspector arranged by ICW. An internal inspection is done by your own QC team (Internal QC Inspection)."
+    ],
+    [
+      "Can I save a QC job and finish it later?",
+      "Yes. Click Save on any step. The job is kept on the Draft tab."
+    ]
+  ]
+}

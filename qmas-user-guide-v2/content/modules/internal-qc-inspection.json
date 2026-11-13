@@ -1,0 +1,100 @@
+{
+  "slug": "internal-qc-inspection",
+  "source_path": "internal-qc-inspection/",
+  "origin": "guides-json",
+  "tab_title": "Internal Inspection",
+  "title": "Internal QC Inspection — Start an Internal Inspection",
+  "purpose": "Schedule an inspection that your own QC team carries out, without a third-party provider.",
+  "meta": [
+    [
+      "Module",
+      "Internal QC Inspection"
+    ],
+    [
+      "Start here",
+      "https://qmas.icw.io/inspection/internal/list → **Create Job**"
+    ],
+    [
+      "Direct link",
+      "https://qmas.icw.io/inspection/jobs/new?type=internalInspection"
+    ],
+    [
+      "Steps",
+      "1 Inspection Requirement → 2 Report Details → 3 Supplier & Factory → 4 Additional Information → 5 Review & Submit"
+    ],
+    [
+      "Checked against",
+      "QMAS dev, 4 Nov 2026"
+    ]
+  ],
+  "overview": [
+    "Open **Internal QC Inspection** and click **Create Job**. **Start internal inspection** is already selected. Click **Continue**.",
+    "**Inspection Requirement**: date, type, level and AQL.",
+    "**Report Details**, **Supplier & Factory** and **Additional Information** work the same way as in the QC Inspection quote flow.",
+    "**Review & Submit**: check everything and click **Submit**."
+  ],
+  "steps": [
+    {
+      "h": "1. Open Internal QC Inspection",
+      "body": [
+        "In the left menu, open **Internal QC Inspection**. The tabs show **All Job**, **Onsite Job Calendar** and **Draft**. Click **Create Job**. To add many jobs at once, use **Import Job**.",
+        {
+          "img": "01-list.jpg",
+          "caption": "Internal QC Inspection list with Import Job and Create Job.",
+          "caption_note": "Import Job and Create Job are visible. Job rows are masked. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot."
+        }
+      ]
+    },
+    {
+      "h": "2. Start internal inspection",
+      "body": [
+        "**Start internal inspection** is selected. Click **Continue**.",
+        {
+          "img": "02-looking-to.jpg",
+          "caption": "Create New Job — Start internal inspection selected.",
+          "caption_note": "Start internal inspection is selected. Continue is visible. No personal data is filled in."
+        }
+      ]
+    },
+    {
+      "h": "3. Inspection Requirement",
+      "body": [
+        "Choose the **Inspection Date**, **Inspection type**, **Inspection Level** and the **AQL** (Critical, Major, Minor). There is no budget or service provider, because your own team does the inspection. Click **Next**.",
+        "The reviewed screenshot is that blank form. It does not show Target Budget or Service Provider Preference. Wizard steps 2–5 are labels only. Those screens were not captured and were not invented.",
+        {
+          "img": "03-step1-requirement.jpg",
+          "caption": "Step 1 Inspection Requirement for an internal inspection.",
+          "caption_note": "Blank form. No Target Budget or Service Provider Preference, unlike the QC quote flow. Steps 2–5 remain pending."
+        }
+      ]
+    },
+    {
+      "h": "4. Steps 2–5",
+      "body": [
+        "The next steps are the same as in the QC Inspection quote flow. See the [[guide:qc-inspection|QC Inspection]] guide for those steps.",
+        {
+          "list": [
+            "**Report Details**: add products and their POs.",
+            "**Supplier & Factory**: select the supplier and the factory to inspect.",
+            "**Additional Information**: upload reference files and add remarks.",
+            "**Review & Submit**: check the summary, then click **Submit**. The job opens with its Job ID."
+          ]
+        }
+      ]
+    }
+  ],
+  "tips": [
+    "If you need a third-party inspector instead, use QC Inspection → Create Job → **Get QC inspection quote via ICW**.",
+    "Click **Save** on any step to keep a draft."
+  ],
+  "faq": [
+    [
+      "How do I start an internal inspection?",
+      "Go to Internal QC Inspection (https://qmas.icw.io/inspection/internal/list), click Create Job, keep Start internal inspection selected, click Continue and complete the 5 steps. Direct link: https://qmas.icw.io/inspection/jobs/new?type=internalInspection"
+    ],
+    [
+      "Can I import internal inspection jobs?",
+      "Yes. Click Import Job on the Internal QC Inspection list."
+    ]
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "mapped_at": "2026-11-13 17:43:23 HKT",
+  "help_center_home": {
+    "title": "QMAS Help Center",
+    "url": "https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af",
+    "edited": "2026-01-20 13:54:13 HKT"
+  },
+  "user_guide_index": {
+    "title": "User Guide",
+    "url": "https://app.notion.com/p/a92963a30e584145bb457a62b7706541",
+    "edited": "2026-01-16 15:44:49 HKT",
+    "public_url": null
+  },
+  "modules": {
+    "getting-started": {
+      "status": "mixed",
+      "label": "Mixed",
+      "nav": "Getting Started",
+      "lead": "Mixed. Home, Settings, and Company Profile are current UI verified, including the avatar account control and the five TicMate shortcuts. The 2024 Help Center onboarding steps are source-only and not dev-verified.",
+      "note": "Do not mark this whole module unverified. The reviewed Home screenshots are current UI. Source: QMAS Help Center — Getting Started, last edited 2024-04-02 15:23:02 HKT, for the onboarding pointers only.",
+      "articles": [
+        {
+          "title": "Getting Started",
+          "url": "https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc",
+          "edited": "2024-04-02 15:23:02 HKT",
+          "covers": "Onboarding pointers only. Source-only, not dev-verified."
+        },
+        {
+          "title": "Set Up Your Product Compliance Module",
+          "url": "https://app.notion.com/p/3200ac0e049d4aa8b2409bad15cea3cd",
+          "edited": "2024-04-02 19:08:58 HKT",
+          "covers": "Related 2024 setup pointer. Source-only, not dev-verified."
+        },
+        {
+          "title": "Set Up Your Supplier Management Module",
+          "url": "https://app.notion.com/p/01167450c4d54a98a3670fe13e056f12",
+          "edited": "2024-04-02 18:20:47 HKT",
+          "covers": "Related 2024 setup pointer. Source-only, not dev-verified."
+        },
+        {
+          "title": "FAQs",
+          "url": "https://app.notion.com/p/84844e89cab14819b021b0aa8e33ef31",
+          "edited": "2022-12-19 15:59:00 HKT",
+          "covers": "Related FAQ pointer. Source-only, not dev-verified."
+        }
+      ]
+    },
+    "product-management": {
+      "status": "mixed",
+      "label": "Mixed",
+      "nav": "Product Management",
+      "lead": "Mixed. The reviewed create path and list filters are current UI verified. The Import Product pointer is Help Center text and is not dev-verified.",
+      "note": "Do not mark this whole module unverified. Source: QMAS Help Center — Manage your QMAS Product Information Pack, last edited 2026-11-04 11:39:48 HKT. Current UI verified for the create and edit path. One inventory slot, 08-product-added, is still not captured.",
+      "articles": [
+        {
+          "title": "Manage your QMAS Product Information Pack",
+          "url": "https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61",
+          "edited": "2026-11-04 11:39:48 HKT",
+          "covers": "Create path is current UI verified. Import Product is source-only, not dev-verified."
+        }
+      ]
+    },
+    "product-profile": {
+      "status": "mixed",
+      "label": "Mixed",
+      "nav": "Product Profile",
+      "lead": "Mixed. The reviewed tab screenshots are current UI verified. Expiry reminders, share wording, and Get DoC are source-only and not dev-verified. There is no CPC or GCC Help Center article.",
+      "note": "Do not mark this whole module unverified. Pending screenshot slots do not make the reviewed tabs unverified. Source: QMAS Help Center — Manage your QMAS Product Information Pack, last edited 2026-11-04 11:39:48 HKT. Reminder, share, and Get DoC sections were not part of the November 2026 rewrite.",
+      "articles": [
+        {
+          "title": "Manage your QMAS Product Information Pack",
+          "url": "https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61",
+          "edited": "2026-11-04 11:39:48 HKT",
+          "covers": "Reviewed tabs are current UI verified. Reminder, share, and Get DoC wording is source-only, not dev-verified."
+        }
+      ]
+    },
+    "test-plan": {
+      "status": "source-only",
+      "label": "Source-only, not dev-verified",
+      "nav": "Test Plan",
+      "lead": "Source-only, not dev-verified. This is the 2024 Help Center article, last edited 2024-03-28 15:44:01 HKT. It has no reviewed screenshots and it is not on the existing published site. It is not the Product Profile Test Plan (AI) pop-up.",
+      "note": "Source: QMAS Help Center — How To Request A Test Plan, last edited 2024-03-28 15:44:01 HKT. Not current-UI verified. Do not invent a live /test-plan/ URL.",
+      "articles": [
+        {
+          "title": "How To Request A Test Plan",
+          "url": "https://app.notion.com/p/1a502da19803417aae2cd72190a1a542",
+          "edited": "2024-03-28 15:44:01 HKT",
+          "covers": "The whole page. Source-only, not dev-verified."
+        }
+      ]
+    },
+    "efiling": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "eFiling",
+      "lead": "Current UI verified for the reviewed list and the blank Add Documents for AI Extract dialog. There is no Help Center user-guide article for these steps. This page does not submit a certificate to CPSC.",
+      "note": "Do not mark this whole module unverified. The pack checklist link to an internal Documents page is not a Help Center source. Preview, submit, draft, and duplicate remain gaps.",
+      "articles": []
+    },
+    "supplier-management": {
+      "status": "mixed",
+      "label": "Mixed",
+      "nav": "Suppliers",
+      "lead": "Mixed. The reviewed create path and the readonly Overview and empty Certificate tab are current UI verified. Edit, import, invite, and connection statuses are source-only and not dev-verified.",
+      "note": "Do not mark this whole module unverified. Source: QMAS Help Center — Manage your QMAS Supplier Compliance Profile, last edited 2026-01-16 15:38:01 HKT. The article was not marked Updated November 2026.",
+      "articles": [
+        {
+          "title": "Manage your QMAS Supplier Compliance Profile",
+          "url": "https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c",
+          "edited": "2026-01-16 15:38:01 HKT",
+          "covers": "Create path and reviewed profile screens are current UI verified. Edit, import, invite, and connection statuses are source-only, not dev-verified."
+        }
+      ]
+    },
+    "factory-management": {
+      "status": "mixed",
+      "label": "Mixed",
+      "nav": "Factories",
+      "lead": "Mixed. The reviewed create path and the readonly Overview and empty Certificate tab are current UI verified. Edit, rating, notes, and import are source-only and not dev-verified.",
+      "note": "Do not mark this whole module unverified. Source: QMAS Help Center — Manage your QMAS Factory Compliance Profile, last edited 2026-01-16 16:11:21 HKT. The article was not marked Updated November 2026.",
+      "articles": [
+        {
+          "title": "Manage your QMAS Factory Compliance Profile",
+          "url": "https://app.notion.com/p/2ea9c62c39fc80198eddc3c9e7d20007",
+          "edited": "2026-01-16 16:11:21 HKT",
+          "covers": "Create path and reviewed profile screens are current UI verified. Edit, import, rating, and notes are source-only, not dev-verified."
+        }
+      ]
+    },
+    "factory-audit": {
+      "status": "source-only",
+      "label": "Source-only, not dev-verified",
+      "nav": "Factory Audit",
+      "lead": "Source-only, not dev-verified. This repeats the 2024 Help Center article, last edited 2024-04-02 18:08:00 HKT. It is not confirmed on the current dev site, it has no reviewed screenshots, and it is not on the existing published site.",
+      "note": "Source: QMAS Help Center — How To Request Quotation For Factory Audit From Global Laboratories, last edited 2024-04-02 18:08:00 HKT. Not current-UI verified. Do not invent a live /factory-audit/ URL.",
+      "articles": [
+        {
+          "title": "How To Request Quotation For Factory Audit From Global Laboratories",
+          "url": "https://app.notion.com/p/8bdd7dbfdb1347dd86da4694aba5dd1e",
+          "edited": "2024-04-02 18:08:00 HKT",
+          "covers": "The whole page. Source-only, not dev-verified."
+        }
+      ]
+    },
+    "document-management": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "Documents",
+      "lead": "Current UI verified for the reviewed list screenshot. There is no Help Center article for this module. Product Profile document steps are a different page.",
+      "note": "Do not mark this whole module unverified. Pending upload slots and the lifecycle tabs remain gaps.",
+      "articles": []
+    },
+    "qc-inspection": {
+      "status": "mixed",
+      "label": "Mixed",
+      "nav": "QC Inspection",
+      "lead": "Mixed. The reviewed list and Looking-to create path are current UI verified. Quote Available, QUOTES, and SELECT are older Help Center wording and are not dev-verified.",
+      "note": "Do not mark this whole module unverified. Source: QMAS Help Center — How To Request Quotation For QC Inspection From Global Laboratories, last edited 2026-11-04 12:15:22 HKT. The November 2026 update covers the create path. The later quote flow still needs verification.",
+      "articles": [
+        {
+          "title": "How To Request Quotation For QC Inspection From Global Laboratories",
+          "url": "https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e",
+          "edited": "2026-11-04 12:15:22 HKT",
+          "covers": "Create path is current UI verified. The later Quote Available flow is source-only, not dev-verified."
+        }
+      ]
+    },
+    "internal-qc-inspection": {
+      "status": "mixed",
+      "label": "Mixed",
+      "nav": "Internal QC",
+      "lead": "Mixed. The reviewed list, Looking-to, and blank step 1 are current UI verified. There is no standalone Help Center article. The QC article only names Start internal inspection, and that mention is source-only. Steps 2–5 stay written text.",
+      "note": "Do not mark this whole module unverified. Source: QMAS Help Center — How To Request Quotation For QC Inspection From Global Laboratories, last edited 2026-11-04 12:15:22 HKT, for the Looking-to mention only.",
+      "articles": [
+        {
+          "title": "How To Request Quotation For QC Inspection From Global Laboratories",
+          "url": "https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e",
+          "edited": "2026-11-04 12:15:22 HKT",
+          "covers": "Looking-to mention only. The reviewed start-internal screens on this page stay current UI verified."
+        }
+      ]
+    },
+    "document-review": {
+      "status": "mixed",
+      "label": "Mixed",
+      "nav": "Document Review",
+      "lead": "Mixed. The reviewed list and blank create-job screens are current UI verified. There is no Document Review Help Center article. The supplier article only says a connected supplier can be assigned Document Review jobs, and that mention is source-only.",
+      "note": "Do not mark this whole module unverified. Approve, reject, and resubmit remain gaps. Source: QMAS Help Center — Manage your QMAS Supplier Compliance Profile, last edited 2026-01-16 15:38:01 HKT, for the invite mention only.",
+      "articles": [
+        {
+          "title": "Manage your QMAS Supplier Compliance Profile",
+          "url": "https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c",
+          "edited": "2026-01-16 15:38:01 HKT",
+          "covers": "Invite and connection mention only. It does not describe how to conclude a review job."
+        }
+      ]
+    },
+    "ai-insight": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "AI Insight",
+      "lead": "Current UI verified for the reviewed AI Risk Screening list and the blank New AI Risk Screening dialog. There is no Help Center article for AI Insight, AI Risk Screening, or AI Assessment. No screening was run.",
+      "note": "Do not mark this whole module unverified. A completed report and Verify Information remain gaps.",
+      "articles": []
+    },
+    "product-testing": {
+      "status": "mixed",
+      "label": "Mixed",
+      "nav": "Product Testing",
+      "lead": "Mixed. The reviewed create-job screens are current UI verified. Quote Available, Preliminary Accept, and Final Quote are older Help Center wording and are not dev-verified.",
+      "note": "Do not mark this whole module unverified. Source: QMAS Help Center — How To Request Quotation For Product Testing From Global Laboratories, last edited 2026-11-04 11:18:27 HKT. The November 2026 update covers the create path. The later quote and accept flow still needs verification.",
+      "articles": [
+        {
+          "title": "How To Request Quotation For Product Testing From Global Laboratories",
+          "url": "https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12",
+          "edited": "2026-11-04 11:18:27 HKT",
+          "covers": "Create path is current UI verified. Preliminary Accept and Final Quote are source-only, not dev-verified."
+        }
+      ]
+    }
+  }
+}
