@@ -474,6 +474,46 @@
       "bytes": 58778,
       "counts_toward_98": true,
       "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "ai-insight",
+      "file": "01-list.jpg",
+      "sha256": "e7913245aaa525d9e3d25e67c84e395ba0d1f5abb7f98e416e4d8a7613fc814e",
+      "width": 1280,
+      "height": 714,
+      "bytes": 44218,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "ai-insight",
+      "file": "02-new-screening.jpg",
+      "sha256": "0ff1da5a8f195a70a07a733542096c4d48288e0f549b2229d2be67d2ab4d7d8d",
+      "width": 1280,
+      "height": 714,
+      "bytes": 68356,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "efiling",
+      "file": "01-list.jpg",
+      "sha256": "575e16c089e04be4d116d456341f030bab9d303afc4bb44dcbff6d6e014f8a47",
+      "width": 1280,
+      "height": 714,
+      "bytes": 49456,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "efiling",
+      "file": "02-ai-extract.jpg",
+      "sha256": "398beae508f2a2cf4e35314966ee72be43f88d407af788eb87437778fa2a299c",
+      "width": 1280,
+      "height": 714,
+      "bytes": 68139,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
     }
   ]
 }

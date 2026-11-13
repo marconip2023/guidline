@@ -34,11 +34,12 @@ Create and submit CPSC eFiling certificates for your products, with AI that can 
 
 In the left menu, open **eFiling**. The list shows each eFiling with its log no., product, status, certifier ID, collection ID, product ID and version ID. Use **View** to open one or **Duplicate** to start a new version from it. Click **Add eFiling**.
 
-> **Image pending privacy review:** `01-list.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![eFiling list.](images/efiling/01-list.jpg)
+
 
 *eFiling list.*
+
+Add eFiling is visible. List rows are masked. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot.
 
 
 ### 2. Add documents for AI Extract
@@ -47,11 +48,14 @@ In the left menu, open **eFiling**. The list shows each eFiling with its log no.
 - **Select Document in QMAS**: choose a document already in Document Management, with no re-upload.
 - **Start With Blank**: fill the form yourself.
 
-> **Image pending privacy review:** `02-ai-extract.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+The reviewed dialog is blank. No report was uploaded and no extraction was run. Next is disabled. Start With Blank is visible and was not used.
+
+![Add Documents for AI Extract.](images/efiling/02-ai-extract.jpg)
+
 
 *Add Documents for AI Extract.*
+
+Blank dialog. Upload Report & Auto-fill by AI and Select Document in QMAS are shown. No file, no extraction, and no submission.
 
 
 ### 3. Quick Select eFiling Information
@@ -107,7 +111,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 50 of 98. Forty-eight inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
+Reviewed screenshots remain 54 of 98. Forty-four inventory slots are still pending. Four supplementary images (one Factory validation and three QC views) are not part of the 98. Unreviewed screenshots were not copied.
 
 ### Help Center finding
 

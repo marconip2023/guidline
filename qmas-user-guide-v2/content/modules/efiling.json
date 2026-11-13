@@ -37,7 +37,8 @@
         "In the left menu, open **eFiling**. The list shows each eFiling with its log no., product, status, certifier ID, collection ID, product ID and version ID. Use **View** to open one or **Duplicate** to start a new version from it. Click **Add eFiling**.",
         {
           "img": "01-list.jpg",
-          "caption": "eFiling list."
+          "caption": "eFiling list.",
+          "caption_note": "Add eFiling is visible. List rows are masked. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot."
         }
       ]
     },
@@ -51,9 +52,11 @@
             "**Start With Blank**: fill the form yourself."
           ]
         },
+        "The reviewed dialog is blank. No report was uploaded and no extraction was run. Next is disabled. Start With Blank is visible and was not used.",
         {
           "img": "02-ai-extract.jpg",
-          "caption": "Add Documents for AI Extract."
+          "caption": "Add Documents for AI Extract.",
+          "caption_note": "Blank dialog. Upload Report & Auto-fill by AI and Select Document in QMAS are shown. No file, no extraction, and no submission."
         }
       ]
     },

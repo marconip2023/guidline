@@ -57,7 +57,7 @@ class GuideContentTests(unittest.TestCase):
         self.assertEqual(len(slots), 98)
         inventory = [key for key, record in self.reviewed.items() if record.get("counts_toward_98", True)]
         supplementary = [key for key, record in self.reviewed.items() if not record.get("counts_toward_98", True)]
-        self.assertEqual(len(inventory), 50)
+        self.assertEqual(len(inventory), 54)
         self.assertEqual(set(supplementary), {
             ("factory-management", "required-validation.jpg"),
             ("qc-inspection", "supplemental-step1-requirement-blank.jpg"),
@@ -170,7 +170,7 @@ class GuideContentTests(unittest.TestCase):
             if path.suffix.lower() in {".jpg", ".jpeg", ".png", ".gif", ".webp"}:
                 found.append(path)
                 self.assertIn(path.resolve(), {item.resolve() for item in allowed})
-        self.assertEqual(len(found), 108)
+        self.assertEqual(len(found), 116)
 
     def test_site_pages_exist_without_remote_screenshots(self):
         index = (ROOT / "index.html").read_text(encoding="utf-8")

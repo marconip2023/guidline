@@ -34,9 +34,11 @@
       "h": "1. Open AI Risk Screening",
       "body": [
         "In the left menu, open **AI Risk Screening**. The list shows every screening with its import region, output mode (Full or Lite), status and upload date. Click **Add**.",
+        "The guide still files this module under AI Insight. The current screen title and address are AI Risk Screening (`/ai-risk-screening`).",
         {
           "img": "01-list.jpg",
-          "caption": "AI Risk Screening list."
+          "caption": "AI Risk Screening list.",
+          "caption_note": "Current UI name is AI Risk Screening. Search, the All tab, filters and Add are visible. List rows are masked. No screening was run. This is a 1280×800 desktop crop (1280×714), not a high-resolution screenshot."
         },
         "You can also start from a product: open the product profile, choose **AI Risk Screening** in its left menu, then click **Add**.",
         {
@@ -57,10 +59,12 @@
             "**Screening Age Grade** (optional): the age grade to screen against, for example 3+ or 8+."
           ]
         },
-        "**Available Token** shows your balance.",
+        "**Available Token** shows your balance. The number in this screenshot is redacted.",
+        "The reviewed pop-up is blank. Product Page URL is only the placeholder, no images are uploaded, and Import Region, Output Mode and Screening Age Grade are empty. Verify Information and Skip Verify & Generate Report are visible and were not used. No report was generated.",
         {
           "img": "02-new-screening.jpg",
-          "caption": "New AI Risk Screening pop-up."
+          "caption": "New AI Risk Screening pop-up.",
+          "caption_note": "Dialog title is AI Risk Screening. Blank form only. No photos uploaded and neither action button was used."
         }
       ]
     },
