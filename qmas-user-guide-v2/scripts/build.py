@@ -266,7 +266,7 @@ def additions_html(module, guide_prefix, titles) -> str:
         "<li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li>",
         "<li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li>",
         "<li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li>",
-        "</ul><p>Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.</p></aside>",
+        "</ul><p>Reviewed screenshots remain 45 of 98. Fifty-three inventory slots are still pending. One Factory validation image is supplementary and is not part of the 98. Unreviewed screenshots were not copied.</p></aside>",
     ]
     for section in data["sections"]:
         kind = section.get("kind", "source-documented")
@@ -356,7 +356,7 @@ def render_index(catalog, modules, reviewed) -> str:
             f"<h2>{html.escape(group['heading'])} {app}</h2><ul>{''.join(items)}</ul></section>\n"
         )
     body = f"""
-<p class="draft-banner">Working copy draft {html.escape(catalog["version"])}. Fourteen English modules. The public guide stays on the marconip2026 site. This branch is not deployed. Reviewed screenshots remain 33 of 98. Factory Audit and Test Plan are source-documented only and have no screenshots.</p>
+<p class="draft-banner">Working copy draft {html.escape(catalog["version"])}. Fourteen English modules. The public guide stays on the marconip2026 site. This branch is not deployed. Reviewed screenshots remain 45 of 98. Fifty-three inventory slots are still pending. Factory Audit and Test Plan have no screenshots.</p>
 <p class="lede">Existing create-path steps, captions, and reviewed images are unchanged. A Help Center section was added on 2026-11-13. Source-documented text is not the same as dev-verified text.</p>
 <p>The same 14 modules are in the <a href="{html.escape(catalog["notion_working_hub"], quote=True)}">Notion working hub</a>.</p>
 <p><a href="combined/">Read all guides in one page</a></p>
@@ -432,7 +432,7 @@ def additions_md(module, titles) -> str:
         "- **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.",
         "- **Gap** — named as missing or too thin. Not current behaviour until checked on dev.",
         "",
-        "Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.",
+        "Reviewed screenshots remain 45 of 98. Fifty-three inventory slots are still pending. One Factory validation image is supplementary and is not part of the 98. Unreviewed screenshots were not copied.",
         "",
     ]
     for section in data["sections"]:

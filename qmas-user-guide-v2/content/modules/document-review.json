@@ -72,10 +72,11 @@
     {
       "h": "2. Job Type",
       "body": [
-        "Choose the **Job Type** (for example Document Review) and tick **CPC/GCC/DOC Review** and/or **Compliance Review**. Optionally fill in **Buyer Name**, **Service Required** (Regular by default) and **Submission Remark**.",
+        "Choose the **Job Type** (for example Document Review) and tick **CPC/GCC/DOC Review** and/or **Compliance Review**. Optionally fill in **Buyer Name**, **Service Required** (Regular by default) and **Submission Remark**. The screenshot shows this form at those defaults, before a review type is ticked or a product is added. It is not a submitted job.",
         {
           "img": "02-create-job-top.jpg",
-          "caption": "Create Job — 1. Job Type and 2. Product Information."
+          "caption": "Create Job — 1. Job Type and 2. Product Information.",
+          "caption_note": "Blank/default form, not a submitted job. Job Type shows the Document Review default and Service Required shows Regular. Sections 3 and 4 are also in view. The account header was redacted."
         }
       ]
     },
@@ -110,6 +111,7 @@
       "h": "5. Create Job for supplier (Flows B and C)",
       "body": [
         "Click **Create Job for supplier**. Fill in Job Type and Product Information as above. Then:",
+        "The screenshot is the default form: no supplier is selected, and section 5 is clipped at the bottom.",
         {
           "list": [
             "**Select Connected Supplier**: choose the supplier who will upload. Only suppliers connected with you on QMAS are listed. See Supplier Management → Invite Supplier.",
@@ -120,7 +122,8 @@
         },
         {
           "img": "06-supplier-job-top.jpg",
-          "caption": "Create Job for Supplier."
+          "caption": "Create Job for Supplier.",
+          "caption_note": "Blank/default form, not a submitted job. Sections 1–5 are in view and section 5 is clipped at the bottom. No supplier is selected. The account header was redacted."
         },
         {
           "img": "07-supplier-job-provider.jpg",

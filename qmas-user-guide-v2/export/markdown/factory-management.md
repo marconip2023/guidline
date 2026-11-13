@@ -37,9 +37,8 @@ In the left menu, open **Supplier / Factory Management** and click the **Factory
 
 Click **Create Factory**, or **Import Factory** to add many factories from a file.
 
-> **Image pending privacy review:** `01-list.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Factory tab with Import Factory and Create Factory.](images/factory-management/01-list.jpg)
+
 
 *Factory tab with Import Factory and Create Factory.*
 
@@ -52,9 +51,8 @@ Click **Create Factory**, or **Import Factory** to add many factories from a fil
 - **Address**: English address (required) and local-language address (optional).
 - **Website** (optional).
 
-> **Image pending privacy review:** `02-step1-overview.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Create factory profile — step 1, Factory Overview.](images/factory-management/02-step1-overview.jpg)
+
 
 *Create factory profile — step 1, Factory Overview.*
 
@@ -65,22 +63,33 @@ Click **Create Factory**, or **Import Factory** to add many factories from a fil
 
 The equipment section lists machines and **Automation Production Line** entries: machine name, brand and model no., quantity and monthly production volume. Click **Add** for more rows.
 
-> **Image pending privacy review:** `03-step1-scale.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![2. Factory Scale (optional).](images/factory-management/03-step1-scale.jpg)
+
 
 *2. Factory Scale (optional).*
+
+Scrolled view. Factory Scale is fully visible. Lower Factory Overview fields are blank placeholders, and a sliver of 3. Factory Capacity is also in frame.
 
 
 ### 4. Factory Profile — contact
 
 Under **4. Contact**, fill in the **Contact person** and an **Email address** with its type (Company, QA, Sales or Other). **Contact no.** is optional. Click **Next**.
 
-> **Image pending privacy review:** `04-step1-contact.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Contact section and Next.](images/factory-management/04-step1-contact.jpg)
+
 
 *Contact section and Next.*
+
+Scrolled view. 3. Factory Capacity is blank and visible above 4. Contact and Next.
+
+If Contact person or the email type and address are empty, **Next** (not Submit) marks them required. The fields stay on example placeholders.
+
+![Factory create-profile required-field validation after Next (not Submit): Contact person, email type and email address.](images/factory-management/required-validation.jpg)
+
+
+*Factory create-profile required-field validation after Next (not Submit): Contact person, email type and email address.*
+
+Supplementary screenshot. It is not one of the 98 published inventory slots. Same scrolled Contact view as the previous image, after Next.
 
 
 ### 5. Classification (optional)
@@ -150,7 +159,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.
+Reviewed screenshots remain 45 of 98. Fifty-three inventory slots are still pending. One Factory validation image is supplementary and is not part of the 98. Unreviewed screenshots were not copied.
 
 ### Source-documented — edit, documents, and import (last edited 2026-01-16)
 

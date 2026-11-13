@@ -264,6 +264,136 @@
       "width": 545,
       "height": 440,
       "bytes": 42106
+    },
+    {
+      "slug": "document-management",
+      "file": "01-list.jpg",
+      "sha256": "45ea42374e08adb40b13f8d3fc878f9dc817ef6f3832a6fd5e3bc467770b9961",
+      "width": 1280,
+      "height": 714,
+      "bytes": 73994,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "document-review",
+      "file": "01-list.jpg",
+      "sha256": "33edaddf5440dffacb66e1a661836e47b061d84e538289ae79f23c7c4c169f35",
+      "width": 1280,
+      "height": 714,
+      "bytes": 96127,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "document-review",
+      "file": "02-create-job-top.jpg",
+      "sha256": "d34d0e901fecfae7c6d274581fa1e93726ec46bc44b2b521a2b2279ea771648b",
+      "width": 1280,
+      "height": 714,
+      "bytes": 68640,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "document-review",
+      "file": "06-supplier-job-top.jpg",
+      "sha256": "919692d79bbadfd45e4bc9961ca38667d3029c18d2ada5ec6d458d0887e70912",
+      "width": 1280,
+      "height": 714,
+      "bytes": 72881,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "factory-management",
+      "file": "01-list.jpg",
+      "sha256": "f5c75fd31dc4f650ef24a85d3d8aaed6f23f68b006319d02ce4cf290e1c9bdf1",
+      "width": 1280,
+      "height": 714,
+      "bytes": 72411,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "factory-management",
+      "file": "02-step1-overview.jpg",
+      "sha256": "d5a47d5e4027351fd9a3b0221979f5783f8baf229f1a7fd5be8dbe458cfb1335",
+      "width": 1280,
+      "height": 714,
+      "bytes": 62413,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "factory-management",
+      "file": "03-step1-scale.jpg",
+      "sha256": "965d5723827377301916e89c4d84058d7263b8ade2704d0cc0c9e682d51cbbaf",
+      "width": 1280,
+      "height": 714,
+      "bytes": 54890,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "factory-management",
+      "file": "04-step1-contact.jpg",
+      "sha256": "1c4da5a2bc301cf30b1a402d32c078699042e113359be3344648b53c68713f4a",
+      "width": 1280,
+      "height": 714,
+      "bytes": 59105,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "factory-management",
+      "file": "required-validation.jpg",
+      "sha256": "20662834525ea9c5e6c7459876bc319d3d185e86f0cc1f727214bf0d05dfd7e5",
+      "width": 1280,
+      "height": 714,
+      "bytes": 69247,
+      "counts_toward_98": false,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "01-list.jpg",
+      "sha256": "7b040a48e73ffff11b0ef70aba8170b1f9c19a69bf92cb09729b2aa812df9137",
+      "width": 1280,
+      "height": 714,
+      "bytes": 94869,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "02-step1-overview.jpg",
+      "sha256": "f63267fb2bb79630ec6b0a4eed4fc110c4557102aa27d33be966ac834a7083b9",
+      "width": 1280,
+      "height": 714,
+      "bytes": 62749,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "03-step1-contact.jpg",
+      "sha256": "ccc3b4f490bb949a3fe6660772d71f79d2e091f919fa770673a858bbe889096a",
+      "width": 1280,
+      "height": 714,
+      "bytes": 59935,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
+    },
+    {
+      "slug": "supplier-management",
+      "file": "04-email-required.jpg",
+      "sha256": "e83c9f2f3822032b015003bb6369bf172bde6e9cfa21801015a6f39a408c5342",
+      "width": 1280,
+      "height": 714,
+      "bytes": 73009,
+      "counts_toward_98": true,
+      "capture": "1280x800 native desktop, cropped to 1280x714. Not a high-resolution capture. 1920 sources were 1.5x upscales and were not used."
     }
   ]
 }

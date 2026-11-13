@@ -37,9 +37,8 @@ In the left menu, open **Supplier / Factory Management**. The **Supplier** tab l
 
 Click **Create Supplier**. You can also use **Import Supplier** to add many suppliers from a file, or **Invite Supplier** to invite a supplier to connect with you on QMAS.
 
-> **Image pending privacy review:** `01-list.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Supplier tab with Import Supplier, Create Supplier and Invite Supplier.](images/supplier-management/01-list.jpg)
+
 
 *Supplier tab with Import Supplier, Create Supplier and Invite Supplier.*
 
@@ -52,9 +51,8 @@ Click **Create Supplier**. You can also use **Import Supplier** to add many supp
 - **Location**: country or region, then province and city.
 - **Address** and **Website** (optional).
 
-> **Image pending privacy review:** `02-step1-overview.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Create supplier profile — step 1, Company overview.](images/supplier-management/02-step1-overview.jpg)
+
 
 *Create supplier profile — step 1, Company overview.*
 
@@ -63,19 +61,19 @@ Click **Create Supplier**. You can also use **Import Supplier** to add many supp
 
 Under **2. Contact**, fill in the **Contact person**, **Contact Email** and at least one **Email address**. For each email address, choose a type: Company, QA, Sales or Other. Click **Add email** for more. **Contact no.** is optional.
 
-> **Image pending privacy review:** `03-step1-contact.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Contact section.](images/supplier-management/03-step1-contact.jpg)
+
 
 *Contact section.*
 
-If a required field is empty when you click **Next**, it turns red, for example “Type is required” or “Email is required”.
+If a required field is empty when you click **Next**, it turns red, for example “Type is required” or “Email is required”. This screenshot also shows **English name is required**, **Location is required**, and **Contact person is required**. Next triggers the errors, not Submit. The fields still show empty or example placeholders, not a completed profile.
 
-> **Image pending privacy review:** `04-email-required.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![The email type and email address are required.](images/supplier-management/04-email-required.jpg)
+
 
 *The email type and email address are required.*
+
+Also shows required errors on English name, Location, and Contact person. Triggered by Next, not Submit. Blank or example placeholders only.
 
 
 ### 4. Classification (optional)
@@ -142,7 +140,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.
+Reviewed screenshots remain 45 of 98. Fifty-three inventory slots are still pending. One Factory validation image is supplementary and is not part of the 98. Unreviewed screenshots were not copied.
 
 ### Source-documented — profile, import, and invite (last edited 2026-01-16)
 

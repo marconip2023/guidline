@@ -37,7 +37,8 @@
         "In the left menu, open **Document Management**. The tabs show **All**, **Pending Review**, **Expired**, **Archived** and **Trash** documents. Click **Upload** at the top right and choose your file.",
         {
           "img": "01-list.jpg",
-          "caption": "Document Management list with the Upload button."
+          "caption": "Document Management list with the Upload button.",
+          "caption_note": "File names in this screenshot are masked. Tabs, column headers, and Upload stay visible."
         }
       ]
     },

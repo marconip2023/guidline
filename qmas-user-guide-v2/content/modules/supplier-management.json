@@ -72,10 +72,11 @@
           "img": "03-step1-contact.jpg",
           "caption": "Contact section."
         },
-        "If a required field is empty when you click **Next**, it turns red, for example “Type is required” or “Email is required”.",
+        "If a required field is empty when you click **Next**, it turns red, for example “Type is required” or “Email is required”. This screenshot also shows **English name is required**, **Location is required**, and **Contact person is required**. Next triggers the errors, not Submit. The fields still show empty or example placeholders, not a completed profile.",
         {
           "img": "04-email-required.jpg",
-          "caption": "The email type and email address are required."
+          "caption": "The email type and email address are required.",
+          "caption_note": "Also shows required errors on English name, Location, and Contact person. Triggered by Next, not Submit. Blank or example placeholders only."
         }
       ]
     },

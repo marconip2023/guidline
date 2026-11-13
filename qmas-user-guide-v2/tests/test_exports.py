@@ -53,9 +53,12 @@ class GuideContentTests(unittest.TestCase):
 
     def test_twelve_modules_and_ninety_eight_slots(self):
         self.assertEqual(len(self.modules), 14)
-        slots = [block for module in self.modules for block in images(module)]
+        slots = [block for module in self.modules for block in images(module) if block.get("counts_toward_98", True)]
         self.assertEqual(len(slots), 98)
-        self.assertEqual(len(self.reviewed), 33)
+        inventory = [key for key, record in self.reviewed.items() if record.get("counts_toward_98", True)]
+        supplementary = [key for key, record in self.reviewed.items() if not record.get("counts_toward_98", True)]
+        self.assertEqual(len(inventory), 45)
+        self.assertEqual(supplementary, [("factory-management", "required-validation.jpg")])
 
     def test_published_text_is_still_present(self):
         missing = []
@@ -162,7 +165,7 @@ class GuideContentTests(unittest.TestCase):
             if path.suffix.lower() in {".jpg", ".jpeg", ".png", ".gif", ".webp"}:
                 found.append(path)
                 self.assertIn(path.resolve(), {item.resolve() for item in allowed})
-        self.assertEqual(len(found), 66)
+        self.assertEqual(len(found), 92)
 
     def test_site_pages_exist_without_remote_screenshots(self):
         index = (ROOT / "index.html").read_text(encoding="utf-8")

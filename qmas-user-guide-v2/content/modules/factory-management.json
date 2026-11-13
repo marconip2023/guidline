@@ -71,7 +71,8 @@
         "The equipment section lists machines and **Automation Production Line** entries: machine name, brand and model no., quantity and monthly production volume. Click **Add** for more rows.",
         {
           "img": "03-step1-scale.jpg",
-          "caption": "2. Factory Scale (optional)."
+          "caption": "2. Factory Scale (optional).",
+          "caption_note": "Scrolled view. Factory Scale is fully visible. Lower Factory Overview fields are blank placeholders, and a sliver of 3. Factory Capacity is also in frame."
         }
       ]
     },
@@ -81,7 +82,15 @@
         "Under **4. Contact**, fill in the **Contact person** and an **Email address** with its type (Company, QA, Sales or Other). **Contact no.** is optional. Click **Next**.",
         {
           "img": "04-step1-contact.jpg",
-          "caption": "Contact section and Next."
+          "caption": "Contact section and Next.",
+          "caption_note": "Scrolled view. 3. Factory Capacity is blank and visible above 4. Contact and Next."
+        },
+        "If Contact person or the email type and address are empty, **Next** (not Submit) marks them required. The fields stay on example placeholders.",
+        {
+          "img": "required-validation.jpg",
+          "caption": "Factory create-profile required-field validation after Next (not Submit): Contact person, email type and email address.",
+          "caption_note": "Supplementary screenshot. It is not one of the 98 published inventory slots. Same scrolled Contact view as the previous image, after Next.",
+          "counts_toward_98": false
         }
       ]
     },

@@ -40,22 +40,22 @@ Get compliance documents (CPC, GCC, DoC, test reports, TCF) reviewed by a lab or
 
 In the left menu, open **Document Review**. The dashboard shows service providers, jobs over 12 months, status and reject reasons. The tabs **All Job**, **My Job** and **View Only** list the jobs.
 
-> **Image pending privacy review:** `01-list.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Document Review with Create Job and Create Job for supplier.](images/document-review/01-list.jpg)
+
 
 *Document Review with Create Job and Create Job for supplier.*
 
 
 ### 2. Job Type
 
-Choose the **Job Type** (for example Document Review) and tick **CPC/GCC/DOC Review** and/or **Compliance Review**. Optionally fill in **Buyer Name**, **Service Required** (Regular by default) and **Submission Remark**.
+Choose the **Job Type** (for example Document Review) and tick **CPC/GCC/DOC Review** and/or **Compliance Review**. Optionally fill in **Buyer Name**, **Service Required** (Regular by default) and **Submission Remark**. The screenshot shows this form at those defaults, before a review type is ticked or a product is added. It is not a submitted job.
 
-> **Image pending privacy review:** `02-create-job-top.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Create Job — 1. Job Type and 2. Product Information.](images/document-review/02-create-job-top.jpg)
+
 
 *Create Job — 1. Job Type and 2. Product Information.*
+
+Blank/default form, not a submitted job. Job Type shows the Document Review default and Service Required shows Regular. Sections 3 and 4 are also in view. The account header was redacted.
 
 
 ### 3. Product Information
@@ -96,16 +96,19 @@ Under **Documents for Review**, click **Upload files** (at least one file is req
 
 Click **Create Job for supplier**. Fill in Job Type and Product Information as above. Then:
 
+The screenshot is the default form: no supplier is selected, and section 5 is clipped at the bottom.
+
 - **Select Connected Supplier**: choose the supplier who will upload. Only suppliers connected with you on QMAS are listed. See Supplier Management → Invite Supplier.
 - **Select Partner** (optional).
 - **Service Provider**: choose **Connected Provider** and a lab for Flow B, or **Job Owner Review** for Flow C.
 - Click **Confirm**. The supplier gets a notification to upload the documents.
 
-> **Image pending privacy review:** `06-supplier-job-top.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Create Job for Supplier.](images/document-review/06-supplier-job-top.jpg)
+
 
 *Create Job for Supplier.*
+
+Blank/default form, not a submitted job. Sections 1–5 are in view and section 5 is clipped at the bottom. No supplier is selected. The account header was redacted.
 
 > **Image pending privacy review:** `07-supplier-job-provider.jpg`
 >
@@ -153,7 +156,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.
+Reviewed screenshots remain 45 of 98. Fifty-three inventory slots are still pending. One Factory validation image is supplementary and is not part of the 98. Unreviewed screenshots were not copied.
 
 ### Help Center finding
 

@@ -20,12 +20,20 @@ Fourteen modules. Twelve keep the published pages and 98 screenshot slots. Facto
 
 Help Center additions from 2026-11-13 are appended. They are marked source-documented, dev-verified, or gap. They do not replace earlier steps, captions, or reviewed images.
 
-Reviewed replacement screenshots, 33 files:
+Reviewed inventory screenshots, 45 of 98. Fifty-three slots are still pending. The 13 Nov 2026 batch added 12 of those slots plus one Factory validation image that is not part of the 98. Those new files are 1280×800 desktop captures cropped to 1280×714. They are not high-resolution. Matching 1920 files were 1.5× upscales and were not used. The earlier 33 reviewed files were not replaced.
+
+Reviewed replacement screenshots, 45 inventory files:
 
 - Product Testing: all 9 published slots, including the refined order-details image
 - Getting started: all 3 slots
 - Product Management: 10 of 11 slots
 - Product Profile: 11 slots from the first reviewed batch (Document, Shipping Detail, empty Compliance Data, the in-progress Test Data form, the empty Certificate Data form, and part of Quality Requirement)
+- Document Management: list only
+- Supplier Management: list, company overview, contact, and the Next validation state
+- Factory Management: list, overview, scale, and contact
+- Document Review: list, default Create Job form, and default Create Job for Supplier form
+
+Supplementary, not one of the 98: `factory-management/required-validation.jpg` shows required Contact person, email type, and email address after **Next**, not Submit.
 
 These slots were not captured. Each stays an explicit placeholder and is not a picture of the missing state:
 

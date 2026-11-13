@@ -34,11 +34,12 @@ Upload a compliance document, link it to products, suppliers or factories, set i
 
 In the left menu, open **Document Management**. The tabs show **All**, **Pending Review**, **Expired**, **Archived** and **Trash** documents. Click **Upload** at the top right and choose your file.
 
-> **Image pending privacy review:** `01-list.jpg`
->
-> Reviewed replacement image not available yet. Follow the written steps above.
+![Document Management list with the Upload button.](images/document-management/01-list.jpg)
+
 
 *Document Management list with the Upload button.*
+
+File names in this screenshot are masked. Tabs, column headers, and Upload stay visible.
 
 
 ### 2. Choose the document type
@@ -123,7 +124,7 @@ This section adds Help Center material and named gaps. It does not replace the s
 - **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
 - **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
 
-Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.
+Reviewed screenshots remain 45 of 98. Fifty-three inventory slots are still pending. One Factory validation image is supplementary and is not part of the 98. Unreviewed screenshots were not copied.
 
 ### Help Center finding
 
