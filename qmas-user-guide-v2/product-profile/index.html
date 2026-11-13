@@ -172,6 +172,14 @@ th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; ver
 th { background: #f3f4f6; }
 caption.visually-hidden { /* name comes from the region label */ }
 
+.additions { margin-top: 28px; }
+.callout { background: var(--tip); border-left: 4px solid var(--link); border-radius: 6px; padding: 12px 16px; margin: 12px 0 20px; }
+.callout p, .callout li { margin: 0 0 6px; }
+.kind-dev-verified, .kind-source-documented, .kind-gap, .kind-finding { padding-top: 8px; }
+.kind-dev-verified { border-top: 3px solid #1b5e20; }
+.kind-source-documented { border-top: 3px solid var(--link); }
+.kind-gap, .kind-finding { border-top: 3px solid var(--banner-line); }
+.reconcile-note { color: var(--muted); font-size: 14px; }
 .faq dt { font-weight: 700; margin-top: 14px; }
 .faq dd { margin: 4px 0 0; }
 .site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
@@ -212,7 +220,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 </header>
 <main id="content" tabindex="-1">
 <p class="crumb"><a href="../">All guides</a></p>
-<p class="draft-banner">Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
+<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>Product Management — Every Tab of the Product Profile</h1>
 <p class="lede">After you create a product, its profile holds everything about it. This guide explains each tab in the profile&#x27;s left menu and the import option on the product list.</p>
 <p class="status-line">Screenshot slots: 11 reviewed, 3 explicitly not captured, 13 still pending privacy review.</p>
@@ -315,6 +323,19 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>How do I reuse quality requirements for many products?</dt><dd>Open a product → Quality Requirement → ⋯ → Templates → Save As Template. On other products use ⋯ → Templates → Apply Template.</dd>
 <dt>How do I prove a requirement is met?</dt><dd>On the requirement click +, attach the test or certificate data, then ⋯ → Mark As Completed.</dd>
 </dl>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.</p></aside><h3 class="kind-dev-verified">Dev-verified — already in the steps above (2026-11-09)</h3>
+<p>The left menu includes <strong>QR Code</strong> as well as Document, Shipping Detail, Compliance Data, Quality Requirement, AI Risk Screening, CPSC eFiling, and Packaging Detail.</p>
+<p>Document tab chrome on the reviewed screenshot: <strong>New Folder</strong>, <strong>Upload</strong>, <strong>All / Archived</strong>, filters <strong>Type</strong> / <strong>Source</strong> / <strong>Checked</strong>, and <strong>Sort</strong> (plus Reset).</p>
+<p>When older Help Center wording disagrees with that chrome, prefer these dev-verified labels.</p>
+<h3 class="kind-source-documented">Source-documented — reminders and Get DoC (not rewritten in November 2026)</h3>
+<p>Source: the same Product Information Pack article, last edited 2026-11-04. The document, reminder, and DoC sections were not rewritten in that November update. Treat the labels below as Help Center text, not as a current-UI claim.</p>
+<p>Historical Help Center document wording uses <strong>Upload file</strong>, three dots next to Document → <strong>New tab</strong>, and <strong>New folder</strong>. Prefer <strong>Upload</strong> and <strong>New Folder</strong> from the dev-verified chrome when they differ.</p>
+<p><strong>Expiry reminders:</strong> select the document, choose <strong>Set Reminder</strong> in the toolbar, pick the date, click <strong>Create</strong>. The Help Center says the reminder is sent to the email inbox on that date. Needs a dev check.</p>
+<p><strong>Declaration of Conformity (DoC):</strong> the Help Center says you can request ICW to generate a DoC, “subjected to additional fee.” “Navigate to the document in the tool bar, then select <strong>Get DoC</strong>, then click <strong>Send request</strong>.” “You will receive your product DoC by email within 3 days.”</p>
+<p>The Help Center does not document Generate <strong>CPC</strong> or <strong>GCC</strong>, or a separate PO DoC Management module. Those remain gaps. Do not invent those steps.</p>
+<h3 class="kind-gap">Remaining gaps</h3>
+<ul><li>Current entry point for Generate CPC / GCC / DOC, if it is different from Get DoC.</li><li>Test Plan (AI) after the pop-up: a generated plan, or applying it to requirements. See also the separate <a href="../test-plan/">Test Plan</a> page for the 2024 top-menu article. Do not merge the two.</li><li>Compliance Data <strong>Other</strong>; edit or delete of existing rows; packaging edit and status filter.</li><li>Manage Templates, Save As Template, and Export As Document are text only today.</li><li>Saved Test Data and the post-template requirement list were not captured. Those slots stay placeholders and are not pictures of saved data.</li></ul>
+<p class="reconcile-note">Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide at the marconip2026 site. No Dify upload.</p></section>
 
 </main>
 <footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>

@@ -2,15 +2,16 @@
 title: "QC Inspection — Get a QC Inspection Quote via ICW"
 slug: qc-inspection
 document_status: working-copy-draft
-version: 2026-11-09-draft
+version: 2026-11-13-draft
 language: en
 notion_working_hub: https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b
+confidence: published-guide-plus-dev-verified-corrections
 image_policy: Reviewed replacement screenshots use a relative path. Other screenshots are explicit placeholders and are not linked.
 ---
 
 # QC Inspection — Get a QC Inspection Quote via ICW
 
-> Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
 
 Ask ICW to quote and arrange a third-party QC inspection for your products.
 
@@ -155,3 +156,41 @@ A: A quote via ICW uses a third-party inspector arranged by ICW. An internal ins
 **Q: Can I save a QC job and finish it later?**
 
 A: Yes. Click Save on any step. The job is kept on the Draft tab.
+
+## Help Center additions and remaining gaps
+
+This section adds Help Center material and named gaps. It does not replace the steps above.
+
+- **Source-documented** — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.
+- **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
+- **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
+
+Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.
+
+### Source-documented — create path (Help Center updated 2026-11-04)
+
+Source: How To Request Quotation For QC Inspection From Global Laboratories, https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e. Direct link cited there: https://qmas.icw.io/inspection/jobs/new.
+
+The November 2026 create steps already match this page. The Help Center also says: choose **Get QC inspection quote via ICW** and click Continue; choose **Start internal inspection** if your own QC team will inspect; or **Add inspection record** to record a finished inspection. The Internal QC page covers starting an internal inspection. **Add inspection record** still has no guide.
+
+The November 2026 steps also say: click **Save** on any step to finish later. Drafts are on the **Draft** tab.
+
+### Source-documented — post-submit flow (older wording; needs verification)
+
+1. After submission, the list status is **Under Review**.
+2. When the quotation is ready, the status changes to **Quote Available**.
+3. Click **View detail** next to Status.
+4. Scroll to the **QUOTES** tab.
+5. Choose a quotation and click **SELECT** to confirm the order.
+6. Status becomes **Waiting for reserved booking**, then **Booking Reserved** when the booking is confirmed.
+7. After the inspection is completed, the Help Center says you will receive the inspection report and the status will be **Completed**.
+
+### Remaining gaps
+
+- The full **Add inspection record** flow.
+- Job-detail tabs Quotes, Reports, Attachments, and Invoices are named. One overview shot exists.
+- All Job, 3rd Party, and Inhouse Record tabs, and more detail on the Draft tab.
+- List filters, Export, and the row toolbar.
+- Filed wording bugs (“Add New Po”, “XLSL”, level labels, empty product picker until search). Confirm the live UI. Do not invent fixes.
+
+Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide. No Dify upload.

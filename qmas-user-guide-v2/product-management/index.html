@@ -172,6 +172,14 @@ th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; ver
 th { background: #f3f4f6; }
 caption.visually-hidden { /* name comes from the region label */ }
 
+.additions { margin-top: 28px; }
+.callout { background: var(--tip); border-left: 4px solid var(--link); border-radius: 6px; padding: 12px 16px; margin: 12px 0 20px; }
+.callout p, .callout li { margin: 0 0 6px; }
+.kind-dev-verified, .kind-source-documented, .kind-gap, .kind-finding { padding-top: 8px; }
+.kind-dev-verified { border-top: 3px solid #1b5e20; }
+.kind-source-documented { border-top: 3px solid var(--link); }
+.kind-gap, .kind-finding { border-top: 3px solid var(--banner-line); }
+.reconcile-note { color: var(--muted); font-size: 14px; }
 .faq dt { font-weight: 700; margin-top: 14px; }
 .faq dd { margin: 4px 0 0; }
 .site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
@@ -212,7 +220,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 </header>
 <main id="content" tabindex="-1">
 <p class="crumb"><a href="../">All guides</a></p>
-<p class="draft-banner">Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
+<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>Product Management — Create and Edit a Product</h1>
 <p class="lede">Add a product profile to QMAS so you can attach documents, compliance data, testing and eFiling to it.</p>
 <p class="status-line">Screenshot slots: 10 reviewed, 1 explicitly not captured, 0 still pending privacy review.</p>
@@ -277,6 +285,16 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>Can I add many products at once?</dt><dd>Yes. Click Import Product on the Product Management list.</dd>
 <dt>Where do I submit eFiling or add compliance data for a product?</dt><dd>Open the product profile and use CPSC eFiling or Compliance Data in its left menu.</dd>
 </dl>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.</p></aside><h3 class="kind-dev-verified">Dev-verified — list filters (2026-11-09)</h3>
+<p>The list filters are already in the steps above: <strong>Product Category</strong>, <strong>Customer Product Category</strong>, <strong>Product Number</strong>, <strong>Status</strong>, <strong>Created By</strong>, <strong>Team</strong>, sort, and <strong>Reset</strong>. The reviewed list screenshot shows those filters with no data rows.</p>
+<p>Optional <strong>Factory</strong> and <strong>Additional Info</strong> (buyer, up to 30 product photos) are already in the wizard steps.</p>
+<h3 class="kind-source-documented">Source-documented — Product Information Pack (last edited 2026-11-04)</h3>
+<p>Source: Manage your QMAS Product Information Pack, <a href="https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61">https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61</a>. The November 2026 create steps follow the same path as this page.</p>
+<p><strong>Import Product:</strong> the Help Center intro says “To add many products at once, use <strong>Import Product</strong>.” The Product Profile FAQ already says to download the ICW template, fill it in, and upload it. A full multi-step import walkthrough is still missing. Do not invent extra import steps.</p>
+<p>The 2024 setup guide still says “top menu bar, select PRODUCT MANAGEMENT”. Prefer the current left menu and this page.</p>
+<h3 class="kind-gap">Remaining gaps</h3>
+<ul><li>Full Import Product wizard screenshots and field notes.</li><li>List Export Data, row-select / bulk toolbar, and search. Only the filters above are dev-verified.</li><li>Further Related Product linkage examples. <strong>Unlink</strong> is already named on the reviewed step 2 screenshot.</li><li>Section numbering, stepper tick, and Title Case bugs are filed separately. Match the fixed UI once it ships. Do not invent the fix.</li></ul>
+<p class="reconcile-note">Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide at the marconip2026 site. No Dify upload.</p></section>
 
 </main>
 <footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>

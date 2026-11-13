@@ -52,7 +52,7 @@ class GuideContentTests(unittest.TestCase):
         cls.blocks = json.loads((CONTENT / "published-text-blocks.json").read_text(encoding="utf-8"))
 
     def test_twelve_modules_and_ninety_eight_slots(self):
-        self.assertEqual(len(self.modules), 12)
+        self.assertEqual(len(self.modules), 14)
         slots = [block for module in self.modules for block in images(module)]
         self.assertEqual(len(slots), 98)
         self.assertEqual(len(self.reviewed), 33)
@@ -101,6 +101,16 @@ class GuideContentTests(unittest.TestCase):
         self.assertNotIn(("product-profile", "08-test-data-filled.jpg"), self.reviewed)
         self.assertNotIn(("product-profile", "09-test-data-saved.jpg"), self.reviewed)
         self.assertNotIn(("product-profile", "22-requirement-list.jpg"), self.reviewed)
+        self.assertEqual(self.by_slug["factory-audit"]["confidence"], "source-documented")
+        self.assertEqual(self.by_slug["test-plan"]["confidence"], "source-documented")
+        self.assertEqual(list(images(self.by_slug["factory-audit"])), [])
+        self.assertEqual(list(images(self.by_slug["test-plan"])), [])
+        audit = module_plain(self.by_slug["factory-audit"], self.titles)
+        plan = module_plain(self.by_slug["test-plan"], self.titles)
+        self.assertIn("Create Factory Audit Order", audit)
+        self.assertIn("Source-documented only", audit)
+        self.assertIn("TEST PLAN", plan)
+        self.assertIn("Test Plan (AI)", plan)
         self.assertIn("avatar / account control", efiling)
         for module in self.modules:
             self.assertNotIn("gear icon", module_plain(module, self.titles))

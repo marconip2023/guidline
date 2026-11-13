@@ -2,15 +2,16 @@
 title: "Product Testing — Request a Quotation"
 slug: product-testing
 document_status: working-copy-draft
-version: 2026-11-09-draft
+version: 2026-11-13-draft
 language: en
 notion_working_hub: https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b
+confidence: published-guide-plus-dev-verified-corrections
 image_policy: Reviewed replacement screenshots use a relative path. Other screenshots are explicit placeholders and are not linked.
 ---
 
 # Product Testing — Request a Quotation
 
-> Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
 
 Create a product testing job and get a quotation from a laboratory.
 
@@ -134,3 +135,39 @@ After you click **Submit**, QMAS shows “Product testing created successfully�
 *Required field left empty.*
 - Item name and item no. on report are what the lab prints on the test report. Check them before you continue.
 - To leave the wizard, click **✕** at the top right.
+
+## Help Center additions and remaining gaps
+
+This section adds Help Center material and named gaps. It does not replace the steps above.
+
+- **Source-documented** — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.
+- **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
+- **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
+
+Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.
+
+### Source-documented — create path (Help Center updated 2026-11-04)
+
+Source: How To Request Quotation For Product Testing From Global Laboratories, https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12. Direct link cited there: https://qmas.icw.io/product-testing/create-job.
+
+The November 2026 create steps already match this page. Help Center step 7 also says you can tick **Connected Provider** (a lab already linked to the account), **ICW** (ICW finds a lab; preferred lab or “No Preference”), and/or **TicMart (Marketplace)**, then Submit. This page still only has an ICW screenshot.
+
+### Source-documented — post-submit quote flow (older wording; needs verification)
+
+This “receive and confirm” section was not rewritten in November 2026.
+
+1. After submission, the job appears on the list with status **under review**.
+2. When the quotation is ready, the status changes to **Quote Available**.
+3. Open order details. Under **Quotations**, select a quotation and click **Preliminary Accept**.
+4. The Help Center says the designated agency or ICW agency service will then contact you about sample delivery.
+5. “The price may vary according to the actual sample. Accept the **Final Quote** to proceed to product testing.”
+
+A 2022 FAQ says cancelling an order is done by contacting customer support via email or online chat. Not re-verified.
+
+### Remaining gaps
+
+- Screenshots and current-UI confirmation for Connected Provider and TicMart.
+- Job-detail tabs named in the create steps but not walked through: Quotes, Failure Records, Reports, Attachments, Invoices, Tag, Activity Log, Message Board.
+- Edit, cancel, reopen, list search, status filters, and charts.
+
+Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide. No Dify upload.

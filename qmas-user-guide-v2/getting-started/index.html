@@ -172,6 +172,14 @@ th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; ver
 th { background: #f3f4f6; }
 caption.visually-hidden { /* name comes from the region label */ }
 
+.additions { margin-top: 28px; }
+.callout { background: var(--tip); border-left: 4px solid var(--link); border-radius: 6px; padding: 12px 16px; margin: 12px 0 20px; }
+.callout p, .callout li { margin: 0 0 6px; }
+.kind-dev-verified, .kind-source-documented, .kind-gap, .kind-finding { padding-top: 8px; }
+.kind-dev-verified { border-top: 3px solid #1b5e20; }
+.kind-source-documented { border-top: 3px solid var(--link); }
+.kind-gap, .kind-finding { border-top: 3px solid var(--banner-line); }
+.reconcile-note { color: var(--muted); font-size: 14px; }
 .faq dt { font-weight: 700; margin-top: 14px; }
 .faq dd { margin: 4px 0 0; }
 .site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
@@ -212,7 +220,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 </header>
 <main id="content" tabindex="-1">
 <p class="crumb"><a href="../">All guides</a></p>
-<p class="draft-banner">Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
+<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>Getting Started — Home, Settings and Company Profile</h1>
 <p class="lede">Find your way around QMAS: the Home page, the top bar and your company settings.</p>
 <p class="status-line">Screenshot slots: 3 reviewed replacement images.</p>
@@ -252,6 +260,22 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>How do I change my password?</dt><dd>Click your avatar (account control) in the top bar, then Password.</dd>
 <dt>Where do I edit my company information?</dt><dd>Click your avatar (account control), then Company Profile (<a href="https://qmas.icw.io/company-profile">https://qmas.icw.io/company-profile</a>).</dd>
 </dl>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.</p></aside><h3 class="kind-dev-verified">Dev-verified — already in the steps above</h3>
+<p>Settings opens from the <strong>avatar / account control</strong>. That correction is already in the steps above.</p>
+<p>Home shows <strong>5</strong> TicMate workflow shortcuts: AI Assessment, AI Insight, CPSC eFiling, Product Testing, Document Review.</p>
+<h3 class="kind-source-documented">Source-documented — Help Center onboarding (last edited 2024-04-02)</h3>
+<p>Source: Help Center Getting Started, <a href="https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc">https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc</a>. This does not replace the Home walkthrough above.</p>
+<p>The 2024 landing tells new accounts to watch the walkthrough videos, set up Product Compliance and Supplier Management, schedule an onboarding session after the customer-success email (or use Help Center Support if that email is missing), then use the Help Center and product-update emails.</p>
+<p>Those 2024 setup guides still say “top menu bar”. Prefer this page and the current create guides for live steps.</p>
+<ul><li>Set Up Your Product Compliance Module (2024-04-02), historical: <a href="https://app.notion.com/p/3200ac0e049d4aa8b2409bad15cea3cd">https://app.notion.com/p/3200ac0e049d4aa8b2409bad15cea3cd</a></li><li>Set Up Your Supplier Management Module (2024-04-02), historical: <a href="https://app.notion.com/p/01167450c4d54a98a3670fe13e056f12">https://app.notion.com/p/01167450c4d54a98a3670fe13e056f12</a></li></ul>
+<p>Help Center videos were not re-watched and are not current-UI evidence:</p>
+<ul><li>Introduction of QMAS: <a href="https://www.youtube.com/watch?v=Qn02Yu-0Ppk">https://www.youtube.com/watch?v=Qn02Yu-0Ppk</a></li><li>Manage your product compliance with QMAS: <a href="https://www.youtube.com/watch?v=3zpn_gHhW7s">https://www.youtube.com/watch?v=3zpn_gHhW7s</a></li><li>How to request quotation for product testing with QMAS: <a href="https://www.youtube.com/watch?v=AaZ9zHeQ23s">https://www.youtube.com/watch?v=AaZ9zHeQ23s</a></li><li>How to manage your supplier information with QMAS: <a href="https://www.youtube.com/watch?v=xZyHOMg7_yc">https://www.youtube.com/watch?v=xZyHOMg7_yc</a></li></ul>
+<h3 class="kind-source-documented">Source-documented — FAQs (last edited 2022-12-19)</h3>
+<p>Source: <a href="https://app.notion.com/p/84844e89cab14819b021b0aa8e33ef31">https://app.notion.com/p/84844e89cab14819b021b0aa8e33ef31</a></p>
+<ul><li>Ordering product testing: the FAQ points at the Help Center Product Testing article.</li><li>Cancelling a product testing order: “contact our customer support team via email or online chat.” Not re-verified against current Support or in-app cancel behaviour.</li><li>Integrating an existing supplier or product database: the 2022 FAQ says an import feature is available and mentions an enterprise API plan. Treat the plan and API wording as historical until confirmed.</li></ul>
+<h3 class="kind-gap">Remaining gaps</h3>
+<ul><li><strong>Notifications</strong> and <strong>Messages</strong> centers. No Help Center article. Exact paths need a dev check. No new module was invented.</li><li>Company Profile Certificate, Document, and CPSC eFiling Certifier ID setup. The page above is an overview only.</li><li>Attention card drill-downs, including Factory Audit and Pending/Expired Doc.</li><li>TicMate / Ask TicMate usage beyond the shortcut list.</li><li>Login page. Older notes say it is outdated. It is not on the public guide.</li><li>Naming is still undecided: Home <strong>AI Assessment</strong> and <strong>AI Insight</strong>, menu <strong>AI Risk Screening</strong>, and this guide title <strong>AI Insight</strong>.</li></ul>
+<p class="reconcile-note">Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide at the marconip2026 site. No Dify upload.</p></section>
 
 </main>
 <footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>

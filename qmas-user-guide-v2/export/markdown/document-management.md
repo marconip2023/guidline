@@ -2,15 +2,16 @@
 title: "Document Management — Upload a Document"
 slug: document-management
 document_status: working-copy-draft
-version: 2026-11-09-draft
+version: 2026-11-13-draft
 language: en
 notion_working_hub: https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b
+confidence: published-guide-plus-dev-verified-corrections
 image_policy: Reviewed replacement screenshots use a relative path. Other screenshots are explicit placeholders and are not linked.
 ---
 
 # Document Management — Upload a Document
 
-> Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
 
 Upload a compliance document, link it to products, suppliers or factories, set its dates and reminders, and add compliance data.
 
@@ -113,3 +114,29 @@ A: In the Upload Document pop-up, open Dates & Reminder, set the Expiry Date, th
 **Q: Where can I see expired documents?**
 
 A: Open the Expired tab in Document Management.
+
+## Help Center additions and remaining gaps
+
+This section adds Help Center material and named gaps. It does not replace the steps above.
+
+- **Source-documented** — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.
+- **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
+- **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
+
+Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.
+
+### Help Center finding
+
+There is no Help Center article for the Document Management module.
+
+Upload, folders, share, and **Set Reminder** in the Product Information Pack are written against the product profile Document tab, not this module. See the [Product Profile](product-profile.md) page. Do not copy those steps here as if they were Document Management module steps.
+
+### Remaining gaps
+
+- Workflows for **Pending Review**, **Expired**, **Archived**, and **Trash**.
+- Post-upload row toolbar (share, archive, download, rename, move). Needs a dev check on this module.
+- Filters, search, and Export.
+- Edit dates, reminder, or compliance after upload.
+- The upload toast “Upload Document Succeed” is a filed bug. Keep neutral “success message” language until the UI is fixed.
+
+Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide. No Dify upload.

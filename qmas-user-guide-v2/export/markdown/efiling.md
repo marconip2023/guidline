@@ -2,15 +2,16 @@
 title: "eFiling — Submit eFiling to CPSC"
 slug: efiling
 document_status: working-copy-draft
-version: 2026-11-09-draft
+version: 2026-11-13-draft
 language: en
 notion_working_hub: https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b
+confidence: published-guide-plus-dev-verified-corrections
 image_policy: Reviewed replacement screenshots use a relative path. Other screenshots are explicit placeholders and are not linked.
 ---
 
 # eFiling — Submit eFiling to CPSC
 
-> Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
 
 Create and submit CPSC eFiling certificates for your products, with AI that can fill the form from your test report.
 
@@ -97,3 +98,28 @@ A: Settings (avatar / account control) → Company Profile → CPSC eFiling - Ce
 **Q: Can AI fill in the eFiling form?**
 
 A: Yes. In Add eFiling, upload a PDF report under Upload Report & Auto-fill by AI.
+
+## Help Center additions and remaining gaps
+
+This section adds Help Center material and named gaps. It does not replace the steps above.
+
+- **Source-documented** — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.
+- **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
+- **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
+
+Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.
+
+### Help Center finding
+
+There is no Help Center User Guide article for eFiling.
+
+The Product Information Pack checklist links “How to submit eFiling to CPSC” to an internal Documents / User Guide page, not to the public Help Center: https://app.notion.com/p/32e9c62c39fc80faa0e3e510e7f30265. Do not treat that page as a Help Center source. Prefer this page for user-facing steps. This guide does not submit a certificate to CPSC.
+
+### Remaining gaps
+
+- Preview to Submit, draft resume, Duplicate, and View are mentioned above and have no shots.
+- Certifier ID and API key setup in Company Profile.
+- Select Document in QMAS, and Start With Blank.
+- Multi-product submission and Link To QMAS Product detail.
+
+Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide. No Dify upload.

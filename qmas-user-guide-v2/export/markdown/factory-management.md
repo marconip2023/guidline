@@ -2,15 +2,16 @@
 title: "Factory Management — Create a Factory"
 slug: factory-management
 document_status: working-copy-draft
-version: 2026-11-09-draft
+version: 2026-11-13-draft
 language: en
 notion_working_hub: https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b
+confidence: published-guide-plus-dev-verified-corrections
 image_policy: Reviewed replacement screenshots use a relative path. Other screenshots are explicit placeholders and are not linked.
 ---
 
 # Factory Management — Create a Factory
 
-> Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
 
 Add a factory profile with its location, scale, equipment and certificates, so you can link it to suppliers, products and inspections.
 
@@ -140,3 +141,38 @@ A: Yes. Click Import Factory on the Factory tab.
 **Q: Where do I upload a factory audit certificate?**
 
 A: In step 3 Certification of Create Factory, or later from the Certificate tab of the factory profile.
+
+## Help Center additions and remaining gaps
+
+This section adds Help Center material and named gaps. It does not replace the steps above.
+
+- **Source-documented** — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.
+- **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
+- **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
+
+Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.
+
+### Source-documented — edit, documents, and import (last edited 2026-01-16)
+
+Source: Manage your QMAS Factory Compliance Profile, https://app.notion.com/p/2ea9c62c39fc80198eddc3c9e7d20007. Not marked “Updated November 2026”. Labels need a dev check.
+
+Edit company and contact information with the icon next to each section. Edit categories and tags with the pen icon.
+
+**Add rating** uses the same four dimensions as suppliers in the Help Center (Responsiveness, Quality, Pricing, Market Awareness). Confirm whether a factory rating still exists and still uses these labels.
+
+**Internal notes.** Add missed certificates or documents later in the **CERTIFICATE** and **DOCUMENT** sections.
+
+The Help Center text has typographical errors (“thisfactory”, “factyory”). Those are not UI labels.
+
+**Import Factory:** click **Import Factory**, then **Download here** for the factory template, fill it in (the article says create, update, and delete are supported), upload, and click **Next**. A toast confirms completion. One Help Center step title still says “Upload the filled **supplier** template”. Treat that as a source typo unless dev shows that exact wording.
+
+Do not blanket-replace “supplier” wording on Factory screens. A filed bug asks for a context-by-context check.
+
+### Remaining gaps
+
+- Profile tabs Supplier, Certificate, Document, and Compliance Data are named, not walked through.
+- Overview Product Category and Tag empty-state wording.
+- List filters, Export, and the row toolbar.
+- Screenshots for import, rating, notes, and tabs other than Overview.
+
+Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide. No Dify upload.

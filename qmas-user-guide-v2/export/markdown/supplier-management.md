@@ -2,15 +2,16 @@
 title: "Supplier Management — Create a Supplier"
 slug: supplier-management
 document_status: working-copy-draft
-version: 2026-11-09-draft
+version: 2026-11-13-draft
 language: en
 notion_working_hub: https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b
+confidence: published-guide-plus-dev-verified-corrections
 image_policy: Reviewed replacement screenshots use a relative path. Other screenshots are explicit placeholders and are not linked.
 ---
 
 # Supplier Management — Create a Supplier
 
-> Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
 
 Add a supplier profile so you can link it to products, factories, documents and service jobs.
 
@@ -132,3 +133,44 @@ A: Click Invite Supplier on the Supplier tab.
 **Q: How do I edit a supplier?**
 
 A: Open the supplier from the list and click the pencil icon next to its name or next to Contact.
+
+## Help Center additions and remaining gaps
+
+This section adds Help Center material and named gaps. It does not replace the steps above.
+
+- **Source-documented** — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.
+- **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.
+- **Gap** — named as missing or too thin. Not current behaviour until checked on dev.
+
+Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.
+
+### Source-documented — profile, import, and invite (last edited 2026-01-16)
+
+Source: Manage your QMAS Supplier Compliance Profile, https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c. It was not marked “Updated November 2026”. Labels need a dev check before they are published as current UI.
+
+The 2024 setup guide is an older subset (no Import or Invite) and still says “top menu bar”. Prefer the create steps above, and the January 2026 article for the items below.
+
+**Edit and add documents** (Help Center): edit company and contact information with the icon next to each section. Edit categories and tags with the pen icon. **Add rating** lists Responsiveness, Quality, Pricing, and Market Awareness. Add **Internal notes** for others in the company. Add missed certificates or documents later in the **CERTIFICATE** and **DOCUMENT** sections.
+
+**Product and Factory linkage** (Help Center): related products use **+Product Linkage** (existing product list, or **New Product**). Related factories are under **FACTORY**, then **+Factory Linkage** (**Current Factory** or **New Factory**).
+
+**Import Supplier** (Help Center): click **Import Supplier**, then **Download here** for the template, fill it in (the article says create, update, and delete are supported), upload, and click **Next**. A toast confirms completion.
+
+Invite / connect a supplier “allows you to assign Document Review jobs to your connected suppliers.”
+
+1. Click **Invite Supplier**.
+2. Choose a supplier from the existing list, or invite a new supplier by entering their name.
+3. Optionally enter a custom message for the invitation email.
+4. Click **Invite**. The Help Center says an invitation email is sent to the supplier’s email address.
+5. The supplier can accept via the invite link or, if they already have a QMAS account, via a pop-up the next time they log in.
+
+Help Center connection statuses: **Invite** (invitation sent), **No Connection** (cannot interact via the platform), **Connected** (can be assigned Document Review jobs).
+
+### Remaining gaps
+
+- Current-UI confirmation of the labels above, especially linkage buttons and connection statuses.
+- Screenshots for import, invite, ratings, notes, and tabs other than Overview.
+- List filters, Export, and the row toolbar.
+- Contact Email versus Email address, and Title Case. Filed bugs; re-check on dev. Do not invent the corrected labels.
+
+Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide. No Dify upload.

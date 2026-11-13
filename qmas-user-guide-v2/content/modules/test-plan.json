@@ -1,0 +1,52 @@
+{
+  "slug": "test-plan",
+  "source_path": "",
+  "origin": "help-center-2024",
+  "confidence": "source-documented",
+  "tab_title": "Test Plan",
+  "title": "Test Plan — Request a Test Plan",
+  "purpose": "Source-documented only. The Help Center has a short 2024 article for a top-menu Test Plan. The published Product Profile guide instead shows a Test Plan (AI) pop-up on Quality Requirement. These may be different features. Do not merge them into one invented flow.",
+  "meta": [
+    ["Status", "Source-documented only. Not dev-verified."],
+    ["Help Center article", "How To Request A Test Plan"],
+    ["Help Center last edited", "2024-03-28"],
+    ["Source", "https://app.notion.com/p/1a502da19803417aae2cd72190a1a542"],
+    ["Published-guide path", "[[guide:product-profile|Product profile]] → Quality Requirement → Test Plan (AI)"],
+    ["Screenshots", "None on this page. The product-profile pop-up image is still pending review."]
+  ],
+  "overview": [
+    "**Historical Help Center path:** top menu **TEST PLAN**, then product details, then receive or download a PDF.",
+    "**Current published-guide path:** product profile → Quality Requirement → **Test Plan (AI)** pop-up.",
+    "The internal index previously marked Test Plan as coming soon. A dev check is still required."
+  ],
+  "steps": [
+    {
+      "h": "1. Help Center steps (2024, quoted closely)",
+      "body": [
+        "This is the entire Help Center article. It was last edited on 2024-03-28.",
+        {"olist": [
+          "“Navigate to the top menu bar, select **TEST PLAN**.”",
+          "“Fill out your product details.”",
+          "“Receive your test plan, you can also download it in PDF format.”"
+        ]},
+        "Do not assume the 2024 top-menu path still exists."
+      ]
+    },
+    {
+      "h": "2. What the published guide already shows",
+      "body": [
+        "The [[guide:product-profile|Product Profile]] guide documents a **Test Plan (AI)** control on Quality Requirement. Its pop-up slot is `27-test-plan.jpg`, still pending privacy review. That guide does not show a generated plan or an apply-to-requirements result.",
+        "Keep both descriptions until a dev check says they are the same feature."
+      ]
+    }
+  ],
+  "tips": [
+    "Do not copy Help Center screenshots. Do not invent a generated-plan screenshot."
+  ],
+  "faq": [
+    [
+      "What still needs a dev check?",
+      "Whether a standalone Test Plan entry remains in the left or top navigation; its current fields, outputs, and any fee or token; and, if it is gone, whether this 2024 article should be retired in favour of a longer Quality Requirement Test Plan (AI) guide."
+    ]
+  ]
+}

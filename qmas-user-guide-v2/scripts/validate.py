@@ -106,6 +106,14 @@ def main():
             if isinstance(tip, dict) and "img" in tip and (module["slug"], tip["img"]) in reviewed:
                 count += 1
         expected_images[module["slug"]] = count
+    slot_counts = {}
+    for module in modules:
+        slot_counts[module["slug"]] = sum(
+            1
+            for step in module["steps"]
+            for block in step["body"]
+            if isinstance(block, dict) and "img" in block
+        ) + sum(1 for tip in module.get("tips") or [] if isinstance(tip, dict) and "img" in tip)
     expected_images["qmas-user-guide"] = len(reviewed)
 
     preview_dir = args.artifacts / "previews"
@@ -137,7 +145,11 @@ def main():
         if slug == "product-management" and "Not captured" not in text:
             problems.append("product-management PDF missing the not-captured notice")
         if slug not in {"product-testing", "getting-started", "product-management", "qmas-user-guide"}:
-            if "Image pending privacy review" not in text:
+            slots = slot_counts.get(slug, 0)
+            if slots == 0:
+                if "Screenshot slots: none" not in text and "Source-documented only" not in text:
+                    problems.append(f"{slug} PDF should say it has no screenshots")
+            elif "Image pending privacy review" not in text and slots != expected:
                 problems.append(f"{slug} PDF missing pending placeholder text")
         if slug == "qmas-user-guide":
             normalized = re.sub(r"\s+", " ", text)

@@ -2,7 +2,9 @@
 
 Draft English copy of the published guide at <https://marconip2026.github.io/qmas-user-guide/>. It lives in this folder so the older guide at the repository root stays untouched. This is not a deployment.
 
-Version: `2026-11-09-draft`
+Version: `2026-11-13-draft`
+
+The public guide is https://marconip2026.github.io/qmas-user-guide/. This branch is a draft in `marconip2023/guidline` and is not that site.
 
 The same `content/modules/*.json` files generate:
 
@@ -14,7 +16,9 @@ Notion working hub for the 12 English module pages: <https://app.notion.com/p/41
 
 ## What is included
 
-Twelve published pages and 98 screenshot slots.
+Fourteen modules. Twelve keep the published pages and 98 screenshot slots. Factory Audit and Test Plan are extra Help Center pages with no screenshots.
+
+Help Center additions from 2026-11-13 are appended. They are marked source-documented, dev-verified, or gap. They do not replace earlier steps, captions, or reviewed images.
 
 Reviewed replacement screenshots, 33 files:
 

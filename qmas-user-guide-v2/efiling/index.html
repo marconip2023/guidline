@@ -172,6 +172,14 @@ th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; ver
 th { background: #f3f4f6; }
 caption.visually-hidden { /* name comes from the region label */ }
 
+.additions { margin-top: 28px; }
+.callout { background: var(--tip); border-left: 4px solid var(--link); border-radius: 6px; padding: 12px 16px; margin: 12px 0 20px; }
+.callout p, .callout li { margin: 0 0 6px; }
+.kind-dev-verified, .kind-source-documented, .kind-gap, .kind-finding { padding-top: 8px; }
+.kind-dev-verified { border-top: 3px solid #1b5e20; }
+.kind-source-documented { border-top: 3px solid var(--link); }
+.kind-gap, .kind-finding { border-top: 3px solid var(--banner-line); }
+.reconcile-note { color: var(--muted); font-size: 14px; }
 .faq dt { font-weight: 700; margin-top: 14px; }
 .faq dd { margin: 4px 0 0; }
 .site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }
@@ -212,7 +220,7 @@ caption.visually-hidden { /* name comes from the region label */ }
 </header>
 <main id="content" tabindex="-1">
 <p class="crumb"><a href="../">All guides</a></p>
-<p class="draft-banner">Working copy draft 2026-11-09-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
+<p class="draft-banner">Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide, with dev-verified corrections from 9 Nov 2026. Unreviewed screenshots are omitted.</p>
 <h1>eFiling — Submit eFiling to CPSC</h1>
 <p class="lede">Create and submit CPSC eFiling certificates for your products, with AI that can fill the form from your test report.</p>
 <p class="status-line">Screenshot slots: 4 pending privacy review. The written steps are included.</p>
@@ -254,6 +262,12 @@ caption.visually-hidden { /* name comes from the region label */ }
 <dt>Where do I set up my CPSC API key?</dt><dd>Settings (avatar / account control) → Company Profile → CPSC eFiling - Certifier ID.</dd>
 <dt>Can AI fill in the eFiling form?</dt><dd>Yes. In Add eFiling, upload a PDF report under Upload Report &amp; Auto-fill by AI.</dd>
 </dl>
+<section class="additions"><h2>Help Center additions and remaining gaps</h2><aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p><ul><li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li><li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li><li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li></ul><p>Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.</p></aside><h3 class="kind-finding">Help Center finding</h3>
+<p>There is no Help Center User Guide article for eFiling.</p>
+<p>The Product Information Pack checklist links “How to submit eFiling to CPSC” to an internal Documents / User Guide page, not to the public Help Center: <a href="https://app.notion.com/p/32e9c62c39fc80faa0e3e510e7f30265">https://app.notion.com/p/32e9c62c39fc80faa0e3e510e7f30265</a>. Do not treat that page as a Help Center source. Prefer this page for user-facing steps. This guide does not submit a certificate to CPSC.</p>
+<h3 class="kind-gap">Remaining gaps</h3>
+<ul><li>Preview to Submit, draft resume, Duplicate, and View are mentioned above and have no shots.</li><li>Certifier ID and API key setup in Company Profile.</li><li>Select Document in QMAS, and Start With Blank.</li><li>Multi-product submission and Link To QMAS Product detail.</li></ul>
+<p class="reconcile-note">Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. This draft is not the public guide at the marconip2026 site. No Dify upload.</p></section>
 
 </main>
 <footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>

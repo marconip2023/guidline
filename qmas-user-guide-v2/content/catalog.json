@@ -1,6 +1,6 @@
 {
   "title": "QMAS User Guide",
-  "version": "2026-11-09-draft",
+  "version": "2026-11-13-draft",
   "status": "working-copy-draft",
   "language": "en",
   "source_site": "https://marconip2026.github.io/qmas-user-guide/",
@@ -38,6 +38,10 @@
           "label": "Every tab of the product profile (Document, Compliance Data, Quality Requirement, Packaging…)"
         },
         {
+          "slug": "test-plan",
+          "label": "Request a Test Plan (Help Center, 2024)"
+        },
+        {
           "slug": "efiling",
           "label": "Submit eFiling to CPSC"
         }
@@ -54,6 +58,10 @@
         {
           "slug": "factory-management",
           "label": "Create a factory"
+        },
+        {
+          "slug": "factory-audit",
+          "label": "Request a Factory Audit quotation (Help Center, 2024)"
         }
       ]
     },
@@ -120,9 +128,11 @@
     "getting-started",
     "product-management",
     "product-profile",
+    "test-plan",
     "efiling",
     "supplier-management",
     "factory-management",
+    "factory-audit",
     "document-management",
     "qc-inspection",
     "internal-qc-inspection",

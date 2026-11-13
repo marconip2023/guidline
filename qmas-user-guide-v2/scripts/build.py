@@ -39,8 +39,15 @@ CHROME = "/opt/google/chrome/chrome" if Path("/opt/google/chrome/chrome").exists
 def load():
     catalog = json.loads((CONTENT / "catalog.json").read_text(encoding="utf-8"))
     modules = []
+    additions = {}
+    additions_path = CONTENT / "reconciliation.json"
+    if additions_path.exists():
+        additions = json.loads(additions_path.read_text(encoding="utf-8"))
     for slug in catalog["order"]:
-        modules.append(json.loads((CONTENT / "modules" / f"{slug}.json").read_text(encoding="utf-8")))
+        module = json.loads((CONTENT / "modules" / f"{slug}.json").read_text(encoding="utf-8"))
+        if slug in additions:
+            module["additions"] = additions[slug]
+        modules.append(module)
     reviewed = json.loads((CONTENT / "reviewed-images.json").read_text(encoding="utf-8"))
     by_key = {}
     for record in reviewed["images"]:
@@ -152,6 +159,9 @@ def blocks_html(module, blocks, reviewed, guide_prefix, first_image) -> str:
         elif "list" in block:
             items = "".join(f"<li>{inline_html(item, guide_prefix, {})}</li>" for item in block["list"])
             parts.append(f"<ul>{items}</ul>\n")
+        elif "olist" in block:
+            items = "".join(f"<li>{inline_html(item, guide_prefix, {})}</li>" for item in block["olist"])
+            parts.append(f"<ol>{items}</ol>\n")
         elif "table" in block:
             parts.append(table_html(block["table"], guide_prefix))
         elif "img" in block:
@@ -189,7 +199,9 @@ def article_html(module, reviewed, guide_prefix: str, catalog: dict, banner: boo
             reviewed_count += 1
         else:
             pending_count += 1
-    if not_captured:
+    if reviewed_count + pending_count + not_captured == 0 and module.get("confidence") == "source-documented":
+        status = "Screenshot slots: none. This page does not include screenshots."
+    elif not_captured:
         status = f"Screenshot slots: {reviewed_count} reviewed, {not_captured} explicitly not captured, {pending_count} still pending privacy review."
     elif pending_count and not reviewed_count:
         status = f"Screenshot slots: {pending_count} pending privacy review. The written steps are included."
@@ -232,6 +244,39 @@ def article_html(module, reviewed, guide_prefix: str, catalog: dict, banner: boo
                 f"<dd>{inline_html(answer, guide_prefix, titles)}</dd>\n"
             )
         parts.append("</dl>\n")
+    if module.get("confidence") == "source-documented":
+        parts.insert(0, (
+            '<p class="draft-banner">Source-documented only, from the original Help Center. '
+            "Not confirmed on the current QMAS dev site. No reviewed screenshots. "
+            "Do not treat the labels below as current UI until they are checked.</p>\n"
+        ))
+    parts.append(additions_html(module, guide_prefix, titles))
+    return "".join(parts)
+
+
+def additions_html(module, guide_prefix, titles) -> str:
+    data = module.get("additions")
+    if not data:
+        return ""
+    parts = [
+        '<section class="additions">',
+        "<h2>Help Center additions and remaining gaps</h2>",
+        '<aside class="callout"><p>This section adds Help Center material and named gaps. It does not replace the steps above.</p>',
+        "<ul>",
+        "<li><strong>Source-documented</strong> — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.</li>",
+        "<li><strong>Dev-verified</strong> — confirmed on qmas-dev.icw.io during guide work.</li>",
+        "<li><strong>Gap</strong> — named as missing or too thin. Not current behaviour until checked on dev.</li>",
+        "</ul><p>Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.</p></aside>",
+    ]
+    for section in data["sections"]:
+        kind = section.get("kind", "source-documented")
+        parts.append(f'<h3 class="kind-{html.escape(kind)}">{inline_html(section["h"], guide_prefix, titles)}</h3>\n')
+        parts.append(blocks_html(module, section["body"], {}, guide_prefix, {"used": True}))
+    parts.append(
+        '<p class="reconcile-note">Help Center reconciliation 2026-11-13 (HKT). '
+        "Original Help Center not edited. This draft is not the public guide at the marconip2026 site. "
+        "No Dify upload.</p></section>\n"
+    )
     return "".join(parts)
 
 
@@ -292,7 +337,10 @@ def render_index(catalog, modules, reviewed) -> str:
         items = []
         for item in group["items"]:
             reviewed_count, pending, missed = counts[item["slug"]]
-            if missed:
+            module = next(entry for entry in modules if entry["slug"] == item["slug"])
+            if module.get("confidence") == "source-documented" and reviewed_count + pending + missed == 0:
+                tag = '<span class="tag">Source-documented · no screenshots</span>'
+            elif missed:
                 tag = f'<span class="tag">{reviewed_count} reviewed, {missed} not captured</span>'
             elif pending and reviewed_count:
                 tag = f'<span class="tag">{reviewed_count} reviewed, {pending} pending</span>'
@@ -308,9 +356,9 @@ def render_index(catalog, modules, reviewed) -> str:
             f"<h2>{html.escape(group['heading'])} {app}</h2><ul>{''.join(items)}</ul></section>\n"
         )
     body = f"""
-<p class="draft-banner">Working copy draft {html.escape(catalog["version"])}. This copy keeps the published English guide text for 12 pages. Reviewed screenshots are in for Product Testing, Getting started, most of Product Management, and the first Product Profile batch. Every other screenshot slot is an explicit placeholder, including shots that were not captured. Nothing here is deployed.</p>
-<p class="lede">Step-by-step QMAS guides. Dev-verified corrections from 9 Nov 2026 are included. Unpublished modules from internal planning notes are not added.</p>
-<p>English text for these 12 modules is also in the <a href="{html.escape(catalog["notion_working_hub"], quote=True)}">Notion working hub</a>.</p>
+<p class="draft-banner">Working copy draft {html.escape(catalog["version"])}. Fourteen English modules. The public guide stays on the marconip2026 site. This branch is not deployed. Reviewed screenshots remain 33 of 98. Factory Audit and Test Plan are source-documented only and have no screenshots.</p>
+<p class="lede">Existing create-path steps, captions, and reviewed images are unchanged. A Help Center section was added on 2026-11-13. Source-documented text is not the same as dev-verified text.</p>
+<p>The same 14 modules are in the <a href="{html.escape(catalog["notion_working_hub"], quote=True)}">Notion working hub</a>.</p>
 <p><a href="combined/">Read all guides in one page</a></p>
 {''.join(groups)}
 """
@@ -330,6 +378,7 @@ def render_md(module, reviewed, catalog, titles) -> str:
         f"version: {catalog['version']}",
         "language: en",
         f"notion_working_hub: {catalog['notion_working_hub']}",
+        f"confidence: {module.get('confidence', 'published-guide-plus-dev-verified-corrections')}",
         "image_policy: Reviewed replacement screenshots use a relative path. Other screenshots are explicit placeholders and are not linked.",
         "---",
         "",
@@ -365,7 +414,37 @@ def render_md(module, reviewed, catalog, titles) -> str:
             lines.append("")
             lines.append(f"A: {inline_md(answer, titles)}")
             lines.append("")
+    lines.append(additions_md(module, titles).rstrip())
+    lines.append("")
     return "\n".join(lines).rstrip() + "\n"
+
+
+def additions_md(module, titles) -> str:
+    data = module.get("additions")
+    if not data:
+        return ""
+    lines = [
+        "## Help Center additions and remaining gaps",
+        "",
+        "This section adds Help Center material and named gaps. It does not replace the steps above.",
+        "",
+        "- **Source-documented** — written in the original Help Center. The last-edited date is given. That does not by itself prove the current QMAS UI.",
+        "- **Dev-verified** — confirmed on qmas-dev.icw.io during guide work.",
+        "- **Gap** — named as missing or too thin. Not current behaviour until checked on dev.",
+        "",
+        "Reviewed screenshots remain 33 of 98. No new images were added. Unreviewed Help Center screenshots were not copied.",
+        "",
+    ]
+    for section in data["sections"]:
+        lines.append(f"### {section['h']}")
+        lines.append("")
+        lines.append(blocks_md(module, section["body"], {}, titles).rstrip())
+        lines.append("")
+    lines.append(
+        "Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. "
+        "This draft is not the public guide. No Dify upload."
+    )
+    return "\n".join(lines) + "\n"
 
 
 def blocks_md(module, blocks, reviewed, titles) -> str:
@@ -375,6 +454,8 @@ def blocks_md(module, blocks, reviewed, titles) -> str:
             parts.append(inline_md(block, titles) + "\n\n")
         elif "list" in block:
             parts.append("".join(f"- {inline_md(item, titles)}\n" for item in block["list"]) + "\n")
+        elif "olist" in block:
+            parts.append("".join(f"{index}. {inline_md(item, titles)}\n" for index, item in enumerate(block["olist"], 1)) + "\n")
         elif "table" in block:
             head, *rows = block["table"]
             parts.append("| " + " | ".join(inline_md(cell, titles) for cell in head) + " |\n")

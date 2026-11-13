@@ -165,6 +165,14 @@ th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; ver
 th { background: #f3f4f6; }
 caption.visually-hidden { /* name comes from the region label */ }
 
+.additions { margin-top: 28px; }
+.callout { background: var(--tip); border-left: 4px solid var(--link); border-radius: 6px; padding: 12px 16px; margin: 12px 0 20px; }
+.callout p, .callout li { margin: 0 0 6px; }
+.kind-dev-verified, .kind-source-documented, .kind-gap, .kind-finding { padding-top: 8px; }
+.kind-dev-verified { border-top: 3px solid #1b5e20; }
+.kind-source-documented { border-top: 3px solid var(--link); }
+.kind-gap, .kind-finding { border-top: 3px solid var(--banner-line); }
+.reconcile-note { color: var(--muted); font-size: 14px; }
 .faq dt { font-weight: 700; margin-top: 14px; }
 .faq dd { margin: 4px 0 0; }
 .site-footer { padding-bottom: 32px; color: var(--muted); font-size: 14px; }

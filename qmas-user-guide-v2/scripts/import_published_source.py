@@ -33,9 +33,11 @@ ORDER = [
     "getting-started",
     "product-management",
     "product-profile",
+    "test-plan",
     "efiling",
     "supplier-management",
     "factory-management",
+    "factory-audit",
     "document-management",
     "qc-inspection",
     "internal-qc-inspection",
@@ -62,6 +64,7 @@ GROUPS = [
                 "slug": "product-profile",
                 "label": "Every tab of the product profile (Document, Compliance Data, Quality Requirement, Packaging…)",
             },
+            {"slug": "test-plan", "label": "Request a Test Plan (Help Center, 2024)"},
             {"slug": "efiling", "label": "Submit eFiling to CPSC"},
         ],
     },
@@ -71,6 +74,7 @@ GROUPS = [
         "items": [
             {"slug": "supplier-management", "label": "Create a supplier"},
             {"slug": "factory-management", "label": "Create a factory"},
+            {"slug": "factory-audit", "label": "Request a Factory Audit quotation (Help Center, 2024)"},
         ],
     },
     {
@@ -103,7 +107,8 @@ GROUPS = [
     },
 ]
 
-VERSION = "2026-11-09-draft"
+VERSION = "2026-11-13-draft"
+PUBLISHED = [slug for slug in ORDER if slug not in {"test-plan", "factory-audit"}]
 NOTION_HUB = "https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b"
 SOURCE_SITE = "https://marconip2026.github.io/qmas-user-guide/"
 
@@ -332,7 +337,7 @@ def copy_reviewed(modules: dict[str, dict], images_root: Path) -> list[dict]:
             if stale.is_file():
                 stale.unlink()
     records = []
-    for slug in ORDER:
+    for slug in PUBLISHED:
         for block in image_blocks(modules[slug]):
             filename = block["img"]
             if block.get("availability") == "not-captured":
@@ -376,7 +381,7 @@ def main():
     source = args.source.resolve()
     modules = {}
     blocks = {}
-    for slug in ORDER:
+    for slug in PUBLISHED:
         page = source / slug / "index.html"
         if slug == "product-testing":
             modules[slug] = parse_product_testing(page)

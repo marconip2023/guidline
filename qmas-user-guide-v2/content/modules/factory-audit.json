@@ -1,0 +1,79 @@
+{
+  "slug": "factory-audit",
+  "source_path": "",
+  "origin": "help-center-2024",
+  "confidence": "source-documented",
+  "tab_title": "Factory Audit",
+  "title": "Factory Audit — Request a Quotation",
+  "purpose": "Source-documented only. The original Help Center describes how to request a factory audit quotation, confirm a booking, and open the report and invoice. This article was last edited on 2024-04-02 and was not updated in November 2026. It is not confirmed on the current QMAS dev site. There is no published guide page and no reviewed screenshot.",
+  "meta": [
+    ["Status", "Source-documented only. Not dev-verified."],
+    ["Help Center article", "How To Request Quotation For Factory Audit From Global Laboratories"],
+    ["Help Center last edited", "2024-04-02"],
+    ["Source", "https://app.notion.com/p/8bdd7dbfdb1347dd86da4694aba5dd1e"],
+    ["Screenshots", "None. Unreviewed Help Center images are not included."]
+  ],
+  "overview": [
+    "The Help Center says: “The QMAS Factory Audit Process Management Module lets you execute and monitor your factory audit workflow online.”",
+    "The 2024 article covers a quotation, booking confirmation, progress, the report, and invoices.",
+    "Getting Started Attention cards already name **Factory Audit**, but the exact current path was not re-opened on dev."
+  ],
+  "steps": [
+    {
+      "h": "1. Request a quotation (2024 labels)",
+      "body": [
+        "These labels are Help Center text from 2024. Confirm them on dev before treating them as the current buttons.",
+        {"olist": [
+          "In the left menu, go to **Factory Audit** and click **Create Factory Audit Order**.",
+          "Fill out **Audit Requirements**, then click **NEXT**.",
+          "Fill out **Factory info** and contact person information, then click **Submit**."
+        ]}
+      ]
+    },
+    {
+      "h": "2. Receive a quotation and confirm the booking",
+      "body": [
+        "The Help Center says to return to **Factory Audit List** “at the top menu bar”. That top-menu wording is likely outdated. Confirm whether the list is in the left menu.",
+        {"olist": [
+          "After submit, job status is **Under Review**.",
+          "When the request is approved, status becomes **Waiting for Quote**.",
+          "When quotes are ready, status becomes **Quote Available**.",
+          "Click **View Detail**.",
+          "Quotes are under the **QUOTES** tab.",
+          "Click **Accept Quotes** to confirm the booking."
+        ]}
+      ]
+    },
+    {
+      "h": "3. Monitor progress",
+      "body": [
+        {"olist": [
+          "After accepting the quotation, status becomes **Waiting for reserve booking**.",
+          "When the booking is confirmed, status becomes **Booking Reserved**.",
+          "When the audit is completed, status becomes **Completed**."
+        ]},
+        "The Help Center source has typographical errors (“you quotes”, “you job status swill change”). Those are not treated as UI labels."
+      ]
+    },
+    {
+      "h": "4. View the report and invoice",
+      "body": [
+        {"olist": [
+          "Click **View Detail** next to the job status.",
+          "Open the **REPORT** tab to view the audit report.",
+          "Locate the invoice under **INVOICES**."
+        ]}
+      ]
+    }
+  ],
+  "tips": [
+    "Do not copy Help Center screenshots into this public draft. They were not privacy-reviewed.",
+    "Before anyone calls these labels current, check the left-nav name, the create button, the status names, **Accept Quotes**, and whether Quotes, Report, and Invoices tabs still exist."
+  ],
+  "faq": [
+    [
+      "Is this the current Factory Audit screen?",
+      "Not confirmed. This page repeats the 2024 Help Center article only. Verify it on qmas-dev.icw.io before publishing it as current UI."
+    ]
+  ]
+}

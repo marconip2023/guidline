@@ -105,6 +105,9 @@ def iter_block_strings(block):
     if "list" in block:
         yield from block["list"]
         return
+    if "olist" in block:
+        yield from block["olist"]
+        return
     if "table" in block:
         for row in block["table"]:
             yield from row
