@@ -11,7 +11,15 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 # Document Management — Upload a Document
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed list screenshot. Those steps are the existing published guide. There is no Help Center article for this module. Product Profile document steps are a different page.
+
+No Help Center article is the source of the steps on this page.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Upload a compliance document, link it to products, suppliers or factories, set its dates and reminders, and add compliance data.
 

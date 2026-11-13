@@ -11,7 +11,15 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 # Factory Management — Create a Factory
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed create steps and the readonly Overview and empty Certificate tab. Those screens are the existing published guide plus the reviewed profile shots. Edit, rating, and import text in the addition is the January 2026 Help Center article and is not those screens.
+
+- [Manage your QMAS Factory Compliance Profile](https://app.notion.com/p/2ea9c62c39fc80198eddc3c9e7d20007) (last edited 2026-01-16). Profile edit and import. Not marked Updated November 2026.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Add a factory profile with its location, scale, equipment and certificates, so you can link it to suppliers, products and inspections.
 

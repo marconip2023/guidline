@@ -11,7 +11,15 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 # Product Management — Every Tab of the Product Profile
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed tab screenshots. Those steps are the existing published guide. Get DoC, expiry reminders, and older document wording stay in the source-documented section. They were not rewritten in November 2026 and are not a current-UI claim.
+
+- [Manage your QMAS Product Information Pack](https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61) (last edited 2026-11-04). Same article as Product Management. Document, reminder, and DoC sections were not rewritten in that update.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 After you create a product, its profile holds everything about it. This guide explains each tab in the profile's left menu and the import option on the product list.
 

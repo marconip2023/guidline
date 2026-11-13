@@ -11,7 +11,15 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 # eFiling — Submit eFiling to CPSC
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed list and the blank Add Documents for AI Extract dialog. Those steps are the existing published guide. There is no Help Center user-guide article for eFiling. This page does not submit a certificate to CPSC.
+
+No Help Center article is the source of the steps on this page.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Create and submit CPSC eFiling certificates for your products, with AI that can fill the form from your test report.
 

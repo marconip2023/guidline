@@ -9,7 +9,7 @@ image_policy: Per-module files and this combined file are generated from the sam
 
 # QMAS User Guide
 
-> Working copy draft 2026-11-13-draft. Combined export of the 12 published English guides.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
 
 Notion working hub: https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b
 
@@ -32,7 +32,15 @@ Notion working hub: https://app.notion.com/p/4139c62c39fc8198ac49e172050cf65b
 
 # Product Testing — Request a Quotation
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Mixed.** Current UI verified for the reviewed create-job screenshots. Those steps are the existing published guide, and the November 2026 Help Center create path matches them. Mixed: the later quote and accept flow, including Preliminary Accept and Final Quote, is older Help Center wording. It was not rewritten in November 2026 and is not dev-verified.
+
+- [How To Request Quotation For Product Testing From Global Laboratories](https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12) (last edited 2026-11-04). Create path. The post-submit quote flow in that article was not part of the November rewrite.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Create a product testing job and get a quotation from a laboratory.
 
@@ -196,7 +204,15 @@ Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. Th
 
 # Getting Started — Home, Settings and Company Profile
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed Home screenshots, including the avatar account control confirmed on 9 Nov 2026. Those steps are the existing published guide. The 2024 Help Center onboarding article is an addition only. It is not these steps.
+
+- [Getting Started](https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc) (last edited 2024-04-02). Historical onboarding. It still says top menu bar.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Find your way around QMAS: the Home page, the top bar and your company settings.
 
@@ -343,7 +359,15 @@ Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. Th
 
 # Product Management — Create and Edit a Product
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed list and create screenshots, including the list filters confirmed on 9 Nov 2026. Those steps are the existing published guide. Import Product is named from the Help Center and is not a full extra walkthrough.
+
+- [Manage your QMAS Product Information Pack](https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61) (last edited 2026-11-04). Create path alignment, plus the Import Product mention.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Add a product profile to QMAS so you can attach documents, compliance data, testing and eFiling to it.
 
@@ -550,7 +574,15 @@ Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. Th
 
 # Product Management — Every Tab of the Product Profile
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed tab screenshots. Those steps are the existing published guide. Get DoC, expiry reminders, and older document wording stay in the source-documented section. They were not rewritten in November 2026 and are not a current-UI claim.
+
+- [Manage your QMAS Product Information Pack](https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61) (last edited 2026-11-04). Same article as Product Management. Document, reminder, and DoC sections were not rewritten in that update.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 After you create a product, its profile holds everything about it. This guide explains each tab in the profile's left menu and the import option on the product list.
 
@@ -927,7 +959,15 @@ Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. Th
 
 # Test Plan — Request a Test Plan
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Source-only, not dev-verified.** Source-only, not dev-verified. This page is the 2024 Help Center article How To Request A Test Plan. It has no reviewed screenshots. It is not the Product Profile Test Plan (AI) pop-up.
+
+- [How To Request A Test Plan](https://app.notion.com/p/1a502da19803417aae2cd72190a1a542) (last edited 2024-03-28). The whole page.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Source-documented only. The Help Center has a short 2024 article for a top-menu Test Plan. The published Product Profile guide instead shows a Test Plan (AI) pop-up on Quality Requirement. These may be different features. Do not merge them into one invented flow.
 
@@ -977,7 +1017,15 @@ A: Whether a standalone Test Plan entry remains in the left or top navigation; i
 
 # eFiling — Submit eFiling to CPSC
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed list and the blank Add Documents for AI Extract dialog. Those steps are the existing published guide. There is no Help Center user-guide article for eFiling. This page does not submit a certificate to CPSC.
+
+No Help Center article is the source of the steps on this page.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Create and submit CPSC eFiling certificates for your products, with AI that can fill the form from your test report.
 
@@ -1097,7 +1145,15 @@ Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. Th
 
 # Supplier Management — Create a Supplier
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed create steps and the readonly Overview and empty Certificate tab. Those screens are the existing published guide plus the reviewed profile shots. Edit, import, invite, and linkage text in the addition is the January 2026 Help Center article and is not those screens.
+
+- [Manage your QMAS Supplier Compliance Profile](https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c) (last edited 2026-01-16). Profile edit, import, and invite. Not marked Updated November 2026.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Add a supplier profile so you can link it to products, factories, documents and service jobs.
 
@@ -1272,7 +1328,15 @@ Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. Th
 
 # Factory Management — Create a Factory
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed create steps and the readonly Overview and empty Certificate tab. Those screens are the existing published guide plus the reviewed profile shots. Edit, rating, and import text in the addition is the January 2026 Help Center article and is not those screens.
+
+- [Manage your QMAS Factory Compliance Profile](https://app.notion.com/p/2ea9c62c39fc80198eddc3c9e7d20007) (last edited 2026-01-16). Profile edit and import. Not marked Updated November 2026.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Add a factory profile with its location, scale, equipment and certificates, so you can link it to suppliers, products and inspections.
 
@@ -1460,7 +1524,15 @@ Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. Th
 
 # Factory Audit — Request a Quotation
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Source-only, not dev-verified.** Source-only, not dev-verified. This page repeats the 2024 Help Center article. It was not updated in November 2026, it is not confirmed on the current QMAS dev site, and it has no reviewed screenshots.
+
+- [How To Request Quotation For Factory Audit From Global Laboratories](https://app.notion.com/p/8bdd7dbfdb1347dd86da4694aba5dd1e) (last edited 2024-04-02). The whole page.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Source-documented only. The original Help Center describes how to request a factory audit quotation, confirm a booking, and open the report and invoice. This article was last edited on 2024-04-02 and was not updated in November 2026. It is not confirmed on the current QMAS dev site. There is no published guide page and no reviewed screenshot.
 
@@ -1529,7 +1601,15 @@ A: Not confirmed. This page repeats the 2024 Help Center article only. Verify it
 
 # Document Management — Upload a Document
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed list screenshot. Those steps are the existing published guide. There is no Help Center article for this module. Product Profile document steps are a different page.
+
+No Help Center article is the source of the steps on this page.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Upload a compliance document, link it to products, suppliers or factories, set its dates and reminders, and add compliance data.
 
@@ -1663,7 +1743,15 @@ Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. Th
 
 # QC Inspection — Get a QC Inspection Quote via ICW
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Mixed.** Current UI verified for the reviewed list and Looking-to screenshots. Those create steps match the November 2026 Help Center article. Mixed: the later quote, SELECT, and booking statuses are older Help Center wording and are not dev-verified.
+
+- [How To Request Quotation For QC Inspection From Global Laboratories](https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e) (last edited 2026-11-04). Create path, including Start internal inspection. The post-submit booking wording was not part of that November rewrite.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Ask ICW to quote and arrange a third-party QC inspection for your products.
 
@@ -1875,7 +1963,15 @@ Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. Th
 
 # Internal QC Inspection — Start an Internal Inspection
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed list, Looking-to, and blank step 1. Those screens are the existing published guide. There is no standalone Help Center article. The November 2026 QC article only names Start internal inspection. Steps 2–5 stay written text and were not invented as screenshots.
+
+- [How To Request Quotation For QC Inspection From Global Laboratories](https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e) (last edited 2026-11-04). One sentence: Start internal inspection when your own QC team will inspect.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Schedule an inspection that your own QC team carries out, without a third-party provider.
 
@@ -1986,7 +2082,15 @@ Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. Th
 
 # Document Review — Create a Review Job
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed list and blank create-job screenshots. Those steps are the existing published guide. There is no Document Review Help Center article. The supplier profile article only says a connected supplier can be assigned Document Review jobs.
+
+- [Manage your QMAS Supplier Compliance Profile](https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c) (last edited 2026-01-16). Related mention only. It does not describe how to conclude a review job.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Get compliance documents (CPC, GCC, DoC, test reports, TCF) reviewed by a lab or by yourself, whether you upload them or your supplier does.
 
@@ -2152,7 +2256,15 @@ Help Center reconciliation 2026-11-13 (HKT). Original Help Center not edited. Th
 
 # AI Insight — Run an AI Risk Screening
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed AI Risk Screening list and the blank New AI Risk Screening dialog. Those screens are the existing published guide, filed under this AI Insight path. There is no Help Center article for AI Insight, AI Risk Screening, or AI Assessment. No screening was run.
+
+No Help Center article is the source of the steps on this page.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Upload product photos and let AI identify compliance risks and requirements for your import region. You get a compliance guideline report (PDF).
 

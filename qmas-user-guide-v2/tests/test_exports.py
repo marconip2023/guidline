@@ -136,7 +136,13 @@ class GuideContentTests(unittest.TestCase):
             path = markdown / f"{module['slug']}.md"
             text = path.read_text(encoding="utf-8")
             self.assertEqual(text, render_md(module, self.reviewed, self.catalog, self.titles))
-            self.assertNotIn("github.io", text)
+            published = "https://marconip2026.github.io/qmas-user-guide/"
+            self.assertIn("Existing published version", text)
+            self.assertIn(published, text)
+            self.assertEqual(
+                [url for url in __import__("re").findall(r"https://[^)\s]+", text) if "github.io" in url],
+                [published],
+            )
             self.assertNotIn("gear icon", text)
             self.assertNotIn("← All guides", text)
             self.assertNotIn("Skip to content", text)
@@ -156,7 +162,9 @@ class GuideContentTests(unittest.TestCase):
         for module in self.modules:
             self.assertIn(module["title"], combined)
         self.assertIn(self.catalog["notion_working_hub"], combined)
-        self.assertNotIn("github.io", combined)
+        published = "https://marconip2026.github.io/qmas-user-guide/"
+        self.assertIn(published, combined)
+        self.assertIn("Existing published version", combined)
 
     def test_only_allowlisted_rasters_are_stored(self):
         allowed = {
@@ -167,27 +175,79 @@ class GuideContentTests(unittest.TestCase):
             ROOT / "export" / "markdown" / "images" / slug / filename
             for slug, filename in self.reviewed
         )
+        allowed.add(ROOT / "assets" / "brand" / "qmas-logo.png")
         found = []
         for path in ROOT.rglob("*"):
             if path.suffix.lower() in {".jpg", ".jpeg", ".png", ".gif", ".webp"}:
                 found.append(path)
                 self.assertIn(path.resolve(), {item.resolve() for item in allowed})
-        self.assertEqual(len(found), 124)
+        self.assertEqual(len(found), 125)
 
     def test_site_pages_exist_without_remote_screenshots(self):
         index = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn(self.catalog["notion_working_hub"], index)
         self.assertIn("Working copy draft", index)
+        self.assertIn("Updated working draft", index)
+        published = "https://marconip2026.github.io/qmas-user-guide/"
+        pages = [index]
         for module in self.modules:
             page = (ROOT / module["slug"] / "index.html").read_text(encoding="utf-8")
+            pages.append(page)
             self.assertIn(module["title"], page)
-            self.assertNotIn("github.io", page)
+            self.assertIn("Existing published version", page)
+            self.assertIn(published, page)
             self.assertNotIn("gear icon", plain(page))
             self.assertIn('lang="en"', page)
+            self.assertIn('alt="QMAS"', page)
+            self.assertIn('width="60"', page)
+            self.assertIn('height="24"', page)
+            record = self.catalog["verification"]["modules"][module["slug"]]
+            self.assertIn(record["label"], page)
+            self.assertIn("Source and verification", page)
+        self.assertIn("Source-only, not dev-verified", (ROOT / "factory-audit" / "index.html").read_text(encoding="utf-8"))
+        self.assertIn("Source-only, not dev-verified", (ROOT / "test-plan" / "index.html").read_text(encoding="utf-8"))
+        testing = (ROOT / "product-testing" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Mixed.", testing)
+        self.assertIn("Preliminary Accept", testing)
+        self.assertIn("Final Quote", testing)
         for block in self.blocks["product-testing"]:
             if block in SECTION_HEADINGS or "←" in block:
                 continue
             self.assertIn(block, module_plain(self.by_slug["product-testing"], self.titles))
+
+    def test_internal_links_logo_and_responsive_header(self):
+        import re
+        from urllib.parse import unquote, urlparse
+
+        css = (ROOT / "assets" / "site.css").read_text(encoding="utf-8")
+        self.assertIn(".site-header.is-wide", css)
+        self.assertIn("anchor(--menu-button bottom)", css)
+        self.assertIn("inset-block-start: 4.75rem", css)
+        self.assertIn("min-block-size: 44px", css)
+        self.assertIn("@media (forced-colors: active)", css)
+        pages = [ROOT / "index.html", ROOT / "combined" / "index.html"]
+        pages.extend(ROOT / module["slug"] / "index.html" for module in self.modules)
+        href_re = re.compile(r"""(?:href|src)=["']([^"']+)["']""")
+        for path in pages:
+            text = path.read_text(encoding="utf-8")
+            self.assertIn('aria-label="Primary"', text)
+            self.assertIn('popover="auto"', text)
+            self.assertIn('popovertarget="site-menu"', text)
+            self.assertIn('alt="QMAS"', text)
+            self.assertIn("assets/brand/qmas-logo.png", text)
+            for raw in href_re.findall(text):
+                if raw.startswith(("https://", "http://", "mailto:")):
+                    self.assertTrue(raw.startswith("https://"), raw)
+                    continue
+                target, _, fragment = raw.partition("#")
+                if not target:
+                    self.assertIn(f'id="{fragment}"', text)
+                    continue
+                resolved = (path.parent / unquote(urlparse(target).path)).resolve()
+                self.assertTrue(
+                    resolved.exists() or (resolved / "index.html").exists(),
+                    f"{path.name} -> {raw}",
+                )
 
 
 def images(module):

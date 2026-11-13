@@ -11,7 +11,15 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 # Factory Audit — Request a Quotation
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Source-only, not dev-verified.** Source-only, not dev-verified. This page repeats the 2024 Help Center article. It was not updated in November 2026, it is not confirmed on the current QMAS dev site, and it has no reviewed screenshots.
+
+- [How To Request Quotation For Factory Audit From Global Laboratories](https://app.notion.com/p/8bdd7dbfdb1347dd86da4694aba5dd1e) (last edited 2024-04-02). The whole page.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Source-documented only. The original Help Center describes how to request a factory audit quotation, confirm a booking, and open the report and invoice. This article was last edited on 2024-04-02 and was not updated in November 2026. It is not confirmed on the current QMAS dev site. There is no published guide page and no reviewed screenshot.
 

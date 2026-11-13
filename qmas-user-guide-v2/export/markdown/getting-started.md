@@ -11,7 +11,15 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 # Getting Started — Home, Settings and Company Profile
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed Home screenshots, including the avatar account control confirmed on 9 Nov 2026. Those steps are the existing published guide. The 2024 Help Center onboarding article is an addition only. It is not these steps.
+
+- [Getting Started](https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc) (last edited 2024-04-02). Historical onboarding. It still says top menu bar.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Find your way around QMAS: the Home page, the top bar and your company settings.
 

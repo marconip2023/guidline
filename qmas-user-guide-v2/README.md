@@ -4,7 +4,11 @@ Draft English copy of the published guide at <https://marconip2026.github.io/qma
 
 Version: `2026-11-13-draft`
 
-The public guide is https://marconip2026.github.io/qmas-user-guide/. This branch is a draft in `marconip2023/guidline` and is not that site.
+The existing published version is https://marconip2026.github.io/qmas-user-guide/. This branch is the updated working draft in `marconip2023/guidline`. It is not deployed.
+
+The header uses `assets/brand/qmas-logo.png`, a byte copy of the repository-root `logo.png` (60×24, added 2026-03-25 in `48b1f77`). It is the QMAS mark with the check through the M, the same mark in the reviewed screenshots. No license is stated in the repository. It is not a generated wordmark and it is not a WBA or ICW logo. No higher-resolution official file was available, so the header keeps the native pixels.
+
+Each module has a Source and verification note. Factory Audit and the standalone Test Plan are source-only and not dev-verified. Product Testing and QC Inspection are mixed because the later quote or accept flow is older Help Center wording. The other modules are current UI where a reviewed screenshot backs the step. Help Center article links are the ones already cited in this draft. The Help Center home is https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af.
 
 The same `content/modules/*.json` files generate:
 

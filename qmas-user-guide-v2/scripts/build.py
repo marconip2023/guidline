@@ -60,6 +60,11 @@ def load():
             raise SystemExit(f"reviewed image size mismatch: {record['slug']}/{record['file']}")
         by_key[(record["slug"], record["file"])] = record
     titles = {module["slug"]: module["title"] for module in modules}
+    catalog["verification"] = json.loads((CONTENT / "verification.json").read_text(encoding="utf-8"))
+    catalog["logo"] = json.loads((CONTENT / "logo.json").read_text(encoding="utf-8"))
+    missing = [slug for slug in catalog["order"] if slug not in catalog["verification"]["modules"]]
+    if missing:
+        raise SystemExit(f"verification map missing: {', '.join(missing)}")
     return catalog, modules, by_key, titles
 
 
@@ -219,6 +224,7 @@ def article_html(module, reviewed, guide_prefix: str, catalog: dict, banner: boo
     parts.append(f"<h1>{html.escape(module['title'])}</h1>\n")
     parts.append(f'<p class="lede">{inline_html(module["purpose"], guide_prefix, titles)}</p>\n')
     parts.append(f'<p class="status-line">{html.escape(status)}</p>\n')
+    parts.append(verification_html(module, catalog))
     parts.append('<dl class="meta">\n')
     for key, value in module["meta"]:
         parts.append(f"<dt>{html.escape(key)}</dt><dd>{inline_html(value, guide_prefix, titles)}</dd>\n")
@@ -290,8 +296,162 @@ def iter_images(module):
             yield tip
 
 
-def page(title: str, body: str, home: str, crumb: str | None) -> str:
-    crumb_html = f'<p class="crumb"><a href="{html.escape(home, quote=True)}">All guides</a></p>\n' if crumb else ""
+def asset_href(home: str, path: str) -> str:
+    return path if home == "./" else f"{home}{path}"
+
+
+def verification_html(module, catalog) -> str:
+    record = catalog["verification"]["modules"][module["slug"]]
+    home = catalog["verification"]["help_center_home"]
+    if record["articles"]:
+        items = "".join(
+            "<li>"
+            f'<a href="{html.escape(article["url"], quote=True)}">{html.escape(article["title"])}</a>'
+            f' (last edited {html.escape(article["edited"])}). {html.escape(article["covers"])}'
+            "</li>"
+            for article in record["articles"]
+        )
+        articles = f"<ul>{items}</ul>"
+    else:
+        articles = "<p>No Help Center article is the source of the steps on this page.</p>"
+    return (
+        f'<aside class="verify verify-{html.escape(record["status"])}">'
+        "<h2>Source and verification</h2>"
+        f'<p><strong>{html.escape(record["label"])}.</strong> {html.escape(record["note"])}</p>'
+        f"{articles}"
+        "<p>Help Center home: "
+        f'<a href="{html.escape(home["url"], quote=True)}">{html.escape(home["title"])}</a>.</p>'
+        "</aside>\n"
+    )
+
+
+def verification_md(module, catalog) -> str:
+    record = catalog["verification"]["modules"][module["slug"]]
+    home = catalog["verification"]["help_center_home"]
+    lines = [
+        "## Source and verification",
+        "",
+        f"**{record['label']}.** {record['note']}",
+        "",
+    ]
+    if record["articles"]:
+        for article in record["articles"]:
+            lines.append(
+                f"- [{article['title']}]({article['url']}) (last edited {article['edited']}). {article['covers']}"
+            )
+        lines.append("")
+    else:
+        lines.append("No Help Center article is the source of the steps on this page.")
+        lines.append("")
+    lines.append(f"Help Center home: [{home['title']}]({home['url']}).")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def shell_header(home: str, catalog, current_slug: str | None) -> str:
+    logo = catalog["logo"]
+    published = catalog["source_site"]
+    links = [
+        f'<li><a href="{html.escape(home, quote=True)}"'
+        + (' aria-current="page"' if current_slug == "home" else "")
+        + ">Home</a></li>"
+    ]
+    for slug in catalog["order"]:
+        record = catalog["verification"]["modules"][slug]
+        href = asset_href(home, f"{slug}/")
+        current = ' aria-current="page"' if slug == current_slug else ""
+        links.append(
+            f'<li><a href="{html.escape(href, quote=True)}"{current}>{html.escape(record["nav"])}</a></li>'
+        )
+    logo_note = html.escape(catalog["logo"]["note"])
+    return f"""<a class="skip-link visually-hidden" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="{html.escape(home, quote=True)}">
+      <img src="{html.escape(asset_href(home, logo["file"]), quote=True)}" alt="{html.escape(logo["alt"])}" width="{logo["width"]}" height="{logo["height"]}">
+      <span>QMAS User Guide</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <button class="menu-button" type="button" popovertarget="site-menu" popovertargetaction="toggle" aria-controls="site-menu">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M1 3h14v1.5H1zm0 4.25h14v1.5H1zM1 11.5h14V13H1z"/></svg>
+        <span>Guides</span>
+      </button>
+      <ul id="site-menu" class="site-menu" popover="auto">
+        {''.join(links)}
+      </ul>
+    </nav>
+  </div>
+  <p class="edition"><span class="edition-draft">Updated working draft</span> <a href="{html.escape(published, quote=True)}">Existing published version</a></p>
+</header>"""
+
+
+def shell_footer(catalog) -> str:
+    published = catalog["source_site"]
+    logo = catalog["logo"]
+    return (
+        '<footer class="site-footer">'
+        "<p>Updated working draft. This page is not deployed. "
+        f'Existing published version: <a href="{html.escape(published, quote=True)}">{html.escape(published)}</a>.</p>'
+        f"<p>{html.escape(logo['note'])}</p>"
+        "</footer>"
+    )
+
+
+SHELL_SCRIPT = """
+<script>
+if (!Object.hasOwn(HTMLElement.prototype, "popover")) {
+  var polyfill = document.createElement("script");
+  polyfill.src = "https://unpkg.com/@oddbird/popover-polyfill@latest/dist/popover.min.js";
+  document.head.appendChild(polyfill);
+}
+</script>
+<script>
+(function () {
+  var header = document.querySelector(".site-header");
+  var inner = header && header.querySelector(".header-inner");
+  var menu = document.getElementById("site-menu");
+  if (!header || !inner || !menu) return;
+  var seen = false;
+  var lastWidth = 0;
+  function layout() {
+    var width = inner.clientWidth;
+    var grown = width > lastWidth + 0.5;
+    var collapsed = !header.classList.contains("is-wide");
+    lastWidth = width;
+    if (collapsed && seen && !grown) return;
+    seen = true;
+    var open = typeof menu.showPopover === "function" && menu.matches(":popover-open");
+    header.classList.add("is-measuring", "is-wide");
+    menu.removeAttribute("popover");
+    var fits = inner.scrollWidth <= inner.clientWidth;
+    if (!fits) {
+      header.classList.remove("is-wide");
+      menu.setAttribute("popover", "auto");
+      if (open) {
+        try { menu.showPopover(); } catch (err) {}
+      }
+    }
+    requestAnimationFrame(function () { header.classList.remove("is-measuring"); });
+  }
+  var observer = new ResizeObserver(layout);
+  observer.observe(header);
+  observer.observe(menu);
+  layout();
+})();
+</script>
+"""
+
+
+def page(title: str, body: str, home: str, crumb: str | None, catalog, current_slug: str | None) -> str:
+    if crumb:
+        crumb_html = (
+            '<nav class="crumb" aria-label="Breadcrumb"><ol>'
+            f'<li><a href="{html.escape(home, quote=True)}">All guides</a></li>'
+            f"<li><span aria-current=\"page\">{html.escape(crumb)}</span></li>"
+            "</ol></nav>\n"
+        )
+    else:
+        crumb_html = ""
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -303,15 +463,12 @@ def page(title: str, body: str, home: str, crumb: str | None) -> str:
 </style>
 </head>
 <body>
-<a class="skip-link visually-hidden" href="#content">Skip to content</a>
-<header class="site-header">
-  <p class="site-mark"><a href="{html.escape(home, quote=True)}">QMAS User Guide</a></p>
-  <p class="version-line">Working copy draft</p>
-</header>
+{shell_header(home, catalog, current_slug)}
 <main id="content" tabindex="-1">
 {crumb_html}{body}
 </main>
-<footer class="site-footer"><p>Working copy for review. Not a replacement for the older guide at the repository root.</p></footer>
+{shell_footer(catalog)}
+{SHELL_SCRIPT}
 </body>
 </html>
 """
@@ -355,14 +512,49 @@ def render_index(catalog, modules, reviewed) -> str:
             '<section class="module-group">'
             f"<h2>{html.escape(group['heading'])} {app}</h2><ul>{''.join(items)}</ul></section>\n"
         )
+    published = catalog["source_site"]
+    rows = []
+    for module in modules:
+        record = catalog["verification"]["modules"][module["slug"]]
+        if record["articles"]:
+            links = "<br>".join(
+                f'<a href="{html.escape(article["url"], quote=True)}">{html.escape(article["title"])}</a>'
+                f' ({html.escape(article["edited"])})'
+                for article in record["articles"]
+            )
+        else:
+            links = "No Help Center article for these steps"
+        rows.append(
+            "<tr>"
+            f'<td><a href="{html.escape(module["slug"], quote=True)}/">{html.escape(module["title"])}</a></td>'
+            f'<td>{html.escape(record["label"])}</td>'
+            f"<td>{links}</td>"
+            "</tr>"
+        )
+    help_home = catalog["verification"]["help_center_home"]
     body = f"""
-<p class="draft-banner">Working copy draft {html.escape(catalog["version"])}. Fourteen English modules. The public guide stays on the marconip2026 site. This branch is not deployed. Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Factory Audit and Test Plan have no screenshots.</p>
-<p class="lede">Existing create-path steps, captions, and reviewed images are unchanged. A Help Center section was added on 2026-11-13. Source-documented text is not the same as dev-verified text.</p>
-<p>The same 14 modules are in the <a href="{html.escape(catalog["notion_working_hub"], quote=True)}">Notion working hub</a>.</p>
-<p><a href="combined/">Read all guides in one page</a></p>
+<h1>QMAS User Guide</h1>
+<p class="lede">Updated working draft. Existing published version: <a href="{html.escape(published, quote=True)}">{html.escape(published)}</a>. This branch is not deployed.</p>
+<p class="draft-banner">Working copy draft {html.escape(catalog["version"])}. Fourteen English modules. Reviewed screenshots remain 56 of 98. Forty-two inventory slots are still pending. Six supplementary images are not part of the 98. Factory Audit and Test Plan have no screenshots.</p>
+<p>Existing create-path steps, captions, and reviewed images are unchanged. Help Center text is marked on each module. It is not the source of every step.</p>
+<p>The same 14 modules are in the <a href="{html.escape(catalog["notion_working_hub"], quote=True)}">Notion working hub</a>. <a href="combined/">Read all guides in one page</a>.</p>
+<section class="source-map">
+<h2>Source and verification</h2>
+<p>The step-by-step sections of the original 12 modules come from the existing published version, with dev-verified corrections where a reviewed screenshot or the 9 Nov 2026 check backs them. Factory Audit and the standalone Test Plan are source-only and were not confirmed on the current dev site. Product Testing and QC Inspection are mixed: the reviewed create screens are current UI, and the later quote or accept flow is older Help Center wording. This page does not mark every paragraph as unverified, and it does not mark every paragraph as Help Center text.</p>
+<p>Help Center home: <a href="{html.escape(help_home["url"], quote=True)}">{html.escape(help_home["title"])}</a>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Source and verification">
+<table>
+<caption class="visually-hidden">Source and verification for the 14 modules</caption>
+<thead><tr><th scope="col">Module</th><th scope="col">Verification</th><th scope="col">Help Center article</th></tr></thead>
+<tbody>
+{''.join(rows)}
+</tbody>
+</table>
+</div>
+</section>
 {''.join(groups)}
 """
-    return page("QMAS User Guide (working copy draft)", body, "./", None).replace(
+    return page("QMAS User Guide (working copy draft)", body, "./", None, catalog, "home").replace(
         '<main id="content" tabindex="-1">',
         '<main id="content" class="wide" tabindex="-1">',
         1,
@@ -384,7 +576,9 @@ def render_md(module, reviewed, catalog, titles) -> str:
         "",
         f"# {module['title']}",
         "",
-        f"> Working copy draft {catalog['version']}. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.",
+        f"> Updated working draft {catalog['version']}. This file is not deployed. Existing published version: {catalog['source_site']}",
+        "",
+        verification_md(module, catalog).rstrip(),
         "",
         inline_md(module["purpose"], titles),
         "",
@@ -512,7 +706,7 @@ def render_combined_md(catalog, modules, reviewed, titles) -> str:
         "",
         f"# {catalog['title']}",
         "",
-        f"> Working copy draft {catalog['version']}. Combined export of the 12 published English guides.",
+        f"> Updated working draft {catalog['version']}. This file is not deployed. Existing published version: {catalog['source_site']}",
         "",
         f"Notion working hub: {catalog['notion_working_hub']}",
         "",
@@ -559,7 +753,9 @@ def write_text(catalog, modules, reviewed, titles):
             f"{module['tab_title']} · QMAS User Guide (draft)",
             article_html(module, reviewed, "../", catalog, banner=True),
             "../",
-            "All guides",
+            module["title"],
+            catalog,
+            module["slug"],
         )
         target = ROOT / module["slug"] / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -574,6 +770,8 @@ def write_text(catalog, modules, reviewed, titles):
         "\n".join(combined_body + articles),
         "../",
         "All guides",
+        catalog,
+        None,
     )
     combined_dir = ROOT / "combined"
     combined_dir.mkdir(parents=True, exist_ok=True)
@@ -590,6 +788,8 @@ def write_text(catalog, modules, reviewed, titles):
             article_html(module, reviewed, "../../", catalog, banner=True),
             "../../",
             None,
+            catalog,
+            module["slug"],
         )
         (print_dir / f"{module['slug']}.html").write_text(print_html, encoding="utf-8")
     combined_print_articles = []
@@ -605,7 +805,7 @@ def write_text(catalog, modules, reviewed, titles):
         f"<p>Notion working hub: {html.escape(catalog['notion_working_hub'])}</p>"
     )
     (print_dir / "qmas-user-guide.html").write_text(
-        page(catalog["title"], cover + "\n".join(combined_print_articles), "../../", None),
+        page(catalog["title"], cover + "\n".join(combined_print_articles), "../../", None, catalog, None),
         encoding="utf-8",
     )
 

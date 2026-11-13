@@ -11,7 +11,15 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 # AI Insight — Run an AI Risk Screening
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed AI Risk Screening list and the blank New AI Risk Screening dialog. Those screens are the existing published guide, filed under this AI Insight path. There is no Help Center article for AI Insight, AI Risk Screening, or AI Assessment. No screening was run.
+
+No Help Center article is the source of the steps on this page.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Upload product photos and let AI identify compliance risks and requirements for your import region. You get a compliance guideline report (PDF).
 

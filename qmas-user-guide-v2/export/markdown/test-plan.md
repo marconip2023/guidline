@@ -11,7 +11,15 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 # Test Plan — Request a Test Plan
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Source-only, not dev-verified.** Source-only, not dev-verified. This page is the 2024 Help Center article How To Request A Test Plan. It has no reviewed screenshots. It is not the Product Profile Test Plan (AI) pop-up.
+
+- [How To Request A Test Plan](https://app.notion.com/p/1a502da19803417aae2cd72190a1a542) (last edited 2024-03-28). The whole page.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Source-documented only. The Help Center has a short 2024 article for a top-menu Test Plan. The published Product Profile guide instead shows a Test Plan (AI) pop-up on Quality Requirement. These may be different features. Do not merge them into one invented flow.
 

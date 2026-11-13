@@ -11,7 +11,15 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 # QC Inspection — Get a QC Inspection Quote via ICW
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Mixed.** Current UI verified for the reviewed list and Looking-to screenshots. Those create steps match the November 2026 Help Center article. Mixed: the later quote, SELECT, and booking statuses are older Help Center wording and are not dev-verified.
+
+- [How To Request Quotation For QC Inspection From Global Laboratories](https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e) (last edited 2026-11-04). Create path, including Start internal inspection. The post-submit booking wording was not part of that November rewrite.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Ask ICW to quote and arrange a third-party QC inspection for your products.
 

@@ -1,0 +1,183 @@
+{
+  "help_center_home": {
+    "title": "QMAS Help Center",
+    "url": "https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af"
+  },
+  "modules": {
+    "product-testing": {
+      "status": "mixed",
+      "label": "Mixed",
+      "nav": "Product Testing",
+      "note": "Current UI verified for the reviewed create-job screenshots. Those steps are the existing published guide, and the November 2026 Help Center create path matches them. Mixed: the later quote and accept flow, including Preliminary Accept and Final Quote, is older Help Center wording. It was not rewritten in November 2026 and is not dev-verified.",
+      "articles": [
+        {
+          "title": "How To Request Quotation For Product Testing From Global Laboratories",
+          "url": "https://app.notion.com/p/a57449507c7c4ceea2ed34a1dbbe9f12",
+          "edited": "2026-11-04",
+          "covers": "Create path. The post-submit quote flow in that article was not part of the November rewrite."
+        }
+      ]
+    },
+    "getting-started": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "Getting Started",
+      "note": "Current UI verified for the reviewed Home screenshots, including the avatar account control confirmed on 9 Nov 2026. Those steps are the existing published guide. The 2024 Help Center onboarding article is an addition only. It is not these steps.",
+      "articles": [
+        {
+          "title": "Getting Started",
+          "url": "https://app.notion.com/p/cee08d7673aa467797efb39efe68bbdc",
+          "edited": "2024-04-02",
+          "covers": "Historical onboarding. It still says top menu bar."
+        }
+      ]
+    },
+    "product-management": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "Product Management",
+      "note": "Current UI verified for the reviewed list and create screenshots, including the list filters confirmed on 9 Nov 2026. Those steps are the existing published guide. Import Product is named from the Help Center and is not a full extra walkthrough.",
+      "articles": [
+        {
+          "title": "Manage your QMAS Product Information Pack",
+          "url": "https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61",
+          "edited": "2026-11-04",
+          "covers": "Create path alignment, plus the Import Product mention."
+        }
+      ]
+    },
+    "product-profile": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "Product Profile",
+      "note": "Current UI verified for the reviewed tab screenshots. Those steps are the existing published guide. Get DoC, expiry reminders, and older document wording stay in the source-documented section. They were not rewritten in November 2026 and are not a current-UI claim.",
+      "articles": [
+        {
+          "title": "Manage your QMAS Product Information Pack",
+          "url": "https://app.notion.com/p/3a2b2d2eeedc42388ab6fc997070df61",
+          "edited": "2026-11-04",
+          "covers": "Same article as Product Management. Document, reminder, and DoC sections were not rewritten in that update."
+        }
+      ]
+    },
+    "test-plan": {
+      "status": "source-only",
+      "label": "Source-only, not dev-verified",
+      "nav": "Test Plan",
+      "note": "Source-only, not dev-verified. This page is the 2024 Help Center article How To Request A Test Plan. It has no reviewed screenshots. It is not the Product Profile Test Plan (AI) pop-up.",
+      "articles": [
+        {
+          "title": "How To Request A Test Plan",
+          "url": "https://app.notion.com/p/1a502da19803417aae2cd72190a1a542",
+          "edited": "2024-03-28",
+          "covers": "The whole page."
+        }
+      ]
+    },
+    "efiling": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "eFiling",
+      "note": "Current UI verified for the reviewed list and the blank Add Documents for AI Extract dialog. Those steps are the existing published guide. There is no Help Center user-guide article for eFiling. This page does not submit a certificate to CPSC.",
+      "articles": []
+    },
+    "supplier-management": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "Suppliers",
+      "note": "Current UI verified for the reviewed create steps and the readonly Overview and empty Certificate tab. Those screens are the existing published guide plus the reviewed profile shots. Edit, import, invite, and linkage text in the addition is the January 2026 Help Center article and is not those screens.",
+      "articles": [
+        {
+          "title": "Manage your QMAS Supplier Compliance Profile",
+          "url": "https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c",
+          "edited": "2026-01-16",
+          "covers": "Profile edit, import, and invite. Not marked Updated November 2026."
+        }
+      ]
+    },
+    "factory-management": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "Factories",
+      "note": "Current UI verified for the reviewed create steps and the readonly Overview and empty Certificate tab. Those screens are the existing published guide plus the reviewed profile shots. Edit, rating, and import text in the addition is the January 2026 Help Center article and is not those screens.",
+      "articles": [
+        {
+          "title": "Manage your QMAS Factory Compliance Profile",
+          "url": "https://app.notion.com/p/2ea9c62c39fc80198eddc3c9e7d20007",
+          "edited": "2026-01-16",
+          "covers": "Profile edit and import. Not marked Updated November 2026."
+        }
+      ]
+    },
+    "factory-audit": {
+      "status": "source-only",
+      "label": "Source-only, not dev-verified",
+      "nav": "Factory Audit",
+      "note": "Source-only, not dev-verified. This page repeats the 2024 Help Center article. It was not updated in November 2026, it is not confirmed on the current QMAS dev site, and it has no reviewed screenshots.",
+      "articles": [
+        {
+          "title": "How To Request Quotation For Factory Audit From Global Laboratories",
+          "url": "https://app.notion.com/p/8bdd7dbfdb1347dd86da4694aba5dd1e",
+          "edited": "2024-04-02",
+          "covers": "The whole page."
+        }
+      ]
+    },
+    "document-management": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "Documents",
+      "note": "Current UI verified for the reviewed list screenshot. Those steps are the existing published guide. There is no Help Center article for this module. Product Profile document steps are a different page.",
+      "articles": []
+    },
+    "qc-inspection": {
+      "status": "mixed",
+      "label": "Mixed",
+      "nav": "QC Inspection",
+      "note": "Current UI verified for the reviewed list and Looking-to screenshots. Those create steps match the November 2026 Help Center article. Mixed: the later quote, SELECT, and booking statuses are older Help Center wording and are not dev-verified.",
+      "articles": [
+        {
+          "title": "How To Request Quotation For QC Inspection From Global Laboratories",
+          "url": "https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e",
+          "edited": "2026-11-04",
+          "covers": "Create path, including Start internal inspection. The post-submit booking wording was not part of that November rewrite."
+        }
+      ]
+    },
+    "internal-qc-inspection": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "Internal QC",
+      "note": "Current UI verified for the reviewed list, Looking-to, and blank step 1. Those screens are the existing published guide. There is no standalone Help Center article. The November 2026 QC article only names Start internal inspection. Steps 2–5 stay written text and were not invented as screenshots.",
+      "articles": [
+        {
+          "title": "How To Request Quotation For QC Inspection From Global Laboratories",
+          "url": "https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e",
+          "edited": "2026-11-04",
+          "covers": "One sentence: Start internal inspection when your own QC team will inspect."
+        }
+      ]
+    },
+    "document-review": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "Document Review",
+      "note": "Current UI verified for the reviewed list and blank create-job screenshots. Those steps are the existing published guide. There is no Document Review Help Center article. The supplier profile article only says a connected supplier can be assigned Document Review jobs.",
+      "articles": [
+        {
+          "title": "Manage your QMAS Supplier Compliance Profile",
+          "url": "https://app.notion.com/p/aa532b63c9554db99b57676ee83d489c",
+          "edited": "2026-01-16",
+          "covers": "Related mention only. It does not describe how to conclude a review job."
+        }
+      ]
+    },
+    "ai-insight": {
+      "status": "current-ui",
+      "label": "Current UI verified",
+      "nav": "AI Insight",
+      "note": "Current UI verified for the reviewed AI Risk Screening list and the blank New AI Risk Screening dialog. Those screens are the existing published guide, filed under this AI Insight path. There is no Help Center article for AI Insight, AI Risk Screening, or AI Assessment. No screening was run.",
+      "articles": []
+    }
+  }
+}

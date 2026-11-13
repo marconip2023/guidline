@@ -11,7 +11,15 @@ image_policy: Reviewed replacement screenshots use a relative path. Other screen
 
 # Internal QC Inspection — Start an Internal Inspection
 
-> Working copy draft 2026-11-13-draft. English text from the published QMAS User Guide. Unreviewed screenshots are omitted.
+> Updated working draft 2026-11-13-draft. This file is not deployed. Existing published version: https://marconip2026.github.io/qmas-user-guide/
+
+## Source and verification
+
+**Current UI verified.** Current UI verified for the reviewed list, Looking-to, and blank step 1. Those screens are the existing published guide. There is no standalone Help Center article. The November 2026 QC article only names Start internal inspection. Steps 2–5 stay written text and were not invented as screenshots.
+
+- [How To Request Quotation For QC Inspection From Global Laboratories](https://app.notion.com/p/bf607ad093d24e3c8d483dd85d9a474e) (last edited 2026-11-04). One sentence: Start internal inspection when your own QC team will inspect.
+
+Help Center home: [QMAS Help Center](https://icw-io.notion.site/QMAS-Help-Center-5cd9414da2474d16a7c405a3542fe4af).
 
 Schedule an inspection that your own QC team carries out, without a third-party provider.
 
